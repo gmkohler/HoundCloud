@@ -18,21 +18,6 @@ content_path | string    | not null
 title        | string    | not null
 artist_id    | integer   | not null, foreign key (references users), indexed
 
-## playlists
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-curator_id  | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | text      |
-
-## listings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-song_id     | integer   | not null, foreign key (references songs)
-playlist_id | integer   | not null, foreign key (references playlists)
-
 ## tags
 column name | data type | details
 ------------|-----------|-----------------------
@@ -45,8 +30,7 @@ column name   | data type | details
 id            | integer   | not null, primary key
 tag_id        | integer   | not null, foreign key (references tags),
 taggable_id   | integer   | not null, foreign key (references taggable),
-taggable_type | integer   | not null, foreign key, unique [tag_id, taggable_id], inclusion ['playlists', 'songs']
-
+<!-- taggable_type | integer   | not null, foreign key, unique [tag_id, taggable_id], inclusion ['playlists', 'songs'] -->
 
 ## followings
 column name | data type | details
@@ -61,7 +45,7 @@ column name  | data type | details
 id           | integer   | not null, primary key
 user_id      | integer   | not null, foreign key (references users)
 likable_id   | integer   | not null, foreign key (references likeable)
-likable_type | string    | not null (references users), unique [user_id, likable_id], inclusion [playlists, songs]
+<!-- likable_type | string    | not null (references users), unique [user_id, likable_id], inclusion [playlists, songs] -->
 
 ## images
 column name    | data type | details
@@ -75,23 +59,20 @@ imageable_type | string    | not null, unique [imageable_id, path]
 <!-- I am considering these distinct from playlist comments
     due to the ability for them to be positioned at a particular point
     within the song.   -->
+## playlists
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+curator_id  | integer   | not null, foreign key (references users), indexed
+title       | string    | not null
+description | text      |
 
-## repostings
-column name   | data type | details
---------------|-----------|-----------------------
-id            | integer   | not null, primary key
-user_id       | integer   | not null, foreign key (references user)
-postable_id   | integer   | not null, foreign key (references postable)
-postable_type | string    | not null, unique [user_id, postable_id], inclusion [songs, playlists]
-
-## song_comments
-column name    | data type | details
----------------|-----------|-----------------------
-id             | integer   | not null, primary key
-user_id        | integer   | not null, foreign key (references users)
-song_id        | string    | not null, foreign key (references songs)
-body           | string    | not null
-time           | integer   | not null, foreign key
+## listings
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+song_id     | integer   | not null, foreign key (references songs)
+playlist_id | integer   | not null, foreign key (references playlists)
 
 ## playlist_comments
 column name    | data type | details

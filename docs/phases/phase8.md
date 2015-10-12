@@ -1,4 +1,4 @@
-# Phase 5: Beautify
+# Phase 7: Re-beautify
 
 ## Rails
 ### Models
@@ -13,9 +13,12 @@
 ## Flux
 ### Views (React Components)
 
+
 ### Stores
 
+
 ### Actions
+
 
 ### ApiUtil
 

@@ -2,32 +2,44 @@
 
 ## Rails
 ### Models
+* Tag
+* Tagging
 
 ### Controllers
+* Tag
+* Tagging
 
 ### Views
+* users/show.json.jbuilder
+* songs/show.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* NotesIndex
-  - NotesIndexItem
-* NoteForm
+* FeedIndex
+  - FeedIndexItem
+* SongForm
+* TagForm
 
 ### Stores
-* Note
+* Song
+* User
+* Tag
+* Tagging
 
 ### Actions
-* ApiActions.receiveAllNotes
-* ApiActions.receiveSingleNote
-* ApiActions.deleteNote
+* ApiActions.receiveUserSongs
+* ApiActions.receiveSingleSong
 
 ### ApiUtil
-* ApiUtil.fetchAllNotes
+* ApiUtil.fetchActivityFeed
 * ApiUtil.fetchSingleNote
 * ApiUtil.createNote
-* ApiUtil.editNote
-* ApiUtil.destroyNote
+* ApiUtil.editSong
+* ApiUtil.createTag
+* ApiUtil.createTagging
+* ApiUtil.destroyTagging
+
 
 ## Gems/Libraries
 * Flux Dispatcher
-* Twitter Bootstrap
+* Bootstrap

@@ -2,6 +2,7 @@
 
 ## Rails
 ### Models
+* Followings
 
 ### Controllers
 
@@ -9,10 +10,12 @@
 
 ## Flux
 ### Views (React Components)
+* (subscription) FeedIndex
 
 ### Stores
 
 ### Actions
+* ApiActions.receiveSubscriptionSongs
 
 ## Gems/Libraries
 * Quill.js

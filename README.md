@@ -14,10 +14,13 @@ and React.js. HoundCloud allows users to:
 - [ ] Create an account
 - [ ] Log in / Log out
 - [ ] Upload and tag songs
-- [ ] Subscribe to other users, have a "subscription feed"
-- [ ] Search songs by tag
-- [ ] View index for collections of subscriptions, uploaded songs, curated playlists, liked songs/playlists.
 - [ ] Listen to songs while navigating the site
+- [ ] Search songs by tag
+- [ ] Subscribe to other users, have a "subscription feed"
+- [ ] Like songs
+- [ ] Re-post songs from other users
+- [ ] View index for collections of subscriptions, uploaded songs, liked songs.
+- [ ] Allow comments on songs at a specified point in the song.
 
 ## Design Docs
 * [View Wireframes][view]
@@ -33,62 +36,82 @@ and React.js. HoundCloud allows users to:
 In Phase 1, I will begin by implementing user signup and authentication (using
 BCrypt). There will be a basic landing page after signup that will contain the
 container for the application's root React component. Before building out the
-front end, I will begin by setting up a full JSON API for Notes.
+front end, I will begin by setting up the JSON APIs for Songs.
 
 [Details][phase-one]
 
-### Phase 2: Flux Architecture and (2.5 days)
+### Phase 2: Flux Architecture for songs and user 'show' page (2.5 days)
 
 Phase 2 is focused on setting up Flux, the React Router, and the React view
 structure for the main application. After the basic Flux architecture has been
-set up, a Note store will be implemented and a set of actions corresponding to
-the needed CRUD functionality created. Once this is done, I will create React
-views for the Notes `Index`, `IndexItem` and `Form`. At the end of Phase 2,
-Notes can be created, read, edited and destroyed in the browser. Notes should
-save to the database when the form loses focus or is left idle after editing.
-Lastly, while constructing the views I will start using basic bootstrap for
-styling.
+set up, a Song store will be implemented and a set of actions corresponding to
+the needed CRUD functionality created.  This phase will include finding a
+library with which I can manage the uploading and accessing of mp3s.
+
+This phase will include creating a song form, which will also allow the user
+to name their songs.  Users can also edit their songs.
+
+Once this is done, I will create React views for the Songs `Index` and
+`IndexItem` for the user. At the end of Phase 2, users can search for and view other user pages and can see their activity feeds (i.e., the songs they have
+uploaded). Lastly, while constructing the views I will start using basic bootstrap for styling.
 
 [Details][phase-two]
 
-### Phase 3: Notebooks and Tags (2 days)
+### Phase 3: Playback and further seeding (1.5 days)
 
-Phase 3 adds organization to the Notes. Notes belong to a Notebook, which has
-its own `Index` view. Create JSON API for Notebooks. Notes can also now be
-tagged with multiple tags. Users can bring up notes in a separate `SearchIndex`
-view by searching for their tags. Once the tag search is implemented, I will
-extend this to a fuzzy search through every Note's content.
+Phase 3 will concern establishing a queue for playback.  The playback queue
+will be 'navbar'-esque in that it will always be rendered while the user
+navigates the app.  Users can click on a song and the rest of the songs in the current feed will be added to the playback queue.
+
+I will create a few more user and songs so that I am ready to work on phase 4.
 
 [Details][phase-three]
 
-### Phase 4: Allow Complex Styling in Notes (1 day)
+### Phase 4: Subscription feed: populating the landing page (1 day)
 
-Using quill.js, allow for complex styling of notes.
+Phase 4 allows the user to subscribe to other users. This will include updating
+the flux architecture so that the SongStore can fetch all songs for the current
+user's subscription feed (i.e., the union of other users' activity feeds, organized chronologically).
 
 [Details][phase-four]
 
-### Phase 5: Reminders and Garbage Collection (1 day)
+### Phase 5: Beautify (1.5 days)
 
-Phase 5 introduces two new features. First, users can set reminders on notes
-which will at the time they are set for prompt the user to review and edit the
-given note. In addition, I will implement a feature that asks users to review
-notes once they reach a certain age and ask whether they should be kept,
-archived, or deleted.
+Over the weekend I will work on CSS for all that has been done thus far.  This will involve heavy apeing (gorilla-ing?) of the soundcloud aesthetic, including coloring and transitions.  Hopefully I can also get the "waveform" type look on the views for the songs.
 
 [Details][phase-five]
 
-### Phase 6: Styling Cleanup and Seeding (1 day)
 
-Bootstrap will have been used to keep things organized up until now, but in
-Phase 6 I will add styling flourishes and make modals out of some elements (like
-the NotebookForm).
+### Phase 6: Likes, Tags, and Collections (2 days)
+
+Users can like songs.  Liked songs will show up in the user's activity feed.
+Users can tag their songs.  Both the upload and the edit views will allow for this feature.  Users will be able to create new tags.
+
+Additionally, collections will be established.  Collections is a view that includes indexes for each of liked songs, followed users, and songs that the user has uploaded. A Tags index may also be implemented, in which a specified TagsIndexItem links to a 'show all' view for all taggings belonging to said tag.
+
+[Details][phase-six]
+### Phase 7: Comments (1 day)
+
+Users can comment on songs.  The comment form will be a child of an IndexItem
+component (i.e., of one song in a feed) and will be rendered along the "time
+axis" of the song at the point in which it was commented.  Mouseover will
+display the whole comment, otherwise it will be displayed with the user's
+avatar.
+
+[Details][phase-seven]
+
+### Phase 8: Re-beautify (1 day)
+
+Work on CSS again for the entire product
+[Details][phase-eight]
+
+
 
 ### Bonus Features (TBD)
-- [ ] Repost songs from other users
+- [ ] Creating playlists, establishing polymorphism for "likeables", "taggables" with respect to both playlists and songs.
 - [ ] Suggested Users/Songs navbar on the side of show pages
-- [ ] Allow comments on songs
 - [ ] Download songs
-- [ ] User can manage queue of songs (e.g., splicing after the current song and dragging songs around within the queue)
+- [ ] User can manage playback queue (e.g., splicing after the current song and dragging songs around within the queue)
 - [ ] Playback audio manipulation (e.g., equalizer)
 - [ ] Multi-staged feed retrieval to achieve quicker initial page load
 
