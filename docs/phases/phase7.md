@@ -13,14 +13,16 @@
 ## Flux
 ### Views (React Components)
 * CommentForm
-* (need to update the FeedIndexItem accordingly)
+* Comment, implemented as a child of a FeedIndexItem
 
 ### Stores
 * Comment
 
 ### Actions
-More fetching
+* ReceiveAllComments
+* ReceiveSingleComment
 
 ### ApiUtil
-
+* createComment
+* fetchComments (based on songs in feed)
 ## Gems/Libraries

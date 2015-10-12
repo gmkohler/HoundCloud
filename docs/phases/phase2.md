@@ -2,44 +2,49 @@
 
 ## Rails
 ### Models
-* Tag
-* Tagging
+* Song
 
 ### Controllers
-* Tag
-* Tagging
+* Api::SongsController (create, show, update)
+* Api::UsersController (show)
 
 ### Views
 * users/show.json.jbuilder
 * songs/show.json.jbuilder
+* songs/new.json.jbuilder
 
 ## Flux
 ### Views (React Components)
-* FeedIndex
+* UserIndex
+  - UserIndexItem
+* UserInfo
+* FeedIndex (for activity feed)
   - FeedIndexItem
+  - During the construction of my wireframe I realized that the homepage and a user show page differ primarily by which songs are loaded into the feed, leading me to believe that a template-like approach to the Feed is appropriate.
 * SongForm
-* TagForm
 
 ### Stores
 * Song
 * User
-* Tag
-* Tagging
 
 ### Actions
-* ApiActions.receiveUserSongs
-* ApiActions.receiveSingleSong
+* ApiActions.receiveUsers
+* ApiActions.receiveUserDetail
+  - ApiActions.receiveActivityFeed
+* ApiActions.receiveSongDetail
 
 ### ApiUtil
-* ApiUtil.fetchActivityFeed
-* ApiUtil.fetchSingleNote
-* ApiUtil.createNote
+* ApiUtil.fetchUsers
+* ApiUtil.fetchUserDetail
+  - ApiUtil.fetchActivityFeed
+
+* ApiUtil.createSong
 * ApiUtil.editSong
-* ApiUtil.createTag
-* ApiUtil.createTagging
-* ApiUtil.destroyTagging
 
 
 ## Gems/Libraries
 * Flux Dispatcher
-* Bootstrap
+* react-rails
+* EventEmitter
+* Twitter Bootstrap
+* Need to find a library for audio uploading.  a/A github suggests Cloudinary or FilePicker.

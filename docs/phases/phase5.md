@@ -20,3 +20,4 @@
 ### ApiUtil
 
 ## Gems/Libraries
+* May include a data-processing library for getting the nice look of waveforms on the IndexItemView (i.e., track UI).

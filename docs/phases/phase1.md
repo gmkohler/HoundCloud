@@ -3,12 +3,10 @@
 ## Rails
 ### Models
 * User
-* Song
 
 ### Controllers
-* UsersController (create, new, show)
+* UsersController (create, new)
 * SessionsController (create, new, destroy)
-* Api::SongsController (create, destroy, show)
 
 ### Views
 * users/new.html.erb

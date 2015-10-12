@@ -5,25 +5,40 @@
 * Likings
 * Taggings
 * Tags
+* Songs (new query methods based on taggings join table)
 
 ### Controllers
-* Tag
+* Api::TagController (create, destroy)
+* Api::SongsController (Invoke the aforementioned new query methods)
 
 ### Views
-
 
 ## Flux
 ### Views (React Components)
 * Collection
 * CollectionIndex
 * CollectionIndexItem
+* TaggingIndex
+* TaggingIndexItem
+* Update ActivityFeedIndex to include liked songs.
 
 ### Stores
-Tag
+* Tag
+* May update SongStore to include a \_taggings store
 
 ### Actions
-More fetching
+  - addTaggingToSong
+  - addLikingtoSong
+  - fetchLikedSongs
+  - fetchTags
+  - fetchTagging
 
 ### ApiUtil
+* ApiUtil.createTag
+* ApiUtil.createTagging
+* ApiUtil.destroyTagging
+* ApiUtil.createLiking
+* ApiUtil.destroyLiking
+* Update the fetchActivityFeed to include liked songs.
 
 ## Gems/Libraries

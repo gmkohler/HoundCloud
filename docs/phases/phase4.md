@@ -11,11 +11,13 @@
 ## Flux
 ### Views (React Components)
 * (subscription) FeedIndex
+  - FeedIndexItem
 
 ### Stores
 
 ### Actions
-* ApiActions.receiveSubscriptionSongs
+* ApiActions.receiveSubscriptionFeed
+* ApiActions.receiveSubscriptionItem
+  - Theoretically I ought to support a twitter-like real-time loading of the feed, though demoing this feature may prove difficult.
 
 ## Gems/Libraries
-* Quill.js
