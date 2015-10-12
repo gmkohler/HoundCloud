@@ -1,4 +1,4 @@
-# FresherNote
+# HoundCloud
 
 [Heroku link][heroku] **NB:** This should be a link to your production site
 
@@ -6,19 +6,18 @@
 
 ## Minimum Viable Product
 
-FresherNote is a web application inspired by Evernote built using Ruby on Rails
-and React.js. FresherNote allows users to:
+HoundCloud is a web application inspired by SoundCloud built using Ruby on Rails
+and React.js. HoundCloud allows users to:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
 - [ ] Create an account
 - [ ] Log in / Log out
-- [ ] Create, read, edit, and delete notes
-- [ ] Organize notes within Notebooks
-- [ ] Tag notes with multiple tags and search notes by tag
-- [ ] Search through notes for blocks of text
-- [ ] Apply complex styling to notes while editing
-- [ ] Set reminders on notes
+- [ ] Upload and tag songs
+- [ ] Subscribe to other users, have a "subscription feed"
+- [ ] Search songs by tag
+- [ ] View index for collections of subscriptions, uploaded songs, curated playlists, liked songs/playlists.
+- [ ] Listen to songs while navigating the site
 
 ## Design Docs
 * [View Wireframes][view]
@@ -29,7 +28,7 @@ and React.js. FresherNote allows users to:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Note Model and JSON API (1.5 days)
+### Phase 1: User Authentication, Playlist Model and JSON API (1.5 days)
 
 In Phase 1, I will begin by implementing user signup and authentication (using
 BCrypt). There will be a basic landing page after signup that will contain the
@@ -38,7 +37,7 @@ front end, I will begin by setting up a full JSON API for Notes.
 
 [Details][phase-one]
 
-### Phase 2: Flux Architecture and Note CRUD (2.5 days)
+### Phase 2: Flux Architecture and (2.5 days)
 
 Phase 2 is focused on setting up Flux, the React Router, and the React view
 structure for the main application. After the basic Flux architecture has been
@@ -64,7 +63,7 @@ extend this to a fuzzy search through every Note's content.
 
 ### Phase 4: Allow Complex Styling in Notes (1 day)
 
-Using quill.js, allow for complex styling of notes. 
+Using quill.js, allow for complex styling of notes.
 
 [Details][phase-four]
 
@@ -85,11 +84,13 @@ Phase 6 I will add styling flourishes and make modals out of some elements (like
 the NotebookForm).
 
 ### Bonus Features (TBD)
-- [ ] Prettify transitions
-- [ ] Use javascript library for cleaner tag selection
-- [ ] Changelogs for Notes
-- [ ] Pagination / infinite scroll for Notes Index
-- [ ] Multiple sessions
+- [ ] Repost songs from other users
+- [ ] Suggested Users/Songs navbar on the side of show pages
+- [ ] Allow comments on songs
+- [ ] Download songs
+- [ ] User can manage queue of songs (e.g., splicing after the current song and dragging songs around within the queue)
+- [ ] Playback audio manipulation (e.g., equalizer)
+- [ ] Multi-staged feed retrieval to achieve quicker initial page load
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md

@@ -1,32 +1,37 @@
 # Schema Information
 
-## notes
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-title       | string    | not null
-body        | text      | not null
-author_id   | integer   | not null, foreign key (references users), indexed
-notebook_id | integer   | not null, foreign key (references notebooks), indexed
-archived    | boolean   | not null, default: false
+## users
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+username        | string    | not null, indexed, unique
+email           | string    | not null, indexed, unique
+password_digest | string    | not null
+session_token   | string    | not null, indexed, unique
 
-## notebooks
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users), indexed
-title       | string    | not null
-description | string    | 
+## songs
+column name  | data type | details
+-------------|-----------|-----------------------
+id           | integer   | not null, primary key
+<!-- (re: below) I don't yet know how to store mp3s in a database!! -->
+content_path | string    | not null
+title        | string    | not null
+artist_id    | integer   | not null, foreign key (references users), indexed
 
-## reminders
+## playlists
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-user_id     | integer   | not null, foreign key (references users), indexed
-note_id     | string    | not null, foreign key (references notes), indexed
-date        | datetime  | not null
-type        | string    | not null
-prev_id     | integer   | foreign key (references reminders), indexed
+curator_id  | integer   | not null, foreign key (references users), indexed
+title       | string    | not null
+description | text      |
+
+## listings
+column name | data type | details
+------------|-----------|-----------------------
+id          | integer   | not null, primary key
+song_id     | integer   | not null, foreign key (references songs)
+playlist_id | integer   | not null, foreign key (references playlists)
 
 ## tags
 column name | data type | details
@@ -35,17 +40,62 @@ id          | integer   | not null, primary key
 name        | string    | not null
 
 ## taggings
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key
+tag_id        | integer   | not null, foreign key (references tags),
+taggable_id   | integer   | not null, foreign key (references taggable),
+taggable_type | integer   | not null, foreign key, unique [tag_id, taggable_id], inclusion ['playlists', 'songs']
+
+
+## followings
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-name        | string    | not null
-note_id     | integer   | not null, foreign key (references notes), indexed, unique [tag_id]
-tag_id      | integer   | not null, foreign key (references tags), indexed
+follower_id | integer   | not null, foreign key (references users)
+followee_id | integer   | not null, foreign key (references users), unique [follower_id]
 
-## users
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, primary key
-username        | string    | not null, indexed, unique
-password_digest | string    | not null
-session_token   | string    | not null, indexed, unique
+## likings
+column name  | data type | details
+-------------|-----------|-----------------------
+id           | integer   | not null, primary key
+user_id      | integer   | not null, foreign key (references users)
+likable_id   | integer   | not null, foreign key (references likeable)
+likable_type | string    | not null (references users), unique [user_id, likable_id], inclusion [playlists, songs]
+
+## images
+column name    | data type | details
+---------------|-----------|-----------------------
+id             | integer   | not null, primary key
+path           | string    | not null
+imageable_id   | integer   | not null, foreign key (references imageable),
+imageable_type | string    | not null, unique [imageable_id, path]
+
+<!-- Bonus Features -->
+<!-- I am considering these distinct from playlist comments
+    due to the ability for them to be positioned at a particular point
+    within the song.   -->
+
+## repostings
+column name   | data type | details
+--------------|-----------|-----------------------
+id            | integer   | not null, primary key
+user_id       | integer   | not null, foreign key (references user)
+postable_id   | integer   | not null, foreign key (references postable)
+postable_type | string    | not null, unique [user_id, postable_id], inclusion [songs, playlists]
+
+## song_comments
+column name    | data type | details
+---------------|-----------|-----------------------
+id             | integer   | not null, primary key
+user_id        | integer   | not null, foreign key (references users)
+song_id        | string    | not null, foreign key (references songs)
+body           | string    | not null
+time           | integer   | not null, foreign key
+
+## playlist_comments
+column name    | data type | details
+---------------|-----------|-----------------------
+id             | integer   | not null, primary key
+user_id        |
+playlist_id        | string    | not null, foreign key (references )
