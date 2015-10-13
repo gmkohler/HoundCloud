@@ -1,14 +1,11 @@
-# Phase 6: Beautify
+# Phase 10: Re-beautify
 
 ## Rails
 ### Models
 
-
 ### Controllers
 
-
 ### Views
-
 
 ## Flux
 ### Views (React Components)
@@ -20,4 +17,4 @@
 ### ApiUtil
 
 ## Gems/Libraries
-* May include a data-processing library for getting the nice look of waveforms on the IndexItemView (i.e., track UI).
+* Perhaps an animation library or a drag/drop library.

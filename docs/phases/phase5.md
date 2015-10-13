@@ -1,23 +1,23 @@
-# Phase 5: Beautify
+# Phase 5: Subscription Feed (1 day)
 
 ## Rails
 ### Models
-
+* Followings
 
 ### Controllers
 
-
 ### Views
-
 
 ## Flux
 ### Views (React Components)
+* (subscription) FeedIndex
+  - FeedIndexItem
 
 ### Stores
 
 ### Actions
-
-### ApiUtil
+* ApiActions.receiveSubscriptionFeed
+* ApiActions.receiveSubscriptionItem
+  - Theoretically I ought to support a twitter-like real-time loading of the feed, though demoing this feature may prove difficult.
 
 ## Gems/Libraries
-* May include a data-processing library for getting the nice look of waveforms on the IndexItemView (i.e., track UI).

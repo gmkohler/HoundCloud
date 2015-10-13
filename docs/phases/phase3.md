@@ -1,32 +1,35 @@
-# Phase 3: Playback and seeding (2 days)
+# Phase 3: Users(1 days)
 
 ## Rails
 ### Models
 
 ### Controllers
+* Api::UsersController (show)
 
 ### Views
+* users/show.json.jbuilder
 
 ## Flux
-
 ### Views (React Components)
-* PlaybackBar
-* PlaybackBarIndex (i.e., queue)
-* PlaybackBarIndexItem (i.e., queued song)
+* UserIndex
+  - UserIndexItem
+* UserInfo
+* FeedIndex (for activity feed)
+  - FeedIndexItem
+  - During the construction of my wireframe I realized that the homepage and a user show page differ primarily by which songs are loaded into the feed, leading me to believe that a template-like approach to the Feed is appropriate.
 
 ### Stores
-* I anticipate modifying the SongStore to also keep track of a playlist queue--it doesn't make sense to have two stores for the same model. However, I will research whether this is the preferred practice in Flux and update this strategy accordingly. If the separate collection within the SongStore is appropriate, the songs to be added to the queue should already be included in the song store, so adding to a \_queuedSongs collection may include slicing from the \_songs collection.
+* User
 
 ### Actions
-* ApiActions.addSongsToQueue
-  - I don't foresee this needing the API as the song will be present in the store at the time the user starts a playback queue.  Rather I see adding one song as adding all of the rest of the songs in the feed to the queue at the same time.
-* ApiActions.receiveQueuedSongData
-* ApiActions.startQueuePlayback
-* ApiActions.stopQueuePlayback
+* ApiActions.receiveUsers
+* ApiActions.receiveUserDetail
+  - ApiActions.receiveActivityFeed
 
 ### ApiUtil
-* ApiUtil.fetchQueuedSong
-  - I need to research strategies for loading songs while maintaining fast navigation of the site.  One idea is to fetch queued songs one after the other, or to wait to fetch the data until the song is next up in the queue.
+* ApiUtil.fetchUsers
+* ApiUtil.fetchUserDetail
+  - ApiUtil.fetchActivityFeed
+
 
 ## Gems/Libraries
-* At present I am unfamiliar with the audio library landscape, but I will need to identify a library for audio playback and integrate this with a queue implementation.

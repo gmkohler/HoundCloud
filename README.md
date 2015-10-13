@@ -48,52 +48,53 @@ Phase 2 is focused on setting up Flux, the React Router, and the React view stru
 ### Phase 3: User  and user 'show' page (1 day)
 Once this is done, I will create React views for the Songs `Index` and `IndexItem` for the user. At the end of Phase 3, users can search for and view other user pages and can see their activity feeds (at this point, just the songs they have uploaded). Lastly, while constructing the views I will start using basic bootstrap for styling.
 
-[Details][]
+[Details][phase-three]
 
-### Phase 3: Playback and further seeding (1.5 days)
+### Phase 4: Playback and further seeding (1.5 days)
 
 Phase 3 will concern establishing a queue for playback.  The playback queue will be 'navbar'-esque in that it will always be rendered while the user navigates the app.  Users can click on a song and the rest of the songs in the current feed will be added to the playback queue.
 
 I will create a few more user and songs so that I am ready to work on phase 4.
 
-[Details][phase-three]
+[Details][phase-four]
 
-### Phase 4: Subscription feed: populating the landing page (1 day)
+### Phase 5: Subscription feed: populating the landing page (1 day)
 
 Phase 4 allows the user to subscribe to other users. This will include updating the flux architecture so that the SongStore can fetch all songs for the current user's subscription feed (i.e., the union of followees' activity feeds, ordered chronologically).  The subscription feed acts as the landing page/home page for a logged-in user.
 
-[Details][phase-four]
+[Details][phase-five]
 
-### Phase 5: Beautify (1.5 days)
+### Phase 6: Beautify (1.5 days)
 
 Over the weekend I will work on CSS for all that has been done thus far.  This will involve heavy apeing (gorilla-ing?) of the soundcloud aesthetic, including coloring and transitions.  I also hope to achieve the "waveform" type look on the views for the songs, which may include a library.
 
-[Details][phase-five]
+[Details][phase-six]
 
-### Phase 6: Tags, and Collections (2 days)
+### Phase 7: Tags (1 days)
 
-Users can like songs.  Liked songs will show up in the user's activity feed. Users can tag their songs.  Both the upload and the edit views will allow for this feature.  Users will be able to create new tags.
+Users can tag songs.  Tagged songs will show up in the user's activity feed.  Both the upload and the edit views will allow for taggings.  Users will be able to create new tags.
 
 The search will be fleshed out to provide results for tags and songs, in addition to the previously-implemented user results.
 
+[Details][phase-seven]
 
-[Details][phase-six]
-
-### Phase X: Collections
+### Phase 8: Collections (1 Day)
 
 Collections will be established in this phase.  Collections is a view that includes indexes for each of liked songs, followed users, and songs that the user has uploaded. A Tags index may also be implemented, in which a specified TagsIndexItem links to a 'show all' view for all taggings belonging to said tag.
 
-### Phase 7: Comments (1 day)
+[Details][phase-eight]
+
+### Phase 9: Comments (1 day)
 
 Users can comment on songs.  The comment form will be a child of an IndexItem component (i.e., of one song in a feed) and will be rendered along the "time axis" of the song at the point in which it was commented.  Mouseover will display the whole comment, otherwise it will be displayed with the user's avatar.
 
-[Details][phase-seven]
+[Details][phase-nine]
 
-### Phase 8: Re-beautify (1 day)
+### Phase 10: Re-beautify (1 day)
 
 Work on CSS again for the entire product
-[Details][phase-eight]
 
+[Details][phase-ten]
 
 
 ### Bonus Features (TBD)
@@ -114,3 +115,5 @@ Work on CSS again for the entire product
 [phase-six]: ./docs/phases/phase6.md
 [phase-seven]: ./docs/phases/phase7.md
 [phase-eight]: ./docs/phases/phase8.md
+[phase-nine]: ./docs/phases/phase9.md
+[phase-ten]: ./docs/phases/phase10.md

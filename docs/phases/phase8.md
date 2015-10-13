@@ -1,4 +1,4 @@
-# Phase 7: Re-beautify
+# Phase 8: Collections
 
 ## Rails
 ### Models
@@ -9,12 +9,15 @@
 
 ## Flux
 ### Views (React Components)
+* Collection
+* CollectionIndex
+* CollectionIndexItem
 
 ### Stores
 
 ### Actions
+  - fetchTags
 
 ### ApiUtil
 
 ## Gems/Libraries
-* Perhaps an animation library or a drag/drop library.

@@ -1,28 +1,32 @@
-# Phase 7: Comments
+# Phase 7 Likes, Tags, and Collections
 
 ## Rails
 ### Models
-* Comments
+* Taggings
+* Tags
+* Songs (new query methods based on taggings join table)
 
 ### Controllers
-* Comment
+* Api::TagController (create, destroy)
+* Api::SongsController (Invoke the aforementioned new query methods)
 
 ### Views
 
-
 ## Flux
 ### Views (React Components)
-* CommentForm
-* Comment, implemented as a child of a FeedIndexItem
+* TaggingIndex
+* TaggingIndexItem
 
 ### Stores
-* Comment
+* Tag
+* May update SongStore to include a \_taggings store
 
 ### Actions
-* ReceiveAllComments
-* ReceiveSingleComment
+  - addTaggingToSong
 
 ### ApiUtil
-* createComment
-* fetchComments (based on songs in feed)
+* ApiUtil.createTag
+* ApiUtil.createTagging
+* ApiUtil.destroyTagging
+
 ## Gems/Libraries
