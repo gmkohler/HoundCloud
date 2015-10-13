@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_filter :require_logout!, except: :destroy
   def new
     render :new
   end
@@ -20,9 +21,9 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_user!
-    redirect_to new_session_url
+    render json: {}
   end
-  
+
   private
   def session_params
 

@@ -5,11 +5,16 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <% if current_user %>
+    <script type="text/javascript">
+      window.CURRENT_USER_ID = <%= current_user.id %>;
+      window.CURRENT_USER_USERNAME = "<%= current_user.username %>";
+    </script>
+  <% end %>
 </head>
 <body>
-<% if current_user %>
-  <%= "Welcome, " + current_user.username %><%= button_to "log out", session_url, method: :delete %>
-<% else %>
+
+<% if !current_user %>
   Please <%= link_to "log in", new_session_url%> or <%= link_to "sign up", new_user_url %>
 <% end %>
 
