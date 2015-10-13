@@ -17,9 +17,9 @@ HoundCloud is a web application inspired by SoundCloud built using Ruby on Rails
 - [ ] Search songs by tag
 - [ ] Subscribe to other users, have a "subscription feed"
 - [ ] Like songs
-- [ ] Re-post songs from other users
-- [ ] View index for collections of subscriptions, uploaded songs, liked songs.
 - [ ] Comment on songs at a specified time within the song.
+- [ ] View index for collections of subscribed users, uploaded songs, liked songs.
+
 
 ## Design Docs
 * [View Wireframes][view]
@@ -30,7 +30,7 @@ HoundCloud is a web application inspired by SoundCloud built using Ruby on Rails
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Playlist Model and JSON API (1.5 days)
+### Phase 1: User Authentication, Song Model and JSON API (1.5 days)
 
 In Phase 1, I will begin by implementing user signup and authentication (using
 BCrypt). There will be a basic landing page after signup that will contain the
@@ -39,15 +39,16 @@ front end, I will begin by setting up the JSON APIs for Songs.
 
 [Details][phase-one]
 
-### Phase 2: Flux Architecture for songs and user 'show' page (2.5 days)
+### Phase 2: Flux Architecture for songs (1.5 days)
 
-Phase 2 is focused on setting up Flux, the React Router, and the React view structure for the main application. After the basic Flux architecture has been set up, a Song store will be implemented and a set of actions corresponding to the needed CRUD functionality created.  This phase will include finding a library with which I can manage the uploading and accessing of mp3s.
-
-This phase will include creating a song form, which will allow the user to name their songs and indicate a local file path from which to upload the song.  Users can also edit the titles of their songs.
-
-Once this is done, I will create React views for the Songs `Index` and `IndexItem` for the user. At the end of Phase 2, users can search for and view other user pages and can see their activity feeds (at this point, just the songs they have uploaded). Lastly, while constructing the views I will start using basic bootstrap for styling.
+Phase 2 is focused on setting up Flux, the React Router, and the React view structure for the main application. After the basic Flux architecture has been set up, a Song store will be implemented and a set of actions corresponding to the needed CRUD functionality created.  This phase will include finding a library with which I can manage the uploading and accessing of mp3s.  This phase will include creating a song form, which will allow the user to name their songs and indicate a local file path from which to upload the song.  Users can also edit the titles of their songs.
 
 [Details][phase-two]
+
+### Phase 3: User  and user 'show' page (1 day)
+Once this is done, I will create React views for the Songs `Index` and `IndexItem` for the user. At the end of Phase 3, users can search for and view other user pages and can see their activity feeds (at this point, just the songs they have uploaded). Lastly, while constructing the views I will start using basic bootstrap for styling.
+
+[Details][]
 
 ### Phase 3: Playback and further seeding (1.5 days)
 
@@ -69,15 +70,18 @@ Over the weekend I will work on CSS for all that has been done thus far.  This w
 
 [Details][phase-five]
 
-### Phase 6: Likes, Tags, and Collections (2 days)
+### Phase 6: Tags, and Collections (2 days)
 
 Users can like songs.  Liked songs will show up in the user's activity feed. Users can tag their songs.  Both the upload and the edit views will allow for this feature.  Users will be able to create new tags.
 
 The search will be fleshed out to provide results for tags and songs, in addition to the previously-implemented user results.
 
-Collections will be established in this phase.  Collections is a view that includes indexes for each of liked songs, followed users, and songs that the user has uploaded. A Tags index may also be implemented, in which a specified TagsIndexItem links to a 'show all' view for all taggings belonging to said tag.
 
 [Details][phase-six]
+
+### Phase X: Collections
+
+Collections will be established in this phase.  Collections is a view that includes indexes for each of liked songs, followed users, and songs that the user has uploaded. A Tags index may also be implemented, in which a specified TagsIndexItem links to a 'show all' view for all taggings belonging to said tag.
 
 ### Phase 7: Comments (1 day)
 
@@ -93,9 +97,10 @@ Work on CSS again for the entire product
 
 
 ### Bonus Features (TBD)
-- [ ] Creating playlists, establishing polymorphism for "likeables", "taggables" with respect to both playlists and songs.
-- [ ] Establishing a home page for not-logged-in users, and routing the new user/session pages through this.
-- [ ] Suggested Users/Songs navbar on the side of show pages
+- [ ] Re-post songs from other users
+- [ ] Create playlists, establish polymorphism for "likeables", "taggables" with respect to both playlists and songs.
+- [ ] Establish a home page for not-logged-in users, and routing the new user/session pages through this.
+- [ ] Implement suggested Users/Songs navbar on the side of show pages
 - [ ] Download songs
 - [ ] User can manage playback queue (e.g., splicing after the current song and dragging songs around within the queue)
 - [ ] Playback audio manipulation (e.g., equalizer)
