@@ -4,7 +4,7 @@
 ### Models
 
 ### Controllers
-* Api::UsersController (show)
+* Api::UsersController (show, index)
 
 ### Views
 * users/show.json.jbuilder

@@ -5,7 +5,7 @@
 * Song
 
 ### Controllers
-* Api::SongsController (create, show, update)
+* Api::SongsController (create, show, index, update)
 * Api::UsersController (show)
 
 ### Views

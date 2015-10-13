@@ -22,7 +22,7 @@ artist_id    | integer   | not null, foreign key (references users), indexed
 column name | data type | details
 ------------|-----------|-----------------------
 id          | integer   | not null, primary key
-name        | string    | not null
+name        | string    | not null, unique
 
 ## taggings
 column name   | data type | details
@@ -39,14 +39,6 @@ id          | integer   | not null, primary key
 follower_id | integer   | not null, foreign key (references users)
 followee_id | integer   | not null, foreign key (references users), unique [follower_id]
 
-## likings
-column name  | data type | details
--------------|-----------|-----------------------
-id           | integer   | not null, primary key
-user_id      | integer   | not null, foreign key (references users)
-likable_id   | integer   | not null, foreign key (references likeable)
-<!-- likable_type | string    | not null (references users), unique [user_id, likable_id], inclusion [playlists, songs] -->
-
 ## images
 column name    | data type | details
 ---------------|-----------|-----------------------
@@ -59,6 +51,22 @@ imageable_type | string    | not null, unique [imageable_id, path]
 <!-- I am considering these distinct from playlist comments
     due to the ability for them to be positioned at a particular point
     within the song.   -->
+## likings
+column name  | data type | details
+-------------|-----------|-----------------------
+id           | integer   | not null, primary key
+user_id      | integer   | not null, foreign key (references users)
+likable_id   | integer   | not null, foreign key (references likeable)
+<!-- likable_type | string    | not null (references users), unique [user_id, likable_id], inclusion [playlists, songs] -->
+
+## repostings
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+user_id         | integer   | not null, foreign key (references users)
+repostable_id   | integer   | not null, foreign key (references repostable)
+<!-- repostable_type | string    | not null (references users), unique [user_id, repostable_id], inclusion [playlists, songs] -->
+
 ## playlists
 column name | data type | details
 ------------|-----------|-----------------------
@@ -75,8 +83,9 @@ song_id     | integer   | not null, foreign key (references songs)
 playlist_id | integer   | not null, foreign key (references playlists)
 
 ## playlist_comments
-column name    | data type | details
----------------|-----------|-----------------------
-id             | integer   | not null, primary key
-user_id        |
+column name        | data type | details
+-------------------|-----------|-----------------------
+id                 | integer   | not null, primary key
+user_id            | integer   | not null, foreign key
 playlist_id        | string    | not null, foreign key (references )
+body               | text      | not null, unique [user_id, playlist_id]

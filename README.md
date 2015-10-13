@@ -46,7 +46,7 @@ Phase 2 is focused on setting up Flux, the React Router, and the React view stru
 [Details][phase-two]
 
 ### Phase 3: User  and user 'show' page (1 day)
-Once this is done, I will create React views for the Songs `Index` and `IndexItem` for the user. At the end of Phase 3, users can search for and view other user pages and can see their activity feeds (at this point, just the songs they have uploaded). Lastly, while constructing the views I will start using basic bootstrap for styling.
+Once this is done, I will create React views for the Songs `Index` and `IndexItem` for the user. Songs will be fetched via a filtering based on the user page being visited.  At the end of Phase 3, users can search for and view other user pages and can see their activity feeds (at this point, just the songs they have uploaded). Lastly, while constructing the views I will start using basic bootstrap for styling.
 
 [Details][phase-three]
 
@@ -84,7 +84,7 @@ Collections will be established in this phase.  Collections is a view that inclu
 
 [Details][phase-eight]
 
-### Phase 9: Comments (1 day)
+### Phase 9: Comments (1.5 days)
 
 Users can comment on songs.  The comment form will be a child of an IndexItem component (i.e., of one song in a feed) and will be rendered along the "time axis" of the song at the point in which it was commented.  Mouseover will display the whole comment, otherwise it will be displayed with the user's avatar.
 
@@ -98,7 +98,7 @@ Work on CSS again for the entire product
 
 
 ### Bonus Features (TBD)
-- [ ] Re-post songs from other users
+- [ ] Re-post and like songs from other users
 - [ ] Create playlists, establish polymorphism for "likeables", "taggables" with respect to both playlists and songs.
 - [ ] Establish a home page for not-logged-in users, and routing the new user/session pages through this.
 - [ ] Implement suggested Users/Songs navbar on the side of show pages
