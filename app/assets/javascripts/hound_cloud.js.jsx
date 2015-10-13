@@ -1,4 +1,4 @@
-$(function() {
+function HoundCloud () {
   'use strict';
   var root = document.getElementById('content');
   var Route = ReactRouter.Route;
@@ -20,9 +20,9 @@ $(function() {
     <Route path="/" component={App}>
     </Route>
   );
-  
-  if (root) {
-    React.render(<Router>{routes}</Router>, root);
-  }
 
-});
+
+  React.render(<Router>{routes}</Router>, root);
+
+
+}
