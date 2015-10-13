@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Capstone</title>
+  <title>HoundCloud</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if current_user %>
+  <%= "Welcome, " + current_user.username %><%= button_to "log out", session_url, method: :delete %>
+<% else %>
+  Please <%= link_to "log in", new_session_url%> or <%= link_to "sign up", new_user_url %>
+<% end %>
+
 <% if flash %>
   <% flash.each do |key, msg|%>
     <%= msg %>
