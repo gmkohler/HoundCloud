@@ -20,6 +20,9 @@ $(function() {
     <Route path="/" component={App}>
     </Route>
   );
+  
+  if (root) {
+    React.render(<Router>{routes}</Router>, root);
+  }
 
-  React.render(<Router>{routes}</Router>, root);
 });
