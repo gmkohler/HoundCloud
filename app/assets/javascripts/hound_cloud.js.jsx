@@ -10,15 +10,14 @@ function HoundCloud () {
     render: function () {
       return (
         <div>
-          <header><h1>HoundCloud</h1></header>
+          <Navbar/>
         </div>
       );
     }
   });
 
   var routes = (
-    <Route path="/" component={App}>
-    </Route>
+    <Route path="/" component={App}></Route>
   );
 
 
