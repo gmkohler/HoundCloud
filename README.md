@@ -10,8 +10,8 @@ HoundCloud is a web application inspired by SoundCloud built using Ruby on Rails
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [ ] Create an account
-- [ ] Log in / Log out
+- [X] Create an account
+- [X] Log in / Log out
 - [ ] Upload and tag songs
 - [ ] Listen to songs while navigating the site
 - [ ] Search songs by tag
