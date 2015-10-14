@@ -5,32 +5,38 @@
     <title>Sign In</title>
   </head>
   <body>
-    <h1>Sign Up</h1>
-    <form action="/users" method="post">
-      <%= auth_token %>
-      <p>
-        <label for="user_username">username:</label>
-        <input type="text"
-               name="user[username]"
-               value="<%= @user.username %>">
-      </p>
-      <p>
-        <label for="user_email">email:</label>
-        <input type="text"
-               name="user[email]"
-               value="<%= @user.email %>"
-               id="user_email">
-      </p>
+    <div class="container col-lg-2">
+      <div class="page-header"><h1>sign up</h1></div>
+      <form action="/users" method="post">
+        <%= auth_token %>
+        <div class="form-group">
+          <label for="user_username">username:</label>
+          <input type="text"
+                 class="form-control"
+                 name="user[username]"
+                 value="<%= @user.username %>">
+        </div>
+        <div class="form-group">
+          <label for="user_email">email:</label>
+          <input type="text"
+                 class="form-control"
+                 name="user[email]"
+                 value="<%= @user.email %>"
+                 id="user_email">
+        </div>
 
-      <p>
-        <label for="user_password">password:</label>
-        <input type="password"
-               name="user[password]"
-               id="user_password">
-      <p>
-        
-      <input type="submit" value="Create Account">
-    </form>
+        <div class="form-group">
+          <label for="user_password">password:</label>
+          <input type="password"
+                 class="form-control"
+                 name="user[password]"
+                 id="user_password">
+           <p className="help-block">(min. 6 char.)</p>
+        </div>
+
+        <input type="submit" class="btn btn-default" value="create account">
+      </form>
+    </div>
 
   </body>
 </html>

@@ -5,25 +5,29 @@
     <title>Sign In</title>
   </head>
   <body>
-    <h1>Sign In</h1>
-    <form action="/session" method="post">
-      <%= auth_token %>
+    <div class="container col-lg-2">
+    <div class="page-header"><h2>please sign in</h2></div>
 
-      <p>
-        <label for="user_email">email:</label>
-        <input type="text"
-               name="user[email]"
-               id="user_email">
-      </p>
+      <form action="/session" method="post">
+        <%= auth_token %>
 
-      <p>
-        <label for="user_password">password:</label>
-        <input type="password"
-               name="user[password]"
-               id="user_password">
-        <input type="submit" value="Sign In!">
-      </p>
-    </form>
+        <div class="form-group">
+          <label for="user_email">email:</label>
+          <input type="text"
+                 class="form-control"
+                 name="user[email]"
+                 id="user_email">
+        </div>
+        <div class="form-group">
+          <label for="user_password">password:</label>
+          <input type="password"
+                 class="form-control"
+                 name="user[password]"
+                 id="user_password">
+        </div>
+        <button type="submit" className="btn btn-default">sign in</button>
 
+      </form>
+    </div>
   </body>
 </html>

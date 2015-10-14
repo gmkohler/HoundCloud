@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 gem 'react-rails', '~> 1.3.0'
+gem 'flux-rails-assets'
 gem 'bcrypt'
 gem 'pry-rails'
 # Use postgresql as the database for Active Record

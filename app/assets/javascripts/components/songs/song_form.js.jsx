@@ -44,7 +44,6 @@
       };
 
       var onSuccess = function (data) {
-        debugger;
         window.location = ('/api/songs/' + data.id)
       };
 
@@ -53,34 +52,57 @@
 
     render: function () {
       return (
-        <div className="container col-lg-3">
+        <div className="container col-md-4">
           <div className="page-header"><h3>Upload a song</h3></div>
           <form>
-          <div className="form-group">
-            <label for="song_title">Title</label>
-            <input type="text"
-                   className="form-control"
-                   name="song[title]"
-                   id="song_title"
-                   valueLink={this.linkState("songTitle")}/>
+            <div className="form-group">
+              <label for="song_title">Title</label>
+              <input type="text"
+                     className="form-control"
+                     name="song[title]"
+                     id="song_title"
+                     valueLink={this.linkState("songTitle")}/>
+            </div>
+          </form>
+
+
+          <div className="row">
+            <div className="col-md-4">
+              Select Audio File
+            </div>
           </div>
-          <div className="form-group">
-            <label for="song_image_url"> Audio file path:</label>
-            <input type="file"
-                   id="song_image_url"
-                   onClick={this.openCloudinaryWidgetAudio}/>
+          <div className="row">
+            <div className="col-md-3">
+                <button className="btn btn-default"
+                        id="content_file_url"
+                        onClick={this.openCloudinaryWidgetAudio}>Choose File</button>
+            </div>
+            <div className="col-md-4">
+              <label for="content_file_url">{this.state.contentFilename || "No file chosen"}</label>
+            </div>
           </div>
-          <div className="form-group">
-            <label for="song_content_url"> Image file path: </label>
-            <input type="file"
-                   id="song_content_url"
-                   onClick={this.openCloudinaryWidgetImage}/>
-                 <p className="help-block"><em>(Optional)</em></p>
-           </div>
+
+          <div className="row">
+            <div className="col-md-5">
+              Select Image File (optional)
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-md-3">
+              <button className="btn btn-default"
+                      id="song_image_url"
+                      onClick={this.openCloudinaryWidgetImage}>Choose File</button>
+            </div>
+            <div className="col-md-4">
+              <label for="content_file_url">{this.state.imageFilename || "No file chosen"}</label>
+            </div>
+          </div>
+
+
            <button type="submit"
                    className="btn btn-default"
                    onClick={this.createSong}>Submit</button>
-         </form>
         </div>
      );
     }
