@@ -11,14 +11,17 @@ function HoundCloud () {
       return (
         <div>
           <Navbar/>
+          {this.props.children}
         </div>
       );
     }
   });
 
   var routes = (
-    <Route path="/" component={App}></Route>
-    
+    <Route path="/" component={App}>
+      <Route path="songs/new" component={SongForm}/>
+    </Route>
+
   );
 
 

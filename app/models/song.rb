@@ -12,4 +12,6 @@
 
 class Song < ActiveRecord::Base
   has_one :image, as: :imageable
+
+  # think about after_creation thing, reference a constant to the twitter egg.
 end
