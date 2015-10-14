@@ -39,7 +39,9 @@
       );
     },
 
-    createSong: function () {
+    createSong: function (e) {
+      e.preventDefault();
+      var songParams
 
     },
     render: function () {

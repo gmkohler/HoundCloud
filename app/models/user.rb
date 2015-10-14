@@ -9,6 +9,7 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  image_url       :string           not null
 #
 
 class User < ActiveRecord::Base
@@ -18,8 +19,6 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :username, :email, :session_token, presence: true
 
-  has_one :image, as: :imageable
-  
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
     if user && (user.is_password?(password))

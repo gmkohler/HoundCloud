@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  DEFAULT_USER_IMAGE_URL = "http://res.cloudinary.com/gmkohler/image/upload/v1444792510/Poodle_kqgsbm.png"
   def new
     @user = User.new
     render :new
@@ -6,7 +7,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
+    @user.image_url ||= DEFAULT_USER_IMAGE_URL
+    
     if @user.save
       login_user!(@user)
       redirect_to '/'
