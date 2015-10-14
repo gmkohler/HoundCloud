@@ -16,6 +16,17 @@
 
       $.ajax(ajaxOptions);
     },
+
+    fetchUserSongs: function (userID) {
+      var ajaxOptions = {
+        url: '/api/songs',
+        type: 'GET',
+        data: {id: userID}
+      };
+
+      // $.ajax(ajaxOptions);
+    },
+    
     postSong: function (songParams, successCallback) {
       var ajaxOptions = {
         url: '/api/songs',

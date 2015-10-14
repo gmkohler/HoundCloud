@@ -73,7 +73,7 @@
           </div>
           <div className="row">
             <div className="col-md-3">
-                <button className="btn btn-default"
+                <button className="btn btn-xs"
                         id="content_file_url"
                         onClick={this.openCloudinaryWidgetAudio}>Choose File</button>
             </div>
@@ -90,7 +90,7 @@
 
           <div className="row">
             <div className="col-md-3">
-              <button className="btn btn-default"
+              <button className="btn btn-xs"
                       id="song_image_url"
                       onClick={this.openCloudinaryWidgetImage}>Choose File</button>
             </div>

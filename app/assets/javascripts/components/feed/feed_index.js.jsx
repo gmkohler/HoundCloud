@@ -1,3 +1,5 @@
+// Has a user prop
+
 (function(root) {
   'use strict';
 
@@ -12,7 +14,7 @@
 
     componentDidMount: function () {
       SongStore.addChangeListener(this.onSongChange);
-      SongApiUtil.fetchAllSongs();
+      SongApiUtil.fetchUserSongs({id: this.props.user.id});
       // need to fetch songs based on something. i.e., user id.
       // ApiUtil will know how to make this request.
     },
