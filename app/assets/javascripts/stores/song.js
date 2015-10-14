@@ -32,6 +32,10 @@
           resetSongs(payload.songs);
           SongStore.hasChanged();
           break;
+        case SongConstants.USER_SONGS_RECEIVED:
+          resetSongs(payload.songs);
+          SongStore.hasChanged();
+          break;
       }
     })
   });

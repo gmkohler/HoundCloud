@@ -14,9 +14,11 @@
 
     componentDidMount: function () {
       SongStore.addChangeListener(this.onSongChange);
-      SongApiUtil.fetchUserSongs({id: this.props.user.id});
-      // need to fetch songs based on something. i.e., user id.
-      // ApiUtil will know how to make this request.
+
+    },
+
+    componentWillReceiveProps: function (newProps) {
+      SongApiUtil.fetchUserSongs(newProps.user.id);
     },
 
     componentWillUnmount: function () {

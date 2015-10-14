@@ -27,7 +27,7 @@
       var user = this.state.user;
       return (
         <div>
-          <div>my state is user: {user ? user.username : "none yet"}</div>
+          <FeedIndex user={user}/>
         </div>
       );
     }

@@ -21,12 +21,13 @@
       var ajaxOptions = {
         url: '/api/songs',
         type: 'GET',
-        data: {id: userID}
+        data: {id: userID},
+        success: SongApiActions.receiveUserSongs
       };
 
-      // $.ajax(ajaxOptions);
+      $.ajax(ajaxOptions);
     },
-    
+
     postSong: function (songParams, successCallback) {
       var ajaxOptions = {
         url: '/api/songs',

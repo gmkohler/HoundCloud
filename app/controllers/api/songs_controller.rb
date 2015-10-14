@@ -21,10 +21,10 @@ class Api::SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.all
+    @songs = Song.filter({id: params[:id]})
     render json: @songs
   end
-  
+
   private
   def song_params
     params.require(:song).permit(:title, :content_url, :image_url)

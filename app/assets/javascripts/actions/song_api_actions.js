@@ -5,11 +5,19 @@
   'use strict';
 
   root.SongApiActions = {
-    receiveAllSongs: function (songs) {
-    
+    receiveAllSongs: function (data) {
       var action = {
         actionType: SongConstants.ALL_SONGS_RECEIVED,
-        songs: songs
+        songs: data
+      };
+
+      AppDispatcher.dispatch(action);
+    },
+
+    receiveUserSongs: function (data) {
+      var action = {
+        actionType: SongConstants.USER_SONGS_RECEIVED,
+        songs: data
       };
 
       AppDispatcher.dispatch(action);
