@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :username, :email, :session_token, presence: true
 
+  has_many :songs, foreign_key: :artist_id
+
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
     if user && (user.is_password?(password))

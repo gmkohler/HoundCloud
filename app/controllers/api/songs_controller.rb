@@ -5,19 +5,21 @@ class Api::SongsController < ApplicationController
   end
 
   def create
+    current_user
     @song = Song.new(song_params)
     @song.artist_id = current_user.id
     @song.image_url ||= DEFAULT_SONG_IMAGE_URL
 
     if @song.save
-      render :show
+      render json: {id: @song.id}
     else
       render json: @song.errors.full_messages, status: 422
     end
   end
 
   def show
-    @song = Song.find(params[:id])
+    @song = Song.includes(:artist).find(params[:id])
+    @artist = @song.artist
     render :show
   end
 
@@ -27,6 +29,6 @@ class Api::SongsController < ApplicationController
   end
   private
   def song_params
-    params.require[:song].permit[:title, :content_url, :image_url]
+    params.require(:song).permit(:title, :content_url, :image_url)
   end
 end
