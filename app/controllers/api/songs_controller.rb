@@ -1,9 +1,6 @@
 class Api::SongsController < ApplicationController
   DEFAULT_SONG_IMAGE_URL = "http://res.cloudinary.com/gmkohler/image/upload/v1444792689/pwas_tqyolh.png"
 
-  def new
-  end
-
   def create
     current_user
     @song = Song.new(song_params)
@@ -24,9 +21,10 @@ class Api::SongsController < ApplicationController
   end
 
   def index
-    # Need to work on how to filter these.  Should be handled by the ApiUtil
-    render :json
+    @songs = Song.all
+    render json: @songs
   end
+  
   private
   def song_params
     params.require(:song).permit(:title, :content_url, :image_url)

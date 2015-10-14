@@ -12,18 +12,8 @@
       };
 
       $.ajax(ajaxOptions);
-    },
-
-    postSong: function (songParams, successCallback) {
-      var ajaxOptions = {
-        url: '/api/songs',
-        type: 'POST',
-        data: {song: songParams},
-        success: successCallback
-      };
-
-      $.ajax(ajaxOptions);
     }
+
   };
 
 }(this));

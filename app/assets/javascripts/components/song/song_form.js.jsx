@@ -6,7 +6,7 @@
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function () {
-      return {songTitle: ""};
+      return {songTitle: ""}
     },
 
     openCloudinaryWidgetImage: function(e) {
@@ -15,11 +15,9 @@
       cloudinary.openUploadWidget(
         {cloud_name: 'gmkohler', upload_preset: 'gtv1su2k'},
         function(error, result) {
-          if (result["0"]) {
-            that.setState({imageFilename: result["0"].original_filename,
-                           songImageUrl: result["0"].secure_url});
-            console.log(error, result);
-          }
+          that.setState({imageFilename: result["0"].original_filename,
+                         songImageUrl: result["0"].secure_url});
+          console.log(error, result);
         }
       );
     },
@@ -30,11 +28,10 @@
       cloudinary.openUploadWidget(
         {cloud_name: 'gmkohler', upload_preset: 'gtv1su2k'},
         function(error, result) {
-          if (result["0"]) {
-            that.setState({contentFilename: result["0"].original_filename,
-                           songContentUrl: result["0"].secure_url});
-            console.log(error, result);
-          }
+          if (result["0"])
+          that.setState({contentFilename: result["0"].original_filename,
+                         songContentUrl: result["0"].secure_url});
+          console.log(error, result);
         }
       );
     },
@@ -47,7 +44,7 @@
       };
 
       var onSuccess = function (data) {
-        window.location = ('/api/songs/' + data.id);
+        window.location = ('/api/songs/' + data.id)
       };
 
       SongApiUtil.postSong(songParams, onSuccess);

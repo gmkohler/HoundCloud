@@ -19,6 +19,7 @@ function HoundCloud () {
 
   var routes = (
     <Route path="/" component={App}>
+      <IndexRoute component={FeedIndex}/>
       <Route path="songs/new" component={SongForm}/>
     </Route>
 
