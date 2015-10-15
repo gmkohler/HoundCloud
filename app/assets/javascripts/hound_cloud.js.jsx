@@ -1,3 +1,5 @@
+/* global React */
+/* global ReactRouter */
 function HoundCloud () {
   'use strict';
   var root = document.getElementById('content');
@@ -25,6 +27,7 @@ function HoundCloud () {
 
   var routes = (
     <Route path="/" component={App}>
+      <IndexRoute component={UserHome}/>
       <Route path="songs/new" component={SongForm}/>
       <Route path="users" component={UserIndex}/>
       <Route path="users/:id" component={UserShow}/>

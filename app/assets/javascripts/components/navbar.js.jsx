@@ -16,6 +16,7 @@
     },
 
     onSearch: function (e) {
+      e.preventDefault();
       this.props.onSearch(this.state.searchQuery);
     },
 

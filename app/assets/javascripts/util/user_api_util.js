@@ -14,20 +14,6 @@
       $.ajax(ajaxOptions);
     },
 
-    fetchSuggestedUsers: function (searchQuery, successCallback) {
-      successCallback = successCallback || UserApiActions.receiveSuggestedUsers;
-
-      var ajaxOptions = {
-        url: '/api/users/',
-        type: 'GET',
-        data: {search_query: searchQuery},
-        dataType: 'json',
-        success: successCallback
-      };
-
-      $.ajax(ajaxOptions);
-    },
-
     fetchQueriedUsers: function (searchQuery, successCallback) {
       successCallback = successCallback || UserApiActions.receiveQueriedUsers;
 

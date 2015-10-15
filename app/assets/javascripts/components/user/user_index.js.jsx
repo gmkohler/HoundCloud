@@ -1,30 +1,33 @@
 /* global React */
 /* global UserStore */
+/* global UserApiUtil */
+/* global UserIndexItem */
 (function(root) {
   'use strict';
   root.UserIndex = React.createClass({
     getInitialState: function () {
-      return ({users: []});
+      var users = this._getStateFromStore();
+      return ({users: users});
     },
 
     componentDidMount: function () {
-      UserStore.addResultsChangeListener(this._onUsersChange);
-      UserApiUtil.fetchQueriedUsers(this.props.location.query.username);
+      UserStore.addChangeListener(this._onUsersChange);
+      UserApiUtil.fetchQueriedUsers();
     },
 
     componentWillUnmount: function () {
-      UserStore.removeResultsChangeListener(this._onUsersChange);
+      UserStore.removeChangeListener(this._onUsersChange);
     },
 
     _getStateFromStore: function () {
-      return {users: UserStore.getAll()};
+      var searchQuery = this.props.location.query.username;
+      return UserStore.getMatchingUsers(searchQuery);
     },
 
     _onUsersChange: function () {
-      this.setState(this._getStateFromStore());
+      this.setState({users: this._getStateFromStore()});
     },
     render: function () {
-
       var users = this.state.users.map(function(user) {
         return (<UserIndexItem key={user.id} user={user}/>);
       });

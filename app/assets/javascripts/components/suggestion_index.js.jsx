@@ -1,3 +1,6 @@
+/* global UserStore*/
+/* global UserApiUtil*/
+/* global React*/
 (function(root) {
   'use strict';
   root.SuggestionIndex = React.createClass({
@@ -7,28 +10,29 @@
     },
 
     componentDidMount: function () {
-      UserStore.addSuggestionsChangeListener(this._getSuggestionsFromStore);
+      UserStore.addChangeListener(this._getSuggestionsFromStore);
     },
 
     componentWillUnmount: function () {
-      UserStore.removeSuggestionsChangeListener(this._getSuggestionsFromStore);
+      UserStore.removeChangeListener(this._getSuggestionsFromStore);
     },
 
     componentWillReceiveProps: function (newProps) {
-      debugger;
       this._updateSuggestions(newProps.searchQuery);
     },
 
-    _updateSuggestions: function (searchQuery) {
+    _updateSuggestions: function () {
+      var searchQuery = this.props.searchQuery;
+      
       if (searchQuery==="") {
-        this.suggestions=[];
+        this.suggestions = [];
       } else {
-        UserApiUtil.fetchSuggestedUsers(searchQuery);
+        UserApiUtil.fetchQueriedUsers(searchQuery);
       }
     },
 
     _getSuggestionsFromStore: function () {
-      this.suggestions = UserStore.getAll();
+      this.suggestions = UserStore.getMatchingUsers(this.props.searchQuery, 5);
     },
 
     render: function () {
