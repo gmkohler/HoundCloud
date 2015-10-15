@@ -2,7 +2,7 @@
   'use strict';
   root.UserShow = React.createClass({
     getInitialState: function () {
-      return {user: this._getUserFromStore()};
+      return {user: (this._getUserFromStore() || {username: "", id: ""})};
     },
 
     _getUserFromStore: function () {
@@ -16,9 +16,7 @@
 
     componentDidMount: function () {
       UserStore.addChangeListener(this._onUserChange);
-      if (!this.state.user) {
-        UserApiUtil.fetchSingleUser(this.props.params["id"]);
-      }
+      UserApiUtil.fetchSingleUser(this.props.params["id"]);
     },
 
     componentWillUnmount: function () {
@@ -28,7 +26,9 @@
     render: function () {
       var user = this.state.user;
       return (
-        <div>
+        <div className="container">
+          
+          <UserInfo user={user}/>
           <FeedIndex user={user}/>
         </div>
       );

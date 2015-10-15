@@ -4,13 +4,19 @@ function HoundCloud () {
   var Route = ReactRouter.Route;
   var Router = ReactRouter.Router;
   var IndexRoute = ReactRouter.IndexRoute;
+  var Link = ReactRouter.Link;
 
 
   var App = React.createClass({
+
+    _onSearch: function (searchQuery) {
+      this.props.history.pushState(null, 'users', {username: searchQuery});
+    },
+
     render: function () {
       return (
         <div>
-          <Navbar/>
+          <Navbar onSearch={this._onSearch}/>
           {this.props.children}
         </div>
       );

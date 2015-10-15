@@ -15,11 +15,8 @@
       window.location = "/";
     },
 
-    searchForUsers: function (e) {
-      
-      UserApiUtil.fetchQueriedUsers(this.state.searchQuery, function () {
-        window.location = "/#users";
-      });
+    onSearch: function (e) {
+      this.props.onSearch(this.state.searchQuery);
     },
 
     render: function () {
@@ -34,7 +31,7 @@
             <div className="collapse navbar-collapse">
               <form className="navbar-form navbar-left"
                     role="search"
-                    onSubmit={this.searchForUsers}>
+                    onSubmit={this.onSearch}>
                 <div className="form-group has-feedback">
                   <input type="text"
                          className="form-control"

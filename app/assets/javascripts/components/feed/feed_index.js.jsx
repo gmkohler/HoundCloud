@@ -14,7 +14,6 @@
 
     componentDidMount: function () {
       SongStore.addChangeListener(this.onSongChange);
-
     },
 
     componentWillReceiveProps: function (newProps) {
@@ -33,7 +32,7 @@
       });
 
       return (
-        <div id="feed-index" className="container">
+        <div id="feed-index" className="col-md-6">
           {indexItems}
         </div>
       );
