@@ -40,8 +40,7 @@
       },
 
       getMatchingUsers: function(term, numResults){
-        var users = this._values();
-        users.filter(function(user){
+        var users = this._values().filter(function(user){
           return !!user.username.match(term);
         });
 

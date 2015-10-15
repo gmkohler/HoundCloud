@@ -2,11 +2,7 @@
 /* global ReactRouter */
 function HoundCloud () {
   'use strict';
-  var root = document.getElementById('content');
-  var Route = ReactRouter.Route;
-  var Router = ReactRouter.Router;
-  var IndexRoute = ReactRouter.IndexRoute;
-  var Link = ReactRouter.Link;
+  
 
 
   var App = React.createClass({

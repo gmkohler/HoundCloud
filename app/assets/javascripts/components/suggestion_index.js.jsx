@@ -4,13 +4,13 @@
 (function(root) {
   'use strict';
   root.SuggestionIndex = React.createClass({
-
-    componentWillMount: function () {
-      this._updateSuggestions(this.props.searchQuery);
+    getInitialState: function () {
+      return ({suggestions: []});
     },
 
     componentDidMount: function () {
       UserStore.addChangeListener(this._getSuggestionsFromStore);
+      this._updateSuggestions(this.state.searchQuery);
     },
 
     componentWillUnmount: function () {
@@ -21,26 +21,31 @@
       this._updateSuggestions(newProps.searchQuery);
     },
 
-    _updateSuggestions: function () {
-      var searchQuery = this.props.searchQuery;
-      
-      if (searchQuery==="") {
-        this.suggestions = [];
-      } else {
+    _updateSuggestions: function (searchQuery) {
         UserApiUtil.fetchQueriedUsers(searchQuery);
-      }
     },
 
     _getSuggestionsFromStore: function () {
-      this.suggestions = UserStore.getMatchingUsers(this.props.searchQuery, 5);
+      if (this.props.searchQuery === "") {
+        this.setState({suggestions: []});
+      } else {
+        this.setState(
+          {suggestions: UserStore.getMatchingUsers(this.props.searchQuery, 5)}
+        );
+      }
     },
 
     render: function () {
-      var indexItems = this.suggestions.map(function(user) {
-        return (<SuggestionIndexItem user={user}/>);
+      var indexItems = this.state.suggestions.map(function(user) {
+        return (<SuggestionIndexItem key={user.id} user={user}/>);
       });
 
-      return (<div>{indexItems}</div>);
+      return (
+        <ul>
+          {indexItems}
+        </ul>
+      )
     }
+
   });
 }(this));

@@ -1,3 +1,4 @@
+/* global React */
 (function(root) {
   'use strict';
   // Note: could write two react components for (dropdown when logged in) and
@@ -28,18 +29,7 @@
               <Link className="navbar-brand" to="/">HoundCloud</Link>
             </div>
             <div className="collapse navbar-collapse">
-              <form className="navbar-form navbar-left"
-                    role="search"
-                    onSubmit={this.onSearch}>
-                <div className="form-group has-feedback">
-                  <input type="text"
-                         className="form-control"
-                         valueLink={this.linkState("searchQuery")}
-                         placeholder="search for users"/>
-                  <i className="glyphicon glyphicon-search form-control-feedback"/>
-                </div>
-              </form>
-              <SuggestionIndex searchQuery={this.state.searchQuery}/>
+              <SearchBar onSearch={this.props.onSearch} />
               <ul className="nav navbar-nav navbar-right">
                 <li className="dropdown">
                   <a href="#"
