@@ -8,12 +8,12 @@
     },
 
     componentDidMount: function () {
-      UserStore.addSearchResultsChangeListener(this._onUsersChange);
+      UserStore.addResultsChangeListener(this._onUsersChange);
       UserApiUtil.fetchQueriedUsers(this.props.location.query.username);
     },
 
     componentWillUnmount: function () {
-      UserStore.removeSearchResultsChangeListener(this._onUsersChange);
+      UserStore.removeResultsChangeListener(this._onUsersChange);
     },
 
     _getStateFromStore: function () {

@@ -3,23 +3,31 @@
   root.SuggestionIndex = React.createClass({
 
     componentWillMount: function () {
-      this.suggestions = [];
+      this._updateSuggestions(this.props.searchQuery);
     },
 
     componentDidMount: function () {
-      UserStore.addChangeListener(this._updateSuggestions);
+      UserStore.addSuggestionsChangeListener(this._getSuggestionsFromStore);
     },
 
     componentWillUnmount: function () {
-      UserStore.removeChangeListener(this._updateSuggestions);
+      UserStore.removeSuggestionsChangeListener(this._getSuggestionsFromStore);
     },
 
     componentWillReceiveProps: function (newProps) {
-      // debugger;
-      UserApiUtil.fetchQueriedUsers(newProps.searchQuery);
+      debugger;
+      this._updateSuggestions(newProps.searchQuery);
     },
 
-    _updateSuggestions: function () {
+    _updateSuggestions: function (searchQuery) {
+      if (searchQuery==="") {
+        this.suggestions=[];
+      } else {
+        UserApiUtil.fetchSuggestedUsers(searchQuery);
+      }
+    },
+
+    _getSuggestionsFromStore: function () {
       this.suggestions = UserStore.getAll();
     },
 
