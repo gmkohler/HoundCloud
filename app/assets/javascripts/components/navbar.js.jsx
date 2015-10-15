@@ -2,7 +2,7 @@
   'use strict';
   // Note: could write two react components for (dropdown when logged in) and
   // (please login) when logged out.   Bonus!!
-
+  var Link = ReactRouter.Link;
   root.Navbar = React.createClass({
     mixins: [React.addons.LinkedStateMixin],
 
@@ -24,9 +24,7 @@
         <nav className="navbar navbar-default">
           <div className="container-fluid">
             <div className="navbar-header">
-              <a className="navbar-brand"
-                 onClick={this.goToHomePage}
-                 href="#">HoundCloud</a>
+              <Link className="navbar-brand" to="/">HoundCloud</Link>
             </div>
             <div className="collapse navbar-collapse">
               <form className="navbar-form navbar-left"
@@ -40,6 +38,7 @@
                   <i className="glyphicon glyphicon-search form-control-feedback"/>
                 </div>
               </form>
+              <SuggestionIndex searchQuery={this.state.searchQuery}/>
               <ul className="nav navbar-nav navbar-right">
                 <li className="dropdown">
                   <a href="#"
@@ -49,7 +48,7 @@
                      aria-has-popup="true"
                      aria-expanded="false">welcome, {CURRENT_USER_USERNAME} <span className="caret"/></a>
                    <ul className="dropdown-menu">
-                     <li><a href={"#/users/"+CURRENT_USER_ID}>View Profile</a></li>
+                     <li><Link to={"users/"+CURRENT_USER_ID}>View Profile</Link></li>
                      <li onClick={ApiUtil.logOut}><a href="#">Sign Out</a></li>
                    </ul>
                 </li>

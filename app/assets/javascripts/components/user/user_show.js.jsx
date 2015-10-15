@@ -19,6 +19,10 @@
       UserApiUtil.fetchSingleUser(this.props.params["id"]);
     },
 
+    componentWillReceiveProps: function (newProps) {
+      UserApiUtil.fetchSingleUser(newProps.params["id"]);
+    },
+
     componentWillUnmount: function () {
       UserStore.removeChangeListener(this._onUserChange);
     },
@@ -27,7 +31,7 @@
       var user = this.state.user;
       return (
         <div className="container">
-          
+
           <UserInfo user={user}/>
           <FeedIndex user={user}/>
         </div>

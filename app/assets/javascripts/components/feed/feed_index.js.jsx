@@ -31,11 +31,15 @@
         );
       });
 
-      return (
-        <div id="feed-index" className="col-md-6">
-          {indexItems}
-        </div>
-      );
+      if (this.props.home) {
+        return (<div>Subscription Feed Under Construction</div>);
+      } else {
+        return (
+          <div id="feed-index" className="col-md-6">
+            {indexItems}
+          </div>
+        );
+      }
     }
   });
 }(this));
