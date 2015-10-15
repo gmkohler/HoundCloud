@@ -22,8 +22,8 @@ function HoundCloud () {
       <IndexRoute component={FeedIndex}/>
 
       <Route path="songs/new" component={SongForm}/>
+      <Route path="users" component={UserIndex}/>
       <Route path="users/:id" component={UserShow}/>
-
 
     </Route>
 

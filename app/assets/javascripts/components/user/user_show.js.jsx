@@ -16,7 +16,9 @@
 
     componentDidMount: function () {
       UserStore.addChangeListener(this._onUserChange);
-      UserApiUtil.fetchSingleUser(this.props.params["id"]);
+      if (!this.state.user) {
+        UserApiUtil.fetchSingleUser(this.props.params["id"]);
+      }
     },
 
     componentWillUnmount: function () {

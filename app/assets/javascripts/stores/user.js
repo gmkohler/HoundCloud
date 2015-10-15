@@ -31,7 +31,7 @@
           return user.id === userID;
         });
 
-        return user
+        return user;
       },
 
       addChangeListener: function (callback) {
@@ -50,6 +50,10 @@
         switch (action.actionType) {
           case UserConstants.SINGLE_USER_RECEIVED:
             addUserToStore(action.user);
+            UserStore.hasChanged();
+            break;
+          case UserConstants.QUERIED_USERS_RECEIVED:
+            resetUsers(action.users);
             UserStore.hasChanged();
             break;
         }

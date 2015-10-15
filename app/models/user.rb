@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.find_by_search_query(query)
+    User.where("users.username LIKE ?", "%#{query}%")
+  end
+
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end

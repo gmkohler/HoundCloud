@@ -11,6 +11,15 @@
       };
 
       AppDispatcher.dispatch(action);
+    },
+
+    receiveQueriedUsers: function (data) {
+      var action = {
+        actionType: UserConstants.QUERIED_USERS_RECEIVED,
+        users: data
+      };
+
+      AppDispatcher.dispatch(action);
     }
   };
 }(this));
