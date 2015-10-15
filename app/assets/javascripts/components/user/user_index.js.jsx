@@ -12,7 +12,7 @@
 
     componentDidMount: function () {
       UserStore.addChangeListener(this._onUsersChange);
-      UserApiUtil.fetchQueriedUsers();
+      UserApiUtil.fetchQueriedUsers(this.props.location.query.username);
     },
 
     componentWillUnmount: function () {
@@ -27,6 +27,7 @@
     _onUsersChange: function () {
       this.setState({users: this._getStateFromStore()});
     },
+
     render: function () {
       var users = this.state.users.map(function(user) {
         return (<UserIndexItem key={user.id} user={user}/>);

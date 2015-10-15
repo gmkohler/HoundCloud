@@ -5,6 +5,7 @@
 
 (function(root) {
   'use strict';
+
   var _users = {};
 
   function addUserToStore (newUser) {
@@ -27,11 +28,15 @@
         return this._values();
       },
 
-      _values: function (keys) {
-        keys = keys || _users.keys;
-        return keys.map(function(key) {
-          return _users[key];
-        });
+      _values: function () {
+        var keys = Object.keys(_users);
+        if (keys) {
+          return keys.map(function(key) {
+            return _users[key];
+          });
+        } else {
+          return [];
+        }
       },
 
       getMatchingUsers: function(term, numResults){
@@ -39,7 +44,7 @@
         users.filter(function(user){
           return !!user.username.match(term);
         });
-        
+
         numResults = numResults || users.length;
         var results = users.slice(0, numResults);
 
