@@ -23,15 +23,21 @@
 
     render: function () {
       return (
-        <nav className="navbar navbar-default">
+        <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container-fluid">
             <div className="navbar-header">
               <Link className="navbar-brand" to="/">HoundCloud</Link>
             </div>
-            <div className="collapse navbar-collapse">
-              <SearchBar onSearch={this.props.onSearch} />
+            <SearchBar onSearch={this.props.onSearch} />
+            <div className="nav navbar-nav">
+              <button className="btn btn-small">
+                <Link to="songs/new">Upload Song</Link>
+              </button>
+            </div>
+            <AudioPlayer />
+
               <ul className="nav navbar-nav navbar-right">
-                <li className="dropdown">
+                <li className="col-lg-4 dropdown">
                   <a href="#"
                      className="dropdown-toggle"
                      data-toggle="dropdown"
@@ -44,7 +50,7 @@
                    </ul>
                 </li>
               </ul>
-            </div>
+
           </div>
         </nav>
       );

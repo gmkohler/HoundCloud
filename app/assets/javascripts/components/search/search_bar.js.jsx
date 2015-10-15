@@ -11,10 +11,11 @@
     },
 
     render: function () {
-
+      // Put a class on div so that suggestionindex can be positioned
+      // relative to it.
       return (
-        <div>
-          <form className="navbar-form "
+        <div className="col-lg-2">
+          <form className="navbar-form"
                 role="search"
                 onSubmit={this.props.onSearch}>
             <div className="form-group has-feedback">
