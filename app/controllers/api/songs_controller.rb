@@ -5,7 +5,7 @@ class Api::SongsController < ApplicationController
     current_user
     @song = Song.new(song_params)
     @song.artist_id = current_user.id
-    @song.image_url ||= DEFAULT_SONG_IMAGE_URL
+    @song.image_url ||= current_user.image_url
 
     if @song.save
       render json: {id: @song.id}

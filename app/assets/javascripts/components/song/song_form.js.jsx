@@ -26,7 +26,7 @@
       var that = this;
       e.preventDefault();
       cloudinary.openUploadWidget(
-        {cloud_name: 'gmkohler', upload_preset: 'gtv1su2k'},
+        {cloud_name: 'gmkohler', upload_preset: 'eosd46qk'},
         function(error, result) {
           if (result["0"])
           that.setState({contentFilename: result["0"].original_filename,

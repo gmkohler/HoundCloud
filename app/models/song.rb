@@ -16,7 +16,9 @@ class Song < ActiveRecord::Base
 
   def self.filter(filter_params)
     artist_id = filter_params[:id]
-    Song.includes(:artist).where("songs.artist_id = #{artist_id}")
+    Song.includes(:artist)
+        .where("songs.artist_id = #{artist_id}")
+        .order(created_at: :desc)
   end
   # think about after_creation thing, reference a constant to the twitter egg.
 end
