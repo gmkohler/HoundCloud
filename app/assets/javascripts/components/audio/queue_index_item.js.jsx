@@ -1,7 +1,7 @@
 /* global React */
 (function(root) {
   'use strict';
-  root.AudioSource = React.createClass({
+  root.QueueIndexItem = React.createClass({
     render: function () {
       return (
         <audio>

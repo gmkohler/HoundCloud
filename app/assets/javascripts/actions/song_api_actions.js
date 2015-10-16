@@ -21,6 +21,15 @@
       };
 
       AppDispatcher.dispatch(action);
+    },
+
+    receiveQueuedSong: function (id) {
+      var action = {
+        actionType: SongConstants.QUEUED_SONG_RECEIVED,
+        songID: id
+      };
+
+      AppDispatcher.dispatch(action);
     }
   };
 }(this));

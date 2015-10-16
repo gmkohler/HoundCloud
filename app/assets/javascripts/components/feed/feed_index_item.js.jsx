@@ -6,11 +6,11 @@
 
     componentDidMount: function () {
       // debugger;
-      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
-      this.audio = document.getElementById('audio');
-      this.audio.crossOrigin = "anonymous";
-      var src = this.ctx.createMediaElementSource(this.audio);
-      src.connect(this.ctx.destination);
+      // this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      // this.audio = document.getElementById('audio');
+      // this.audio.crossOrigin = "anonymous";
+      // var src = this.ctx.createMediaElementSource(this.audio);
+      // src.connect(this.ctx.destination);
     },
 
     _playToggle: function () {
@@ -19,6 +19,10 @@
       } else {
         this.audio.pause();
       }
+    },
+
+    _queueSong: function () {
+      SongApiActions.receiveQueuedSong(this.props.song.id);
     },
 
     render: function () {
@@ -33,7 +37,7 @@
                width="60px"/>
           <button type="button"
                   className="btn btn-primary btn-circle btn-xl"
-                  onClick={this._playToggle}>
+                  onClick={this._queueSong}>
             <i className="glyphicon glyphicon-play"></i>
           </button>
           <span>{song.title}</span>

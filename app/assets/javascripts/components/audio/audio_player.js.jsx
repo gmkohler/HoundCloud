@@ -2,9 +2,20 @@
 (function(root) {
   'use strict';
   root.AudioPlayer = React.createClass({
+    getInitialState: function () {
+      return {queue: []};
+    },
+
     componentDidMount: function () {
       this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      SongStore.addQueueChangeListener(this._queueChange);
     },
+
+    _queueChange: function () {
+      this.setState({queue: SongStore.getQueue()});
+      debugger;
+    },
+
     render: function () {
       var buttons = (
         [<button type="button" className="btn btn-primary btn-default">
