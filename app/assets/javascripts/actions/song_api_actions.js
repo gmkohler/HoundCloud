@@ -30,6 +30,15 @@
       };
 
       AppDispatcher.dispatch(action);
+    },
+
+    shiftQueueForward: function () {
+      var action = {
+        actionType: SongConstants.SHIFT_QUEUE,
+        data: null
+      };
+
+      AppDispatcher.dispatch(action);
     }
   };
 }(this));

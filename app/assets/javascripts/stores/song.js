@@ -21,6 +21,9 @@
   function addToQueue (queuedSong) {
     _queue.push(queuedSong);
   }
+  function shiftQueue (queuedSong) {
+    _queue.shift();
+  }
 
   root.SongStore = $.extend({}, EventEmitter.prototype, {
     getAll: function () {
@@ -67,6 +70,10 @@
           break;
         case SongConstants.QUEUED_SONG_RECEIVED:
           transferSongToQueue(payload.songID);
+          SongStore.queueHasChanged();
+          break;
+        case SongConstants.SHIFT_QUEUE:
+          shiftQueue();
           SongStore.queueHasChanged();
           break;
       }

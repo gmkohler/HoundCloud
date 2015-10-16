@@ -3,29 +3,32 @@
   root.NowPlaying = React.createClass({
 
     componentDidMount: function () {
-      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      this.audio = new Audio();
     },
 
-    componentWillReceiveProps: function () {
-      // Want to do an "auto play" here if there is no audio.
+    // componentWillReceiveProps: function (newProps) {
+    //
+    // },
+
+    shouldComponentUpdate: function (newProps) {
+      return newProps.song.id !== this.props.song.id;
     },
 
     componentDidUpdate: function () {
-      this._findAudio();
+      this.audio.setAttribute('src', this.props.song.content_url);
+      this.audio.load();
+      this.audio.play();
     },
 
-    _findAudio: function () {
-      debugger;
-      this.audio = document.getElementById('audio');
-      this.audio.crossOrigin = "anonymous";
-      this.src = this.ctx.createMediaElementSource(this.audio);
+    _onPrev: function () {
+      this.audio.currentTime = 0;
     },
 
-    _connectSourceNode: function (){
+    _onNext: function () {
+      SongApiActions.shiftQueueForward();
     },
 
     _playToggle: function () {
-      debugger;
       if (this.audio.paused) {
         this.audio.play();
       } else {
@@ -34,31 +37,33 @@
     },
 
     render: function () {
+      var actionIcon = (!this.audio || this.audio.paused) ? "glyphicon glyphicon-play" : "glyphicon glyphicon-pause"
       var audio,
           song = this.props.song,
           buttons = (
-            [<button type="button" className="btn btn-primary btn-default">
+            [<button key="back"
+                     type="button"
+                     className="btn btn-primary btn-default"
+                     onClick={this._onPrev}>
                <i className="glyphicon glyphicon-step-backward"></i>
+             </button>,
+             <button key="play"
+                     type="button"
+                     className="btn btn-primary btn-default"
+                     onClick={this._playToggle}>
+               <i className={actionIcon}></i>
              </button>,
              <button type="button"
                      className="btn btn-primary btn-default"
-                     onClick={this._playToggle}>
-               <i className="glyphicon glyphicon-play"></i>
-             </button>,
-             <button type="button" className="btn btn-primary btn-default">
+                     onClick={this._onNext}>
                <i className="glyphicon glyphicon-step-forward"></i>
              </button>]
       );
-
-      if (song) {
-        audio = <audio id="audio" src={song.content_url}></audio>;
-      }
 
       return (
         <div>
           {buttons}
           <span>{song.title}</span>
-          {audio}
         </div>
       );
     }
