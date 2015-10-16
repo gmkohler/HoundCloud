@@ -1,26 +1,33 @@
 (function(root) {
   'use strict';
   root.NowPlaying = React.createClass({
+    getInitialState: function () {
+      return {paused: true};
+    },
 
     componentDidMount: function () {
       this.audio = new Audio();
     },
 
-    // componentWillReceiveProps: function (newProps) {
-    //
+    // shouldComponentUpdate: function (newProps) {
+    //   return newProps.song.id !== this.props.song.id;
     // },
 
-    shouldComponentUpdate: function (newProps) {
-      return newProps.song.id !== this.props.song.id;
+    componentDidUpdate: function () {
+      if (this.props.song.content_url !== this.audio.src) {
+        this._loadNewSong();
+      }
     },
 
-    componentDidUpdate: function () {
+    _loadNewSong: function () {
       this.audio.setAttribute('src', this.props.song.content_url);
       this.audio.load();
       this.audio.play();
+      this.setState({paused: false});
     },
 
     _onPrev: function () {
+      // see AudioPlayer for further notes.
       this.audio.currentTime = 0;
     },
 
@@ -34,12 +41,19 @@
       } else {
         this.audio.pause();
       }
+      this.setState({paused: !this.state.paused});
+    },
+
+    _actionIcon: function () {
+      if (!this.audio || this.audio.paused) {
+        return "glyphicon glyphicon-play";
+      } else {
+        return "glyphicon glyphicon-pause";
+      }
     },
 
     render: function () {
-      var actionIcon = (!this.audio || this.audio.paused) ? "glyphicon glyphicon-play" : "glyphicon glyphicon-pause"
-      var audio,
-          song = this.props.song,
+      var song = this.props.song,
           buttons = (
             [<button key="back"
                      type="button"
@@ -51,7 +65,7 @@
                      type="button"
                      className="btn btn-primary btn-default"
                      onClick={this._playToggle}>
-               <i className={actionIcon}></i>
+               <i className={this._actionIcon()}></i>
              </button>,
              <button type="button"
                      className="btn btn-primary btn-default"
