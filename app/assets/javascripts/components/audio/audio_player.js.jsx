@@ -1,9 +1,10 @@
 /* global React */
 (function(root) {
   'use strict';
+
   root.AudioPlayer = React.createClass({
     getInitialState: function () {
-      return {queue: []};
+      return {currentSong: {}, queue: []};
     },
 
     componentDidMount: function () {
@@ -12,24 +13,35 @@
     },
 
     _queueChange: function () {
-      this.setState({queue: SongStore.getQueue()});
-      debugger;
+      var queue = SongStore.getQueue(),
+          currentSong = queue.splice(0, 1)[0];
+      this.setState({currentSong: currentSong, queue: queue});
+    },
+
+    _onNext: function () {
+      // go to next track? shit maybe an api request for _queue.
+    },
+
+    _onPrev: function () {
+      // maybe later get the queue store to have tons of songs,
+      // and have the back button *actually* go back.
+
+      // for now (i.e., the near future), get the back button to send the song
+      // to its beginning.
     },
 
     render: function () {
-      var buttons = (
-        [<button type="button" className="btn btn-primary btn-default">
-          <i className="glyphicon glyphicon-step-backward"></i>
-        </button>,
-        <button type="button" className="btn btn-primary btn-default">
-          <i className="glyphicon glyphicon-play"></i>
-        </button>,
-        <button type="button" className="btn btn-primary btn-default">
-          <i className="glyphicon glyphicon-step-forward"></i>
-        </button>]
-      );
 
-      return (<div>{buttons}</div>);
+      var queuedSongs = this.state.queue.map(function(song) {
+        return (<AudioElement key={song.id} song_url={song.content_url} />);
+      });
+
+      return (
+        <div>
+          <NowPlaying song={this.state.currentSong}/>
+          {queuedSongs}
+        </div>
+      );
     }
   });
 

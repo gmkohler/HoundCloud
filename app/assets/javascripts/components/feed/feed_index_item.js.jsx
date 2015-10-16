@@ -6,20 +6,10 @@
 
     componentDidMount: function () {
       // debugger;
-      // this.ctx = new (window.AudioContext || window.webkitAudioContext)();
-      // this.audio = document.getElementById('audio');
-      // this.audio.crossOrigin = "anonymous";
-      // var src = this.ctx.createMediaElementSource(this.audio);
-      // src.connect(this.ctx.destination);
+
     },
 
-    _playToggle: function () {
-      if (this.audio.paused) {
-        this.audio.play();
-      } else {
-        this.audio.pause();
-      }
-    },
+
 
     _queueSong: function () {
       SongApiActions.receiveQueuedSong(this.props.song.id);
@@ -27,9 +17,8 @@
 
     render: function () {
       var song = this.props.song;
-      // var audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      // var Audio = <AudioSource song={song}/>;
-      // var source = audioCtx.createMediaElementSource(Audio);
+
+      // need: <audio src={song.content_url} id="audio"></audio>
       return (
         <div>
           <img src={song.image_url}
@@ -41,7 +30,7 @@
             <i className="glyphicon glyphicon-play"></i>
           </button>
           <span>{song.title}</span>
-          <audio src={song.content_url} id="audio"></audio>
+
 
         </div>
       );

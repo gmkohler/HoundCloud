@@ -1,12 +1,10 @@
 /* global React */
 (function(root) {
   'use strict';
-  root.QueueIndexItem = React.createClass({
+  root.AudioElement = React.createClass({
     render: function () {
       return (
-        <audio>
-          <source src={this.song_url}/>
-        </audio>
+        <audio src={this.props.song_url}></audio>
       );
     }
   });
