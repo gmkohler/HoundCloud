@@ -41,7 +41,7 @@
       });
 
       return (
-        <ul>
+        <ul className="auto-search">
           {indexItems}
         </ul>
       )

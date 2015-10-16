@@ -2,7 +2,7 @@
 /* global ReactRouter */
 function HoundCloud () {
   'use strict';
-  
+
 
 
   var App = React.createClass({
@@ -27,7 +27,6 @@ function HoundCloud () {
       <Route path="songs/new" component={SongForm}/>
       <Route path="users" component={UserIndex}/>
       <Route path="users/:id" component={UserShow}/>
-
     </Route>
 
   );

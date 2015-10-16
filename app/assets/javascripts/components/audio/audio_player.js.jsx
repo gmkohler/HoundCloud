@@ -2,6 +2,9 @@
 (function(root) {
   'use strict';
   root.AudioPlayer = React.createClass({
+    componentDidMount: function () {
+      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+    },
     render: function () {
       var buttons = (
         [<button type="button" className="btn btn-primary btn-default">

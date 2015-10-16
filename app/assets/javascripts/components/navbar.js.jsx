@@ -37,7 +37,7 @@
             <AudioPlayer />
 
               <ul className="nav navbar-nav navbar-right">
-                <li className="col-lg-4 dropdown">
+                <li className="dropdown">
                   <a href="#"
                      className="dropdown-toggle"
                      data-toggle="dropdown"
@@ -45,7 +45,11 @@
                      aria-has-popup="true"
                      aria-expanded="false">welcome, {CURRENT_USER_USERNAME} <span className="caret"/></a>
                    <ul className="dropdown-menu">
-                     <li><Link to={"users/"+CURRENT_USER_ID}>View Profile</Link></li>
+                     <li>
+                       <Link to={"users/"+CURRENT_USER_ID}>
+                         View Profile
+                       </Link>
+                     </li>
                      <li onClick={ApiUtil.logOut}><a href="#">Sign Out</a></li>
                    </ul>
                 </li>

@@ -11,6 +11,9 @@
  * file per style scope.
  *
  */
+ .auto-search {
+   position: absolute;
+ }
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "sessions";
