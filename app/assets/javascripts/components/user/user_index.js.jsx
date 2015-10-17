@@ -15,6 +15,10 @@
       UserApiUtil.fetchQueriedUsers(this.props.location.query.username);
     },
 
+    componentWillReceiveProps: function (newProps) {
+      UserApiUtil.fetchQueriedUsers(newProps.location.query.username);
+    },
+
     componentWillUnmount: function () {
       UserStore.removeChangeListener(this._onUsersChange);
     },

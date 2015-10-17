@@ -19,3 +19,19 @@
  @import "sessions";
  @import "static_pages";
  @import "users";
+ @media (min-width: 1200px) {
+     .container{
+         max-width: 970px;
+     }
+ }
+.navbar-default .navbar-nav>li>a>span {
+    width:26px;
+    height:26px;
+    background-size: cover;
+    background-color: #000;
+    background-position: 50% 50%;
+}
+.navbar-nav>li>a>div.user-nav-div {
+  height: 26px;
+  width: 26px;
+}

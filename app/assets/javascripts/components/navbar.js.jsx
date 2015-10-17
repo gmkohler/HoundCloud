@@ -16,11 +16,6 @@
       window.location = "/";
     },
 
-    onSearch: function (e) {
-      e.preventDefault();
-      this.props.onSearch(this.state.searchQuery);
-    },
-
     render: function () {
       return (
         <nav className="navbar navbar-default navbar-fixed-top">
@@ -28,33 +23,48 @@
             <div className="navbar-header">
               <Link className="navbar-brand" to="/">HoundCloud</Link>
             </div>
-            <SearchBar onSearch={this.props.onSearch} />
-            <div className="nav navbar-nav">
-              <button className="btn btn-small">
-                <Link to="songs/new">Upload Song</Link>
-              </button>
-            </div>
-            <AudioPlayer />
-
-              <ul className="nav navbar-nav navbar-right">
-                <li className="dropdown">
-                  <a href="#"
-                     className="dropdown-toggle"
-                     data-toggle="dropdown"
-                     role="button"
-                     aria-has-popup="true"
-                     aria-expanded="false">welcome, {CURRENT_USER_USERNAME} <span className="caret"/></a>
-                   <ul className="dropdown-menu">
-                     <li>
-                       <Link to={"users/"+CURRENT_USER_ID}>
-                         View Profile
-                       </Link>
-                     </li>
-                     <li onClick={ApiUtil.logOut}><a href="#">Sign Out</a></li>
-                   </ul>
-                </li>
+            <div className="collapse navbar-collapse">
+              <ul className="nav navbar-nav">
+                <li><Link to="#">Home</Link></li>
+                <li><Link to="#">Collection</Link> </li>
               </ul>
+              <div className="col-lg-4">
+                <SearchBar onSearch={this.props.onSearch} />
+              </div>
 
+
+                <ul className="nav navbar-nav navbar-right">
+                  <li>
+                    <Link className="nav navbar-nav navbar-left"
+                          to="songs/new">Upload Song</Link>
+                  </li>
+                  <li className="dropdown">
+
+                    <a href="#"
+                       className="dropdown-toggle"
+                       data-toggle="dropdown"
+                       role="button"
+                       aria-has-popup="true"
+                       aria-expanded="false">
+
+                      <div>
+                         <span id="navbar-image"/>
+                         {CURRENT_USER_USERNAME}
+                         <span className="caret"/>
+                      </div>
+                     </a>
+
+                     <ul className="dropdown-menu">
+                       <li>
+                         <Link to={"users/"+CURRENT_USER_ID}>
+                           View Profile
+                         </Link>
+                       </li>
+                       <li onClick={ApiUtil.logOut}><a href="#">Sign Out</a></li>
+                     </ul>
+                  </li>
+                </ul>
+            </div>
           </div>
         </nav>
       );

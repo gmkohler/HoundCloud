@@ -9,9 +9,9 @@
       this.audio = new Audio();
     },
 
-    // shouldComponentUpdate: function (newProps) {
-    //   return newProps.song.id !== this.props.song.id;
-    // },
+    shouldComponentUpdate: function (newProps) {
+      return newProps.song.id !== this.props.song.id;
+    },
 
     componentDidUpdate: function () {
       if (this.props.song.content_url !== this.audio.src) {
@@ -36,6 +36,7 @@
     },
 
     _playToggle: function () {
+      if (!this.audio.src) {return;}
       if (this.audio.paused) {
         this.audio.play();
       } else {
@@ -53,6 +54,7 @@
     },
 
     render: function () {
+
       var song = this.props.song,
           buttons = (
             [<button key="back"

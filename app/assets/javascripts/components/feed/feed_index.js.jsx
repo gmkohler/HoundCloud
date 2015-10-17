@@ -31,7 +31,7 @@
         );
       });
 
-      if (this.props.home) {
+      if (this.props.user.id === CURRENT_USER_ID) {
         return (<div>Subscription Feed Under Construction</div>);
       } else {
         return (

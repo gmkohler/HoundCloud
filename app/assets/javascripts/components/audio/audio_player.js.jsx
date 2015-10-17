@@ -14,6 +14,7 @@
     _queueChange: function () {
       var queue = SongStore.getQueue(),
           currentSong = queue.splice(0, 1)[0];
+      // debugger;
       this.setState({currentSong: currentSong, queue: queue});
     },
 
@@ -26,8 +27,15 @@
     },
 
     render: function () {
+      var queue = this.state.queue.map(function(song){
+        return <li>{song.title}</li>;
+      });
+
       return (
+        <div className="nav navbar-nav navbar-left">
           <NowPlaying song={this.state.currentSong}/>
+          <ul>{queue}</ul>
+        </div>
       );
     }
   });

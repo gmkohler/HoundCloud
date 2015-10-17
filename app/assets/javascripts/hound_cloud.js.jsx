@@ -28,7 +28,6 @@ function HoundCloud () {
       <Route path="users" component={UserIndex}/>
       <Route path="users/:id" component={UserShow}/>
     </Route>
-
   );
 
 

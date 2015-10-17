@@ -12,8 +12,9 @@ HoundCloud is a web application inspired by SoundCloud built using Ruby on Rails
 
 - [X] Create an account
 - [X] Log in / Log out
-- [ ] Upload and tag songs
-- [ ] Listen to songs while navigating the site
+- [x] Upload songs
+- [x] Listen to songs while navigating the site
+- [ ] Tag songs
 - [ ] Search songs by tag
 - [ ] Subscribe to other users, have a "subscription feed"
 - [ ] Like songs
@@ -98,6 +99,7 @@ Work on CSS again for the entire product
 
 
 ### Bonus Features (TBD)
+- [ ] Re-order songs within the play queue.
 - [ ] Re-post and like songs from other users
 - [ ] Create playlists, establish polymorphism for "likeables", "taggables" with respect to both playlists and songs.
 - [ ] Establish a home page for not-logged-in users, and routing the new user/session pages through this.

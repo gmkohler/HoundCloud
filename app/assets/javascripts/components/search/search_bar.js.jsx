@@ -10,14 +10,19 @@
       return ({searchQuery: ""});
     },
 
+    _submit: function (e) {
+      e.preventDefault();
+      this.props.onSearch(this.state.searchQuery)
+    },
+
     render: function () {
       // Put a class on div so that suggestionindex can be positioned
       // relative to it.
+      // <SuggestionIndex searchQuery={this.state.searchQuery}/>
       return (
-        <div className="col-lg-2">
-          <form className="navbar-form"
+          <form className="navbar-form navbar-left"
                 role="search"
-                onSubmit={this.props.onSearch}>
+                onSubmit={this._submit}>
             <div className="form-group has-feedback">
               <input type="text"
                      className="form-control"
@@ -26,8 +31,6 @@
               <i className="glyphicon glyphicon-search form-control-feedback"/>
             </div>
           </form>
-          <SuggestionIndex searchQuery={this.state.searchQuery}/>
-        </div>
       );
     }
   });

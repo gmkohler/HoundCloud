@@ -23,9 +23,36 @@
       AppDispatcher.dispatch(action);
     },
 
+    receivePlayNow: function (id) {
+      var action = {
+        actionType: SongConstants.PLAY_NOW_RECEIVED,
+        songID: id
+      };
+
+      AppDispatcher.dispatch(action);
+    },
+    
+    receivePlayNext: function (id) {
+      var action = {
+        actionType: SongConstants.PLAY_NEXT_RECEIVED,
+        songID: id
+      };
+
+      AppDispatcher.dispatch(action);
+    },
+
     receiveQueuedSong: function (id) {
       var action = {
         actionType: SongConstants.QUEUED_SONG_RECEIVED,
+        songID: id
+      };
+
+      AppDispatcher.dispatch(action);
+    },
+
+    receiveSingleQueuedSong: function (id) {
+      var action = {
+        actionType: SongConstants.SINGLE_QUEUED_SONG_RECEIVED,
         songID: id
       };
 
