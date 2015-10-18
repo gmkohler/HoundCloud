@@ -30,12 +30,14 @@
       var queue = this.state.queue.map(function(song){
         return <li>{song.title}</li>;
       });
-
+      // Need to add in Queue again... <ul>{queue}</ul>
       return (
-        <div className="nav navbar-nav navbar-left">
-          <NowPlaying song={this.state.currentSong}/>
-          <ul>{queue}</ul>
-        </div>
+        <nav className="nav navbar-default navbar-fixed-bottom">
+          <div className="container">
+            <NowPlaying song={this.state.currentSong}/>
+
+          </div>
+        </nav>
       );
     }
   });

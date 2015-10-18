@@ -26,16 +26,19 @@
       this.setState({paused: false});
     },
 
-    _onPrev: function () {
+    _onPrev: function (e) {
       // see AudioPlayer for further notes.
+      e.preventDefault()
       this.audio.currentTime = 0;
     },
 
-    _onNext: function () {
+    _onNext: function (e) {
+      e.preventDefault();
       SongApiActions.shiftQueueForward();
     },
 
-    _playToggle: function () {
+    _playToggle: function (e) {
+      e.preventDefault();
       if (!this.audio.src) {return;}
       if (this.audio.paused) {
         this.audio.play();
@@ -57,29 +60,41 @@
 
       var song = this.props.song,
           buttons = (
-            [<button key="back"
-                     type="button"
-                     className="btn btn-primary btn-default"
-                     onClick={this._onPrev}>
-               <i className="glyphicon glyphicon-step-backward"></i>
-             </button>,
-             <button key="play"
-                     type="button"
-                     className="btn btn-primary btn-default"
-                     onClick={this._playToggle}>
-               <i className={this._actionIcon()}></i>
-             </button>,
-             <button type="button"
-                     className="btn btn-primary btn-default"
-                     onClick={this._onNext}>
-               <i className="glyphicon glyphicon-step-forward"></i>
-             </button>]
+              [<a href="javascript:void(0)">
+                <button key="back"
+                       type="button"
+                       className="btn btn-xl playback-btn skip"
+                       onClick={this._onPrev}>
+                   <i className="glyphicon glyphicon-step-backward"></i>
+                 </button>
+               </a>,
+               <a href="javascript:void(0)">
+                 <button key="play"
+                         type="button"
+                         className="btn btn-xl playback-btn play"
+                         onClick={this._playToggle}>
+                   <i className={this._actionIcon()}></i>
+                 </button>
+               </a>,
+               <a href="javascript:void(0)">
+                 <button type="button"
+                         className="btn btn-xl playback-btn skip"
+                         onClick={this._onNext}>
+                   <i className="glyphicon glyphicon-step-forward"></i>
+                 </button>
+               </a>,
+               <a href="javascript:void(0)">
+                 <button type="button"
+                         className="btn btn-xl playback-btn repeat">
+                   <i className="glyphicon glyphicon-repeat"></i>
+                 </button>
+               </a>]
       );
 
       return (
-        <div>
+        <div className="container">
           {buttons}
-          <span>{song.title}</span>
+          <NowPlayingBadge song={song}/>
         </div>
       );
     }

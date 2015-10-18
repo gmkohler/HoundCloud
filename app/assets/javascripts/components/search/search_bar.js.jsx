@@ -25,9 +25,9 @@
                 onSubmit={this._submit}>
             <div className="form-group has-feedback">
               <input type="text"
-                     className="form-control"
+                     className="form-control col-lg-6"
                      valueLink={this.linkState("searchQuery")}
-                     placeholder="search for users"/>
+                     placeholder="Search"/>
               <i className="glyphicon glyphicon-search form-control-feedback"/>
             </div>
           </form>

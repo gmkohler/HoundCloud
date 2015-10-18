@@ -15,7 +15,10 @@ function HoundCloud () {
       return (
         <div>
           <Navbar onSearch={this._onSearch}/>
-          {this.props.children}
+          <div id="page">
+            {this.props.children}
+          </div>
+          <AudioPlayer />
         </div>
       );
     }

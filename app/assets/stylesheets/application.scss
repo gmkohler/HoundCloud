@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require audio_player
  */
  // .auto-search {
  //   position: absolute;
@@ -24,6 +25,64 @@
          max-width: 970px;
      }
  }
+
+
+ #content {
+   font: 100 13.5px/1.5 "Lucida Grande",Arial,sans-serif;
+ }
+
+ #page {
+   padding-top: 50px;
+   padding-bottom: 50px;
+ }
+
+.container.content-container {
+  padding:0;
+}
+
+ .user-info {
+   background-image: url(http://www.amigoapps.com.au/images/HomeBanner_dog_colours.jpg);
+   background-size: cover;
+   background-position: center;
+   border-left: 1px solid black;
+   border-right: 1px solid black;
+   border-bottom: 1px solid black;
+   height: 260px;
+   padding: 30px 30px;
+ }
+
+ .user-info-content {
+   height: 200px;
+ }
+
+ h3.user-info-name {
+   margin:0 0!important;
+   position: relative;
+   left: 4px;
+   padding: 2px 0;
+   background-color:black!important;
+   color:white;
+   font-weight:300;
+   font-size:34px;
+ }
+ h4.user-info-name {
+   margin:0 0!important;
+   position: relative;
+   left: 4px;
+   padding: 2px 0;
+   background-color:black!important;
+   color:white;
+   font-weight:300;
+   font-size:34px;
+ }
+
+ div.user-info-image {
+   height: 200px;
+   width: 200px;
+   position: relative;
+   margin: 0 0;
+ }
+
 .navbar-default .navbar-nav>li>a>span {
     width:26px;
     height:26px;
@@ -31,7 +90,55 @@
     background-color: #000;
     background-position: 50% 50%;
 }
+
 .navbar-nav>li>a>div.user-nav-div {
   height: 26px;
   width: 26px;
+}
+
+.navbar-default .navbar-brand {
+  background: linear-gradient(to top, #EE2200, #FF7700);
+  color: #FFF;
+}
+.navbar-default .navbar-brand:hover {
+  background-color: #FF4800;
+  color: #FFF;
+}
+
+input[type="text"], textarea {
+  background-color : #e5e5e5;
+}
+
+ul.nav.navbar-nav>li>a {
+  color: #CCC
+}
+ul.nav.navbar-nav>li>a:hover {
+  color: #EEE
+}
+
+// When active:
+ul.nav.navbar-nav>li.selected {
+  background-color: #111;
+}
+ul.nav.navbar-nav>li:last-child{
+  border-right: 1px solid #111
+}
+ul.nav.navbar-nav>li.dropdown{
+  border: none;
+}
+ul.nav.navbar-nav>li.selected>a {
+  color: #FFF;
+}
+ul.nav.navbar-nav>li>a:focus {
+  color: #FFF;
+  background-color: #111;
+}
+nav.navbar.navbar-default.navbar-fixed-top{
+  background-color: #333;
+  border: none;
+}
+
+body {
+    font: 12px/1.4 "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
+    color: #333;
 }

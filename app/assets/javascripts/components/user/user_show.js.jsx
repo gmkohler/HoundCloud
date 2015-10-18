@@ -30,8 +30,7 @@
     render: function () {
       var user = this.state.user;
       return (
-        <div className="container">
-
+        <div className="container content-container">
           <UserInfo user={user}/>
           <FeedIndex user={user}/>
         </div>

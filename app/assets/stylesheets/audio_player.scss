@@ -1,0 +1,40 @@
+.nav.navbar-default.navbar-fixed.bottom {
+  border-top: 1px solid
+}
+
+button.btn.btn-xl.playback-btn {
+  color: #333333;
+  background-color: inherit;
+  border: none;
+}
+button.btn.btn-xl.playback-btn.play {
+  height: 46px;
+  width: 46px;
+  font-size: 24px;
+}
+button.btn.btn-xl.playback-btn.skip {
+  height: 46px;
+  width: 33px;
+  font-size: 18px;
+}
+button.btn.btn-xl.playback-btn.skip.next {
+  position:relative;
+  left: 0;
+}
+
+button.btn.btn-xl.playback-btn.repeat {
+  opacity: 50%;
+}
+
+button.btn.btn-xl.playback-btn.repeat:hover {
+  opacity: 75%;
+}
+
+button.btn.btn-xl.playback-btn.repeat.active {
+  opacity: 100%;
+}
+
+div.now-playing-badge-thumbnail {
+  height:20px;
+  width:20px;
+}
