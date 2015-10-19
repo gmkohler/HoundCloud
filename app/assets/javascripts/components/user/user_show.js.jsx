@@ -33,7 +33,7 @@
         <div className="container content-container">
           <UserInfo user={user}/>
           <UserShowBar user={user}/>
-          <FeedIndex user={user}/>
+          <FeedIndex user={user} home={false}/>
         </div>
       );
     }

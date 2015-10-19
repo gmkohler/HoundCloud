@@ -21,7 +21,7 @@ class Api::SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.filter({id: params[:id]})
+    @songs = Song.filter({id: params[:id], home: params[:home]})
     render json: @songs
   end
 

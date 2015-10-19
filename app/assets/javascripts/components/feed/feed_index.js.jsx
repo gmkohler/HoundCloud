@@ -5,7 +5,7 @@
 
   root.FeedIndex = React.createClass({
     getInitialState: function () {
-      return {songs: SongStore.getAll()};
+      return {songs: []};
     },
 
     onSongChange: function () {
@@ -13,11 +13,14 @@
     },
 
     componentDidMount: function () {
+      debugger;
       SongStore.addChangeListener(this.onSongChange);
+      SongApiUtil.fetchUserSongs(this.props.user.id, this.props.home);
     },
 
     componentWillReceiveProps: function (newProps) {
-      SongApiUtil.fetchUserSongs(newProps.user.id);
+      debugger;
+      SongApiUtil.fetchUserSongs(newProps.user.id, newProps.home);
     },
 
     componentWillUnmount: function () {
@@ -31,15 +34,11 @@
         );
       });
 
-      if (this.props.home === true) {
-        return (<div>Subscription Feed Under Construction</div>);
-      } else {
-        return (
-          <div id="feed-index" className="container">
-            {indexItems}
-          </div>
-        );
-      }
+      return (
+        <div id="feed-index" className="container">
+          {indexItems}
+        </div>
+      );
     }
   });
 }(this));

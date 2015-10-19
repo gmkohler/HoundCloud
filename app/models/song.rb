@@ -15,10 +15,21 @@ class Song < ActiveRecord::Base
   belongs_to :artist, class_name: :User, foreign_key: :artist_id
 
   def self.filter(filter_params)
-    artist_id = filter_params[:id]
-    Song.includes(:artist)
-        .where("songs.artist_id = #{artist_id}")
-        .order(created_at: :desc)
+    if filter_params[:home] == "true"
+      user_id = filter_params[:id]
+      Song.includes(:artist)
+          .joins("INNER JOIN followings ON songs.artist_id = followings.followee_id")
+          .where("followings.follower_id = ?", user_id)
+          .order(created_at: :desc)
+    else
+      artist_id = filter_params[:id]
+      Song.includes(:artist)
+          .where("songs.artist_id = #{artist_id}")
+          .order(created_at: :desc)
+    end
   end
+
+
+
   # think about after_creation thing, reference a constant to the twitter egg.
 end
