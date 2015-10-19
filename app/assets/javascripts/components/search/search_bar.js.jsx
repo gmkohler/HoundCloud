@@ -12,7 +12,8 @@
 
     _submit: function (e) {
       e.preventDefault();
-      this.props.onSearch(this.state.searchQuery)
+      this.props.onSearch(this.state.searchQuery);
+      // this.setState({searchQuery: ""});
     },
 
     render: function () {

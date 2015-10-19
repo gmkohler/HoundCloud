@@ -1,6 +1,6 @@
 class Api::UsersController < ApplicationController
   def index
-
+    # fail
     if params[:search_query]
       @users = User.find_by_search_query(params[:search_query])
     else

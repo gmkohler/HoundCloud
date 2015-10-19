@@ -26,16 +26,17 @@
 
     render: function () {
       var indexItems = this.state.songs.map(function (song) {
+        debugger;
         return (
           <FeedIndexItem key={song.id} song={song}/>
         );
       });
 
-      if (this.props.user.id === CURRENT_USER_ID) {
+      if (this.props.home === true) {
         return (<div>Subscription Feed Under Construction</div>);
       } else {
         return (
-          <div id="feed-index" className="col-md-6">
+          <div id="feed-index" className="container">
             {indexItems}
           </div>
         );

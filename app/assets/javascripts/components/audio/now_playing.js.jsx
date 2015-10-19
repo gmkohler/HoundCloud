@@ -7,28 +7,36 @@
 
     componentDidMount: function () {
       this.audio = new Audio();
+      this.audio.addEventListener("ended", this._onNext, false);
+      // "timeupdate" is another important change.
     },
 
-    shouldComponentUpdate: function (newProps) {
-      return newProps.song.id !== this.props.song.id;
-    },
 
-    componentDidUpdate: function () {
-      if (this.props.song.content_url !== this.audio.src) {
-        this._loadNewSong();
+    // Let's solve this from the top:
+    // 1) Getting auto-play to work.
+    //   When we get a new song we need to change this.audio's source
+    //     - However, we don't want to do this if we are receiving this new prop
+    //         and the newProp song is the song that is changing.
+    //   When the end of the queue is reached, set state to paused.
+    componentWillReceiveProps: function (newProps) {
+      var song = newProps.song;
+
+      if (song.content_url === "") {
+        this.setState({paused: true});
+      } else if (song.content_url !== this.audio.src) {
+          this.audio.setAttribute('src', song.content_url);
+          this.audio.load();
+          if (this.props.song.content_url === "") {
+            this._playToggle();
+          } else if (!this.state.paused) {
+            this.audio.play();
+          }
       }
-    },
-
-    _loadNewSong: function () {
-      this.audio.setAttribute('src', this.props.song.content_url);
-      this.audio.load();
-      this.audio.play();
-      this.setState({paused: false});
     },
 
     _onPrev: function (e) {
       // see AudioPlayer for further notes.
-      e.preventDefault()
+      e.preventDefault();
       this.audio.currentTime = 0;
     },
 
@@ -37,8 +45,7 @@
       SongApiActions.shiftQueueForward();
     },
 
-    _playToggle: function (e) {
-      e.preventDefault();
+    _playToggle: function () {
       if (!this.audio.src) {return;}
       if (this.audio.paused) {
         this.audio.play();
@@ -49,7 +56,7 @@
     },
 
     _actionIcon: function () {
-      if (!this.audio || this.audio.paused) {
+      if (this.state.paused) {
         return "glyphicon glyphicon-play";
       } else {
         return "glyphicon glyphicon-pause";
@@ -94,7 +101,7 @@
       return (
         <div className="container">
           {buttons}
-          <NowPlayingBadge song={song}/>
+          <NowPlayingBadge song={this.props.song} />
         </div>
       );
     }

@@ -13,14 +13,15 @@
         border: "1px solid #000000"
       };
       return (
-        <div className="container user-info">
-          <div className="user-info-content">
-            <div className="user-info-image" style={profPicStyle}/>
-            <div>
-              <h3 className="user-info-name">{this.props.user.username}</h3>          
+        <div className="row user-info">
+
+            <div className="col-md-4 user-info-image" style={profPicStyle}/>
+            <div classname="col-md-4">
+              <h3 className="user-info-name">{this.props.user.username}</h3>
+                <br/>
               <h4 className="user-info-location">Long Beach, Calif.</h4>
             </div>
-          </div>
+
         </div>
       );
     }

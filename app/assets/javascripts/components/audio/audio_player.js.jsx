@@ -4,7 +4,7 @@
 
   root.AudioPlayer = React.createClass({
     getInitialState: function () {
-      return {currentSong: {}, queue: []};
+      return {currentSong: {content_url: ""}, queue: []};
     },
 
     componentDidMount: function () {
@@ -13,7 +13,7 @@
 
     _queueChange: function () {
       var queue = SongStore.getQueue(),
-          currentSong = queue.splice(0, 1)[0];
+          currentSong = queue.splice(0, 1)[0] || {content_url: ""};
       // debugger;
       this.setState({currentSong: currentSong, queue: queue});
     },
