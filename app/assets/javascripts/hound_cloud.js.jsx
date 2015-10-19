@@ -3,8 +3,6 @@
 function HoundCloud () {
   'use strict';
 
-
-
   var App = React.createClass({
 
     _onSearch: function (searchQuery) {
@@ -15,7 +13,7 @@ function HoundCloud () {
       return (
         <div>
           <Navbar onSearch={this._onSearch}/>
-          <div id="page">
+          <div className="container" id="page">
             {this.props.children}
           </div>
           <AudioPlayer />

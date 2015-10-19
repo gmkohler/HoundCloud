@@ -34,7 +34,20 @@ button.btn.btn-xl.playback-btn.repeat.active {
   opacity: 100%;
 }
 
+div.now-playing-badge {
+  float:right;
+  width:auto;
+}
+div.now-playing-buttons {
+  float:left;
+  width:auto;
+}
 div.now-playing-badge-thumbnail {
+  float:left;
   height:20px;
   width:20px;
+}
+div.now-playing-badge-info {
+  float:left;
+  width: auto;
 }

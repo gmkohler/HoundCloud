@@ -1,3 +1,15 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.user-info-bar {
+  border-bottom: 1px solid #f2f2f2;
+}
+.user-info-header{
+  font-weight: bold;
+  font-size: 18px;
+  border-color: #FF5500;
+}
+div.user-info-bar-buttons {
+  float:right;
+  width:auto;
+}

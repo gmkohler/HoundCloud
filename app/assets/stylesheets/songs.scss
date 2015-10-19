@@ -1,3 +1,37 @@
 // Place all the styles related to the songs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// div.index-item {
+//   height:140px;
+// }
+
+div.index-item {
+  margin-bottom: 30px
+}
+div.index-item-details {
+  height: 50px;
+}
+div.song-index-buttons {
+  height: 30px;
+  width: auto;
+}
+
+button.btn-song-index {
+  margin-right: 4px;
+}
+span.index-item-left-detail {
+  float: left;
+}
+span.index-item-right-detail {
+  float: right;
+}
+div.index-item-right-detail {
+  float: right;
+}
+
+div.song-index-sound {
+  height: 60px
+}
+.btn-song-index>i.glyphicon:before {
+  margin-right: 5px;
+}

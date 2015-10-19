@@ -18,8 +18,15 @@ class User < ActiveRecord::Base
 
   validates :password, length: {minimum: 6, allow_nil: true}
   validates :username, :email, :session_token, presence: true
+  validates :username, :email, uniqueness: true
 
-  has_many :songs, foreign_key: :artist_id
+  has_many :in_follows, class_name: "Following", foreign_key: "followee_id"
+  has_many :out_follows, class_name: "Following", foreign_key: "follower_id"
+
+  has_many :followers, through: :in_follows, source: :follower
+  has_many :followees, through: :out_follows, source: :followee
+
+  has_many :songs, foreign_key: :artist_id, dependent: :destroy
 
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)

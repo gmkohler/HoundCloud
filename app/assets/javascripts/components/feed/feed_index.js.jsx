@@ -26,7 +26,6 @@
 
     render: function () {
       var indexItems = this.state.songs.map(function (song) {
-        debugger;
         return (
           <FeedIndexItem key={song.id} song={song}/>
         );

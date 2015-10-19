@@ -20,6 +20,7 @@
  @import "sessions";
  @import "static_pages";
  @import "users";
+ @import "songs";
  @media (min-width: 1200px) {
      .container{
          max-width: 970px;
@@ -36,6 +37,26 @@
    padding-bottom: 50px;
  }
 
+ .btn-circle {
+  width: 28px;
+  height: 28px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  // line-height: 1.42;
+  border-radius: 14px;
+}
+.btn-play {
+  position: relative;
+  top: 7px;
+}
+
+
+.glyphicon-play:before {
+  position: relative;
+    bottom: 1px;
+    left: 1px;
+}
 .container.content-container {
   padding:0;
 }

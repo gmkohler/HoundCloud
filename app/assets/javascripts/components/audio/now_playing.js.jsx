@@ -11,7 +11,6 @@
       // "timeupdate" is another important change.
     },
 
-
     // Let's solve this from the top:
     // 1) Getting auto-play to work.
     //   When we get a new song we need to change this.audio's source
@@ -64,7 +63,6 @@
     },
 
     render: function () {
-
       var song = this.props.song,
           buttons = (
               [<a href="javascript:void(0)">
@@ -85,6 +83,7 @@
                </a>,
                <a href="javascript:void(0)">
                  <button type="button"
+                         key="next"
                          className="btn btn-xl playback-btn skip"
                          onClick={this._onNext}>
                    <i className="glyphicon glyphicon-step-forward"></i>
@@ -92,6 +91,7 @@
                </a>,
                <a href="javascript:void(0)">
                  <button type="button"
+                         key="repeat"
                          className="btn btn-xl playback-btn repeat">
                    <i className="glyphicon glyphicon-repeat"></i>
                  </button>
@@ -100,7 +100,9 @@
 
       return (
         <div className="container">
-          {buttons}
+          <div className="now-playing-buttons">
+            {buttons}
+          </div>
           <NowPlayingBadge song={this.props.song} />
         </div>
       );
