@@ -2,14 +2,165 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 div.user-info-bar {
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 1px solid #F2F2F2;
 }
+div.explore-tabs {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+
+.container.feed-container {
+  padding-top: 30px;
+}
+
+.user-info {
+  background-image: url(http://www.amigoapps.com.au/images/HomeBanner_dog_colours.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 260px;
+
+  padding: 30px 30px;
+  margin: 0 -15px;
+}
+
+.user-info-content {
+  height: 200px;
+}
+
+h3.user-info-name {
+  display: inline-block;
+  margin:0 0!important;
+  position: relative;
+  box-shadow: 4px 0 0 0 #000,-4px 0 0 0 #000;
+  left: 4px;
+  padding: 2px 0 8px 0;
+  background-color:black!important;
+  color:white;
+  font-weight:300;
+  font-size:34px;
+}
+
+h4.user-info-location {
+  box-shadow: 4px 0 0 0 #000,-4px 0 0 0 #000;
+  display: inline-block;
+  margin:0 0!important;
+  position: relative;
+  left: 4px;
+  padding: 2px 0;
+  background-color:black!important;
+  color:white;
+  font-weight:300;
+  font-size:16px;
+}
+
+div.user-show-image {
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  float:left;
+  // position: relative;
+  margin: 0 0;
+  margin-right: 30px;
+}
+
 .user-info-header{
   font-weight: bold;
   font-size: 18px;
   border-color: #FF5500;
 }
-div.user-info-bar-buttons {
+
+// div.user-show-image{
+//   float:left;
+//   display:inline-block;
+//   margin-right: 25px;
+//   width:200px;
+//   height:200px;
+// }
+div.user-show-info{
+  float:left;
+  display:inline-block;
+  width:auto;
+}
+h1.user-home-header{
+  font-size: 18px;
+  color: #999999;
+  line-height: 1.8;
+  margin: 28px 0;
+  font-weight: 400;
+}
+div.explore-tabs {
+  border-bottom: 1px solid #F2F2F2;
+  margin-bottom: 28px;
+  position: relative;
+  // float: left;
+}
+div.user-bar {
+  padding: 0;
+  margin: 0;
+  line-height:1.6;
+  display:block;
+}
+
+div.user-show-bar {
+  padding-top: 30px
+}
+
+ul.user-bar:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+div.user-bar>div {
+  position: absolute;
+  bottom: -1px;
+  margin-bottom:0;
+  float:left;
+  list-style: none;
+}
+
+div.user-bar>div>a{
+  display:block;
+  font-size: 24px;
+  font-weight:500;
+}
+
+div.user-bar>div>a.active{
+  cursor: default;
+  text-decoration: none;
+  border-bottom: 1px solid #FF5500;
+  color: #FF5500;
+  display:block;
+}
+div.user-bar>div.user-bar-section-left {
+  position:absolute;
+  left:0;
+}
+div.user-bar>div.user-bar-section-right {
+  position:absolute;
+  right:0;
+}
+div.user-bar.user-bar-buttons {
+  padding-bottom: 10px;
   float:right;
   width:auto;
+}
+div.user-bar>div>button {
+  font-size:13px;
+  line-height:20px;
+  position: absolute;
+  bottom: 10px;
+  right:0;
+  padding: 2px 11px 2px 10px;
+  margin-right: 5px;
+  border: 1px solid #EEEEEE;
+  background-color: #FFFFFF;
+  color: #FF5500;
+  float:right;
+  width:auto;
+}
+div.user-bar>div>button:hover {
+  color: #FF5500;
+  border-color: #FF5500;
 }

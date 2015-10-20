@@ -11,7 +11,7 @@ function HoundCloud () {
 
     render: function () {
       return (
-        <div>
+        <div id="app">
           <Navbar onSearch={this._onSearch}/>
           <div className="container" id="page">
             {this.props.children}

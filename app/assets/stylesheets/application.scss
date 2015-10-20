@@ -27,89 +27,46 @@
      }
  }
 
-
+#app {
+  background-color: #F2F2F2;
+}
  #content {
    font: 100 13.5px/1.5 "Lucida Grande",Arial,sans-serif;
  }
 
  #page {
+   background-color: #FFFFFF;
    padding-top: 50px;
    padding-bottom: 50px;
  }
-
+ .clearfix:before {
+   content:"";
+   clear: both;
+ }
  .btn-circle {
   width: 28px;
   height: 28px;
   text-align: center;
-  padding: 6px 0;
+  padding: 0 0;
   font-size: 12px;
   // line-height: 1.42;
   border-radius: 14px;
 }
-.btn-play {
-  position: relative;
-  top: 7px;
-}
+
+
 
 
 .glyphicon-play:before {
   position: relative;
-    bottom: 1px;
     left: 1px;
 }
 .container.content-container {
   padding:0;
 }
+.container.feed-container {
+  padding-top: 30px;
+}
 
- .user-info {
-   background-image: url(http://www.amigoapps.com.au/images/HomeBanner_dog_colours.jpg);
-   background-size: cover;
-   background-position: center;
-   border-left: 1px solid black;
-   border-right: 1px solid black;
-   border-bottom: 1px solid black;
-   height: 260px;
-   padding: 30px 30px;
- }
-
- .user-info-content {
-   height: 200px;
- }
-
- h3.user-info-name {
-   display: inline-block;
-   margin:0 0!important;
-   position: relative;
-   box-shadow: 4px 0 0 0 #000,-4px 0 0 0 #000;
-   left: 4px;
-   padding: 2px 0 8px 0;
-   background-color:black!important;
-   color:white;
-   font-weight:300;
-   font-size:34px;
- }
-
- h4.user-info-location {
-   box-shadow: 4px 0 0 0 #000,-4px 0 0 0 #000;
-   display: inline-block;
-   margin:0 0!important;
-   position: relative;
-   left: 4px;
-   padding: 2px 0;
-   background-color:black!important;
-   color:white;
-   font-weight:300;
-   font-size:16px;
- }
-
- div.user-info-image {
-   display: inline-block;
-   height: 200px;
-   width: 200px;
-   position: relative;
-   margin: 0 0;
-   margin-right: 30px;
- }
 
 .navbar-default .navbar-nav>li>a>span {
     width:26px;

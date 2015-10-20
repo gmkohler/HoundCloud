@@ -30,10 +30,12 @@
     render: function () {
       var user = this.state.user;
       return (
-        <div className="container content-container">
+        <div>
           <UserInfo user={user}/>
-          <UserShowBar user={user}/>
-          <FeedIndex user={user} home={false}/>
+          <div className="feed-container">
+            <UserShowBar user={user}/>
+            <FeedIndex user={user} home={false}/>
+          </div>
         </div>
       );
     }
