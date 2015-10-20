@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show], defaults: {format: :json}
     resources :songs, only: [:index, :create, :show], defaults: {format: :json}
     resources :followings, only: [:create, :destroy], defaults: {format: :json}
-
+    resources :tags, only: [:index, :create, :destroy], defaults: {format: :json}
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

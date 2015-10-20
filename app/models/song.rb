@@ -13,6 +13,8 @@
 
 class Song < ActiveRecord::Base
   belongs_to :artist, class_name: :User, foreign_key: :artist_id
+  has_many :taggings, as: :taggable
+  has_many :tags, through: :taggings
 
   def self.filter(filter_params)
     if filter_params[:home] == "true"
@@ -29,7 +31,12 @@ class Song < ActiveRecord::Base
     end
   end
 
+  def self.find_by_tag_id(tag_id)
+  end
 
+  def assign_tags(tag_names)
+    self.tags << Tag.find_or_create_by(tag_name)
+  end
 
   # think about after_creation thing, reference a constant to the twitter egg.
 end

@@ -6,7 +6,12 @@
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function () {
-      return {songTitle: ""}
+      return {songTitle: "", tags: [], tagForm: ""}
+    },
+
+    componentDidMount: function () {
+      TagStore.addChangeListener(this.getTagsFromStore);
+      this.getTagsFromStore();
     },
 
     openCloudinaryWidgetImage: function(e) {
@@ -40,7 +45,8 @@
       var songParams = {
         title: this.state.songTitle,
         content_url: this.state.songContentUrl,
-        image_url: this.state.songImageUrl
+        image_url: this.state.songImageUrl,
+        tags: this.state.tags
       };
 
       var onSuccess = function (data) {
@@ -50,7 +56,22 @@
       SongApiUtil.postSong(songParams, onSuccess);
     },
 
+    createTag: function(e) {
+      e.preventDefault();
+      var tagName = this.state.tagForm.toLowerCase();
+      this.setState({tagForm: ""});
+    },
+
+    getTagsFromStore: function () {
+
+      this.setState({tags: TagStore.getAll()});
+    },
+
     render: function () {
+      var tags = this.state.tags.map(function(tag){
+        return <div><span>{tag.name}</span></div>
+      });
+
       return (
         <div className="container col-md-4">
           <div className="page-header"><h3>Upload a song</h3></div>
@@ -63,6 +84,23 @@
                      id="song_title"
                      valueLink={this.linkState("songTitle")}/>
             </div>
+
+            <div className="tag-display">
+              {tags}
+            </div>
+          </form>
+
+          <form onSubmit={this.createTag}>
+            <div className="form-group">
+              <label for="song_tag">Add a Tag</label>
+              <input type="text"
+                     className="form-control"
+                     name="tag[name]"
+                     id="tag_name"
+                     valueLink={this.linkState("tagForm")}/>
+            </div>
+            <button type="submit"
+                    onSubmit={this.createTag}>Create Tag!</button>
           </form>
 
 
