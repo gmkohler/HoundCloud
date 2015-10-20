@@ -4,6 +4,7 @@ class Api::SongsController < ApplicationController
   def create
     current_user
     @song = Song.new(song_params)
+    @song.assign_tags(params[:song][:tag_names])
     @song.artist_id = current_user.id
     @song.image_url ||= current_user.image_url
 

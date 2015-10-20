@@ -20,6 +20,13 @@
 
     render: function () {
       var song = this.props.song;
+      var tags = song.tags.map(function(tag){
+        return (
+          <div className="index-item-tag">
+            <span className="index-item-tag-text">{"# " + tag.name}</span>
+          </div>
+        );
+      });
       var timeSince = AppUtil.timeSince(new Date(song.created_at));
       var thumbStyle = {
         backgroundImage: "url(" + song.image_url + ")",
@@ -58,18 +65,7 @@
                     <div className="index-item-left-detail"><span className="index-title">{song.title}</span></div>
                     <div className="index-item-right-detail">
                       <div className="index-item-tag-collection clearfix">
-                        <div className="index-item-tag">
-                          <span className="index-item-tag-text">{"# tags"}</span>
-                        </div>
-                        <div className="index-item-tag">
-                          <span className="index-item-tag-text">{"# are"}</span>
-                        </div>
-                        <div className="index-item-tag">
-                          <span className="index-item-tag-text">{"# to"}</span>
-                        </div>
-                        <div className="index-item-tag">
-                          <span className="index-item-tag-text">{"# come"}</span>
-                        </div>
+                        {tags}
                       </div>
                     </div>
                 </div>

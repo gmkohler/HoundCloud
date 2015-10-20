@@ -6,12 +6,7 @@
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function () {
-      return {songTitle: "", tags: [], tagForm: ""}
-    },
-
-    componentDidMount: function () {
-      TagStore.addChangeListener(this.getTagsFromStore);
-      this.getTagsFromStore();
+      return {songTitle: "", tagNames: [], tagForm: ""}
     },
 
     openCloudinaryWidgetImage: function(e) {
@@ -20,8 +15,10 @@
       cloudinary.openUploadWidget(
         {cloud_name: 'gmkohler', upload_preset: 'gtv1su2k'},
         function(error, result) {
-          that.setState({imageFilename: result["0"].original_filename,
-                         songImageUrl: result["0"].secure_url});
+          that.setState({
+            imageFilename: result["0"].original_filename,
+            songImageUrl: result["0"].secure_url
+          });
           console.log(error, result);
         }
       );
@@ -46,7 +43,7 @@
         title: this.state.songTitle,
         content_url: this.state.songContentUrl,
         image_url: this.state.songImageUrl,
-        tags: this.state.tags
+        tag_names: this.state.tagNames
       };
 
       var onSuccess = function (data) {
@@ -56,21 +53,39 @@
       SongApiUtil.postSong(songParams, onSuccess);
     },
 
-    createTag: function(e) {
+    addTag: function(e) {
       e.preventDefault();
       var tagName = this.state.tagForm.toLowerCase();
-      this.setState({tagForm: ""});
+      if (this.state.tagNames.indexOf(tagName)=== -1) {
+        this.setState({
+          tagNames: this.state.tagNames.concat([tagName]),
+          tagForm: ""
+        });
+      } else {
+        this.setState({tagForm: ""});
+      }
+
     },
 
-    getTagsFromStore: function () {
-
-      this.setState({tags: TagStore.getAll()});
+    removeTag: function(e) {
+      e.preventDefault();
+      var tagName = e.currentTarget.id,
+          newTagNames = this.state.tagNames.slice(),
+          idx = newTagNames.indexOf(tagName);
+      newTagNames.splice(idx, 1);
+      this.setState({tagNames: newTagNames});
     },
 
     render: function () {
-      var tags = this.state.tags.map(function(tag){
-        return <div><span>{tag.name}</span></div>
-      });
+      var tags = this.state.tagNames.map(function(tagName){
+        return (
+          <div className="index-item-tag">
+            <span className="index-item-tag-text">{"# " + tagName}</span>
+            <i className="glyphicon glyphicon-remove"
+               id={tagName}
+               onClick={this.removeTag}></i>
+          </div>);
+      }.bind(this));
 
       return (
         <div className="container col-md-4">
@@ -85,22 +100,19 @@
                      valueLink={this.linkState("songTitle")}/>
             </div>
 
-            <div className="tag-display">
+            <div className="index-item-tag-collection clearfix">
               {tags}
             </div>
-          </form>
 
-          <form onSubmit={this.createTag}>
             <div className="form-group">
-              <label for="song_tag">Add a Tag</label>
               <input type="text"
                      className="form-control"
                      name="tag[name]"
                      id="tag_name"
+                     placeholder="Add a Tag"
                      valueLink={this.linkState("tagForm")}/>
             </div>
-            <button type="submit"
-                    onSubmit={this.createTag}>Create Tag!</button>
+            <button onClick={this.addTag}>Create Tag!</button>
           </form>
 
 

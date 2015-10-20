@@ -1,12 +1,5 @@
 class Api::TagsController < ApplicationController
   def index
-    if tag_params[:name]
-      @tag = Tag.find_or_create_by(tag_params)
-      render :show
-    else
-      @tags = Tag.all
-      render :index
-    end
   end
 
   def show

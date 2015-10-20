@@ -35,7 +35,7 @@ class Song < ActiveRecord::Base
   end
 
   def assign_tags(tag_names)
-    self.tags << Tag.find_or_create_by(tag_name)
+    tag_names.each {|tag_name| self.tags << Tag.find_or_create_by({name: tag_name})}
   end
 
   # think about after_creation thing, reference a constant to the twitter egg.
