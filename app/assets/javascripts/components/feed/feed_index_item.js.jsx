@@ -20,6 +20,7 @@
 
     render: function () {
       var song = this.props.song;
+      var timeSince = AppUtil.timeSince(new Date(song.created_at));
       var thumbStyle = {
         backgroundImage: "url(" + song.image_url + ")",
         backgroundPosition: "center",
@@ -42,8 +43,8 @@
               </div>
               <div className="col-md-11">
                 <div className="row">
-                    <span className="index-item-left-detail">artist_name</span>
-                    <span className="index-item-right-detail">date_added</span>
+                    <span className="index-item-left-detail">{song.artist_username}</span>
+                    <span className="index-item-right-detail">{timeSince}</span>
                 </div>
                 <div className="row">
                     <span className="index-item-left-detail">{song.title}</span>

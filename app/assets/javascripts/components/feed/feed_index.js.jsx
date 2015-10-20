@@ -13,13 +13,10 @@
     },
 
     componentDidMount: function () {
-      debugger;
       SongStore.addChangeListener(this.onSongChange);
-      SongApiUtil.fetchUserSongs(this.props.user.id, this.props.home);
     },
 
     componentWillReceiveProps: function (newProps) {
-      debugger;
       SongApiUtil.fetchUserSongs(newProps.user.id, newProps.home);
     },
 

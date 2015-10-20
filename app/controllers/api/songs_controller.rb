@@ -16,13 +16,12 @@ class Api::SongsController < ApplicationController
 
   def show
     @song = Song.includes(:artist).find(params[:id])
-    @artist = @song.artist
     render :show
   end
 
   def index
     @songs = Song.filter({id: params[:id], home: params[:home]})
-    render json: @songs
+    render :index
   end
 
   private
