@@ -6,8 +6,10 @@
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function () {
-      return {songTitle: "", tagNames: [], tagForm: ""}
+      return {active: true, songTitle: "", tagNames: [], tagForm: ""};
     },
+
+    componentWillReceiveProps: function (newProps) {},
 
     openCloudinaryWidgetImage: function(e) {
       var that = this;
@@ -47,7 +49,8 @@
       };
 
       var onSuccess = function (data) {
-        window.location = ('/api/songs/' + data.id)
+        SongApiUtil.receiveNewSong(data);
+        this.closeForm();
       };
 
       SongApiUtil.postSong(songParams, onSuccess);
@@ -76,83 +79,105 @@
       this.setState({tagNames: newTagNames});
     },
 
+    closeForm: function () {
+      this.setState({active: false});
+    },
+
     render: function () {
+      // choose submit action based on state
       var tags = this.state.tagNames.map(function(tagName){
         return (
-          <div className="index-item-tag">
-            <span className="index-item-tag-text">{"# " + tagName}</span>
+          <div className="form-tag">
+            <span className="form-tag-text">{"# " + tagName}</span>
             <i className="glyphicon glyphicon-remove"
                id={tagName}
                onClick={this.removeTag}></i>
           </div>);
       }.bind(this));
 
+      var active = this.state.active ? "modal-active" : ""
+
       return (
-        <div className="container col-md-4">
-          <div className="page-header"><h3>Upload a song</h3></div>
-          <form>
-            <div className="form-group">
-              <label for="song_title">Title</label>
-              <input type="text"
-                     className="form-control"
-                     name="song[title]"
-                     id="song_title"
-                     valueLink={this.linkState("songTitle")}/>
-            </div>
+        <div className={active} id="modal-overlay">
+          <div className={active} id="modal-form-container">
+            <div className={active} id="modal-form-contents">
+              <div className="form-exit" onClick={this.closeForm}>
+                <i className="glyphicon glyphicon-remove"
+                   onClick={this.removeTag}></i>
+              </div>
 
-            <div className="index-item-tag-collection clearfix">
-              {tags}
-            </div>
-
-            <div className="form-group">
-              <input type="text"
-                     className="form-control"
-                     name="tag[name]"
-                     id="tag_name"
-                     placeholder="Add a Tag"
-                     valueLink={this.linkState("tagForm")}/>
-            </div>
-            <button onClick={this.addTag}>Create Tag!</button>
-          </form>
+              <div className="page-header"><h3>Upload a song</h3></div>
+              <form className="clearfix">
+                <div className="form-group col-lg-8">
+                  <label for="song_title">Title</label>
+                  <input type="text"
+                         className="form-control"
+                         name="song[title]"
+                         id="song_title"
+                         valueLink={this.linkState("songTitle")}/>
+                </div>
 
 
-          <div className="row">
-            <div className="col-md-4">
-              Select Audio File
+                <div className="form-group">
+                  <div className="index-item-tag-collection form-tag-collection clearfix">
+                    <div className="tag-header">
+                      <span className="file-upload-header">Tags:</span>
+                    </div>
+                     {tags}
+                  </div>
+                  <div className="col-lg-5">
+                    <input type="text"
+                           className="form-control input-sm"
+                           name="tag[name]"
+                           id="tag_name"
+                           placeholder="Add a Tag!"
+                           valueLink={this.linkState("tagForm")}/>
+                  </div>
+                  <button onClick={this.addTag}>Create Tag!</button>
+                </div>
+              </form>
+
+              <div className="container">
+                  <span className="file-upload-header">Select Audio File</span>
+              </div>
+              <div className="container">
+                    <button className="btn btn-xs"
+                            id="content_file_url"
+                            onClick={this.openCloudinaryWidgetAudio}>Choose File</button>
+                          <label className="file-upload-label file-upload-header-help-text"
+                                 for="content_file_url">
+                    {this.state.contentFilename || "No file chosen"}
+                  </label>
+              </div>
+
+              <div className="container">
+                  <span className="file-upload-header">Select Image File</span>
+                  <span className="file-upload-header-help-text">(optional)</span>
+              </div>
+
+              <div className="container">
+                  <button className="btn btn-xs"
+                          id="song_image_url"
+                          onClick={this.openCloudinaryWidgetImage}>Choose File</button>
+                        <label className="file-upload-label file-upload-header-help-text"
+                               for="song_image_url">
+                    {this.state.imageFilename || "No file chosen"}
+                  </label>
+              </div>
+
+              <div className="container">
+                <div className="btn-submit-container">
+                  <button type="submit"
+                          className="btn btn-default btn-form-submit"
+                          onClick={this.createSong}>Submit</button>
+                </div>
+              </div>
+
+
             </div>
+
+
           </div>
-          <div className="row">
-            <div className="col-md-3">
-                <button className="btn btn-xs"
-                        id="content_file_url"
-                        onClick={this.openCloudinaryWidgetAudio}>Choose File</button>
-            </div>
-            <div className="col-md-4">
-              <label for="content_file_url">{this.state.contentFilename || "No file chosen"}</label>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-md-5">
-              Select Image File (optional)
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-md-3">
-              <button className="btn btn-xs"
-                      id="song_image_url"
-                      onClick={this.openCloudinaryWidgetImage}>Choose File</button>
-            </div>
-            <div className="col-md-4">
-              <label for="content_file_url">{this.state.imageFilename || "No file chosen"}</label>
-            </div>
-          </div>
-
-
-           <button type="submit"
-                   className="btn btn-default"
-                   onClick={this.createSong}>Submit</button>
         </div>
      );
     }

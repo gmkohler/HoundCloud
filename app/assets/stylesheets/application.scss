@@ -21,6 +21,7 @@
  @import "static_pages";
  @import "users";
  @import "songs";
+ @import "modal";
  @media (min-width: 1200px) {
      .container{
          max-width: 970px;
@@ -53,9 +54,6 @@
   border-radius: 14px;
 }
 
-
-
-
 .glyphicon-play:before {
   position: relative;
     left: 1px;
@@ -83,7 +81,7 @@
   color: #FFF;
 }
 
-input[type="text"], textarea {
+input.navbar-search {
   background-color : #e5e5e5;
 }
 

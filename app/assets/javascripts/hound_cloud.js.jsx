@@ -13,6 +13,7 @@ function HoundCloud () {
       return (
         <div id="app">
           <Navbar onSearch={this._onSearch}/>
+          <SongForm />
           <div className="container" id="page">
             {this.props.children}
           </div>
@@ -25,7 +26,6 @@ function HoundCloud () {
   var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={UserHome}/>
-      <Route path="songs/new" component={SongForm}/>
       <Route path="users" component={UserIndex}/>
       <Route path="users/:id" component={UserShow}/>
     </Route>

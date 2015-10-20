@@ -27,9 +27,9 @@
     //
     //   $.ajax(ajaxOptions);
     // },
-
-    fetchAllTags: function () {},
-
-    fetchTagsBySong: function (songID) {}
+    //
+    // fetchAllTags: function () {},
+    //
+    // fetchTagsBySong: function (songID) {}
   };
 }(this));

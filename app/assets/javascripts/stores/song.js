@@ -44,6 +44,10 @@
         return _songs.slice(0);
       },
 
+      getSong: function (songID) {
+        return findSong(songID);
+      },
+
       getQueue: function () {
         return _queue.slice(0);
       },
