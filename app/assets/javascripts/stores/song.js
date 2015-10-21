@@ -11,6 +11,15 @@
     _songs = newSongs;
   }
 
+  function updateSingleSong(song) {
+    var idx = _songs.indexOf(findSong(song.id));
+    if (idx === -1) {
+      return;
+    } else {
+      _songs[idx] = song;
+    }
+  }
+
   function findSong (songID) {
     return _songs.find(function (song) {
       return song.id === songID;
@@ -78,6 +87,10 @@
 
       DispatcherID: AppDispatcher.register(function (payload) {
         switch (payload.actionType) {
+          case SongConstants.SINGLE_SONG_RECEIVED:
+            updateSingleSong(payload.song);
+            SongStore.hasChanged();
+            break;
           case SongConstants.ALL_SONGS_RECEIVED:
             resetSongs(payload.songs);
             SongStore.hasChanged();

@@ -6,15 +6,17 @@
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function () {
-      var song = this.props.song;
-      var tagNames = [];
-      if (song.tags) {
-        tagNames = song.tags.map(function(tag) {
+      return {songTitle: "", tagNames: [], tagForm: ""};
+    },
+
+    componentWillReceiveProps: function (newProps) {
+      var song = newProps.song;
+      if (song.id) {
+        var tagNames = song.tags.map(function(tag) {
           return tag.name;
         });
+        this.setState({songTitle: song.title, tagNames: tagNames});
       }
-
-      return {songTitle: "", tagNames: [], tagForm: ""};
     },
 
     clearState: function () {
@@ -58,23 +60,37 @@
       );
     },
 
-    createSong: function (e) {
-      var songParams = {
+    _songParams: function () {
+      return ({
         title: this.state.songTitle,
         content_url: this.state.songContentUrl,
         image_url: this.state.songImageUrl,
         tag_names: this.state.tagNames
-      };
+      });
+    },
 
+    createSong: function (e) {
+      var songParams = this._songParams();
       var onSuccess = function (data) {
-        SongApiUtil.receiveNewSong(data);
+        SongApiUtil.receiveSingleSong(data);
         ModalActions.deactivateSongFormModal();
       };
+
       this.clearState();
       SongApiUtil.postSong(songParams, onSuccess);
     },
 
+    updateSong: function (e) {
+      var songParams = this._songParams();
+      var onSuccess = function (data) {
+        SongApiActions.receiveSingleSong(data);
+        ModalActions.deactivateSongFormModal();
+      };
 
+      SongApiUtil.updateSong(this.props.song.id, songParams, onSuccess);
+    },
+
+// need to listen on container not on tag form for escape key
     keyUpHandler: function (e) {
       e.preventDefault();
       if (e.keyCode === 13) {
@@ -108,7 +124,12 @@
 
     render: function () {
       // choose submit action based on state
-      var headerText = this.props.edit ? "Edit Tags" : "Upload a Song";
+      var active = this.props.active ? "modal-active" : null;
+      var edit = !!this.props.song.id;
+
+      var headerText = edit ? "Edit Tags" : "Upload a Song";
+      var submitButtonAction = edit ? this.updateSong : this.createSong;
+      var submitButtonText = edit ? "Update" : "Submit";
 
       var tags = this.state.tagNames.map(function(tagName){
         return (
@@ -134,12 +155,10 @@
                name="song[title]"
                id="song_title"
                valueLink={this.linkState("songTitle")}/>
-        </div>);
+        </div>
+      );
 
-      var active;
-      if (this.props.active) {
-        active = "modal-active";
-      }
+
 
       return (
         <div className={active} id="modal-overlay">
@@ -205,7 +224,9 @@
                 <div className="btn-submit-container">
                   <button type="submit"
                           className="btn btn-default btn-form-submit"
-                          onClick={this.createSong}>Submit</button>
+                          onClick={submitButtonAction}>
+                          {submitButtonText}
+                  </button>
                 </div>
               </div>
 

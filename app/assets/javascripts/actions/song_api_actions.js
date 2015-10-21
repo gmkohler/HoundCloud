@@ -23,6 +23,15 @@
       AppDispatcher.dispatch(action);
     },
 
+    receiveSingleSong: function (data) {
+      var action = {
+        actionType: SongConstants.SINGLE_SONG_RECEIVED,
+        song: data
+      };
+
+      AppDispatcher.dispatch(action);
+    },
+
     receivePlayNow: function (id) {
       var action = {
         actionType: SongConstants.PLAY_NOW_RECEIVED,
@@ -31,7 +40,7 @@
 
       AppDispatcher.dispatch(action);
     },
-    
+
     receivePlayNext: function (id) {
       var action = {
         actionType: SongConstants.PLAY_NEXT_RECEIVED,

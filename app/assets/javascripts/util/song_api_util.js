@@ -39,6 +39,17 @@
       };
 
       $.ajax(ajaxOptions);
+    },
+
+    updateSong: function (songID, songParams, successCallback) {
+      var ajaxOptions = {
+        url: '/api/songs/' + songID,
+        type: 'PATCH',
+        data: {song: songParams},
+        success: successCallback
+      };
+
+      $.ajax(ajaxOptions);
     }
   };
 }(this));

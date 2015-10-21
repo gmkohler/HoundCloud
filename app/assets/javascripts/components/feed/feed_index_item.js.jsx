@@ -5,6 +5,8 @@
   root.FeedIndexItem = React.createClass({
 
     componentDidMount: function () {},
+    componentWillReceiveProps: function () {
+    },
 
     _queueSong: function () {
       SongApiActions.receiveQueuedSong(this.props.song.id);
@@ -16,6 +18,10 @@
 
     _playNow: function () {
       SongApiActions.receivePlayNow(this.props.song.id);
+    },
+
+    _editSong: function () {
+      ModalActions.activateSongFormModal(this.props.song);
     },
 
     render: function () {
@@ -34,6 +40,15 @@
         height: "120px",
         width: "120px"
       };
+
+      var editButton = (
+        <button type="button"
+                className="btn btn-xs btn-song-index"
+                onClick={this._editSong}>
+          <i className="glyphicon glyphicon-pencil"></i>
+          Edit Song
+        </button>
+      );
       return (
         <div className="row index-item">
           <div className="col-md-3" style={thumbStyle}>
@@ -103,6 +118,8 @@
                   <i className="glyphicon glyphicon-retweet"></i>
                   Repost
                 </button>
+
+                {song.artist_id === CURRENT_USER_ID ? editButton : null}
               </div>
 
           </div>

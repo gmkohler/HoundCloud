@@ -9,7 +9,7 @@ class Api::SongsController < ApplicationController
     @song.image_url ||= current_user.image_url
 
     if @song.save
-      render json: {id: @song.id}
+      render :show
     else
       render json: @song.errors.full_messages, status: 422
     end
@@ -23,6 +23,19 @@ class Api::SongsController < ApplicationController
   def index
     @songs = Song.filter({id: params[:id], home: params[:home]})
     render :index
+  end
+
+  def update
+    @song = Song.find(params[:id])
+    @song.update(song_params)
+    @song.tags = []
+    @song.assign_tags(params[:song][:tag_names])
+
+    if @song.save
+      render :show
+    else
+      render json: @song.errors.full_messages, status: 422
+    end
   end
 
   private
