@@ -1,22 +1,10 @@
 class Api::FollowingsController < ApplicationController
 
-  def index
-    if params[:user_id]
-      @following = Following.find_relevant_followings(params[:user_id])
-    else
-      @following = Following.all
-    end
-
-    render :index
-  end
-
   def create
-    following = Following.new({
-      follower_id: current_user.id,
-      followee_id: params[:followee_id]
-    })
-    if following.save
-      @user = User.find(params[:followee_id])
+    @user = User.find(params[:user_id])
+    @user.followers << current_user
+
+    if @user.save
       render '/api/users/show'
     else
       render json: following.errors.full_messages, status: 422
@@ -24,10 +12,10 @@ class Api::FollowingsController < ApplicationController
   end
 
   def destroy
-    following = Following.find(params[:id])
+    @user = User.find(params[:user_id])
+    @user.followers.delete(current_user)
 
-    if following.destroy
-      @user = User.find(following.followee_id)
+    if @user.save
       render '/api/users/show'
     else
       render json: following.errors.full_messages, status: 422

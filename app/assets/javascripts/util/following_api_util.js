@@ -5,9 +5,8 @@
   root.FollowingApiUtil = {
     addFollowing: function (followeeID) {
       var ajaxOptions = {
-        url: '/api/followings/',
+        url: '/api/users/' + followeeID + '/following',
         type: 'POST',
-        data: {followee_id: followeeID},
         dataType: 'json',
         success: UserApiActions.receiveSingleUser
       };
@@ -15,9 +14,9 @@
       $.ajax(ajaxOptions);
     },
 
-    removeFollowing: function (followingID) {
+    removeFollowing: function (followeeID) {
       var ajaxOptions = {
-        url: '/api/followings/' + followingID,
+        url: '/api/users/' + followeeID + '/following',
         type: 'DELETE',
         dataType: 'json',
         success: UserApiActions.receiveSingleUser
@@ -26,16 +25,5 @@
       $.ajax(ajaxOptions);
     },
 
-    fetchFollowings: function (userID) {
-      var ajaxOptions = {
-        url: '/api/followings',
-        type: 'GET',
-        data: {userID: userID},
-        dataType: 'json',
-        success: FollowingApiActions.receiveFollowings
-      };
-
-      $.ajax(ajaxOptions);
-    }
   };
 }(this));

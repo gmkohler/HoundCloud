@@ -2,25 +2,31 @@
 (function(root) {
   'use strict';
   root.UserShowBar = React.createClass({
+    _followToggle: function (e) {
+      e.preventDefault();
+      this.props.user.isFollowed ? this._unfollowUser() : this._followUser();
+    },
+
+    _followUser: function () {
+      FollowingApiUtil.addFollowing(this.props.user.id);
+    },
+
+    _unfollowUser: function () {
+      FollowingApiUtil.removeFollowing(this.props.user.id);
+    },
 
     _followButton: function () {
       var user = this.props.user;
+
       if (user.id === CURRENT_USER_ID || typeof user.isFollowed === "undefined") {
         return;
-      } else if (user.isFollowed) {
-          return (
-            <button className="btn btn-sm"
-                    onClick={FollowingApiUtil.removeFollowing.bind(null, user.followingID)}>
-              Following
-            </button>
-          );
       } else {
-          return (
-            <button className="btn btn-sm"
-                    onClick={FollowingApiUtil.addFollowing.bind(null, user.id)}>
-              Follow
-            </button>
-          );
+        return (
+          <button className="btn btn-sm"
+                  onClick={this._followToggle}>
+            {user.isFollowed ? "Unfollow" : "Follow"}
+          </button>
+        );
       }
     },
 

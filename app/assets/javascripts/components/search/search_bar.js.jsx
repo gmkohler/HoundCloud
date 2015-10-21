@@ -30,7 +30,7 @@
                      valueLink={this.linkState("searchQuery")}
                      placeholder="Search"/>
               <i className="glyphicon glyphicon-search form-control-feedback"/>
-            </div>
+            </div>            
           </form>
       );
     }
