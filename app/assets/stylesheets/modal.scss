@@ -1,11 +1,11 @@
 
 #modal-overlay {
-position: absolute;
+position: fixed;
 background-color: rgba(0,0,0,0.5);
 left: 0;
 top: 0;
+height:100%;
 width: 100%;
-height: 100%;
 z-index: 1400;
 display: none;
 }
@@ -16,7 +16,7 @@ display: block;
 
 #modal-form-container.modal-active {
 visibility: visible;
-margin: 10% auto;
+margin: 13% auto;
 border: 1px solid #333333;
 width: 600px;
 }

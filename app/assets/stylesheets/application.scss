@@ -28,18 +28,24 @@
      }
  }
 html{height:100%;}
+body{height:100%;}
 #app {
   height:100%;
   background-color: #F2F2F2;
 }
  #content {
+   height:100%;
    font: 100 13.5px/1.5 "Lucida Grande",Arial,sans-serif;
  }
 
  #page {
+   height:100%;
    background-color: #FFFFFF;
    padding-top: 50px;
    padding-bottom: 50px;
+ }
+ div#feed-index {
+   border-bottom: 1px solid #F2F2F2;
  }
  .clearfix:before {
    content:"";
@@ -73,11 +79,15 @@ html{height:100%;}
   width: 26px;
 }
 
-.navbar-default .navbar-brand {
+ .navbar-default .navbar-brand{
   background: linear-gradient(to top, #EE2200, #FF7700);
   color: #FFF;
 }
-.navbar-default .navbar-brand:hover {
+.navbar-brand:hover .navbar-default:hover {
+  background-color: #FF4800;
+  color: #FFF;
+}
+a.navbar-brand:hover {
   background-color: #FF4800;
   color: #FFF;
 }
