@@ -17,6 +17,7 @@ display: block;
 #modal-form-container.modal-active {
 visibility: visible;
 margin: 10% auto;
+border: 1px solid #333333;
 width: 600px;
 }
 
@@ -31,7 +32,11 @@ position:relative; z-index:2;
 opacity: 1;
 }
 
+.page-header>h3 {
+  color: #333;
+}
 .file-upload-header{
+  color: #333;
   font-weight: 700;
 }
 .file-upload-header-help-text{
@@ -105,11 +110,12 @@ div.form-exit {
   right: 20px;
 }
 div.form-exit>i.glyphicon {
-  color: #EEEEEE;
+  color: #CCCCCC;
   font-size:20px;
 }
 div.form-exit>i.glyphicon:hover {
-  color: #CCCCCC;
+  color: #AAAAAA;
+  cursor: pointer;
 }
 
 

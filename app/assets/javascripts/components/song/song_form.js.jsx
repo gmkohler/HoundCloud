@@ -6,7 +6,16 @@
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function () {
-      return {active: true, songTitle: "", tagNames: [], tagForm: ""};
+      var edit = !!this.props.edit;
+      var tagNames = [];
+      if (edit) {
+        var song = SongStore.getSong(this.props.song.id);
+        tagNames = song.tags.map(function(tag) {
+          return tag.name;
+        });
+      }
+
+      return {songTitle: "", tagNames: tagNames, tagForm: ""};
     },
 
     componentWillReceiveProps: function (newProps) {},
@@ -50,16 +59,23 @@
 
       var onSuccess = function (data) {
         SongApiUtil.receiveNewSong(data);
-        this.closeForm();
+        this.props.toggle();
       };
 
       SongApiUtil.postSong(songParams, onSuccess);
     },
 
-    addTag: function(e) {
+
+    keyUpHandler: function (e) {
       e.preventDefault();
+      if (e.keyCode === 13) {
+        this.addTag();
+      }
+    },
+
+    addTag: function() {
       var tagName = this.state.tagForm.toLowerCase();
-      if (this.state.tagNames.indexOf(tagName)=== -1) {
+      if (tagName && this.state.tagNames.indexOf(tagName)=== -1) {
         this.setState({
           tagNames: this.state.tagNames.concat([tagName]),
           tagForm: ""
@@ -79,12 +95,10 @@
       this.setState({tagNames: newTagNames});
     },
 
-    closeForm: function () {
-      this.setState({active: false});
-    },
-
     render: function () {
       // choose submit action based on state
+      var headerText = this.props.edit ? "Edit Tags" : "Upload a Song";
+
       var tags = this.state.tagNames.map(function(tagName){
         return (
           <div className="form-tag">
@@ -95,27 +109,39 @@
           </div>);
       }.bind(this));
 
-      var active = this.state.active ? "modal-active" : ""
+      var audioButton = (
+        <button className="btn btn-xs"
+                id="content_file_url"
+                onClick={this.openCloudinaryWidgetAudio}>Choose File</button>
+      );
+
+      var titleForm = (
+        <div className="form-group col-lg-8">
+        <label for="song_title">Title</label>
+        <input type="text"
+               className="form-control"
+               name="song[title]"
+               id="song_title"
+               valueLink={this.linkState("songTitle")}/>
+        </div>);
+
+      var active;
+      if (this.props.active) {
+        active = "modal-active";
+      }
 
       return (
         <div className={active} id="modal-overlay">
           <div className={active} id="modal-form-container">
             <div className={active} id="modal-form-contents">
-              <div className="form-exit" onClick={this.closeForm}>
+              <div className="form-exit">
                 <i className="glyphicon glyphicon-remove"
-                   onClick={this.removeTag}></i>
+                   onClick={this.props.toggle}/>
               </div>
 
-              <div className="page-header"><h3>Upload a song</h3></div>
+              <div className="page-header"><h3>{headerText}</h3></div>
               <form className="clearfix">
-                <div className="form-group col-lg-8">
-                  <label for="song_title">Title</label>
-                  <input type="text"
-                         className="form-control"
-                         name="song[title]"
-                         id="song_title"
-                         valueLink={this.linkState("songTitle")}/>
-                </div>
+                {this.props.edit ? null : titleForm}
 
 
                 <div className="form-group">
@@ -130,10 +156,11 @@
                            className="form-control input-sm"
                            name="tag[name]"
                            id="tag_name"
+                           onKeyUp={this.keyUpHandler}
                            placeholder="Add a Tag!"
                            valueLink={this.linkState("tagForm")}/>
                   </div>
-                  <button onClick={this.addTag}>Create Tag!</button>
+
                 </div>
               </form>
 
@@ -141,13 +168,11 @@
                   <span className="file-upload-header">Select Audio File</span>
               </div>
               <div className="container">
-                    <button className="btn btn-xs"
-                            id="content_file_url"
-                            onClick={this.openCloudinaryWidgetAudio}>Choose File</button>
-                          <label className="file-upload-label file-upload-header-help-text"
-                                 for="content_file_url">
+                {this.props.edit ? null : audioButton}
+                <label className="file-upload-label file-upload-header-help-text"
+                       for="content_file_url">
                     {this.state.contentFilename || "No file chosen"}
-                  </label>
+                </label>
               </div>
 
               <div className="container">

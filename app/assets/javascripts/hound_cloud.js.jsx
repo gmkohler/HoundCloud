@@ -6,8 +6,10 @@ function HoundCloud () {
   var App = React.createClass({
 
     _onSearch: function (searchQuery) {
-      this.props.history.pushState(null, 'users', {username: searchQuery});
+      this.props.history.pushState(null, 'search', {searchQuery: searchQuery});
     },
+
+
 
     render: function () {
       return (
@@ -26,7 +28,7 @@ function HoundCloud () {
   var routes = (
     <Route path="/" component={App}>
       <IndexRoute component={UserHome}/>
-      <Route path="users" component={UserIndex}/>
+      <Route path="search" component={SearchIndex}/>
       <Route path="users/:id" component={UserShow}/>
     </Route>
   );

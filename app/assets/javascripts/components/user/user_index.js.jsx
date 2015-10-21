@@ -12,11 +12,11 @@
 
     componentDidMount: function () {
       UserStore.addChangeListener(this._onUsersChange);
-      UserApiUtil.fetchQueriedUsers(this.props.location.query.username);
+      UserApiUtil.fetchQueriedUsers(this.props.query);
     },
 
     componentWillReceiveProps: function (newProps) {
-      UserApiUtil.fetchQueriedUsers(newProps.location.query.username);
+      UserApiUtil.fetchQueriedUsers(newProps.query);
     },
 
     componentWillUnmount: function () {
@@ -24,8 +24,7 @@
     },
 
     _getStateFromStore: function () {
-      var searchQuery = this.props.location.query.username;
-      return UserStore.getMatchingUsers(searchQuery);
+      return UserStore.getMatchingUsers(this.props.query);
     },
 
     _onUsersChange: function () {
@@ -37,7 +36,12 @@
         return (<UserIndexItem key={user.id} user={user}/>);
       });
 
-      return (<div>{users}</div>);
+      return (
+        <div>
+          <span><h3>Users:</h3></span>
+          <div>{users}</div>
+        </div>
+      );
     }
   });
 }(this));

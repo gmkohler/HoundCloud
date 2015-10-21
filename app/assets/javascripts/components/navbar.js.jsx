@@ -8,7 +8,12 @@
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function () {
-      return {searchQuery: ""};
+      return {searchQuery: "", formActive: false};
+    },
+
+    toggleForm: function (e) {
+      e.preventDefault();
+      this.setState({formActive: !this.state.formActive});
     },
 
     goToHomePage: function (e) {
@@ -19,6 +24,7 @@
     render: function () {
       return (
         <nav className="navbar navbar-default navbar-fixed-top">
+          <SongForm toggle={this.toggleForm} active={this.state.formActive} />
           <div className="container">
             <div className="navbar-header">
               <Link className="navbar-brand" to="/">HoundCloud</Link>
@@ -28,7 +34,7 @@
                 <li className="selected"><Link to="#">Home</Link></li>
                 <li><Link to="#">Collection</Link> </li>
               </ul>
-              <div >
+              <div>
                 <SearchBar onSearch={this.props.onSearch} />
               </div>
 
@@ -36,7 +42,8 @@
                 <ul className="nav navbar-nav navbar-right">
                   <li>
                     <Link className="nav navbar-nav navbar-left"
-                          to="songs/new">Upload</Link>
+                          to="javascript:void(0)"
+                          onClick={this.toggleForm}>Upload</Link>
                   </li>
                   <li className="dropdown">
 
