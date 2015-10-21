@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   resource :session, only: [:create, :new, :destroy]
 
   namespace :api do
-    resources :users, only: [:index, :show], defaults: {format: :json}
-    resources :songs, only: [:index, :create, :show, :update], defaults: {format: :json}
-    resources :followings, only: [:create, :destroy], defaults: {format: :json}
-    resources :tags, only: [:index, :destroy], defaults: {format: :json}
+    resources :users, only: [:index, :show], defaults: {format: :json} do
+      resource :follow, only: [:create, :destroy], defaults: {format: :json}
+    end
+
+    resources :songs, only: [:index, :create, :show, :update], defaults: {format: :json} do
+      resource :like, only: [:create, :destroy], defaults: {format: :json}
+    end
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

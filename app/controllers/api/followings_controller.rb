@@ -1,4 +1,15 @@
 class Api::FollowingsController < ApplicationController
+
+  def index
+    if params[:user_id]
+      @following = Following.find_relevant_followings(params[:user_id])
+    else
+      @following = Following.all
+    end
+
+    render :index
+  end
+
   def create
     following = Following.new({
       follower_id: current_user.id,

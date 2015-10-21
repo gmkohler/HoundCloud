@@ -1,3 +1,5 @@
+/* global UserApiActions */
+/* global FollowingApiActions */
 (function(root) {
   'use strict';
   root.FollowingApiUtil = {
@@ -19,6 +21,18 @@
         type: 'DELETE',
         dataType: 'json',
         success: UserApiActions.receiveSingleUser
+      };
+
+      $.ajax(ajaxOptions);
+    },
+
+    fetchFollowings: function (userID) {
+      var ajaxOptions = {
+        url: '/api/followings',
+        type: 'GET',
+        data: {userID: userID},
+        dataType: 'json',
+        success: FollowingApiActions.receiveFollowings
       };
 
       $.ajax(ajaxOptions);

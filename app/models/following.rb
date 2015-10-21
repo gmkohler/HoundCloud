@@ -15,5 +15,7 @@ class Following < ActiveRecord::Base
 
   belongs_to :follower, class_name: "User"
   belongs_to :followee, class_name: "User"
-
+  def self.find_relevant_followings(user_id)
+    Following.where("follower_id = #{user_id} OR followee_id = #{user_id}");
+  end
 end

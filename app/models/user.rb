@@ -26,6 +26,9 @@ class User < ActiveRecord::Base
   has_many :followers, through: :in_follows, source: :follower
   has_many :followees, through: :out_follows, source: :followee
 
+  has_many :likes, foreign_key: "liker_id"
+  has_many :liked_items, through: :likes, source: :likeable
+
   has_many :songs, foreign_key: :artist_id, dependent: :destroy
 
   def self.find_by_credentials(email, password)

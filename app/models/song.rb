@@ -15,6 +15,9 @@ class Song < ActiveRecord::Base
   belongs_to :artist, class_name: :User, foreign_key: :artist_id
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
+  
+  has_many :likes, as: :likeable
+  has_many :likers, through: :likes
 
   def self.filter(filter_params)
     if filter_params[:home] == "true"

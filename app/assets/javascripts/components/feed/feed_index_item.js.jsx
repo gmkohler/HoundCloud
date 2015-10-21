@@ -5,6 +5,7 @@
   root.FeedIndexItem = React.createClass({
 
     componentDidMount: function () {},
+
     componentWillReceiveProps: function () {
     },
 
@@ -24,8 +25,24 @@
       ModalActions.activateSongFormModal(this.props.song);
     },
 
+    _likeToggle: function (e) {
+      e.preventDefault();
+      this.props.song.isLiked ? this._unlikeSong() : this._likeSong();
+    },
+
+    _likeSong: function () {
+      LikeApiUtil.addSongLike(this.props.song.id);
+    },
+
+    _unlikeSong: function () {
+      LikeApiUtil.removeSongLike(this.props.song.id);
+    },
+
     render: function () {
       var song = this.props.song;
+      var likeText = this.props.song.isLiked ? "Unlike" : "Like";
+      var timeSince = AppUtil.timeSince(new Date(song.created_at));
+
       var tags = song.tags.map(function(tag){
         return (
           <div className="index-item-tag">
@@ -33,7 +50,7 @@
           </div>
         );
       });
-      var timeSince = AppUtil.timeSince(new Date(song.created_at));
+
       var thumbStyle = {
         backgroundImage: "url(" + song.image_url + ")",
         backgroundPosition: "center",
@@ -108,9 +125,10 @@
                 </button>
 
                 <button type="button"
-                        className="btn btn-xs btn-song-index">
+                        className="btn btn-xs btn-song-index"
+                        onClick={this._likeToggle}>
                   <i className="glyphicon glyphicon-heart"></i>
-                  Like
+                  {likeText}
                 </button>
 
                 <button type="button"
