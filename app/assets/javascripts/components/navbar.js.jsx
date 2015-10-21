@@ -8,12 +8,7 @@
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function () {
-      return {searchQuery: "", formActive: false};
-    },
-
-    toggleForm: function (e) {
-      e.preventDefault();
-      this.setState({formActive: !this.state.formActive});
+      return {searchQuery: ""};
     },
 
     goToHomePage: function (e) {
@@ -21,10 +16,14 @@
       window.location = "/";
     },
 
+    activateSongForm: function (e) {
+      e.preventDefault();
+      ModalActions.activateSongFormModal();
+    },
+
     render: function () {
       return (
         <nav className="navbar navbar-default navbar-fixed-top">
-          <SongForm toggle={this.toggleForm} active={this.state.formActive} />
           <div className="container">
             <div className="navbar-header">
               <Link className="navbar-brand" to="/">HoundCloud</Link>
@@ -38,38 +37,37 @@
                 <SearchBar onSearch={this.props.onSearch} />
               </div>
 
+              <ul className="nav navbar-nav navbar-right">
+                <li>
+                  <Link className="nav navbar-nav navbar-left"
+                        to="javascript:void(0)"
+                        onClick={this.activateSongForm}>
+                        Upload
+                  </Link>
+                </li>
+                <li className="dropdown">
 
-                <ul className="nav navbar-nav navbar-right">
-                  <li>
-                    <Link className="nav navbar-nav navbar-left"
-                          to="javascript:void(0)"
-                          onClick={this.toggleForm}>Upload</Link>
-                  </li>
-                  <li className="dropdown">
+                  <a href="#"
+                     className="dropdown-toggle"
+                     data-toggle="dropdown"
+                     role="button"
+                     aria-has-popup="true"
+                     aria-expanded="false">
+                    <div>
+                      <span id="navbar-image"/>
+                      {CURRENT_USER_USERNAME}
+                      <span className="caret"/>
+                    </div>
+                  </a>
 
-                    <a href="#"
-                       className="dropdown-toggle"
-                       data-toggle="dropdown"
-                       role="button"
-                       aria-has-popup="true"
-                       aria-expanded="false">
-                      <div>
-                        <span id="navbar-image"/>
-                        {CURRENT_USER_USERNAME}
-                        <span className="caret"/>
-                      </div>
-                    </a>
-
-                     <ul className="dropdown-menu">
-                       <li>
-                         <Link to={"users/"+CURRENT_USER_ID}>
-                           View Profile
-                         </Link>
-                       </li>
-                       <li onClick={ApiUtil.logOut}><a href="#">Sign Out</a></li>
-                     </ul>
-                  </li>
-                </ul>
+                   <ul className="dropdown-menu">
+                     <li>
+                       <Link to={"users/"+CURRENT_USER_ID}>View Profile</Link>
+                     </li>
+                     <li onClick={ApiUtil.logOut}><a href="#">Sign Out</a></li>
+                   </ul>
+                </li>
+              </ul>
             </div>
           </div>
         </nav>

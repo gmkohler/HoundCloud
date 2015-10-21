@@ -6,19 +6,28 @@
     mixins: [React.addons.LinkedStateMixin],
 
     getInitialState: function () {
-      var edit = !!this.props.edit;
+      var song = this.props.song;
       var tagNames = [];
-      if (edit) {
-        var song = SongStore.getSong(this.props.song.id);
+      if (song.tags) {
         tagNames = song.tags.map(function(tag) {
           return tag.name;
         });
       }
 
-      return {songTitle: "", tagNames: tagNames, tagForm: ""};
+      return {songTitle: "", tagNames: [], tagForm: ""};
     },
 
-    componentWillReceiveProps: function (newProps) {},
+    clearState: function () {
+      this.setState({songTitle: "", tagNames: [], tagForm: ""});
+    },
+
+    deactivate: function (e) {
+      if (e) {
+        e.preventDefault();
+      }
+      this.clearState();
+      ModalActions.deactivateSongFormModal();
+    },
 
     openCloudinaryWidgetImage: function(e) {
       var that = this;
@@ -59,9 +68,9 @@
 
       var onSuccess = function (data) {
         SongApiUtil.receiveNewSong(data);
-        this.props.toggle();
+        ModalActions.deactivateSongFormModal();
       };
-
+      this.clearState();
       SongApiUtil.postSong(songParams, onSuccess);
     },
 
@@ -70,6 +79,8 @@
       e.preventDefault();
       if (e.keyCode === 13) {
         this.addTag();
+      } else if (e.keyCode === 27) {
+        this.deactivate();
       }
     },
 
@@ -136,7 +147,7 @@
             <div className={active} id="modal-form-contents">
               <div className="form-exit">
                 <i className="glyphicon glyphicon-remove"
-                   onClick={this.props.toggle}/>
+                   onClick={this.deactivate}/>
               </div>
 
               <div className="page-header"><h3>{headerText}</h3></div>
