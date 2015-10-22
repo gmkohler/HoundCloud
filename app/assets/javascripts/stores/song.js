@@ -48,8 +48,17 @@
   }
 
   root.SongStore = $.extend({}, EventEmitter.prototype, {
+
+// FILTER FUNCTIONS
+// ------------------------------------------------------
       getAll: function () {
         return _songs.slice(0);
+      },
+
+      getStream: function () {
+        return _songs.filter(function(song){
+          return song.isSubscribed;
+        });
       },
 
       getByTitle: function (fragment) {
@@ -66,25 +75,18 @@
 
       getReposts: function (userID) {
         return _songs.filter(function(song){
-                 return !!song.resposters[userID];
+                 return !!song.reposters[userID];
                });
       },
-      
+
       getTracksAndReposts: function (userID) {
         return _songs.filter(function(song){
-                 return song.id === userID || !!song.resposters[userID];
+                 return song.id === userID || !!song.reposters[userID];
                });
       },
 
-
-      getSong: function (songID) {
-        return findSong(songID);
-      },
-
-      getQueue: function () {
-        return _queue.slice(0);
-      },
-
+// _SONGS METHODS
+// ----------------------------------------------
       addChangeListener: function (callback) {
         this.on(SongConstants.SONGS_CHANGE_EVENT, callback);
       },
@@ -97,6 +99,14 @@
         this.emit(SongConstants.SONGS_CHANGE_EVENT);
       },
 
+//   _QUEUE METHODS
+//   ---------------------------------------
+
+      getQueue: function () {
+        return _queue.slice(0);
+      },
+
+
       addQueueChangeListener: function (callback) {
         this.on(SongConstants.QUEUE_CHANGE_EVENT, callback);
       },
@@ -108,6 +118,7 @@
       queueHasChanged: function () {
         this.emit(SongConstants.QUEUE_CHANGE_EVENT);
       },
+//   ---------------------------------------------------
 
       DispatcherID: AppDispatcher.register(function (payload) {
         switch (payload.actionType) {
@@ -119,7 +130,7 @@
             resetSongs(payload.songs);
             SongStore.hasChanged();
             break;
-          case SongConstants.USER_SONGS_RECEIVED:
+          case SongConstants.SONGS_RECEIVED:
             resetSongs(payload.songs);
             SongStore.hasChanged();
             break;

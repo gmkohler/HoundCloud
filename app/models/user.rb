@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   has_many :likes, foreign_key: :liker_id
   has_many :liked_items, through: :likes, source: :likeable
 
-  has_many :reposts, foreign_key: :resposter_id
+  has_many :reposts, foreign_key: :reposter_id
   has_many :reposted_items, through: :reposts, source: :repostable
 
   has_many :songs, foreign_key: :artist_id, dependent: :destroy

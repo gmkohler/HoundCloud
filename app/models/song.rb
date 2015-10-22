@@ -23,17 +23,14 @@ class Song < ActiveRecord::Base
   has_many :reposters, through: :reposts
 
   def self.filter(filter_params)
-    if filter_params[:home] == "true"
-      user_id = filter_params[:id]
+    if filter_params[:context] == "home"
+      user_id = filter_params[:data][:id]
       Song.includes(:artist)
           .joins("INNER JOIN followings ON songs.artist_id = followings.followee_id")
           .where("followings.follower_id = ?", user_id)
           .order(created_at: :desc)
-    else
-      # Selects for songs the user has created or songs the user has reposted.
-      # Currently does not take into account that repostables can be of varying
-      # type.
-      artist_id = filter_params[:id]
+    elsif filter_params[:context] == "show"
+      artist_id = filter_params[:data][:id]
       Song.includes(:artist)
           .joins("LEFT OUTER JOIN (
                     SELECT
@@ -45,6 +42,10 @@ class Song < ActiveRecord::Base
                   ) AS repostings ON repostings.song_id = songs.id")
           .where("songs.artist_id = ? OR repostings.reposter_id = ?", artist_id, artist_id)
           .order(created_at: :desc)
+    elsif filter_params[:context] == "search"
+      query = filter_params[:data]
+      Song.includes(:artist)
+          .where("songs.title LIKE ?", "%#{query}%")
     end
   end
 

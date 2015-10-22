@@ -11,19 +11,19 @@
     _setStateByContext: function (context) {
       switch (context) {
         case "home":
-          this.setState({songs: SongStore.getFollows()});
+          this.setState({songs: SongStore.getStream()});
           break;
         case "search":
-          this.setState({songs: SongStore.getByTitle(this.props.query)});
+          this.setState({songs: SongStore.getByTitle(this.props.data.id)});
           break;
         case "show":
-          this.setState({songs: SongStore.getTracksAndReposts(this.props.user.id)});
+          this.setState({songs: SongStore.getTracksAndReposts(this.props.data.id)});
           break;
         case "showTracks":
-          this.setState({songs: SongStore.getTracks(this.props.user.id)});
+          this.setState({songs: SongStore.getTracks(this.props.data.id)});
           break;
         case "showReposts":
-          this.setState({songs: SongStore.getReposts(this.props.user.id)});
+          this.setState({songs: SongStore.getReposts(this.props.data.id)});
           break;
       }
     },
@@ -37,8 +37,11 @@
     },
 
     componentWillReceiveProps: function (newProps) {
-      if (newProps.user) {
-        SongApiUtil.fetchUserSongs(newProps.user.id, newProps.home);
+      // User can only access "showTracks" and "showReposts" after the feed
+      // has received the "show" context.
+
+      if (["home", "search", "show"].indexOf(newProps.context) !== -1) {
+        SongApiUtil.fetchSongsByContext(newProps.context, newProps.data);
       }
     },
 

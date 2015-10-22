@@ -17,14 +17,13 @@
       $.ajax(ajaxOptions);
     },
 
-    fetchUserSongs: function (userID, home) {
-      home = home || false;
+    fetchSongsByContext: function (context, data) {
 
       var ajaxOptions = {
         url: '/api/songs',
         type: 'GET',
-        data: {id: userID, home: home},
-        success: SongApiActions.receiveUserSongs
+        data: {context: context, data: data},
+        success: SongApiActions.receiveSongs
       };
 
       $.ajax(ajaxOptions);

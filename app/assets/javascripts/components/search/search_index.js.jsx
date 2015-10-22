@@ -17,7 +17,7 @@
           <div>
             <SearchIndexSideBar />
             <UserSearchIndex query={query} />
-            <FeedIndex context={"search"} query={query}/>
+            <FeedIndex context={"search"} data={query}/>
           </div>
         </div>
       );

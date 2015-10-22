@@ -34,7 +34,7 @@
           <UserInfo user={user}/>
           <UserShowBar user={user}/>
           <div className="feed-container">
-            <FeedIndex user={user} context={"show"}/>
+            <FeedIndex context={"show"} data={user}/>
             <UserShowSideBar user={user}/>
           </div>
         </div>
@@ -42,4 +42,3 @@
     }
   })
 }(this));
-          //  <FeedIndex user={this.state.user}/>

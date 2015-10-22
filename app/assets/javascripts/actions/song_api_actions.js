@@ -14,9 +14,9 @@
       AppDispatcher.dispatch(action);
     },
 
-    receiveUserSongs: function (data) {
+    receiveSongs: function (data) {
       var action = {
-        actionType: SongConstants.USER_SONGS_RECEIVED,
+        actionType: SongConstants.SONGS_RECEIVED,
         songs: data
       };
 

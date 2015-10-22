@@ -25,7 +25,7 @@
             <UserHomeBar user={this.state.user} />
           </div>
           <div>
-            <FeedIndex user={this.state.user} home={true}/>
+            <FeedIndex context={"home"} data={this.state.user}/>
             <UserHomeSideBar user={this.state.user}/>
           </div>
         </div>
