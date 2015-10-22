@@ -63,7 +63,8 @@
 
       getByTitle: function (fragment) {
         return _songs.filter(function(song) {
-          return !!song.title.match(fragment);
+          return (!!song.title.match(fragment) ||
+                    !!song.artist_username.title.match(fragment));
         });
       },
 

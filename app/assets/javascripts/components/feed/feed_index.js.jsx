@@ -34,12 +34,15 @@
 
     componentDidMount: function () {
       SongStore.addChangeListener(this.onSongChange);
+      if (this.props.context === "search") {
+        SongApiUtil.fetchSongsByContext(this.props.context, this.props.data);
+      }
     },
 
     componentWillReceiveProps: function (newProps) {
       // User can only access "showTracks" and "showReposts" after the feed
       // has received the "show" context.
-      if (["home", "search", "show"].indexOf(newProps.context) !== -1) {
+      if (["home", "show"].indexOf(newProps.context) !== -1) {
         SongApiUtil.fetchSongsByContext(newProps.context, newProps.data);
       }
       if (["showTracks", "showReposts"].indexOf(newProps.context) !== -1) {
@@ -65,7 +68,7 @@
       );
 
       return (
-        <div>
+        <div >
           {this.props.context === "home" ? homeHeader : null}
           <div id="feed-index" className="container">
             {indexItems}

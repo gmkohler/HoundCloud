@@ -3,10 +3,9 @@
   root.SearchIndex = React.createClass({
 
     render: function () {
-
       var query;
-      if (this.props.params.location) {
-        query = this.props.params.location.query.searchQuery;
+      if (this.props.location) {
+        query = this.props.location.query.searchQuery;
       } else {
         query = "";
       }
@@ -17,7 +16,7 @@
           <div>
             <SearchIndexSideBar />
             <UserSearchIndex query={query} />
-            <FeedIndex context={"search"} data={query}/>
+            <FeedIndex context="search" data={query}/>
           </div>
         </div>
       );

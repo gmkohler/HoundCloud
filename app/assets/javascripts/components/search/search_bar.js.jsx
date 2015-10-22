@@ -21,16 +21,16 @@
       // relative to it.
       // <SuggestionIndex searchQuery={this.state.searchQuery}/>
       return (
-          <form className="navbar-form navbar-left"
+          <form className="navbar-form navbar-left col-lg-6"
                 role="search"
                 onSubmit={this._submit}>
             <div className="form-group has-feedback">
               <input type="text"
-                     className="navbar-search form-control col-lg-6"
+                     className="navbar-search form-control"
                      valueLink={this.linkState("searchQuery")}
                      placeholder="Search"/>
               <i className="glyphicon glyphicon-search form-control-feedback"/>
-            </div>            
+            </div>
           </form>
       );
     }
