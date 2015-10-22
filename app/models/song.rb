@@ -40,7 +40,7 @@ class Song < ActiveRecord::Base
                       reposts
                     INNER JOIN
                       users ON users.id = reposts.reposter_id
-                  ) AS repostings ON reposts.song_id = songs.id")
+                  ) AS repostings ON repostings.song_id = songs.id")
           .where("songs.artist_id = ? OR repostings.reposter_id = ?", artist_id, artist_id)
           .order(created_at: :desc)
     end
