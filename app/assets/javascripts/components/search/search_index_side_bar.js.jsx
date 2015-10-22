@@ -3,10 +3,18 @@
   root.SearchIndexSideBar = React.createClass({
     render: function () {
       return (
-        <div>
+        <div className="search-sidebar">
           <div>
-            <span>Hello World</span>
+            <span>All</span>
             <i className="glyphicon glyphicon-search"></i>
+          </div>
+          <div>
+            <span>Users</span>
+            <i className="glyphicon glyphicon-user"></i>
+          </div>
+          <div>
+            <span>Songs</span>
+            <i className="glyphicon glyphicon-cd"></i>
           </div>
         </div>
       );

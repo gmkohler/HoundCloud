@@ -15,7 +15,7 @@
     },
 
     fetchQueriedUsers: function (searchQuery, successCallback) {
-      successCallback = successCallback || UserApiActions.receiveQueriedUsers;
+      successCallback = successCallback || SearchActions.receiveQueriedUsers;
 
       var ajaxOptions = {
         url: '/api/users/',

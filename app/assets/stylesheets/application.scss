@@ -23,15 +23,17 @@
  @import "songs";
  @import "modal";
  @import "user_sidebar";
+ @import "search";
  @media (min-width: 1200px) {
      .container{
          max-width: 970px;
      }
  }
 html{height:100%;
-     position: static;}
-body{height:100%;
-     position:static;}
+ position: static;}
+body{
+ position:static;
+}
 #app {
   position:static;
   height:100%;

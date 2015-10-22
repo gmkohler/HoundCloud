@@ -14,7 +14,7 @@
           this.setState({songs: SongStore.getStream()});
           break;
         case "search":
-          this.setState({songs: SongStore.getByTitle(data.id)});
+          this.setState({songs: SearchStore.getSongs()});
           break;
         case "show":
           this.setState({songs: SongStore.getTracksAndReposts(data.id)});
@@ -35,6 +35,7 @@
     componentDidMount: function () {
       SongStore.addChangeListener(this.onSongChange);
       if (this.props.context === "search") {
+        SearchStore.addResultsChangeListener
         SongApiUtil.fetchSongsByContext(this.props.context, this.props.data);
       }
     },

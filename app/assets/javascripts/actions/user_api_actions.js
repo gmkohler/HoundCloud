@@ -13,15 +13,6 @@
       AppDispatcher.dispatch(action);
     },
 
-    receiveQueriedUsers: function (data) {
-      var action = {
-        actionType: UserConstants.QUERIED_USERS_RECEIVED,
-        users: data
-      };
-
-      AppDispatcher.dispatch(action);
-    },
-
     receiveSuggestedUsers: function (data) {
       var action = {
         actionType: UserConstants.SUGGESTED_USERS_RECEIVED,

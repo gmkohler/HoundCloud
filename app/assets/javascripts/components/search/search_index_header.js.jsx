@@ -8,9 +8,9 @@
       var searchBoilerplate = query ? " results for \"" + query + "\"" : "";
 
       return (
-        <div className="contianer">
+        <div className="container">
           <div className="left">
-          <span>{"Search" + searchBoilerplate}</span>
+            <span>{"Search" + searchBoilerplate}</span>
           </div>
           <div className="right">
             0 artists, 0 tracks

@@ -1,0 +1,13 @@
+.search-sidebar{
+  width: 28%;
+  margin-right:0;
+  float:left;
+}
+.search-results-container{
+  width: 72%;
+  float:right
+}
+.search-results-container div#feed-index{
+  width: 100%;
+}
+// will want to override the feedindex in this case.

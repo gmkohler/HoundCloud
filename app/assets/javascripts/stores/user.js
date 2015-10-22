@@ -31,7 +31,7 @@
       getUser: function (userID) {
         return _users[userID]
       },
-      
+
       getCurrentUser: function () {
         return _users[window.CURRENT_USER_ID];
       },
@@ -80,10 +80,7 @@
             addUserToStore(action.user);
             UserStore.hasChanged();
             break;
-          case UserConstants.QUERIED_USERS_RECEIVED:
-            addUsersToStore(action.users);
-            UserStore.hasChanged();
-            break;
+
         }
       })
   });

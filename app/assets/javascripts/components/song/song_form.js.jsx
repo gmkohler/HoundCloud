@@ -158,8 +158,6 @@
         </div>
       );
 
-
-
       return (
         <div className={active} id="modal-overlay">
           <div className={active} id="modal-form-container">

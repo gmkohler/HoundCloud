@@ -11,7 +11,7 @@
     },
 
     componentDidMount: function () {
-      UserStore.addChangeListener(this._onUsersChange);
+      SearchStore.addResultsChangeListener(this._onUsersChange);
       UserApiUtil.fetchQueriedUsers(this.props.query);
     },
 
@@ -20,11 +20,11 @@
     },
 
     componentWillUnmount: function () {
-      UserStore.removeChangeListener(this._onUsersChange);
+      SearchStore.removeChangeListener(this._onUsersChange);
     },
 
     _getStateFromStore: function () {
-      return UserStore.getMatchingUsers(this.props.query);
+      return SearchStore.getUsers();
     },
 
     _onUsersChange: function () {
