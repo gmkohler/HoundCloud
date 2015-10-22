@@ -29,8 +29,8 @@
          max-width: 970px;
      }
  }
-html{height:100%;}
-body{height:100%;}
+html{}
+body{}
 #app {
   height:100%;
   background-color: #F2F2F2;
@@ -48,11 +48,12 @@ body{height:100%;}
  padding-bottom: 50px;
 }
 div#feed-index {
- margin-top: -10px;
- border-bottom: 1px solid #F2F2F2;
+  overflow:hidden;
+  margin-top: -10px;
+  border-bottom: 1px solid #F2F2F2;
 
- width: 72%;
- float:left;
+  width: 72%;
+  float:left;
 }
 
 div#user-home-left-container {
@@ -71,6 +72,12 @@ div#profile-sidebar {
 .clearfix:before {
  content:"";
  clear: both;
+ display: block;
+}
+.clearfix:after {
+ content:"";
+ clear: both;
+ display: block;
 }
 
 .btn-circle {

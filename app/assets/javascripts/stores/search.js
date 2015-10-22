@@ -47,11 +47,6 @@
       return _filters.showUsers ? _results.users.slice(0) : [];
     },
 
-    // consider refactoring into getSongsByTag ... but at that point, if the tag
-    // is showing up, I don't get why the search index should know anything more than
-    // the query string.... like it seems as though state has been abstracted into a store
-    // and the only components who need to know are those wrapped by the SearchIndex.
-
     getSongs: function () {
       if (_filters.showSongs) {
         if (_filters.tagID) {

@@ -29,7 +29,9 @@
     },
 
     _onSongChange: function () {
-      this._setStateByContext(this.props.context, this.props.data);
+
+        this._setStateByContext(this.props.context, this.props.data);
+
     },
 
     componentDidMount: function () {
