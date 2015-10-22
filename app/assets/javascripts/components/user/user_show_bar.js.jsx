@@ -39,7 +39,15 @@
           <div className="explore-tabs">
             <div className="user-bar">
               <div className="user-bar-section-left">
-                <a className="active" href="javascript:void(0)">Tracks</a>
+                <div>
+                  <span className="active" href="javascript:void(0)">All</span>
+                </div>
+                <div>
+                  <span className="active" href="javascript:void(0)">Tracks</span>
+                </div>
+                <div>
+                  <span className="active" href="javascript:void(0)">Reposts</span>
+                </div>
               </div>
               <div className="user-bar-section-right">
                   {followButton}

@@ -11,6 +11,12 @@
     _songs = newSongs;
   }
 
+  function findSong (songID) {
+    return _songs.find(function (song) {
+      return song.id === songID;
+    });
+  }
+
   function updateSingleSong(song) {
     var idx = _songs.indexOf(findSong(song.id));
     if (idx === -1) {
@@ -18,12 +24,6 @@
     } else {
       _songs[idx] = song;
     }
-  }
-
-  function findSong (songID) {
-    return _songs.find(function (song) {
-      return song.id === songID;
-    });
   }
 
   function queueSingleSong (songID) {
@@ -34,7 +34,6 @@
   function spliceSingleSong (spliceIdx, deleteCount, songID) {
     var song = findSong(songID);
     _queue.splice(spliceIdx, deleteCount, song);
-    // debugger;
   }
 
   function transferSongsToQueue (startSongID) {
@@ -51,6 +50,18 @@
   root.SongStore = $.extend({}, EventEmitter.prototype, {
       getAll: function () {
         return _songs.slice(0);
+      },
+
+      getTracks: function (userID) {
+        return _songs.filter(function(song){
+                 return song.id === userID;
+               });
+      },
+
+      getReposts: function (userID) {
+        return _songs.filter(function(song){
+                 return !!song.resposters[userID];
+               });
       },
 
       getSong: function (songID) {

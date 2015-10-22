@@ -27,13 +27,18 @@
          max-width: 970px;
      }
  }
-html{height:100%;}
-body{height:100%;}
+html{height:100%;
+     position: static;}
+body{height:100%;
+     position:static;}
 #app {
+  position:static;
   height:100%;
   background-color: #F2F2F2;
 }
+
  #content {
+   position: static;
    height:100%;
    font: 100 13.5px/1.5 "Lucida Grande",Arial,sans-serif;
  }
@@ -45,7 +50,16 @@ body{height:100%;}
    padding-bottom: 50px;
  }
  div#feed-index {
+   margin-top: -10px;
    border-bottom: 1px solid #F2F2F2;
+   border-right: 1px solid #F2F2F2;
+   width: 72%;
+   float:left;
+ }
+ div#profile-sidebar {
+   padding: 0 15px;
+   width: 28%;
+   float:right;
  }
  .clearfix:before {
    content:"";

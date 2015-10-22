@@ -32,9 +32,10 @@
       return (
         <div>
           <UserInfo user={user}/>
+          <UserShowBar user={user}/>
           <div className="feed-container">
-            <UserShowBar user={user}/>
             <FeedIndex user={user} home={false}/>
+            <UserSideBar user={user}/>
           </div>
         </div>
       );

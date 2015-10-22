@@ -6,8 +6,7 @@
 
     componentDidMount: function () {},
 
-    componentWillReceiveProps: function () {
-    },
+    componentWillReceiveProps: function () {},
 
     _queueSong: function () {
       SongApiActions.receiveQueuedSong(this.props.song.id);

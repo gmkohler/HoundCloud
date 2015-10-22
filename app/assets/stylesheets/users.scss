@@ -120,22 +120,32 @@ div.user-bar>div {
   list-style: none;
 }
 
-div.user-bar>div>a{
+
+div.user-bar-section-left {
+  position:absolute;
+  left:0;
+  bottom: -1px;
+}
+div.user-bar-section-left>div {
+  float:left;
+  margin-right: 30px;
+}
+div.user-bar-section-left>div:last-child {
+  margin-right: 0;
+}
+div.user-bar-section-left>div>span{
   display:block;
   font-size: 24px;
   font-weight:500;
-}
-
-div.user-bar>div>a.active{
   cursor: default;
   text-decoration: none;
-  border-bottom: 1px solid #FF5500;
-  color: #FF5500;
+  // border-bottom: 1px solid #000000;
+  color: #000000;
   display:block;
 }
-div.user-bar>div.user-bar-section-left {
-  position:absolute;
-  left:0;
+div.user-bar-section-left>span.active{
+  border-color: #FF5500;
+  color: #FF5500;
 }
 div.user-bar>div.user-bar-section-right {
   position:absolute;

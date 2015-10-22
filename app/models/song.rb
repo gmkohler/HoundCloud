@@ -31,6 +31,8 @@ class Song < ActiveRecord::Base
           .order(created_at: :desc)
     else
       # Selects for songs the user has created or songs the user has reposted.
+      # Currently does not take into account that repostables can be of varying
+      # type.
       artist_id = filter_params[:id]
       Song.includes(:artist)
           .joins("LEFT OUTER JOIN (
