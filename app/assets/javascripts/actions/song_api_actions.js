@@ -22,6 +22,15 @@
 
       AppDispatcher.dispatch(action);
     },
+    
+    receiveQueriedSongs: function (data) {
+      var action = {
+        actionType: SearchConstants.QUERIED_SONGS_RECEIVED,
+        songs: data
+      };
+
+      AppDispatcher.dispatch(action);
+    },
 
     receiveSingleSong: function (data) {
       var action = {

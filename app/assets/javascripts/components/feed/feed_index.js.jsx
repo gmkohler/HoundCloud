@@ -28,15 +28,17 @@
       }
     },
 
-    onSongChange: function () {
+    _onSongChange: function () {
       this._setStateByContext(this.props.context, this.props.data);
     },
 
     componentDidMount: function () {
-      SongStore.addChangeListener(this.onSongChange);
       if (this.props.context === "search") {
-        SearchStore.addResultsChangeListener
+        SearchStore.addResultsChangeListener(this._onSongChange);
+        SearchStore.addFiltersChangeListener(this._onSongChange);
         SongApiUtil.fetchSongsByContext(this.props.context, this.props.data);
+      } else {
+        SongStore.addChangeListener(this._onSongChange);
       }
     },
 
@@ -52,7 +54,11 @@
     },
 
     componentWillUnmount: function () {
-      SongStore.removeChangeListener(this.onSongChange);
+      if (this.props.context === "search") {
+        SearchStore.removeChangeListener(this._onSongChange);
+      } else {
+        SongStore.removeChangeListener(this._onSongChange);
+      }
     },
 
     render: function () {

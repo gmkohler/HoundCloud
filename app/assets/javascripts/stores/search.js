@@ -20,7 +20,7 @@
     _results.songs = songs;
     _results.tags = {};
     songs.forEach(function(song) {
-      songs.tags.forEach(function(tag){
+      song.tags.forEach(function(tag){
         _results.tags[tag.id] = tag.name;
       });
     });
@@ -48,6 +48,7 @@
 
     // consider returning nothing if !_filters.song.
     getSongs: function () {
+      debugger;
       if (_filters.tag) {
         return _results.songs.filter(function(song){
           song.tags.find(function(tag){

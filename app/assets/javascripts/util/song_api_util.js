@@ -1,4 +1,5 @@
 /* global SongApiActions */
+/* global SearchActions */
 
 (function(root) {
   'use strict';
@@ -18,11 +19,17 @@
     },
 
     fetchSongsByContext: function (context, contextData) {
+      var onSuccess;
+      if (context === "search") {
+        onSuccess = SongApiActions.receiveQueriedSongs;
+      } else {
+        onSuccess = SongApiActions.receiveSongs;
+      }
       var ajaxOptions = {
         url: '/api/songs',
         type: 'GET',
         data: {context: context, context_data: contextData},
-        success: SongApiActions.receiveSongs
+        success: onSuccess
       };
 
       $.ajax(ajaxOptions);
