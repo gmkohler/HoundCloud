@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021164003) do
+ActiveRecord::Schema.define(version: 20151021233302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 20151021164003) do
   end
 
   add_index "likes", ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id", using: :btree
+
+  create_table "reposts", force: :cascade do |t|
+    t.integer  "reposter_id",     null: false
+    t.integer  "repostable_id"
+    t.string   "repostable_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "reposts", ["repostable_type", "repostable_id"], name: "index_reposts_on_repostable_type_and_repostable_id", using: :btree
+  add_index "reposts", ["reposter_id"], name: "index_reposts_on_reposter_id", using: :btree
 
   create_table "songs", force: :cascade do |t|
     t.string   "title",       null: false

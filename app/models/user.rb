@@ -20,14 +20,17 @@ class User < ActiveRecord::Base
   validates :username, :email, :session_token, presence: true
   validates :username, :email, uniqueness: true
 
-  has_many :in_follows, class_name: "Following", foreign_key: "followee_id"
-  has_many :out_follows, class_name: "Following", foreign_key: "follower_id"
+  has_many :in_follows, class_name: "Following", foreign_key: :followee_id
+  has_many :out_follows, class_name: "Following", foreign_key: :follower_id
 
   has_many :followers, through: :in_follows, source: :follower
   has_many :followees, through: :out_follows, source: :followee
 
-  has_many :likes, foreign_key: "liker_id"
+  has_many :likes, foreign_key: :liker_id
   has_many :liked_items, through: :likes, source: :likeable
+
+  has_many :reposts, foreign_key: :resposter_id
+  has_many :reposted_items, through: :reposts, source: :repostable
 
   has_many :songs, foreign_key: :artist_id, dependent: :destroy
 

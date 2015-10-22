@@ -27,20 +27,28 @@
 
     _likeToggle: function (e) {
       e.preventDefault();
-      this.props.song.isLiked ? this._unlikeSong() : this._likeSong();
+      var song = this.props.song;
+      if (song.isLiked) {
+        LikeApiUtil.removeSongLike(song.id);
+      } else {
+        LikeApiUtil.addSongLike(song.id);
+      }
     },
 
-    _likeSong: function () {
-      LikeApiUtil.addSongLike(this.props.song.id);
-    },
-
-    _unlikeSong: function () {
-      LikeApiUtil.removeSongLike(this.props.song.id);
+    _repostToggle: function(e) {
+      e.preventDefault();
+      var song = this.props.song;
+      if (song.isReposted) {
+        RepostApiUtil.removeSongRepost(song.id);
+      } else {
+        RepostApiUtil.addSongRepost(song.id);
+      }
     },
 
     render: function () {
       var song = this.props.song;
       var likeText = this.props.song.isLiked ? "Unlike" : "Like";
+      var repostText = this.props.song.isReposted ? "Reposted" : "Repost";
       var timeSince = AppUtil.timeSince(new Date(song.created_at));
 
       var tags = song.tags.map(function(tag){
@@ -132,9 +140,10 @@
                 </button>
 
                 <button type="button"
-                        className="btn btn-xs btn-song-index">
+                        className="btn btn-xs btn-song-index"
+                        onClick={this._repostToggle}>
                   <i className="glyphicon glyphicon-retweet"></i>
-                  Repost
+                  {repostText}
                 </button>
 
                 {song.artist_id === CURRENT_USER_ID ? editButton : null}
