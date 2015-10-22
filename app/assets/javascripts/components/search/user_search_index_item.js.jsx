@@ -1,7 +1,7 @@
 (function(root) {
   'use strict';
   var Link = ReactRouter.Link;
-  root.UserIndexItem = React.createClass({
+  root.UserSearchIndexItem = React.createClass({
 
     render: function () {
       var user = this.props.user,

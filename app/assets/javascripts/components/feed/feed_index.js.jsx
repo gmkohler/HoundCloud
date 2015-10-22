@@ -8,8 +8,28 @@
       return {songs: []};
     },
 
+    _setStateByContext: function (context) {
+      switch (context) {
+        case "home":
+          this.setState({songs: SongStore.getFollows()});
+          break;
+        case "search":
+          this.setState({songs: SongStore.getByTitle(this.props.query)});
+          break;
+        case "show":
+          this.setState({songs: SongStore.getTracksAndReposts(this.props.user.id)});
+          break;
+        case "showTracks":
+          this.setState({songs: SongStore.getTracks(this.props.user.id)});
+          break;
+        case "showReposts":
+          this.setState({songs: SongStore.getReposts(this.props.user.id)});
+          break;
+      }
+    },
+
     onSongChange: function () {
-      this.setState({songs: SongStore.getAll()});
+      this._setStateByContext(this.props.context);
     },
 
     componentDidMount: function () {
@@ -17,7 +37,9 @@
     },
 
     componentWillReceiveProps: function (newProps) {
-      SongApiUtil.fetchUserSongs(newProps.user.id, newProps.home);
+      if (newProps.user) {
+        SongApiUtil.fetchUserSongs(newProps.user.id, newProps.home);
+      }
     },
 
     componentWillUnmount: function () {
@@ -31,9 +53,18 @@
         );
       });
 
+      var homeHeader = (
+        <h1 className="user-home-header">
+          Keep your ear to the ground for sounds from your favorite hounds
+        </h1>
+      );
+
       return (
-        <div id="feed-index" className="container">
-          {indexItems}
+        <div>
+          {this.props.context === "home" ? homeHeader : null}
+          <div id="feed-index" className="container">
+            {indexItems}
+          </div>
         </div>
       );
     }

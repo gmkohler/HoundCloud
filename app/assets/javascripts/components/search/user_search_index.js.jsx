@@ -1,10 +1,10 @@
 /* global React */
 /* global UserStore */
 /* global UserApiUtil */
-/* global UserIndexItem */
+/* global UserSearchIndexItem */
 (function(root) {
   'use strict';
-  root.UserIndex = React.createClass({
+  root.UserSearchIndex = React.createClass({
     getInitialState: function () {
       var users = this._getStateFromStore();
       return ({users: users});
@@ -33,7 +33,7 @@
 
     render: function () {
       var users = this.state.users.map(function(user) {
-        return (<UserIndexItem key={user.id} user={user}/>);
+        return (<UserSearchIndexItem key={user.id} user={user}/>);
       });
 
       return (

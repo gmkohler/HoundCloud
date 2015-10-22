@@ -37,35 +37,45 @@ body{height:100%;
   background-color: #F2F2F2;
 }
 
- #content {
-   position: static;
-   height:100%;
-   font: 100 13.5px/1.5 "Lucida Grande",Arial,sans-serif;
- }
+#content {
+ position: static;
+ height:100%;
+ font: 100 13.5px/1.5 "Lucida Grande",Arial,sans-serif;
+}
 
- #page {
-   height:100%;
-   background-color: #FFFFFF;
-   padding-top: 50px;
-   padding-bottom: 50px;
- }
- div#feed-index {
-   margin-top: -10px;
-   border-bottom: 1px solid #F2F2F2;
-   border-right: 1px solid #F2F2F2;
-   width: 72%;
-   float:left;
- }
- div#profile-sidebar {
-   padding: 0 15px;
-   width: 28%;
-   float:right;
- }
- .clearfix:before {
-   content:"";
-   clear: both;
- }
- .btn-circle {
+#page {
+ height:100%;
+ background-color: #FFFFFF;
+ padding-top: 50px;
+ padding-bottom: 50px;
+}
+div#feed-index {
+ margin-top: -10px;
+ border-bottom: 1px solid #F2F2F2;
+
+ width: 72%;
+ float:left;
+}
+
+div#user-home-left-container {
+  width:72%;
+  float:left;
+}
+div#profile-sidebar {
+  border-left: 1px solid #F2F2F2;
+  padding: 0 15px;
+  width: 28%;
+  height: 100%;
+
+  float:right;
+}
+
+.clearfix:before {
+ content:"";
+ clear: both;
+}
+
+.btn-circle {
   width: 28px;
   height: 28px;
   text-align: center;

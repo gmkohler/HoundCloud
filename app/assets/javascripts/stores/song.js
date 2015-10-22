@@ -52,6 +52,12 @@
         return _songs.slice(0);
       },
 
+      getByTitle: function (fragment) {
+        return _songs.filter(function(song) {
+          return !!song.title.match(fragment);
+        });
+      },
+
       getTracks: function (userID) {
         return _songs.filter(function(song){
                  return song.id === userID;
@@ -63,6 +69,13 @@
                  return !!song.resposters[userID];
                });
       },
+      
+      getTracksAndReposts: function (userID) {
+        return _songs.filter(function(song){
+                 return song.id === userID || !!song.resposters[userID];
+               });
+      },
+
 
       getSong: function (songID) {
         return findSong(songID);

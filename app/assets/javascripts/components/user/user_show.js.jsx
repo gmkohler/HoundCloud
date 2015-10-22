@@ -34,8 +34,8 @@
           <UserInfo user={user}/>
           <UserShowBar user={user}/>
           <div className="feed-container">
-            <FeedIndex user={user} home={false}/>
-            <UserSideBar user={user}/>
+            <FeedIndex user={user} context={"show"}/>
+            <UserShowSideBar user={user}/>
           </div>
         </div>
       );

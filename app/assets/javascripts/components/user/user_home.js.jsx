@@ -21,9 +21,13 @@
     render: function () {
       return (
         <div className="container feed-container">
-          <UserHomeBar />
-          <h1 className="user-home-header">Keep your ear to the ground for sounds from your favorite hounds</h1>
-          <FeedIndex user={this.state.user} home={true}/>
+          <div>
+            <UserHomeBar user={this.state.user} />
+          </div>
+          <div>
+            <FeedIndex user={this.state.user} home={true}/>
+            <UserHomeSideBar user={this.state.user}/>
+          </div>
         </div>
       )
     }
