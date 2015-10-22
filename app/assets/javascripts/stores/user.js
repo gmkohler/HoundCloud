@@ -28,6 +28,14 @@
         return this._values();
       },
 
+      getUser: function (userID) {
+        return _users[userID]
+      },
+      
+      getCurrentUser: function () {
+        return _users[window.CURRENT_USER_ID];
+      },
+
       _values: function () {
         var keys = Object.keys(_users);
         if (keys) {

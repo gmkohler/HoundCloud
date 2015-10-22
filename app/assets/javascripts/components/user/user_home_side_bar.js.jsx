@@ -5,7 +5,7 @@
     render: function () {
       return (
         <div id="profile-sidebar">
-          <span>Hello World</span>
+          <SideBarFollowIndex />
         </div>
       );
     }

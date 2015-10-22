@@ -1,0 +1,28 @@
+div.sidebar-follow-item-container{
+
+}
+
+div.sidebar-follow-item{
+  // want it to fit whole container
+  // two sections
+}
+div.sidebar-follow-item-thumbnail{
+  // want it to be a set proportion and float left
+  //background image set inline
+}
+div.sidebar-follow-item-detail{
+  // want it to fit remainder based on thumbnail
+  // two rows
+}
+div.sidebar-follow-item-detail>div{
+  // want it to fit remainder based on thumbnail
+  // two rows
+}
+div.sidebar-follow-item-detail>div>span{
+  // only going to be the top bit because
+  //   of reference to immediate child
+}
+div.sidebar-follow-item-detail>div:last-child{
+  // want it to fit remainder based on thumbnail
+  // two rows
+}
