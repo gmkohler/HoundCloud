@@ -4,21 +4,24 @@
   'use strict';
   root.SearchActions = {
     receiveQueriedUsers: function (data) {
-      var action = {
+      AppDispatcher.dispatch({
         actionType: SearchConstants.QUERIED_USERS_RECEIVED,
         users: data
-      };
-
-      AppDispatcher.dispatch(action);
+      });
     },
 
     receiveQueriedSongs: function (data) {
-      var action = {
+      AppDispatcher.dispatch({
         actionType: SearchConstants.QUERIED_SONGS_RECEIVED,
         songs: data
-      };
+      });
+    },
 
-      AppDispatcher.dispatch(action);
+    receiveFilters: function (data) {
+      AppDispatcher.dispatch({
+        actiontype: SearchConstants.FILTERS_RECEIVED,
+        filters: data
+      });
     }
 
   };

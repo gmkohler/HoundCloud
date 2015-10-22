@@ -55,7 +55,8 @@
 
     componentWillUnmount: function () {
       if (this.props.context === "search") {
-        SearchStore.removeChangeListener(this._onSongChange);
+        SearchStore.removeResultsChangeListener(this._onSongChange);
+        SearchStore.removeFiltersChangeListener(this._onSongChange);
       } else {
         SongStore.removeChangeListener(this._onSongChange);
       }

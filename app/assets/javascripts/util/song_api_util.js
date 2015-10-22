@@ -21,7 +21,7 @@
     fetchSongsByContext: function (context, contextData) {
       var onSuccess;
       if (context === "search") {
-        onSuccess = SongApiActions.receiveQueriedSongs;
+        onSuccess = SearchActions.receiveQueriedSongs;
       } else {
         onSuccess = SongApiActions.receiveSongs;
       }

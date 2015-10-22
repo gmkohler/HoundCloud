@@ -13,11 +13,7 @@
     },
 
     _onFiltersChange: function () {
-      var filters = SearchStore.getFilters();
-      this.setState({numUsers: SearchStore.numUsers(),
-                     numSongs: SearchStore.numSongs(),
-                     showUsers: filters.users,
-                     showSongs: filters.songs});
+      this.setState(SearchStore.getFilters());
     },
 
     render: function () {
@@ -32,7 +28,8 @@
         <div>
           <SearchIndexHeader query={query}/>
           <div>
-            <SearchIndexSideBar />
+            <SearchIndexSideBar showUsers={this.state.showUsers}
+                                showSongs={this.state.showSongs} />
             <div className="search-results-container">
               <UserSearchIndex query={query} />
               <FeedIndex context="search" data={query}/>

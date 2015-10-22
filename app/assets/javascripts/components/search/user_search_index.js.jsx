@@ -20,7 +20,7 @@
     },
 
     componentWillUnmount: function () {
-      SearchStore.removeChangeListener(this._onUsersChange);
+      SearchStore.removeResultsChangeListener(this._onUsersChange);
     },
 
     _getStateFromStore: function () {

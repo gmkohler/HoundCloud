@@ -11,8 +11,8 @@
   };
 
   var _filters = {
-    users: true,
-    songs: true,
+    showUsers: true,
+    showSongs: true,
     tag: null
   };
 
@@ -28,8 +28,9 @@
 
   function updateFilters(filters) {
     Object.keys(filters).forEach(function(key){
-      _filters.key = filters.key;
+      _filters[key] = filters[key];
     });
+    debugger;
   }
 
   function clearAll () {
@@ -48,7 +49,6 @@
 
     // consider returning nothing if !_filters.song.
     getSongs: function () {
-      debugger;
       if (_filters.tag) {
         return _results.songs.filter(function(song){
           song.tags.find(function(tag){
@@ -62,6 +62,10 @@
 
     getTags: function () {
       return _results.tags;
+    },
+
+    getFilters: function () {
+      return _filters;
     },
 
     addResultsChangeListener: function (callback) {
