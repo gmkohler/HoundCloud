@@ -27,14 +27,22 @@
     },
 
     render: function () {
-      var queue = this.state.queue.map(function(song){
-        return <li>{song.title}</li>;
-      });
       // Need to add in Queue again...
       return (
-        <nav className="nav navbar-default navbar-fixed-bottom">
+        <nav id="audio-player" className="nav navbar-default navbar-fixed-bottom">
           <div className="container">
             <NowPlaying song={this.state.currentSong}/>
+            <div id="now-playing">
+              <div>
+                <span>forthcoming</span>
+              </div>
+            </div>
+            <div id="audio-player-song-holder" className="nav navbar-nav navbar-left">
+              <QueueIndex queue={this.state.queue}/>
+              <div id="now-playing-badge">
+                <NowPlayingBadge song={this.state.currentSong} />
+              </div>
+            </div>
           </div>
         </nav>
       );

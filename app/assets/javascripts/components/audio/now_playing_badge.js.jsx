@@ -17,13 +17,20 @@
       };
 
       return (
-        <div className="now-playing-badge">
+        <div>
           <div className="now-playing-badge-thumbnail"
                 style={thumbnailStyle}>
           </div>
           <div className="now-playing-badge-info">
-            <span className="now-playing-badge-boilerplate">Now playing:</span><br/>
-            <span className="now-playing-badge">{song.title || "Nothing selected"}</span>
+            <div>
+              <span className="now-playing-badge-boilerplate">Now playing:</span>
+            </div>
+            <div>
+              <span className="now-playing-badge">{song.title || "Nothing selected"}</span>
+            </div>
+          </div>
+          <div id="now-playing-badge-heart">
+            <i className="glyphicon glyphicon-heart"/>
           </div>
         </div>
       );

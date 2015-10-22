@@ -66,10 +66,10 @@
       var song = this.props.song,
           buttons = (
               [<a href="javascript:void(0)">
-                <button key="back"
-                       type="button"
-                       className="btn btn-xl playback-btn skip"
-                       onClick={this._onPrev}>
+                 <button key="back"
+                         type="button"
+                         className="btn btn-xl playback-btn skip"
+                         onClick={this._onPrev}>
                    <i className="glyphicon glyphicon-step-backward"></i>
                  </button>
                </a>,
@@ -99,11 +99,9 @@
       );
 
       return (
-        <div className="container">
-          <div className="now-playing-buttons">
-            {buttons}
-          </div>
-          <NowPlayingBadge song={this.props.song} />
+        <div id="audio-player-controls"
+             className="now-playing-buttons">
+          {buttons}
         </div>
       );
     }
