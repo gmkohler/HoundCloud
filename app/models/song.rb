@@ -24,13 +24,13 @@ class Song < ActiveRecord::Base
 
   def self.filter(filter_params)
     if filter_params[:context] == "home"
-      user_id = filter_params[:data][:id]
+      user_id = filter_params[:context_data][:id]
       Song.includes(:artist)
           .joins("INNER JOIN followings ON songs.artist_id = followings.followee_id")
           .where("followings.follower_id = ?", user_id)
           .order(created_at: :desc)
     elsif filter_params[:context] == "show"
-      artist_id = filter_params[:data][:id]
+      artist_id = filter_params[:context_data][:id]
       Song.includes(:artist)
           .joins("LEFT OUTER JOIN (
                     SELECT
@@ -43,7 +43,7 @@ class Song < ActiveRecord::Base
           .where("songs.artist_id = ? OR repostings.reposter_id = ?", artist_id, artist_id)
           .order(created_at: :desc)
     elsif filter_params[:context] == "search"
-      query = filter_params[:data]
+      query = filter_params[:context_data]
       Song.includes(:artist)
           .where("songs.title LIKE ?", "%#{query}%")
     end

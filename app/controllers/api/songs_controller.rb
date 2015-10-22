@@ -21,7 +21,7 @@ class Api::SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.filter({context: params[:context], data: params[:data]})
+    @songs = Song.filter({context: params[:context], context_data: params[:context_data]})
     render :index
   end
 

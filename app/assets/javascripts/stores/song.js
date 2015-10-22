@@ -69,7 +69,7 @@
 
       getTracks: function (userID) {
         return _songs.filter(function(song){
-                 return song.id === userID;
+                 return song.artist_id === userID;
                });
       },
 
@@ -81,7 +81,7 @@
 
       getTracksAndReposts: function (userID) {
         return _songs.filter(function(song){
-                 return song.id === userID || !!song.reposters[userID];
+                 return song.artist_id === userID || !!song.reposters[userID];
                });
       },
 
