@@ -38,7 +38,6 @@
 
       return (
         <div>
-          <span><h3>Users:</h3></span>
           <div>{users}</div>
         </div>
       );

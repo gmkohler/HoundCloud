@@ -4,6 +4,7 @@
 
 (function(root) {
   'use strict';
+
   var _results = {
     users: [],
     songs: [],
@@ -13,7 +14,7 @@
   var _filters = {
     showUsers: true,
     showSongs: true,
-    tag: null
+    tagID: null
   };
 
   function updateSongsAndTags (songs) {
@@ -30,12 +31,11 @@
     Object.keys(filters).forEach(function(key){
       _filters[key] = filters[key];
     });
-    debugger;
   }
 
   function clearAll () {
     _results = {users: [], songs: [], tags: {}};
-    _filters = {users: true, songs: true, tag: null};
+    _filters = {users: true, songs: true, tagID: null};
   }
 
   root.SearchStore = $.extend({}, EventEmitter.prototype, {
@@ -44,19 +44,27 @@
     },
 
     getUsers: function () {
-      return _results.users.slice(0);
+      return _filters.showUsers ? _results.users.slice(0) : [];
     },
 
-    // consider returning nothing if !_filters.song.
+    // consider refactoring into getSongsByTag ... but at that point, if the tag
+    // is showing up, I don't get why the search index should know anything more than
+    // the query string.... like it seems as though state has been abstracted into a store
+    // and the only components who need to know are those wrapped by the SearchIndex.
+
     getSongs: function () {
-      if (_filters.tag) {
-        return _results.songs.filter(function(song){
-          song.tags.find(function(tag){
-            tag.id === _filters.tag;
+      if (_filters.showSongs) {
+        if (_filters.tagID) {
+          return _results.songs.filter(function(song){
+            return song.tags.find(function(tag){
+              return tag.id === _filters.tagID;
+            });
           });
-        });
+        } else {
+          return _results.songs.slice(0);
+        }
       } else {
-        return _results.songs.slice(0);
+        return [];
       }
     },
 
@@ -64,8 +72,8 @@
       return _results.tags;
     },
 
-    getFilters: function () {
-      return _filters;
+    getFilters: function (filter) {
+      return filter ? _filters[filter] : _filters;
     },
 
     addResultsChangeListener: function (callback) {

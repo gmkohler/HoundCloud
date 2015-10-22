@@ -9,12 +9,10 @@
     songForm: {
       state: false,
       prop: {}
-    }    
+    }
   };
 
   root.ModalStore = $.extend({}, EventEmitter.prototype, {
-
-
     getModal: function (modalKey) {
       return _modals[modalKey];
     },
