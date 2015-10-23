@@ -118,6 +118,9 @@
         return _queue.slice(0);
       },
 
+      getCurrentSongID: function () {
+        return _queue[0] ? _queue[0].id : 0;
+      },
 
       addQueueChangeListener: function (callback) {
         this.on(SongConstants.QUEUE_CHANGE_EVENT, callback);

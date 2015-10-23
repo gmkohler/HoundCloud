@@ -3,6 +3,38 @@
 (function(root) {
   'use strict';
   root.FeedIndexItem = React.createClass({
+    getInitialState: function () {
+      return {isPlaying: false, currentTime: 0, duration: 0};
+    },
+
+    componentDidMount: function () {
+      SongStore.addQueueChangeListener(this._onQueueChange);
+    },
+
+    componentWillUnmount: function () {
+      SongStore.removeQueueChangeListener(this._onQueueChange);
+    },
+
+    _onQueueChange: function () {
+      if (SongStore.getCurrentSongID() === this.props.song.id) {
+        this.setState({isPlaying: true});
+        AudioStore.addChangeListener(this._getParamsFromStore);
+      } else if (this.state.isPlaying) {
+        this.setState({isPlaying: false, currentTime: 0});
+        AudioStore.removeChangeListener(this._getParamsFromStore);
+      }
+    },
+
+    _getParamsFromStore: function () {
+      var params = AudioStore.getParams();
+      this.setState({currentTime: params.currentTime,
+                        duration: params.duration});
+    },
+
+    _percentElapsed: function () {
+      return (this.state.currentTime / this.state.duration);
+    },
+
     _queueSong: function () {
       SongApiActions.receiveQueuedSong(this.props.song.id);
     },
@@ -43,6 +75,7 @@
       var song = this.props.song;
       var likeText = this.props.song.isLiked ? "Unlike" : "Like";
       var repostText = this.props.song.isReposted ? "Reposted" : "Repost";
+      var playButtonClass = this.state.isPlaying ? "glyphicon-pause" : "glyphicon-play";
       var timeSince = AppUtil.timeSince(new Date(song.created_at));
 
       var tags = song.tags.map(function(tag){
@@ -93,7 +126,7 @@
                       <button type="button"
                               className="btn btn-primary btn-circle btn-play btn-xl"
                               onClick={this._playNow}>
-                        <i className="btn-text glyphicon glyphicon-play"></i>
+                        <i className={"btn-text glyphicon " + playButtonClass}></i>
                       </button>
                     </div>
                     <div className="index-item-left-detail"><span className="index-title">{song.title}</span></div>
@@ -107,6 +140,8 @@
             </div>
 
             <div className="song-index-sound">
+              {this.state.isPlaying ? <span>{this.state.currentTime}</span> : null}
+              {this.state.isPlaying ? <span>{this.state.duration}</span> : null}
             </div>
 
 

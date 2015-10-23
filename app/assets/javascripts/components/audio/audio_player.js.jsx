@@ -14,7 +14,6 @@
     _queueChange: function () {
       var queue = SongStore.getQueue(),
           currentSong = queue.splice(0, 1)[0] || {content_url: ""};
-      // debugger;
       this.setState({currentSong: currentSong, queue: queue});
     },
 

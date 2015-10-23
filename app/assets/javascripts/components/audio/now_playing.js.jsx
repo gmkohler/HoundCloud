@@ -8,7 +8,14 @@
     componentDidMount: function () {
       this.audio = new Audio();
       this.audio.addEventListener("ended", this._onNext, false);
+      this.audio.addEventListener("timeupdate", this._onTimeUpdate, false);
+      this.audio.addEventListener("loadedmetadata", this._onLoadedMetadata, false);
       // "timeupdate" is another important change.
+    },
+    componentWillUnmount: function () {
+      this.audio.removeEventListener("ended", this._onNext);
+      this.audio.removeEventListener("timeupdate", this._onTimeUpdate);
+      this.audio.addEventListener("loadedmetadata", this._onLoadedMetadata, false);
     },
 
     // Let's solve this from the top:
@@ -42,6 +49,21 @@
     _onNext: function (e) {
       e.preventDefault();
       SongApiActions.shiftQueueForward();
+    },
+    _onTimeUpdate: function (e) {
+      AudioActions.receiveCurrentTime(this.audio.currentTime);
+    },
+
+    _onLoadedMetadata: function (e) {
+      var newTrack = e.currentTarget,
+       currentTime = 0,
+          duration = 0;
+      if (!!newTrack.src) {
+        currentTime = newTrack.currentTime,
+           duration = newTrack.duration;
+      }
+
+      AudioActions.receiveNewTrack({currentTime: currentTime, duration: duration});
     },
 
     _playToggle: function () {
