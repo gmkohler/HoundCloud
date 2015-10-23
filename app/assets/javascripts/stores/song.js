@@ -32,8 +32,12 @@
   }
 
   function spliceSingleSong (spliceIdx, deleteCount, songID) {
-    var song = findSong(songID);
-    _queue.splice(spliceIdx, deleteCount, song);
+    if (songID) {
+     var song = findSong(songID);
+     _queue.splice(spliceIdx, deleteCount, song);
+    } else {
+      _queue.splice(spliceIdx, deleteCount);
+    }
   }
 
   function transferSongsToQueue (startSongID) {
@@ -141,6 +145,10 @@
             break;
           case SongConstants.QUEUED_SONG_RECEIVED:
             transferSongsToQueue(payload.songID);
+            SongStore.queueHasChanged();
+            break;
+          case SongConstants.REMOVE_QUEUED_SONG:
+            spliceSingleSong(payload.queueIdx, 1);
             SongStore.queueHasChanged();
             break;
           case SongConstants.PLAY_NOW_RECEIVED:

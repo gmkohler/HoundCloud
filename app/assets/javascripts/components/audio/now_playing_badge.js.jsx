@@ -17,7 +17,7 @@
       };
 
       return (
-        <div>
+        <div className="queue-index-item">
           <div className="now-playing-badge-thumbnail"
                 style={thumbnailStyle}>
           </div>

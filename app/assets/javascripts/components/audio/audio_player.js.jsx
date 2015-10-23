@@ -38,6 +38,7 @@
               </div>
             </div>
             <div id="audio-player-song-holder" className="nav navbar-nav navbar-left">
+
               <QueueIndex queue={this.state.queue}/>
               <div id="now-playing-badge">
                 <NowPlayingBadge song={this.state.currentSong} />

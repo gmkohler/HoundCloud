@@ -22,7 +22,7 @@
 
       AppDispatcher.dispatch(action);
     },
-    
+
     receiveSingleSong: function (data) {
       var action = {
         actionType: SongConstants.SINGLE_SONG_RECEIVED,
@@ -48,6 +48,13 @@
       };
 
       AppDispatcher.dispatch(action);
+    },
+
+    removeSongFromQueue: function (idx) {
+      AppDispatcher.dispatch({
+        actionType: SongConstants.REMOVE_QUEUED_SONG,
+        queueIdx: idx
+      });
     },
 
     receiveQueuedSong: function (id) {

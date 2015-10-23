@@ -15,8 +15,17 @@
 }
 
 #now-playing-badge {
+  margin-right: 0;
+  width:300px;
+  border:none;
+}
+#now-playing-badge-heart {
   width:auto;
   border:none;
+}
+
+div.queue-index-item {
+  width:300px;
 }
 div.now-playing-buttons {
   float:left;
@@ -27,8 +36,9 @@ div.now-playing-badge-thumbnail {
   margin-right:10px;
 }
 div.now-playing-badge-info {
+  text-overflow: ellipsis;
   float:left;
-  width: auto;
+  width: 66%;
 }
 
 button.btn.btn-xl.playback-btn {

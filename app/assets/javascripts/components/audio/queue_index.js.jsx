@@ -1,14 +1,22 @@
 (function(root) {
   'use strict';
   root.QueueIndex = React.createClass({
+    componentWillReceiveProps: function () {
+    },
+
     render: function () {
-      var queueIndexItems = this.props.queue.map(function(song, idx){
-        return (
-          <li id={idx + 1}>
-            <QueueIndexItem song={song} idx={idx}/>
-          </li>
-        );
-      }).reverse();
+      var queueIndexItems;
+      if (this.props.queue.length > 0) {
+        queueIndexItems = this.props.queue.map(function(song, idx){
+          return (
+            <li id={idx + 1}>
+              <QueueIndexItem song={song} idx={idx + 1}/>
+            </li>
+          );
+        }).reverse();
+      } else {
+        queueIndexItems = "Nothing playing!"
+      }
       return (
           <li className="dropup">
             <a href="#"
