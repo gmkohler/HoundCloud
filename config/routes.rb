@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :songs, only: [:index, :create, :show, :update], defaults: {format: :json} do
       resource :like, only: [:create, :destroy], defaults: {format: :json}
       resource :repost, only: [:create, :destroy], defaults: {format: :json}
+      resources :comments, only: [:create, :index], defaults: {format: :json}
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

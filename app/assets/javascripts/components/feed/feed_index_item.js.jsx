@@ -36,7 +36,7 @@
     },
 
     _percentElapsed: function () {
-      return (this.state.currentTime / this.state.duration);
+      return (this.state.currentTime / this.state.duration) || 0;
     },
 
     _queueSong: function () {
@@ -57,6 +57,11 @@
 
     _editSong: function () {
       ModalActions.activateSongFormModal(this.props.song);
+    },
+
+    _addComment: function (body) {
+      var commentTime = this._percentElapsed();
+      CommentsApiUtil.addSongComment(this.props.song.id, body, commentTime);
     },
 
     _likeToggle: function (e) {
@@ -151,6 +156,8 @@
               {this.state.isPlaying ? <span>{this.state.currentTime}</span> : null}
               {this.state.isPlaying ? <span>{this.state.duration}</span> : null}
             </div>
+
+            <CommentForm addComment={this._addComment}/>
 
 
               <div className="song-index-buttons">

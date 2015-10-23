@@ -33,7 +33,8 @@ class User < ActiveRecord::Base
   has_many :reposted_items, through: :reposts, source: :repostable
 
   has_many :songs, foreign_key: :artist_id, dependent: :destroy
-
+  
+  has_many :comments
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
     if user && (user.is_password?(password))

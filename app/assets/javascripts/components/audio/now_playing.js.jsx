@@ -11,13 +11,15 @@
       this.audio.addEventListener("timeupdate", this._onTimeUpdate, false);
       this.audio.addEventListener("loadedmetadata", this._onLoadedMetadata, false);
       AudioStore.addChangeListener(this._onAudioChange);
+      AudioStore.addTrackChangeListener(this._onAudioChange);
     },
 
     componentWillUnmount: function () {
       this.audio.removeEventListener("ended", this._onEnded);
       this.audio.removeEventListener("timeupdate", this._onTimeUpdate);
-      this.audio.addEventListener("loadedmetadata", this._onLoadedMetadata, false);
-      AudioStore.addChangeListener(this._onAudioChange);
+      this.audio.removeEventListener("loadedmetadata", this._onLoadedMetadata, false);
+      AudioStore.removeChangeListener(this._onAudioChange);
+      AudioStore.removeTrackChangeListener(this._onAudioChange);
     },
 
 
@@ -48,7 +50,7 @@
             newState.currentTime !== this.audio.currentTime) {
         this.audio.currentTime = 0;
       }
-      
+
     },
 
     _onEnded: function () {

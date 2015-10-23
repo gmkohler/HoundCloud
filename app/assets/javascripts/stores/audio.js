@@ -42,6 +42,17 @@
     _hasChanged: function () {
       this.emit(AudioConstants.AUDIO_CHANGE_EVENT);
     },
+    addTrackChangeListener: function (callback) {
+      this.on(AudioConstants.AUDIO_TRACK_CHANGE_EVENT, callback);
+    },
+
+    removeTrackChangeListener: function (callback) {
+      this.removeListener(AudioConstants.AUDIO_TRACK_CHANGE_EVENT, callback);
+    },
+
+    _trackHasChanged: function () {
+      this.emit(AudioConstants.AUDIO_TRACK_CHANGE_EVENT);
+    },
 
     dispatcherID: AppDispatcher.register(function(payload){
       switch (payload.actionType) {
@@ -52,7 +63,7 @@
         case AudioConstants.NEW_TRACK_RECEIVED:
           // debugger;
           loadNewTrack(payload.songParams);
-          AudioStore._hasChanged();
+          AudioStore._trackHasChanged();
           break;
         case AudioConstants.METADATA_RECEIVED:
           updateDuration(payload.metadata.duration);

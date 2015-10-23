@@ -2,6 +2,7 @@ json.extract! song, :id, :title, :content_url, :image_url, :artist_id, :created_
 json.set! :artist_username, artist.username
 json.set! :artist_id, artist.id
 json.set! :tags, song.tags
+json.set! :comments, song.comments
 json.set! :numLikes, song.likes.size
 json.set! :numReposts, song.reposts.size
 json.set! :reposters, Hash[song.reposters.map{|reposter| [reposter.id, true]}]

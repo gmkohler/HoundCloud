@@ -22,6 +22,8 @@ class Song < ActiveRecord::Base
   has_many :reposts, as: :repostable
   has_many :reposters, through: :reposts
 
+  has_many :comments, as: :commentable
+
   def self.filter(filter_params)
     if filter_params[:context] == "home"
       user_id = filter_params[:context_data][:id]
@@ -31,7 +33,7 @@ class Song < ActiveRecord::Base
           .order(created_at: :desc)
     elsif filter_params[:context] == "show"
       artist_id = filter_params[:context_data][:id]
-      Song.includes(:artist)
+      Song.includes(:artist, comments: [:user])
           .joins("LEFT OUTER JOIN (
                     SELECT
                       reposts.repostable_id AS song_id, reposts.reposter_id AS reposter_id

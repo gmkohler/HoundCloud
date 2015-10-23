@@ -22,10 +22,14 @@
       AudioStore.removeChangeListener(this._onAudioChange);
     },
 
-    componentWillUpdate: function (_, newState) {
-      var isNewSong = this.state.currentSong.id !== newState.currentSong.id;
+    componentDidUpdate: function (_, prevState) {
+      // currently doesn't allow for two songs in the same queue.
+      // May ask queue to have a counter that always increments.
+      var isNewSong = this.state.currentSong.id !== prevState.currentSong.id;
       if (isNewSong) {
-        AudioActions.receiveNewTrack(newState.currentSong);
+        setTimeout(function(){
+          AudioActions.receiveNewTrack(this.state.currentSong);
+        }.bind(this), 0);
       }
     },
 
