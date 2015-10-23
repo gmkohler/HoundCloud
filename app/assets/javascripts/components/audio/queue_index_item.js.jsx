@@ -6,6 +6,15 @@
       e.preventDefault();
       SongApiActions.removeSongFromQueue(this.props.idx);
     },
+
+    _moveForward: function (e) {
+      e.preventDefault();
+      SongApiActions.moveQueuedSongForward(this.props.idx);
+    },
+    _moveBackward: function (e) {
+      e.preventDefault();
+      SongApiActions.moveQueuedSongBackward(this.props.idx);
+    },
     render: function () {
       var song = this.props.song
 
@@ -36,10 +45,12 @@
           </div>
           <div className="queue-index-item-button-container">
             <div id="queue-index-item-move-back">
-              <i className="glyphicon glyphicon-arrow-up"/>
+              <i className="glyphicon glyphicon-arrow-up"
+                 onClick={this._moveBackward}/>
             </div>
             <div id="queue-index-item-move-up">
-              <i className="glyphicon glyphicon-arrow-down"/>
+              <i className="glyphicon glyphicon-arrow-down"
+                 onClick={this._moveForward}/>
             </div>
             <div id="queue-index-item-remove">
               <i className="glyphicon glyphicon-remove"

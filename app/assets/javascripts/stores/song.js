@@ -40,6 +40,12 @@
     }
   }
 
+  function moveQueuedSong (idx, dir) {
+    var temp = _queue[idx];
+    _queue[idx] = _queue[idx + dir];
+    _queue[idx + dir] = temp;
+  }
+
   function transferSongsToQueue (startSongID) {
     var startSong   = findSong(startSongID),
         startIdx    = _songs.indexOf(startSong),
@@ -149,6 +155,14 @@
             break;
           case SongConstants.REMOVE_QUEUED_SONG:
             spliceSingleSong(payload.queueIdx, 1);
+            SongStore.queueHasChanged();
+            break;
+          case SongConstants.MOVE_QUEUED_SONG_FORWARD:
+            moveQueuedSong(payload.queueIdx, -1);
+            SongStore.queueHasChanged();
+            break;
+          case SongConstants.MOVE_QUEUED_SONG_BACKWARD:
+            moveQueuedSong(payload.queueIdx, 1);
             SongStore.queueHasChanged();
             break;
           case SongConstants.PLAY_NOW_RECEIVED:

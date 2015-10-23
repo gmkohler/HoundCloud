@@ -57,6 +57,20 @@
       });
     },
 
+    moveQueuedSongForward: function (idx) {
+      AppDispatcher.dispatch({
+        actionType: SongConstants.MOVE_QUEUED_SONG_FORWARD,
+        queueIdx: idx
+      });
+    },
+
+    moveQueuedSongBackward: function (idx) {
+      AppDispatcher.dispatch({
+        actionType: SongConstants.MOVE_QUEUED_SONG_BACKWARD,
+        queueIdx: idx
+      });
+    },
+
     receiveQueuedSong: function (id) {
       var action = {
         actionType: SongConstants.QUEUED_SONG_RECEIVED,
