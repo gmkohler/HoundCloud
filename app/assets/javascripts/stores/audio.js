@@ -1,4 +1,5 @@
 /* global AppDispatcher */
+/* global AudioStore */
 /* global EventEmitter */
 /* global AudioConstants */
 (function(root) {
@@ -9,10 +10,22 @@
   function updateCurrentTime (time) {
     _params.currentTime = time;
   }
+  function togglePlay () {
+    _params.paused = !_params.paused;
+  }
+
+  function updateDuration (duration) {
+    _params.duration = duration;
+  }
 
   function loadNewTrack (songParams) {
-    _params.currentTime = songParams.currentTime;
-    _params.duration = songParams.duration;
+    var wasEmpty = !_params.src;
+    var isNowEmpty = !songParams.content_url;
+    _params.src = songParams.content_url;
+    _params.currentTime = 0;
+    debugger;
+    if (wasEmpty) { _params.paused = false; }
+    if (isNowEmpty) { _params.paused = true;  }
   }
 
   root.AudioStore = $.extend({}, EventEmitter.prototype, {
@@ -38,7 +51,20 @@
           AudioStore._hasChanged();
           break;
         case AudioConstants.NEW_TRACK_RECEIVED:
-          loadNewTrack(payload.songParams)
+          debugger;
+          loadNewTrack(payload.songParams);
+          AudioStore._hasChanged();
+          break;
+        case AudioConstants.METADATA_RECEIVED:
+          updateDuration(payload.metadata.duration);
+          AudioStore._hasChanged();
+          break;
+        case AudioConstants.RESET_SONG:
+          updateCurrentTime(0);
+          AudioStore._hasChanged();
+          break;
+        case AudioConstants.TOGGLE_PLAY:
+          togglePlay();
           AudioStore._hasChanged();
           break;
       }

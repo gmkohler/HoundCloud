@@ -17,6 +17,27 @@
       });
     },
 
+    receiveMetadata: function (data) {
+      AppDispatcher.dispatch({
+        actionType: AudioConstants.METADATA_RECEIVED,
+        metadata: data
+      });
+    },
+
+    togglePlay: function () {
+      AppDispatcher.dispatch({
+        actionType: AudioConstants.TOGGLE_PLAY,
+        data: {}
+      });
+    },
+
+    resetSong: function () {
+      AppDispatcher.dispatch({
+        actionType: AudioConstants.RESET_SONG,
+        data: {}
+      });
+    },
+
     pauseSong: function () {
       AppDispatcher.dispatch({
         actionType: AudioConstants.PAUSE_SONG,

@@ -4,34 +4,112 @@
 
   root.AudioPlayer = React.createClass({
     getInitialState: function () {
-      return {currentSong: {content_url: ""}, queue: []};
+      return {paused: true,
+              currentSong: {id: null},
+              queue: [],
+              currentTime: 0,
+              duration: 0,
+            };
     },
 
     componentDidMount: function () {
-      SongStore.addQueueChangeListener(this._queueChange);
+      SongStore.addQueueChangeListener(this._onQueueChange);
+      AudioStore.addChangeListener(this._onAudioChange);
     },
 
-    _queueChange: function () {
+    componentWillUnmount: function () {
+      SongStore.removeQueueChangeListener(this._onQueueChange);
+      AudioStore.removeChangeListener(this._onAudioChange);
+    },
+
+    componentDidUpdate: function () {
+      AudioActions.receiveNewTrack(this.state.currentSong);
+    },
+
+    _onAudioChange: function () {
+      var params = AudioStore.getParams();
+      this.setState({
+        paused: params.paused,
+        currentTime: params.currentTime,
+        duration: params.duration
+      });
+    },
+
+    _onQueueChange: function () {
       var queue = SongStore.getQueue(),
           currentSong = queue.splice(0, 1)[0] || {content_url: ""};
       this.setState({currentSong: currentSong, queue: queue});
     },
 
-    _onPrev: function () {
-      // maybe later get the queue store to have tons of songs,
-      // and have the back button *actually* go back.
+    _togglePlay: function () {
+      AudioActions.togglePlay();
+    },
+    _onPrev: function (e) {
+      // see AudioPlayer for further notes.
+      e.preventDefault();
+      AudioActions.resetSong();
+    },
 
-      // for now (i.e., the near future), get the back button to send the song
-      // to its beginning.
+    _onNext: function (e) {
+      e.preventDefault();
+      var nextTrack = this.state.queue[0];
+      AudioActions.receiveNewTrack({src: nextTrack.content_url});
+      SongApiActions.shiftQueueForward();
+    },
+
+    _actionIcon: function () {
+      if (this.state.paused) {
+        return "glyphicon glyphicon-play";
+      } else {
+        return "glyphicon glyphicon-pause";
+      }
     },
 
     render: function () {
+      var buttons = (
+          [<a href="javascript:void(0)">
+             <button key="back"
+                     type="button"
+                     className="btn btn-xl playback-btn skip"
+                     onClick={this._onPrev}>
+               <i className="glyphicon glyphicon-step-backward"></i>
+             </button>
+           </a>,
+           <a href="javascript:void(0)">
+             <button key="play"
+                     type="button"
+                     className="btn btn-xl playback-btn play"
+                     onClick={this._togglePlay}>
+               <i className={this._actionIcon()}></i>
+             </button>
+           </a>,
+           <a href="javascript:void(0)">
+             <button type="button"
+                     key="next"
+                     className="btn btn-xl playback-btn skip"
+                     onClick={this._onNext}>
+               <i className="glyphicon glyphicon-step-forward"></i>
+             </button>
+           </a>,
+           <a href="javascript:void(0)">
+             <button type="button"
+                     key="repeat"
+                     className="btn btn-xl playback-btn repeat">
+               <i className="glyphicon glyphicon-repeat"></i>
+             </button>
+           </a>]
+       );
+
       // Need to add in Queue again...
       return (
         <nav id="audio-player" className="nav navbar-default navbar-fixed-bottom">
           <div className="container">
-            <NowPlaying song={this.state.currentSong}/>
-            <div id="now-playing">
+            <div id="audio-player-controls"
+                 className="now-playing-buttons">
+              {buttons}
+            </div>
+            <div id="now-playing-state">
+              <NowPlaying />
               <div>
                 <span>forthcoming</span>
               </div>

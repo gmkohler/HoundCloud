@@ -45,7 +45,7 @@
 
     _playToggle: function () {
       if (this.state.isPlaying) {
-        AudioActions.pauseSong();
+        AudioActions.togglePlay();
       } else {
         SongApiActions.receivePlayNow(this.props.song.id);
       }
