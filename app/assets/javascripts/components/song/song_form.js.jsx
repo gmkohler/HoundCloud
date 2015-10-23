@@ -190,7 +190,7 @@
                            name="tag[name]"
                            id="tag_name"
                            onKeyUp={this.keyUpHandler}
-                           placeholder="Add a Tag! (return or tab to submit)"
+                           placeholder="Add a Tag! (return to submit)"
                            valueLink={this.linkState("tagForm")}/>
                   </div>
 

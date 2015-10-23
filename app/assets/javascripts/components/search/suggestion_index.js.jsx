@@ -10,7 +10,7 @@
 
     componentDidMount: function () {
       SearchStore.addResultsChangeListener(this._getSuggestionsFromStore);
-      this._updateSuggestions(this.state.searchQuery);
+      this._updateSuggestions(this.props.searchQuery);
     },
 
     componentWillUnmount: function () {
@@ -23,7 +23,7 @@
 
     _updateSuggestions: function (searchQuery) {
       UserApiUtil.fetchQueriedUsers(searchQuery);
-      SongApiUtil.fetchQueriedSongs(searchQuery);
+      SongApiUtil.fetchSongsByContext("search", searchQuery);
     },
 
     _getSuggestionsFromStore: function () {
@@ -31,28 +31,39 @@
         this.setState({suggestions: {users: [], songs: []}});
       } else {
         this.setState(
-          {suggestions: SearchStore.getMatchingResuls(this.props.searchQuery, 5)}
+          {suggestions: SearchStore.getMatchingResults(this.props.searchQuery, 5)}
         );
       }
     },
 
     render: function () {
-      var userIndexItems = this.state.suggestions.map(function(user) {
+      var suggs = this.state.suggestions;
+      var userIndexItems = suggs.users.map(function(user) {
         return (<UserSuggestionIndexItem key={user.id} user={user}/>);
       });
-      var songIndexItems = this.state.suggestions.map(function(user) {
+      var userSuggestions = (
+        <ul className="auto-search">
+          <li><span>Users</span></li>
+          {userIndexItems}
+        </ul>
+      );
+
+      var songIndexItems = suggs.songs.map(function(song) {
         return (<SongSuggestionIndexItem key={song.id} song={song}/>);
       });
 
-      return (
-        <div><span>Users</span></div>
+      var songSuggestions = (
         <ul className="auto-search">
-          {userIndexItems}
-        </ul>
-        <div><span>Songs</span></div>
-        <ul className="auto-search">
+          <li><span>Songs</span></li>
           {songIndexItems}
         </ul>
+      );
+
+      return (
+        <div id="suggestion-index">
+         {this.props.searchQuery ? userSuggestions : null}
+         {this.props.searchQuery ? songSuggestions : null}
+        </div>
       )
     }
 

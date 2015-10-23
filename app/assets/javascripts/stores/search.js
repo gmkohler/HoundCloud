@@ -83,9 +83,10 @@
         return (!!song.title.match(term) || !!song.artist_username.match(term));
       });
 
-      numResults = numResults || users.length;
-      var userResults = users.slice(0, numResults);
-      var songResults = songs.slice(0, numResults);
+      var numUsers = numResults || users.length,
+          numSongs = numResults || songs.length;
+      var userResults = users.slice(0, numUsers);
+      var songResults = songs.slice(0, numSongs);
 
       return {users: userResults, songs: songResults};
     },

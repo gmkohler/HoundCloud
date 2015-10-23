@@ -10,6 +10,17 @@
       return ({searchQuery: ""});
     },
 
+    _clearQuery: function () {
+      this.setState({searchQuery: ""});
+    },
+
+    _keyUpHandler: function (e) {
+      var ESC_KEY_CODE = 27;
+      if (e.keyCode === ESC_KEY_CODE) {
+        this._clearQuery();
+      }
+    },
+
     _submit: function (e) {
       e.preventDefault();
       this.props.onSearch(this.state.searchQuery);
@@ -21,8 +32,11 @@
       // relative to it.
       // <SuggestionIndex searchQuery={this.state.searchQuery}/>
       return (
-          <form className="navbar-form navbar-left col-lg-6"
+          <form id="search-bar"
+                className="navbar-form navbar-left col-lg-6"
                 role="search"
+                onBlur={this._clearQuery}
+                onKeyUp={this._keyUpHandler}
                 onSubmit={this._submit}>
             <div className="form-group has-feedback">
               <input type="text"
@@ -31,7 +45,7 @@
                      placeholder="Search"/>
               <i className="glyphicon glyphicon-search form-control-feedback"/>
             </div>
-
+            <SuggestionIndex searchQuery={this.state.searchQuery}/>
           </form>
       );
     }
