@@ -23,7 +23,6 @@
     var isNowEmpty = !songParams.content_url;
     _params.src = songParams.content_url;
     _params.currentTime = 0;
-    debugger;
     if (wasEmpty) { _params.paused = false; }
     if (isNowEmpty) { _params.paused = true;  }
   }

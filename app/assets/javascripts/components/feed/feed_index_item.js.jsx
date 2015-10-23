@@ -16,11 +16,12 @@
     },
 
     _onQueueChange: function () {
-      if (SongStore.getCurrentSongID() === this.props.song.id) {
-        this.setState({isPlaying: true});
-        AudioStore.addChangeListener(this._getParamsFromStore);
+      if (SongStore.getCurrentSongID() === this.props.song.id &&
+            !this.state.isPlaying) {
+          this.setState({isPlaying: true});
+          AudioStore.addChangeListener(this._getParamsFromStore);
       } else if (this.state.isPlaying) {
-        this.setState({isPlaying: false, currentTime: 0});
+        this.setState({isPlaying: false, currentTime: 0, paused: true});
         AudioStore.removeChangeListener(this._getParamsFromStore);
       }
     },

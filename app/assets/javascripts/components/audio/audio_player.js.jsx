@@ -23,7 +23,9 @@
     },
 
     componentWillUpdate: function (_, newState) {
-      if (this.state.currentSong.id !== newState.currentSong.id) {
+      var isNewSong = this.state.currentSong.id !== newState.currentSong.id;
+      if (isNewSong) {
+        debugger;
         AudioActions.receiveNewTrack(newState.currentSong);
       }
     },
@@ -38,6 +40,7 @@
     },
 
     _onQueueChange: function () {
+      debugger;
       var queue = SongStore.getQueue(),
           currentSong = queue.splice(0, 1)[0] || {content_url: ""};
       this.setState({currentSong: currentSong, queue: queue});
@@ -54,8 +57,6 @@
 
     _onNext: function (e) {
       e.preventDefault();
-      var nextTrack = this.state.queue[0];
-      AudioActions.receiveNewTrack({src: nextTrack.content_url});
       SongApiActions.shiftQueueForward();
     },
 

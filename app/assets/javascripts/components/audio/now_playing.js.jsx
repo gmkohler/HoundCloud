@@ -31,7 +31,6 @@
 
     componentWillUpdate: function (_, newState) {
       if (this.state.paused !== newState.paused && this.state.src === newState.src) {
-        debugger;
         this._togglePlay();
       }
       if (this.state.src !== newState.src) {

@@ -157,6 +157,7 @@
             SongStore.queueHasChanged();
             break;
           case SongConstants.QUEUED_SONG_RECEIVED:
+            queueSingleSong(payload.songID);
             SongStore.queueHasChanged();
             break;
           case SongConstants.REMOVE_QUEUED_SONG:
