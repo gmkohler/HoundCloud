@@ -4,7 +4,7 @@
   'use strict';
   root.FeedIndexItem = React.createClass({
     getInitialState: function () {
-      return {isPlaying: false, currentTime: 0, duration: 0};
+      return {isPlaying: false, paused: true, currentTime: 0, duration: 0};
     },
 
     componentDidMount: function () {
@@ -27,8 +27,11 @@
 
     _getParamsFromStore: function () {
       var params = AudioStore.getParams();
-      this.setState({currentTime: params.currentTime,
-                        duration: params.duration});
+      this.setState({
+        paused: params.paused,
+        currentTime: params.currentTime,
+        duration: params.duration
+      });
     },
 
     _percentElapsed: function () {
@@ -79,7 +82,7 @@
       var song = this.props.song;
       var likeText = this.props.song.isLiked ? "Unlike" : "Like";
       var repostText = this.props.song.isReposted ? "Reposted" : "Repost";
-      var playButtonClass = this.state.isPlaying ? "glyphicon-pause" : "glyphicon-play";
+      var playButtonClass = this.state.paused ? "glyphicon-play" : "glyphicon-pause";
       var timeSince = AppUtil.timeSince(new Date(song.created_at));
 
       var tags = song.tags.map(function(tag){

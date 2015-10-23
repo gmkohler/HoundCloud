@@ -22,8 +22,10 @@
       AudioStore.removeChangeListener(this._onAudioChange);
     },
 
-    componentDidUpdate: function () {
-      AudioActions.receiveNewTrack(this.state.currentSong);
+    componentWillUpdate: function (_, newState) {
+      if (this.state.currentSong.id !== newState.currentSong.id) {
+        AudioActions.receiveNewTrack(newState.currentSong);
+      }
     },
 
     _onAudioChange: function () {

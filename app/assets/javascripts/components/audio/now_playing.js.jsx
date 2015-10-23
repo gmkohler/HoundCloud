@@ -30,8 +30,10 @@
     },
 
     componentWillUpdate: function (_, newState) {
-      if (this.state.paused !== newState.paused &&
-            this.src === newState.src) { this.togglePlay(); }
+      if (this.state.paused !== newState.paused && this.state.src === newState.src) {
+        debugger;
+        this._togglePlay();
+      }
       if (this.state.src !== newState.src) {
         this.audio.pause();
         this.audio.src = newState.src;

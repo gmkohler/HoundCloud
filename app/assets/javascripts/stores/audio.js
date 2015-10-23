@@ -51,7 +51,7 @@
           AudioStore._hasChanged();
           break;
         case AudioConstants.NEW_TRACK_RECEIVED:
-          debugger;
+          // debugger;
           loadNewTrack(payload.songParams);
           AudioStore._hasChanged();
           break;
