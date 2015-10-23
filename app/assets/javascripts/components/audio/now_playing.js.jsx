@@ -29,18 +29,26 @@
         currentTime: params.currentTime});
     },
 
+    shouldComponentUpdate: function (_, newState) {
+      return true;
+    },
+
     componentWillUpdate: function (_, newState) {
       if (this.state.paused !== newState.paused && this.state.src === newState.src) {
         this._togglePlay();
       }
+
       if (this.state.src !== newState.src) {
         this.audio.pause();
         this.audio.src = newState.src;
         this.audio.load();
-        if (!newState.paused) {this.audio.play();}
+        this.audio.play();
       }
-
-      if (newState.currentTime === 0) {this.audio.currentTime === 0;}
+      if (newState.currentTime === 0 &&
+            newState.currentTime !== this.audio.currentTime) {
+        this.audio.currentTime = 0;
+      }
+      
     },
 
     _onEnded: function () {

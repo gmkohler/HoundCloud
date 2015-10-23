@@ -25,7 +25,6 @@
     componentWillUpdate: function (_, newState) {
       var isNewSong = this.state.currentSong.id !== newState.currentSong.id;
       if (isNewSong) {
-        debugger;
         AudioActions.receiveNewTrack(newState.currentSong);
       }
     },
@@ -40,7 +39,6 @@
     },
 
     _onQueueChange: function () {
-      debugger;
       var queue = SongStore.getQueue(),
           currentSong = queue.splice(0, 1)[0] || {content_url: ""};
       this.setState({currentSong: currentSong, queue: queue});
