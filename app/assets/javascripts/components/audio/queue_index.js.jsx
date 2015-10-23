@@ -6,11 +6,15 @@
 
     render: function () {
       var queueIndexItems;
-      if (this.props.queue.length > 0) {
+      var queueLength = this.props.queue.length;
+      if (queueLength > 0) {
         queueIndexItems = this.props.queue.map(function(song, idx){
           return (
             <li id={idx + 1}>
-              <QueueIndexItem song={song} idx={idx + 1}/>
+              <QueueIndexItem song={song}
+                              idx={idx + 1}
+                              last={(idx === queueLength - 1)}
+                              first={(idx === 0)}/>
             </li>
           );
         }).reverse();

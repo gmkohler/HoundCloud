@@ -9,14 +9,21 @@
 
     _moveForward: function (e) {
       e.preventDefault();
-      SongApiActions.moveQueuedSongForward(this.props.idx);
+      debugger;
+      if (!this.props.first) {
+        SongApiActions.moveQueuedSongForward(this.props.idx);
+      }
     },
+
     _moveBackward: function (e) {
       e.preventDefault();
-      SongApiActions.moveQueuedSongBackward(this.props.idx);
+      if (!this.props.last) {
+        SongApiActions.moveQueuedSongBackward(this.props.idx);
+      }
     },
+
     render: function () {
-      var song = this.props.song
+      var song = this.props.song;
 
       var thumbnailStyle = {
         backgroundImage: "url(" + (song.image_url || "") + ")",
