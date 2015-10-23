@@ -1,6 +1,6 @@
 (function(root) {
   'use strict';
-  root.SuggestionIndexItem = React.createClass({
+  root.UserSuggestionIndexItem = React.createClass({
     render: function () {
       var user = this.props.user
       return (

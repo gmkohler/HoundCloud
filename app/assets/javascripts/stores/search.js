@@ -63,6 +63,33 @@
       }
     },
 
+    // _values: function (obj) {
+    //   var keys = Object.keys(obj);
+    //   if (keys) {
+    //     return keys.map(function(key) {
+    //       return obj[key];
+    //     });
+    //   } else {
+    //     return [];
+    //   }
+    // },
+
+    getMatchingResults: function(term, numResults){
+      var users = _results.users.filter(function(user){
+        return !!user.username.match(term);
+      });
+
+      var songs = _results.songs.filter(function(song){
+        return (!!song.title.match(term) || !!song.artist_username.match(term));
+      });
+
+      numResults = numResults || users.length;
+      var userResults = users.slice(0, numResults);
+      var songResults = songs.slice(0, numResults);
+
+      return {users: userResults, songs: songResults};
+    },
+
     getTags: function () {
       return _results.tags;
     },

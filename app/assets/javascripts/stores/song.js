@@ -1,5 +1,6 @@
 /* global EventEmitter */
 /* global SongConstants */
+/* global SearchConstants */
 /* global AppDispatcher */
 /* global SongStore */
 (function(root) {
@@ -17,10 +18,10 @@
     });
   }
 
-  function updateSingleSong(song) {
+  function addSingleSong(song) {
     var idx = _songs.indexOf(findSong(song.id));
     if (idx === -1) {
-      return;
+      _songs.push(song);
     } else {
       _songs[idx] = song;
     }
@@ -134,7 +135,7 @@
       DispatcherID: AppDispatcher.register(function (payload) {
         switch (payload.actionType) {
           case SongConstants.SINGLE_SONG_RECEIVED:
-            updateSingleSong(payload.song);
+            addSingleSong(payload.song);
             SongStore.hasChanged();
             break;
           case SongConstants.ALL_SONGS_RECEIVED:
@@ -145,12 +146,14 @@
             resetSongs(payload.songs);
             SongStore.hasChanged();
             break;
+          case SearchConstants.QUERIED_SONGS_RECEIVED:
+            resetSongs(payload.songs);
+            break;
           case SongConstants.SINGLE_QUEUED_SONG_RECEIVED:
             queueSingleSong(payload.songID);
             SongStore.queueHasChanged();
             break;
           case SongConstants.QUEUED_SONG_RECEIVED:
-            transferSongsToQueue(payload.songID);
             SongStore.queueHasChanged();
             break;
           case SongConstants.REMOVE_QUEUED_SONG:

@@ -3,11 +3,6 @@
 (function(root) {
   'use strict';
   root.FeedIndexItem = React.createClass({
-
-    componentDidMount: function () {},
-
-    componentWillReceiveProps: function () {},
-
     _queueSong: function () {
       SongApiActions.receiveQueuedSong(this.props.song.id);
     },

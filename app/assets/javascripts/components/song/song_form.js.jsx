@@ -72,7 +72,7 @@
     createSong: function (e) {
       var songParams = this._songParams();
       var onSuccess = function (data) {
-        SongApiUtil.receiveSingleSong(data);
+        SongApiActions.receiveSingleSong(data);
         ModalActions.deactivateSongFormModal();
       };
 
@@ -93,9 +93,12 @@
 // need to listen on container not on tag form for escape key
     keyUpHandler: function (e) {
       e.preventDefault();
-      if (e.keyCode === 13) {
+      var RETURN_KEY_CODE = 13,
+             TAB_KEY_CODE = 9,
+             ESC_KEY_CODE = 27;
+      if (e.keyCode === RETURN_KEY_CODE || e.keyCode === TAB_KEY_CODE) {
         this.addTag();
-      } else if (e.keyCode === 27) {
+      } else if (e.keyCode === ESC_KEY_CODE) {
         this.deactivate();
       }
     },
@@ -159,9 +162,11 @@
       );
 
       return (
-        <div className={active} id="modal-overlay">
+        <div className={active} id="modal-overlay"
+             onKeyUp={this.keyUpHandler}>
           <div className={active} id="modal-form-container">
-            <div className={active} id="modal-form-contents">
+            <div className={active}
+                 id="modal-form-contents">
               <div className="form-exit">
                 <i className="glyphicon glyphicon-remove"
                    onClick={this.deactivate}/>
@@ -185,7 +190,7 @@
                            name="tag[name]"
                            id="tag_name"
                            onKeyUp={this.keyUpHandler}
-                           placeholder="Add a Tag!"
+                           placeholder="Add a Tag! (return or tab to submit)"
                            valueLink={this.linkState("tagForm")}/>
                   </div>
 

@@ -5,16 +5,16 @@
   'use strict';
   root.SuggestionIndex = React.createClass({
     getInitialState: function () {
-      return ({suggestions: []});
+      return ({suggestions: {users: [], songs: []}});
     },
 
     componentDidMount: function () {
-      UserStore.addChangeListener(this._getSuggestionsFromStore);
+      SearchStore.addResultsChangeListener(this._getSuggestionsFromStore);
       this._updateSuggestions(this.state.searchQuery);
     },
 
     componentWillUnmount: function () {
-      UserStore.removeChangeListener(this._getSuggestionsFromStore);
+      SearchStore.removeResultsChangeListener(this._getSuggestionsFromStore);
     },
 
     componentWillReceiveProps: function (newProps) {
@@ -22,27 +22,36 @@
     },
 
     _updateSuggestions: function (searchQuery) {
-        UserApiUtil.fetchQueriedUsers(searchQuery);
+      UserApiUtil.fetchQueriedUsers(searchQuery);
+      SongApiUtil.fetchQueriedSongs(searchQuery);
     },
 
     _getSuggestionsFromStore: function () {
       if (this.props.searchQuery === "") {
-        this.setState({suggestions: []});
+        this.setState({suggestions: {users: [], songs: []}});
       } else {
         this.setState(
-          {suggestions: UserStore.getMatchingUsers(this.props.searchQuery, 5)}
+          {suggestions: SearchStore.getMatchingResuls(this.props.searchQuery, 5)}
         );
       }
     },
 
     render: function () {
-      var indexItems = this.state.suggestions.map(function(user) {
-        return (<SuggestionIndexItem key={user.id} user={user}/>);
+      var userIndexItems = this.state.suggestions.map(function(user) {
+        return (<UserSuggestionIndexItem key={user.id} user={user}/>);
+      });
+      var songIndexItems = this.state.suggestions.map(function(user) {
+        return (<SongSuggestionIndexItem key={song.id} song={song}/>);
       });
 
       return (
+        <div><span>Users</span></div>
         <ul className="auto-search">
-          {indexItems}
+          {userIndexItems}
+        </ul>
+        <div><span>Songs</span></div>
+        <ul className="auto-search">
+          {songIndexItems}
         </ul>
       )
     }
