@@ -43,8 +43,12 @@
       SongApiActions.receivePlayNext(this.props.song.id);
     },
 
-    _playNow: function () {
-      SongApiActions.receivePlayNow(this.props.song.id);
+    _playToggle: function () {
+      if (this.state.isPlaying) {
+        AudioActions.pauseSong();
+      } else {
+        SongApiActions.receivePlayNow(this.props.song.id);
+      }
     },
 
     _editSong: function () {
@@ -125,7 +129,7 @@
                     <div className="index-item-btn-play">
                       <button type="button"
                               className="btn btn-primary btn-circle btn-play btn-xl"
-                              onClick={this._playNow}>
+                              onClick={this._playToggle}>
                         <i className={"btn-text glyphicon " + playButtonClass}></i>
                       </button>
                     </div>

@@ -10,10 +10,17 @@
       });
     },
 
-    receiveNewTrack: function (data) {      
+    receiveNewTrack: function (data) {
       AppDispatcher.dispatch({
         actionType: AudioConstants.NEW_TRACK_RECEIVED,
         songParams: data
+      });
+    },
+
+    pauseSong: function () {
+      AppDispatcher.dispatch({
+        actionType: AudioConstants.PAUSE_SONG,
+        data: {}
       });
     }
   };

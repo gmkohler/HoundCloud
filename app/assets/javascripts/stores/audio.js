@@ -4,18 +4,21 @@
 (function(root) {
   'use strict';
 
-  var _params = {currentTime: 0, duration: 0};
+  var _params = {src: "", paused: true, currentTime: 0, duration: 0};
 
   function updateCurrentTime (time) {
     _params.currentTime = time;
   }
 
   function loadNewTrack (songParams) {
-    _params.currentTime = songParams.currenTime;
+    _params.currentTime = songParams.currentTime;
     _params.duration = songParams.duration;
   }
 
   root.AudioStore = $.extend({}, EventEmitter.prototype, {
+    getParams: function () {
+      return _params;
+    },
     addChangeListener: function (callback) {
       this.on(AudioConstants.AUDIO_CHANGE_EVENT, callback);
     },

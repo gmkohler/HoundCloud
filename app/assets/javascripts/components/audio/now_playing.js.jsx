@@ -2,7 +2,7 @@
   'use strict';
   root.NowPlaying = React.createClass({
     getInitialState: function () {
-      return {paused: true};
+      return {paused: true, currentTime: 0, duration: 0, src: ""};
     },
 
     componentDidMount: function () {
@@ -10,12 +10,14 @@
       this.audio.addEventListener("ended", this._onNext, false);
       this.audio.addEventListener("timeupdate", this._onTimeUpdate, false);
       this.audio.addEventListener("loadedmetadata", this._onLoadedMetadata, false);
+      AudioStore.addChangeListener(this._onAudioChange);
       // "timeupdate" is another important change.
     },
     componentWillUnmount: function () {
       this.audio.removeEventListener("ended", this._onNext);
       this.audio.removeEventListener("timeupdate", this._onTimeUpdate);
       this.audio.addEventListener("loadedmetadata", this._onLoadedMetadata, false);
+      AudioStore.addChangeListener(this._onAudioChange);
     },
 
     // Let's solve this from the top:
@@ -51,6 +53,7 @@
       SongApiActions.shiftQueueForward();
     },
     _onTimeUpdate: function (e) {
+      if (this.satte.)
       AudioActions.receiveCurrentTime(this.audio.currentTime);
     },
 
