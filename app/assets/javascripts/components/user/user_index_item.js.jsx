@@ -26,11 +26,12 @@
       // };
 
       return(
-        <div className="sidebar-follow-item">
-          <button className="btn btn-xs btn-song-index"
+        <div className="clearfix sidebar-follow-item">
+          <button className="btn btn-xs btn-song-index btn-sidebar-follow"
                   onClick={this._followToggle}>
             {this.state.followText}</button>
-          <div className="sidebar-follow-item-thumbnail">
+          <div className="sidebar-follow-item-thumbnail-container">
+            <div className="sidebar-follow-item-thumbnail"/>
           </div>
           <div className="sidebar-follow-item-detail">
             <div className="sidebar-follow-item-info">

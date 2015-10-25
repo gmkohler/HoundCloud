@@ -10,9 +10,9 @@
     render: function () {
       return (
         <div>
-          <div>
-            <h4>Who To Follow</h4>
+          <div className="follow-suggestion-header">
             <i className="glyphicon glyphicon-user"/>
+            <span>Who To Follow</span>
           </div>
           <SideBarFollowIndexItem />
           <SideBarFollowIndexItem />

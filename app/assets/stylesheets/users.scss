@@ -9,6 +9,75 @@ div.explore-tabs {
   margin-bottom: 30px;
 }
 
+div.follow-suggestion-header {
+  border-bottom: 1px solid #F2F2F2;
+  span {
+    font-size:18px;
+    display:inline-block;
+  }
+
+  i:before {
+    position:relative;
+    bottom:0;
+    margin-right:4px;
+    display:inline-block;
+    float:left;
+  }
+}
+
+div.sidebar-follow-item {
+  padding: 8px 0;
+  border-bottom: solid 1px #F2F2F2;
+  margin-bottom: 20px;
+  position: relative;
+}
+div.sidebar-follow-item .btn-sidebar-follow {
+  position: absolute;
+  right:5px;
+  bottom:8px;
+}
+div.sidebar-follow-item-thumbnail-container {
+  width: 15%;
+  float:left;
+  display:inline-block;
+}
+div.sidebar-follow-item-detail {
+  width: 85%;
+  float:left;
+  display:inline-block;
+}
+div.sidebar-follow-item-info span {
+  font-size:13px;
+  color:#333333
+}
+div.sidebar-follow-item-stats span {
+  color:#999999;
+}
+div.sidebar-follow-item-stats div {
+  font-size: 10px;
+  margin-right: 4px;
+}
+div.sidebar-follow-item-stats i {
+  font-size: 10px;
+  margin-right: 2px;
+  color:#999999;
+  float:left;
+}
+
+div.sidebar-follow-item-thumbnail {
+  position:relative;
+  top:5px;
+  height:30px;
+  width:30px;
+  background-color: #cccccc;
+  background-size: cover;
+  background-position: center;
+}
+
+div.sidebar-follow-item-stats>div {
+  float:left;
+}
+
 
 .container.feed-container {
   padding-top: 30px;
@@ -133,7 +202,7 @@ div.user-bar-section-left>div {
 div.user-bar-section-left>div:last-child {
   margin-right: 0;
 }
-div.user-bar-section-left>div>span{
+div.user-bar-section-left>div>a{
   display:block;
   font-size: 24px;
   font-weight:500;
@@ -143,7 +212,8 @@ div.user-bar-section-left>div>span{
   color: #000000;
   display:block;
 }
-div.user-bar-section-left>span.active{
+div.user-bar-section-left>a.active{
+  font-size:24px;
   border-color: #FF5500;
   color: #FF5500;
 }
