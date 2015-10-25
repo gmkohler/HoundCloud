@@ -27,46 +27,41 @@
 
       var thumbnailStyle = {
         backgroundImage: "url(" + (song.image_url || "") + ")",
-        backgroundSize: "contain",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
         height: "30px",
-        width: "30px",
-        border: "1px solid rgba(0, 0, 0, .15)",
-        position: "relative",
-        top: "7px"
+        width: "30px"
       };
 
       return (
-        <div className="queue-index-item">
-
-          <div className="now-playing-badge-info">
+        <div className="clearfix queue-index-item">
+          <div className="queue-index-item-thumbnail-container">
+            <div className="queue-index-item-thumbnail"
+                  style={thumbnailStyle}/>
+          </div>
+          <div className="queue-index-item-info">
             <div className="first-row">
-              <span className="now-playing-badge-artist">
+              <span className="queue-index-item-artist">
                 <Link to={"users/" + song.artist_id}>
                       {song.artist_username}
                 </Link>
               </span>
+            </div>
+            <div className="second-row">
+              <span className="queue-index-item-title">
+                {song.title || "Nothing selected"}
+              </span>
+            </div>
+          </div>
+          <div className="queue-index-item-button-container">
+            <div id="updown">
               <div id="queue-index-item-move-back">
                 <i className="glyphicon glyphicon-arrow-up"
                    onClick={this._moveBackward}/>
               </div>
-            </div>
-            <div className="second-row">
-              <div className="now-playing-badge-thumbnail-container">
-                <div className="now-playing-badge-thumbnail"
-                      style={thumbnailStyle}/>
-              </div>
-              <span className="now-playing-badge-title">
-                {song.title || "Nothing selected"}
-              </span>
               <div id="queue-index-item-move-up">
                 <i className="glyphicon glyphicon-arrow-down"
                    onClick={this._moveForward}/>
               </div>
             </div>
-          </div>
-          <div className="queue-index-item-button-container">
             <div id="queue-index-item-remove">
               <i className="glyphicon glyphicon-remove"
                  onClick={this._removeFromQueue}/>

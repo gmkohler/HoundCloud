@@ -12,6 +12,60 @@
   padding: 5px 0;
   display:inline-block;
   width:30%;
+
+  div.now-playing-badge-thumbnail-container {
+    margin: 0 5px;
+    display:inline-block;
+    float:left;
+    width: auto;
+
+    div.now-playing-badge-thumbnail {
+      margin:none;
+      display:inline-block;
+      position:relative;
+      bottom:5px;
+    }
+  }
+  div.now-playing-badge-info {
+    padding: 5px 0px;
+    float:left;
+    width: 65%;
+    line-height:1.2;
+
+    div {
+      height:auto;
+      width:100%;
+
+      span {
+        white-space:nowrap;
+        text-overflow: ellipsis;
+
+
+        &.now-playing-badge-boilerplate {
+          font-size: 10px;
+          color: #777777;
+          a {
+            float:left;
+            display:inline-block;
+            font-weight: 100;
+            text-decoration:none;
+          }
+
+          div {
+            width:auto;
+            display:inline-block;
+            float:right;
+          }
+        }
+
+        &.now-playing-badge-title {
+          color: #333333;
+          font-size: 12px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
 }
 #now-playing {
   float: left;
@@ -22,12 +76,12 @@
   float: left;
   width: 40%;
 }
-
 #now-playing-badge {
   width:auto;
   margin-right: 0;
   border:none;
   display: inline-block;
+
 }
 #now-playing-badge-heart {
   display:inline-block;
@@ -35,11 +89,24 @@
   border:none;
 }
 
+li.dropup {
+  >a{
+    >div {
+      >span {
+        margin-left: 4px;
+      }
+    }
+  }
+}
 
 ul.queue-index-item {
   width: 282px;
   li {
     width:100%;
+    border-bottom: 1px solid #eeeeee;
+    &:last-child {
+      border: none;
+    }
     div.queue-index-item {
       width: 100%;
       div {
@@ -47,60 +114,44 @@ ul.queue-index-item {
         display:inline-block;
       }
 
-
-      div.now-playing-badge-info {
-        #
+      div.queue-index-item-thumbnail-container {
+        position:relative;
+        padding:6px 5px;
+        display:inline-block;
         float:left;
-        width: auto;
+        width: 15%;
+        div.queue-index-item-thumbnail {
+          background-size: contain;
+          background-position: center;
+          background-repeat: no-repeat;
+
+          border: 1px solid rgba(0, 0, 0, .15);
+          width:auto;
+        }
+      }
 
 
-        line-height: 1.3;
+      div.queue-index-item-info {
+        padding: 5px 0px;
+        float:left;
+        width: 65%;
+
         div {
+          line-height:1.35;
+          height:auto;
           width:100%;
-          line-height: 1.3;
-
-          &.first-row {
-            width:100%;
-            padding-left:35px;
-
-            #queue-index-item-move-back {
-              width:auto;
-              display:inline-block;
-              float:right;
-            }
-          }
-
-          &.second-row {
-            width:100%;
-            
-            div.now-playing-item-thumbnail-container {
-              margin: 0 5px;
-              display:inline-block;
-              float:left;
-              width: auto;
-              div.now-playing-item-thumbnail {
-                position:relative;
-                bottom:5px;
-              }
-            }
-            #queue-index-item-move-up {
-              width:auto;
-              display:inline-block;
-              float:right;
-            }
-          }
+          position:relative;
 
           span {
             white-space:nowrap;
             text-overflow: ellipsis;
 
-            &.now-playing-badge-artist {
+            &.queue-index-item-artist {
               a {
                 float:left;
                 display:inline-block;
                 font-size: 10px;
                 font-weight: 100;
-                line-height: 1.2;
                 color: #999999;
                 text-decoration:none;
               }
@@ -116,26 +167,58 @@ ul.queue-index-item {
               }
             }
 
-            &.now-playing-badge-title {
+            &.queue-index-item-title {
               color: #333333;
               font-size: 12px;
               font-weight: 700;
-              line-height: 1.3;
             }
           }
         }
       }
       div.queue-index-item-button-container{
+        width:15%;
         float:right;
         display:inline;
-        padding: 0 2px;
+        padding: 5px 0px;
+        color: #CCCCCC;
+
+
+
+        #updown {
+          width:auto;
+
+          div {
+            &:hover {
+              cursor: pointer;
+              color: #AAAAAA;
+            }
+            font-size:12px;
+            clear:both;
+            display:inline-block;
+            float:left;
+          }
+        }
+        #queue-index-item-remove {
+          margin: 0px 5px;
+          i {
+            padding: 10px 0px;
+            &:hover {
+              cursor: pointer;
+              color: #AAAAAA;
+            }
+          }
+        }
       }
     }
   }
 }
+
+
+
+
 div.now-playing-buttons {
   float:left;
-  width:auto;
+  width:10%;
   div {
     display:inline-block;
     width:auto;
@@ -145,12 +228,6 @@ div.now-playing-buttons {
     }
   }
 }
-div.now-playing-badge-thumbnail {
-  float:left;
-  margin-right:10px;
-}
-
-
 
 button.btn.btn-xl.playback-btn {
   color: #333333;
