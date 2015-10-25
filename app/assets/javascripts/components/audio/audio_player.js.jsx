@@ -95,13 +95,6 @@
                      onClick={this._onNext}>
                <i className="glyphicon glyphicon-step-forward"></i>
              </button>
-           </a>,
-           <a href="javascript:void(0)">
-             <button type="button"
-                     key="repeat"
-                     className="btn btn-xl playback-btn repeat">
-               <i className="glyphicon glyphicon-repeat"></i>
-             </button>
            </a>]
        );
 
@@ -111,7 +104,9 @@
           <div className="container">
             <div id="audio-player-controls"
                  className="now-playing-buttons">
-              {buttons}
+                 <div className="clearfix">
+                   {buttons}
+                 </div>
             </div>
             <div id="now-playing-state">
               <NowPlaying />
@@ -119,13 +114,14 @@
                 <span>forthcoming</span>
               </div>
             </div>
-            <div id="audio-player-song-holder" className="nav navbar-nav navbar-left">
 
+            <div  className="nav navbar-nav navbar-left">
               <QueueIndex queue={this.state.queue}/>
-              <div id="now-playing-badge">
+            </div>
+
+              <div id="audio-player-song-holder">
                 <NowPlayingBadge song={this.state.currentSong} />
               </div>
-            </div>
           </div>
         </nav>
       );

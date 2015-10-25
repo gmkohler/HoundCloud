@@ -33,7 +33,7 @@
                 <li className="selected"><Link to="#">Home</Link></li>
                 <li><Link to="#">Collection</Link> </li>
               </ul>
-              <div>
+              <div className="col-md-5">
                 <SearchBar onSearch={this.props.onSearch} />
               </div>
 

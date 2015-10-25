@@ -16,7 +16,6 @@
     },
 
     _onQueueChange: function () {
-      debugger;
       if (SongStore.getCurrentSongID() === this.props.song.id) {
         if (!this.state.isPlaying) {
           this.setState({isPlaying: true});

@@ -78,7 +78,7 @@
     },
 
     render: function () {
-      return (<div id="now-playing"><span>""</span></div>);
+      return (<div id="now-playing"></div>);
     }
   });
 }(this));

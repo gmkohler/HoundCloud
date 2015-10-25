@@ -35,7 +35,7 @@
               </div>
             </a>
 
-             <ul className="dropdown-menu">
+             <ul className="dropdown-menu queue-index-item">
                {queueIndexItems}
              </ul>
           </li>
