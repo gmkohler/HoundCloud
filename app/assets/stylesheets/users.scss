@@ -6,7 +6,6 @@ div.user-info-bar {
 }
 div.explore-tabs {
   margin-top: 15px;
-  margin-bottom: 30px;
 }
 
 div.follow-suggestion-header {
@@ -79,9 +78,7 @@ div.sidebar-follow-item-stats>div {
 }
 
 
-.container.feed-container {
-  padding-top: 30px;
-}
+
 
 .user-info {
   background-image: url(http://www.amigoapps.com.au/images/HomeBanner_dog_colours.jpg);
@@ -152,15 +149,14 @@ div.user-show-info{
   width:auto;
 }
 h1.user-home-header{
+  margin-bottom:14px;
   font-size: 18px;
   color: #999999;
   line-height: 1.8;
-  margin: 28px 0;
   font-weight: 400;
 }
 div.explore-tabs {
   border-bottom: 1px solid #F2F2F2;
-  margin-bottom: 28px;
   position: relative;
   // float: left;
 }
@@ -226,7 +222,7 @@ div.user-bar.user-bar-buttons {
   float:right;
   width:auto;
 }
-div.user-bar>div>button {
+.btn-follow {
   font-size:13px;
   line-height:20px;
   position: absolute;
@@ -239,8 +235,18 @@ div.user-bar>div>button {
   color: #FF5500;
   float:right;
   width:auto;
-}
-div.user-bar>div>button:hover {
-  color: #FF5500;
-  border-color: #FF5500;
+
+  &:hover {
+    color: #FF5500;
+    border-color: #FF5500;
+  }
+  &:active, &:focus {
+    color: #FF5500;
+    border-color: #EEEEEE;
+  }
+
+  &.btn-xs {
+    font-size:10px;
+    line-height:14px;
+  }
 }

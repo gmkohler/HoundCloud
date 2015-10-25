@@ -21,6 +21,10 @@
       this._updateSuggestions(newProps.searchQuery);
     },
 
+    stayExpanded: function (e) {
+      e.stopPropagation();
+    },
+
     _updateSuggestions: function (searchQuery) {
       UserApiUtil.fetchQueriedUsers(searchQuery);
       SongApiUtil.fetchSongsByContext("search", searchQuery);
@@ -39,28 +43,31 @@
     render: function () {
       var suggs = this.state.suggestions;
       var userIndexItems = suggs.users.map(function(user) {
-        return (<UserSuggestionIndexItem key={user.id} user={user}/>);
+        return (<li><SideBarFollowIndexItem key={user.id} user={user}/></li>);
       });
       var userSuggestions = (
         <ul className="auto-search">
-          <li><span>Users</span></li>
+          <li className="search-suggestion-header"><span>Users</span></li>
           {userIndexItems}
         </ul>
       );
 
       var songIndexItems = suggs.songs.map(function(song) {
-        return (<SongSuggestionIndexItem key={song.id} song={song}/>);
+        return (<li><QueueIndexItem key={song.id} context="search" song={song}/></li>);
       });
 
       var songSuggestions = (
-        <ul className="auto-search">
-          <li><span>Songs</span></li>
+        <ul className="queue-index-item"
+            onClick={this.stayExpanded}>
+          <li className="search-suggestion-header"><span>Songs</span></li>
           {songIndexItems}
         </ul>
       );
 
       return (
-        <div id="suggestion-index">
+        <div className="col-lg-6"
+             onClick={this.stayExpanded}
+             id="suggestion-index">
          {this.props.searchQuery ? userSuggestions : null}
          {this.props.searchQuery ? songSuggestions : null}
         </div>

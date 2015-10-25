@@ -6,7 +6,6 @@
     },
 
     _followToggle: function (e) {
-      e.preventDefault();
       this.props.user.isFollowed ? this._unfollowUser() : this._followUser();
     },
 
@@ -27,7 +26,7 @@
 
       return(
         <div className="clearfix sidebar-follow-item">
-          <button className="btn btn-xs btn-song-index btn-sidebar-follow"
+          <button className="btn btn-xs btn-follow"
                   onClick={this._followToggle}>
             {this.state.followText}</button>
           <div className="sidebar-follow-item-thumbnail-container">

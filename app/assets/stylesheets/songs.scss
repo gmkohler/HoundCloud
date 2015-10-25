@@ -24,9 +24,11 @@ div.song-index-buttons {
   line-height:16px;
 }
 button.btn-play {
+  color: #FFFFFF;
   border-color: #FF5500;
   background-color: #FF5500;
-  &:focus, &:hover{
+  &:target, &:active, &:focus, &:hover{
+    color: #FFFFFF;
     border-color: #FF5500;
     background-color: #FF5500;
   }
@@ -44,7 +46,6 @@ div.index-item-detail-text{
   width:100%;
 }
 div.index-item-detail-row {
-  inherit: none;
   height:auto;
   line-height: 1;
 }

@@ -30,9 +30,7 @@
 
   function queueSingleSong (songID) {
     var song = findSong(songID);
-    var qSong = $.extend({queueID: queueID}, song);
-    queueID++;
-    _queue.push(qSong);
+    _queue.push(song);
   }
 
   function spliceSingleSong (spliceIdx, deleteCount, songID) {
@@ -79,8 +77,8 @@
 
       getByTitle: function (fragment) {
         return _songs.filter(function(song) {
-          return (!!song.title.match(fragment) ||
-                    !!song.artist_username.title.match(fragment));
+          return (!!song.title.toLowerCase().match(fragment) ||
+                    !!song.artist_username.toLowerCase().match(fragment));
         });
       },
 

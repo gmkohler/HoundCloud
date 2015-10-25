@@ -100,12 +100,18 @@ li.dropup {
 }
 
 ul.queue-index-item {
+  padding:0;
   width: 282px;
+
   li {
+
     width:100%;
     border-bottom: 1px solid #eeeeee;
     &:last-child {
       border: none;
+    }
+    &:hover {
+      background-color:#f2f2f2;
     }
     div.queue-index-item {
       width: 100%;
@@ -183,8 +189,6 @@ ul.queue-index-item {
         padding: 5px 0px;
         color: #CCCCCC;
 
-
-
         #updown {
           width:auto;
 
@@ -202,6 +206,19 @@ ul.queue-index-item {
         #queue-index-item-remove {
           margin: 0px 5px;
           i {
+            padding: 10px 0px;
+            &:hover {
+              cursor: pointer;
+              color: #AAAAAA;
+            }
+          }
+        }
+        #queue-index-item-play-now, #queue-index-item-play-next,
+        #queue-index-item-queue-song {
+
+          margin: 0px 2px;
+          i {
+            font-size:12px;
             padding: 10px 0px;
             &:hover {
               cursor: pointer;

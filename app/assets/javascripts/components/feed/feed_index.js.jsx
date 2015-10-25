@@ -78,9 +78,9 @@
       );
 
       return (
-        <div >
+        <div id="feed-index">
           {this.props.context === "home" ? homeHeader : null}
-          <div id="feed-index" className="container">
+          <div id="feed-index-container">
             {indexItems}
           </div>
         </div>

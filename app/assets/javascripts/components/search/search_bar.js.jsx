@@ -22,9 +22,8 @@
     },
 
     _submit: function (e) {
-      e.preventDefault();
+      this._clearQuery();
       this.props.onSearch(this.state.searchQuery);
-      // this.setState({searchQuery: ""});
     },
 
     render: function () {
@@ -32,10 +31,10 @@
       // relative to it.
       // <SuggestionIndex searchQuery={this.state.searchQuery}/>
       return (
+        <div className="clearfix">
           <form id="search-bar"
                 className="navbar-form navbar-left col-lg-6"
                 role="search"
-                onBlur={this._clearQuery}
                 onKeyUp={this._keyUpHandler}
                 onSubmit={this._submit}>
             <div className="form-group has-feedback">
@@ -45,8 +44,10 @@
                      placeholder="Search"/>
               <i className="glyphicon glyphicon-search form-control-feedback"/>
             </div>
-            <SuggestionIndex searchQuery={this.state.searchQuery}/>
           </form>
+          <SuggestionIndex clearQuery={this._clearQuery}
+                           searchQuery={this.state.searchQuery}/>
+        </div>
       );
     }
   });

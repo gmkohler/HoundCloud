@@ -40,15 +40,18 @@
       return (this.state.currentTime / this.state.duration) || 0;
     },
 
-    _queueSong: function () {
+    _queueSong: function (e) {
+      e.preventDefault();
       SongApiActions.receiveQueuedSong(this.props.song.id);
     },
 
-    _playNext: function () {
+    _playNext: function (e) {
+      e.preventDefault();
       SongApiActions.receivePlayNext(this.props.song.id);
     },
 
-    _playToggle: function () {
+    _playToggle: function (e) {
+      e.preventDefault();
       if (this.state.isPlaying) {
         AudioActions.togglePlay();
       } else {
@@ -116,7 +119,7 @@
         </button>
       );
       return (
-        <div className="row index-item">
+        <div className="index-item">
           <div className="col-md-3" style={thumbStyle}>
           </div>
 
@@ -138,7 +141,7 @@
                 <div className="index-item-detail-row clearfix">
                     <div className="index-item-btn-play">
                       <button type="button"
-                              className="btn btn-primary btn-circle btn-play btn-xl"
+                              className="btn btn-circle btn-play btn-xl"
                               onClick={this._playToggle}>
                         <i className={"btn-text glyphicon " + playButtonClass}></i>
                       </button>

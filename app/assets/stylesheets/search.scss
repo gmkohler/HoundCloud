@@ -2,9 +2,112 @@
   position: relative
 }
 #suggestion-index{
+  width:100%;
+  padding: 0 30px;
+  margin-left:-15px;
   position: absolute;
-  top:50px;
+  top:41px;
+
+  ul {
+    background-color:white;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    margin-bottom:0;
+    padding:0;
+    &:first-child {
+      border-bottom:none;
+    }
+    &:last-child {
+      border-top:none;
+    }
+    &.queue-index-item {
+        width:100%;
+      li {
+        width:100%;
+      }
+    }
+
+    li {
+      list-style:none;
+
+      &.search-suggestion-header {
+        padding-left:15px;
+        width:100%;
+        font-size: 10px;
+        font-weight:700;
+        background-color: #E7E7E7;
+        color: #333333;
+      }
+
+      div.sidebar-follow-item {
+        padding: 4px 8px 6px 8px;
+        border-bottom: solid 1px #F2F2F2;
+        position: relative;
+        margin-bottom:0;
+        &:hover {
+          background-color:#F2F2F2;
+        }
+
+        .btn-sidebar-follow {
+          position: absolute;
+          right:5px;
+          bottom:8px;
+        }
+
+        .sidebar-follow-item-thumbnail-container {
+          width: 15%;
+          float:left;
+          display:inline-block;
+
+          .sidebar-follow-item-thumbnail {
+            position:relative;
+            top:5px;
+            height:30px;
+            width:30px;
+            background-color: #cccccc;
+            background-size: cover;
+            background-position: center;
+          }
+        }
+
+        .sidebar-follow-item-detail {
+          width: 85%;
+          float:left;
+          display:inline-block;
+
+          .sidebar-follow-item-info {
+            span {
+              font-size:13px;
+              color:#333333;
+            }
+          }
+          .sidebar-follow-item-stats {
+            span {
+              color:#999999;
+            }
+            >div {
+              float:left;
+            }
+            div {
+              font-size: 10px;
+              margin-right: 4px;
+            }
+            i {
+              font-size: 10px;
+              margin-right: 2px;
+              color:#999999;
+              float:left;
+            }
+          }
+        }
+      }
+    }
+  }
 }
+
+
+
+
+
 .search-sidebar{
   width: 28%;
   margin-right:0;
@@ -17,4 +120,5 @@
 .search-results-container div#feed-index{
   width: 100%;
 }
+
 // will want to override the feedindex in this case.

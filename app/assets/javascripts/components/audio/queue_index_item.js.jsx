@@ -22,9 +22,54 @@
       }
     },
 
-    render: function () {
-      var song = this.props.song;
+    _queueSong: function () {
+      SongApiActions.receiveQueuedSong(this.props.song.id);
+    },
 
+    _playNext: function () {
+      SongApiActions.receivePlayNext(this.props.song.id);
+    },
+
+    _playNow: function () {
+      SongApiActions.receivePlayNow(this.props.song.id);
+    },
+
+    render: function () {
+      var buttons,
+          song = this.props.song;
+      if (this.props.context && this.props.context === "search") {
+        buttons = [
+          <div id="queue-index-item-play-now">
+            <i className="glyphicon glyphicon-play"
+               onClick={this._playNow}/>
+          </div>,
+          <div id="queue-index-item-play-next">
+            <i className="glyphicon glyphicon-arrow-right"
+               onClick={this._playNext}/>
+          </div>,
+          <div id="queue-index-item-queue-song">
+            <i className="glyphicon glyphicon-plus"
+               onClick={this._queueSong}/>
+          </div>
+        ];
+      } else {
+        buttons = [
+          <div id="updown">
+            <div id="queue-index-item-move-back">
+              <i className="glyphicon glyphicon-arrow-up"
+                 onClick={this._moveBackward}/>
+            </div>
+            <div id="queue-index-item-move-up">
+              <i className="glyphicon glyphicon-arrow-down"
+                 onClick={this._moveForward}/>
+            </div>
+          </div>,
+          <div id="queue-index-item-remove">
+            <i className="glyphicon glyphicon-remove"
+               onClick={this._removeFromQueue}/>
+          </div>
+        ];
+      }
       var thumbnailStyle = {
         backgroundImage: "url(" + (song.image_url || "") + ")",
         height: "30px",
@@ -52,20 +97,7 @@
             </div>
           </div>
           <div className="queue-index-item-button-container">
-            <div id="updown">
-              <div id="queue-index-item-move-back">
-                <i className="glyphicon glyphicon-arrow-up"
-                   onClick={this._moveBackward}/>
-              </div>
-              <div id="queue-index-item-move-up">
-                <i className="glyphicon glyphicon-arrow-down"
-                   onClick={this._moveForward}/>
-              </div>
-            </div>
-            <div id="queue-index-item-remove">
-              <i className="glyphicon glyphicon-remove"
-                 onClick={this._removeFromQueue}/>
-            </div>
+            {buttons}
           </div>
         </div>
       );

@@ -47,22 +47,32 @@ body{}
  padding-top: 50px;
  padding-bottom: 50px;
 }
-div#feed-index {
+div#feed-index-container {
+  width:100%;
   overflow:hidden;
-  margin-top: -10px;
   border-bottom: 1px solid #F2F2F2;
-
-  width: 72%;
+  border-right: 1px solid #F2F2F2;
   float:left;
+}
+
+#user-home-container {
+  margin-top:50px;
+
+  #feed-index {
+    margin-top:14px;
+    width:72%;
+    float:left;
+
+
+  }
 }
 
 div#user-home-left-container {
-  width:72%;
-  float:left;
+
 }
 div#profile-sidebar {
-  border-left: 1px solid #F2F2F2;
-  padding: 0 15px;
+
+  padding: 14px;
   width: 28%;
   height: 100%;
 

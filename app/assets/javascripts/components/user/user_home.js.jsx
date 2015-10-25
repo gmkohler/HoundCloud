@@ -20,10 +20,12 @@
 
     render: function () {
       return (
-        <div className="container feed-container">
+        <div id="user-home-container">
+
           <div>
             <UserHomeBar user={this.state.user} />
           </div>
+
           <div>
             <FeedIndex context={"home"} data={this.state.user}/>
             <UserHomeSideBar user={this.state.user}/>
