@@ -1,6 +1,9 @@
 (function(root) {
   'use strict';
   root.SideBarFollowIndex = React.createClass({
+    getInitialState: function () {
+      return {users: UserStore.getAll()};
+    },
     // Could set state to something like UserStore.getMostFollowed(3)
     // Need to ensure the users aren't being followed already.
 
@@ -8,15 +11,16 @@
     // has been followed as to suggest a new user
 
     render: function () {
+      var userIndices = this.state.users.map(function(user) {
+        return <SideBarFollowIndexItem key={user.id} user={user}/>
+      });
       return (
         <div>
           <div className="follow-suggestion-header">
             <i className="glyphicon glyphicon-user"/>
             <span>Who To Follow</span>
           </div>
-          <SideBarFollowIndexItem />
-          <SideBarFollowIndexItem />
-          <SideBarFollowIndexItem />
+          {userIndices}
         </div>
       );
     }

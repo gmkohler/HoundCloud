@@ -37,15 +37,27 @@
             <SearchIndexSideBar showUsers={this.state.showUsers}
                                 showSongs={this.state.showSongs} />
             <div className="search-results-container">
-              <div>
-                <span>Users:</span>
-                <i className={"glyphicon " + this._headerIcon(showUsers)}/>
+              <div className="clearfix search-index-header">
+                <div className="clearfix search-index-bar search-results">
+                  <div className="clearfix left">
+                    <span>Users</span>
+                  </div>
+                  <div className="clearfix right">
+                    <i className={"glyphicon " + this._headerIcon(showUsers)}/>
+                  </div>
+                </div>
               </div>
               <UserSearchIndex query={query} />
-              <div>
-                <span>Songs:</span>
-                <i className={"glyphicon " + this._headerIcon(showSongs)}/>
-              </div>
+                <div className="clearfix search-index-header">
+                  <div className="clearfix search-index-bar search-results">
+                    <div className="clearfix left">
+                      <span>Songs</span>
+                    </div>
+                    <div className="clearfix right">
+                      <i className={"glyphicon " + this._headerIcon(showSongs)}/>
+                    </div>
+                  </div>
+                </div>
               <FeedIndex context="search" data={query}/>
             </div>
           </div>

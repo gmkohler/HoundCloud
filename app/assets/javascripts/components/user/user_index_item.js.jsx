@@ -20,9 +20,11 @@
     },
 
     render: function () {
-      // var thumbnailStyle = {
-      //   backgroundImage: this.props.user.image_url
-      // };
+      var user = this.props.user;
+      var userUrl = "users/" + user.id;
+      var thumbnailStyle = {
+        backgroundImage: "url(" + user.image_url + ")"
+      };
 
       return(
         <div className="clearfix sidebar-follow-item">
@@ -30,19 +32,20 @@
                   onClick={this._followToggle}>
             {this.state.followText}</button>
           <div className="sidebar-follow-item-thumbnail-container">
-            <div className="sidebar-follow-item-thumbnail"/>
+            <div className="sidebar-follow-item-thumbnail"
+                 style={thumbnailStyle}/>
           </div>
           <div className="sidebar-follow-item-detail">
             <div className="sidebar-follow-item-info">
-              <span>username</span>
+              <Link to{}>{user.username}</span>
             </div>
             <div className="sidebar-follow-item-stats">
               <div>
-                <span>numTracks</span>
+                <span>{user.numTracks}</span>
                 <i className="glyphicon glyphicon-music"/>
               </div>
               <div>
-                <span>numFollowers</span>
+                <span>{user.numFollowers}</span>
                 <i className="glyphicon glyphicon-user"/>
               </div>
             </div>

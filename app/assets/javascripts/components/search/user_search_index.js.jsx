@@ -24,7 +24,7 @@
     },
 
     _getStateFromStore: function () {
-      return SearchStore.getUsers();
+      return SearchStore.getUsers(this.props.query);
     },
 
     _onUsersChange: function () {
@@ -37,7 +37,7 @@
       });
 
       return (
-        <div>
+        <div className="user-search-index">
           <div>{users}</div>
         </div>
       );

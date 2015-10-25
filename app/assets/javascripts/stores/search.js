@@ -39,15 +39,23 @@
   }
 
   root.SearchStore = $.extend({}, EventEmitter.prototype, {
-    getAll: function () {
-      return {users: this.getUsers(), songs: this.getSongs()};
+    getAll: function (query) {
+      return {users: this.getUsers(query), songs: this.getSongs(query)};
     },
 
-    getUsers: function () {
-      return _filters.showUsers ? _results.users.slice(0) : [];
+    getUsers: function (query) {
+      var retVals = [];
+      if (_filters.showUsers) {
+        retVals = _results.users.filter(function(user) {
+          return user.username.match(query);
+        });
+      }
+      
+      return retVals;
     },
 
-    getSongs: function () {
+
+    getSongs: function (query) {
       if (_filters.showSongs) {
         if (_filters.tagID) {
           return _results.songs.filter(function(song){
@@ -56,7 +64,9 @@
             });
           });
         } else {
-          return _results.songs.slice(0);
+          return _results.songs.filter(function(song) {
+            return !!(song.title.match(query) || song.artist_username.match(query));
+          });
         }
       } else {
         return [];

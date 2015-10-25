@@ -22,6 +22,7 @@
     },
 
     _submit: function (e) {
+      e.preventDefault();
       this._clearQuery();
       this.props.onSearch(this.state.searchQuery);
     },
@@ -31,12 +32,14 @@
       // relative to it.
       // <SuggestionIndex searchQuery={this.state.searchQuery}/>
       return (
-        <div className="clearfix">
+        <div id="search-bar-container" className="clearfix">
           <form id="search-bar"
                 className="navbar-form navbar-left col-lg-6"
                 role="search"
                 onKeyUp={this._keyUpHandler}
                 onSubmit={this._submit}>
+
+            <input type="submit" id="search-submit"/>
             <div className="form-group has-feedback">
               <input type="text"
                      className="navbar-search form-control"

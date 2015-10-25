@@ -101,7 +101,7 @@
             <span className="index-item-tag-text">{"# " + tag.name}</span>
           </div>
         );
-      });
+      }).slice(0, 3);
 
       var thumbStyle = {
         backgroundImage: "url(" + song.image_url + ")",

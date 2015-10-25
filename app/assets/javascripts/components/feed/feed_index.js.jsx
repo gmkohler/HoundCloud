@@ -14,7 +14,7 @@
           this.setState({songs: SongStore.getStream()});
           break;
         case "search":
-          this.setState({songs: SearchStore.getSongs()});
+          this.setState({songs: SearchStore.getSongs(data)});
           break;
         case "show":
           this.setState({songs: SongStore.getTracksAndReposts(data.id)});

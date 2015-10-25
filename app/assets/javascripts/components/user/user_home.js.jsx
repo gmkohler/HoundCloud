@@ -21,7 +21,6 @@
     render: function () {
       return (
         <div id="user-home-container">
-
           <div>
             <UserHomeBar user={this.state.user} />
           </div>

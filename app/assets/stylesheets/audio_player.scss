@@ -37,7 +37,10 @@
       width:100%;
 
       span {
+        display:block;
+        max-width:100%;
         white-space:nowrap;
+        overflow:hidden;
         text-overflow: ellipsis;
 
 
@@ -150,6 +153,8 @@ ul.queue-index-item {
 
           span {
             white-space:nowrap;
+            overflow:hidden;
+            display:block;
             text-overflow: ellipsis;
 
             &.queue-index-item-artist {
@@ -183,10 +188,10 @@ ul.queue-index-item {
       }
 
       div.queue-index-item-button-container{
-        width:15%;
+        width:20%;
         float:right;
         display:inline;
-        padding: 5px 0px;
+        padding: 5px 8px;
         color: #CCCCCC;
 
         #updown {
@@ -215,7 +220,7 @@ ul.queue-index-item {
         }
         #queue-index-item-play-now, #queue-index-item-play-next,
         #queue-index-item-queue-song {
-
+          float:right;
           margin: 0px 2px;
           i {
             font-size:12px;
