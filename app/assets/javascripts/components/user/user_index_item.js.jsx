@@ -40,7 +40,7 @@
             <div className="sidebar-follow-item-stats">
               <div>
                 <span>numTracks</span>
-                <i className="glyphicon glyphicon-cd"/>
+                <i className="glyphicon glyphicon-music"/>
               </div>
               <div>
                 <span>numFollowers</span>

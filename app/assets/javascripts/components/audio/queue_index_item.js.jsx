@@ -38,28 +38,35 @@
       };
 
       return (
-        <div>
-          <div className="now-playing-badge-thumbnail-container">
-            <div className="now-playing-badge-thumbnail"
-                  style={thumbnailStyle}/>
-          </div>
+        <div className="queue-index-item">
+
           <div className="now-playing-badge-info">
-            <div>
-              <span className="now-playing-badge-boilerplate">{song.artist_username}</span>
+            <div className="first-row">
+              <span className="now-playing-badge-artist">
+                <Link to={"users/" + song.artist_id}>
+                      {song.artist_username}
+                </Link>
+              </span>
+              <div id="queue-index-item-move-back">
+                <i className="glyphicon glyphicon-arrow-up"
+                   onClick={this._moveBackward}/>
+              </div>
             </div>
-            <div>
-              <span className="now-playing-badge">{song.title || "Nothing selected"}</span>
+            <div className="second-row">
+              <div className="now-playing-badge-thumbnail-container">
+                <div className="now-playing-badge-thumbnail"
+                      style={thumbnailStyle}/>
+              </div>
+              <span className="now-playing-badge-title">
+                {song.title || "Nothing selected"}
+              </span>
+              <div id="queue-index-item-move-up">
+                <i className="glyphicon glyphicon-arrow-down"
+                   onClick={this._moveForward}/>
+              </div>
             </div>
           </div>
           <div className="queue-index-item-button-container">
-            <div id="queue-index-item-move-back">
-              <i className="glyphicon glyphicon-arrow-up"
-                 onClick={this._moveBackward}/>
-            </div>
-            <div id="queue-index-item-move-up">
-              <i className="glyphicon glyphicon-arrow-down"
-                 onClick={this._moveForward}/>
-            </div>
             <div id="queue-index-item-remove">
               <i className="glyphicon glyphicon-remove"
                  onClick={this._removeFromQueue}/>

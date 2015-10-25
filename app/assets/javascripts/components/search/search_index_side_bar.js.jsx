@@ -74,7 +74,7 @@
           </div>
           <div onClick={this._showSongsToggle}>
             <span>Songs {this.props.showSongs ? "ON" : "OFF"}</span>
-            <i className="glyphicon glyphicon-cd"></i>
+            <i className="glyphicon glyphicon-music"></i>
           </div>
           {this.props.showSongs ? tagFilters : null}
         </div>
