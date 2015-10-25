@@ -7,6 +7,7 @@
   'use strict';
   var _songs = [];
   var _queue = [];
+  var queueID = 0;
 
   function resetSongs (newSongs) {
     _songs = newSongs;
@@ -29,13 +30,17 @@
 
   function queueSingleSong (songID) {
     var song = findSong(songID);
-    _queue.push(song);
+    var qSong = $.extend({queueID: queueID}, song);
+    queueID++;
+    _queue.push(qSong);
   }
 
   function spliceSingleSong (spliceIdx, deleteCount, songID) {
     if (songID) {
      var song = findSong(songID);
-     _queue.splice(spliceIdx, deleteCount, song);
+     var qSong = $.extend({queueID: queueID}, song);
+     queueID++;
+     _queue.splice(spliceIdx, deleteCount, qSong);
     } else {
       _queue.splice(spliceIdx, deleteCount);
     }

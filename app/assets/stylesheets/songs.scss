@@ -26,8 +26,13 @@ div.song-index-buttons {
 button.btn-play {
   border-color: #FF5500;
   background-color: #FF5500;
+  &:focus, &:hover{
+    border-color: #FF5500;
+    background-color: #FF5500;
+  }
 }
 div.index-item-btn-play{
+
   float: left;
   width: auto;
   position:relative;

@@ -118,9 +118,15 @@ form#search-bar {
   width: 26px;
 }
 
- .navbar-default .navbar-brand{
-  background: linear-gradient(to top, #EE2200, #FF7700);
-  color: #FFF;
+.navbar-default{
+  .navbar-brand {
+    background: linear-gradient(to top, #EE2200, #FF7700);
+    color: #FFF;
+
+    &:focus, &:hover{
+      color: #FFF;
+    }
+  }
 }
 .navbar-brand:hover .navbar-default:hover {
   background-color: #FF4800;

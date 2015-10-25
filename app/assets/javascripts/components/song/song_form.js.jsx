@@ -226,7 +226,7 @@
               <div className="container">
                 <div className="btn-submit-container">
                   <button type="submit"
-                          className="btn btn-default btn-form-submit"
+                          className="btn btn-form-submit"
                           onClick={submitButtonAction}>
                           {submitButtonText}
                   </button>
