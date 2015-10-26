@@ -139,9 +139,19 @@
        width: "" + percentRemaining + "%"
      }
 
-     var comments = song.comments.map(function(comment){
-       return <SongComment key={comment.id} comment={comment}/>
+     var commentsByTime = {};
+     song.comments.forEach(function(comment){
+       if (commentsByTime[comment.commentTime]) {
+         commentsByTime[comment.commentTime].push(comment);
+       } else {
+         commentsByTime[comment.commentTime] = [comment];
+       }
      });
+
+     var commentComponents = Object.keys(commentsByTime).map(function(commentTime){
+       return <SongComment key={commentTime} comments={commentsByTime[commentTime]}/>
+     })
+
       return (
         <div className="index-item clearfix">
           <div className="col-md-3" style={thumbStyle}>
@@ -188,7 +198,7 @@
                 <div style={timeElapsedStyle}></div>
                 <div style={timeRemainingStyle}></div>
                 <div className="comments-overlay clearfix">
-                  {comments}
+                  {commentComponents}
                 </div>
               </div>
               <div className="time right">

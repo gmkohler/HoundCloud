@@ -188,27 +188,33 @@ div.comments-overlay {
   width:85%;
   position:absolute;
   div.song-comment {
-      &:hover{
-        .comment-text{display:block;}
-      }
-    div.comment-text {
+    position:relative;
+    &:hover{
+      .comment-bodies{display:block;}
+    }
+
+    div.comment-bodies {
+      position:absolute;
       padding:1px 4px;
       color:#333333;
       background-color: #e2e2e2;
       border: 1px solid rgba(0, 0, 0, 0.15);
       display:none;
-      .comment-username{
-        color:#777777;
-        font-weight:700;
-        padding-right:4px;
-        border-right:1px solid rgba(0, 0, 0, 0.15);
-        &:hover{
-          color:#333333;
-          text-decoration:none;
+      .comment-text{
+        .comment-username{
+          color:#777777;
+          font-weight:700;
+          padding-right:4px;
+          border-right:1px solid rgba(0, 0, 0, 0.15);
+          &:hover{
+            color:#333333;
+            text-decoration:none;
+          }
         }
-      }
-      .comment-body{
-        padding-left:4px;
+
+        .comment-body {
+          padding-left:4px;
+        }
       }
     }
   }
