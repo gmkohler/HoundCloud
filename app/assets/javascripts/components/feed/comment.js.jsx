@@ -18,14 +18,16 @@
         backgroundSize: "100% 100%",
         backgroundRepeat: "no-repeat",
       };
-      
+
       var commentBodies = comments.map(function(comment){
         return (
           <div className="comment-text">
+            <span>
               <Link to={"users/" + comment.author.id} className="comment-username">
                 {comment.author.username}
               </Link>
-              <span className="comment-body">{comment.body}</span>
+            </span>
+            <span className="comment-body">{comment.body}</span>
           </div>
         );
       });

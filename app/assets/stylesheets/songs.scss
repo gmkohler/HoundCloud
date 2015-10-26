@@ -187,6 +187,7 @@ div.song-comment-form {
 div.comments-overlay {
   width:85%;
   position:absolute;
+
   div.song-comment {
     position:relative;
     &:hover{
@@ -194,25 +195,32 @@ div.comments-overlay {
     }
 
     div.comment-bodies {
+      z-index:2;
       position:absolute;
-      padding:1px 4px;
-      color:#333333;
-      background-color: #e2e2e2;
-      border: 1px solid rgba(0, 0, 0, 0.15);
       display:none;
+      white-space:nowrap;
+      border: 1px solid rgba(0, 0, 0, 0.15);
       .comment-text{
+        padding:1px 4px;
+        color:#333333;
+        background-color: #e2e2e2;
+        white-space:nowrap;
         .comment-username{
+          display:inline-block;
+          float:left;
+          padding-right:4px;
+          white-space:nowrap;
+          border-right:1px solid rgba(0, 0, 0, 0.15);
           color:#777777;
           font-weight:700;
-          padding-right:4px;
-          border-right:1px solid rgba(0, 0, 0, 0.15);
           &:hover{
             color:#333333;
             text-decoration:none;
           }
         }
 
-        .comment-body {
+        span.comment-body {
+          white-space:nowrap;
           padding-left:4px;
         }
       }

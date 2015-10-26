@@ -121,7 +121,7 @@
         </button>
       );
 
-     var percentElapsed = this._percentElapsed(),
+     var percentElapsed = this._percentElapsed() * 100,
          percentRemaining = 100 - percentElapsed;
 
      var timeElapsedStyle = {
