@@ -33,7 +33,7 @@
         <div>
           <UserInfo user={user}/>
           <UserShowBar user={user}/>
-          <div className="feed-container">
+          <div className="user-show-container">
             <FeedIndex context={"show"} data={user}/>
             <UserShowSideBar user={user}/>
           </div>

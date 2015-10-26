@@ -43,10 +43,10 @@
                   <span className="active" href="javascript:void(0)">All</span>
                 </div>
                 <div>
-                  <span className="active" href="javascript:void(0)">Tracks</span>
+                  <span className="" href="javascript:void(0)">Tracks</span>
                 </div>
                 <div>
-                  <span className="active" href="javascript:void(0)">Reposts</span>
+                  <span className="" href="javascript:void(0)">Reposts</span>
                 </div>
               </div>
               <div className="user-bar-section-right">

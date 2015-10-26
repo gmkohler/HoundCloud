@@ -8,7 +8,9 @@
         <div className="explore-tabs">
           <div className="user-bar">
             <div className="user-bar-section-left">
-              <a className="active" href="javascript:void(0)">Stream</a>
+              <div>
+                <a className="active" href="javascript:void(0)">Stream</a>
+              </div>
             </div>
           </div>
         </div>

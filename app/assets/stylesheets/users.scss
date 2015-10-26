@@ -175,7 +175,7 @@ div.user-show-bar {
   padding-top: 30px
 }
 
-ul.user-bar:after {
+div.user-bar:after {
   clear: both;
   content: "";
   display: table;
@@ -202,19 +202,26 @@ div.user-bar-section-left>div {
 div.user-bar-section-left>div:last-child {
   margin-right: 0;
 }
-div.user-bar-section-left>div>a{
-  display:block;
-  font-size: 24px;
-  font-weight:500;
-  cursor: default;
-  text-decoration: none;
-  // border-bottom: 1px solid #000000;
-  color: #000000;
-  display:block;
+div.user-bar-section-left>div{
+  >a, >span {
+    display:block;
+    font-size: 24px;
+    font-weight:500;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000000;
+    display:block;
+
+    &.active{
+      border-bottom: 1px solid #FF5500;
+      font-size:24px;
+      color: #FF5500;
+    }
+  }
 }
 div.user-bar-section-left>a.active{
+  border-bottom: 1px solid #FF5500;
   font-size:24px;
-  border-color: #FF5500;
   color: #FF5500;
 }
 div.user-bar>div.user-bar-section-right {
@@ -252,5 +259,47 @@ div.user-bar.user-bar-buttons {
   &.btn-xs {
     font-size:10px;
     line-height:14px;
+  }
+}
+
+
+
+div.user-show-container {
+  padding-top:15px;
+  div#feed-index {
+    width:72%
+  }
+
+  div#profile-sidebar{
+    width:28%;
+
+    #sidebar-stat-container {
+      padding-bottom:5px;
+      border-bottom: 1px solid #eeeeee;
+      >div{
+        padding: 0 10px;
+        display:inline-block;
+        float:left;
+        width:auto;
+        border-right: 1px solid #eeeeee;
+        &:last-child {
+          border-right:none;
+        }
+        div {
+          width:auto;
+          span {
+            width:auto;
+            &.sidebar-stat-heading {
+              font-size:12px;
+              color: #999999;
+            }
+            &.sidebar-stat-num {
+              font-size:18px;
+              color:#777777;
+            }
+          }
+        }
+      }
+    }
   }
 }

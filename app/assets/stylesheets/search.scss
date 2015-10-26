@@ -200,9 +200,13 @@ div.user-search-index {
       a {
         font-size:14px;
         color: #333333;
+
+        &:hover, &:active {
+          text-decoration:none;
+        }
+        
         &:hover {
           color:#FF5500;
-          text-decoration:none;
         }
       }
     }
