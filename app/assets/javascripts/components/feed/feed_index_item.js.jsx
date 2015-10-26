@@ -119,7 +119,7 @@
         </button>
       );
       return (
-        <div className="index-item">
+        <div className="index-item clearfix">
           <div className="col-md-3" style={thumbStyle}>
           </div>
 

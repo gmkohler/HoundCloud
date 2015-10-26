@@ -31,50 +31,74 @@
       SearchActions.receiveFilters({tagID: newTagID});
     },
 
+    _showAll: function (e) {
+      e.preventDefault();
+      SearchActions.receiveFilters({showUsers: true, showSongs: true});
+    },
+
     _showUsersToggle: function (e) {
       e.preventDefault();
-      SearchActions.receiveFilters({showUsers: !this.props.showUsers});
+      SearchActions.receiveFilters({showUsers: true, showSongs: false});
     },
 
     _showSongsToggle: function (e) {
       e.preventDefault();
-      SearchActions.receiveFilters({showSongs: !this.props.showSongs});
+      SearchActions.receiveFilters({showUsers: false, showSongs:true});
     },
 
     render: function () {
       var tags = this.state.tags,
           that = this;
 
+      var allHighlight = (this.props.showUsers && this.props.showSongs) ? "active" : "";
+      var usersHighlight = !allHighlight && this.props.showUsers ? "active" : "";
+      var songsHighlight = !allHighlight && this.props.showSongs ? "active" : "";
+
       var tagComponents = (
         Object.keys(tags).map(function(tagID){
+          var activeText = (parseInt(tagID) === this.state.selected) ? " active" : "";
           return (
             <div id={tagID}
+                 className={"index-item-tag" + activeText}
                  onClick={that._tagToggle}>
-              <span>{tags[tagID]}</span>
+              <span className="index-item-tag-text">{"#" + tags[tagID]}</span>
             </div>
           );
-        })
+        }.bind(this))
       );
+      var selectedTag
+      if (this.state.selected) {
+        selectedTag = (
+          <div className={"index-item-tag active"}>
+            <span className="index-item-tag-text">
+              {"#" + tags[this.state.selected.toString()]}
+            </span>
+          </div>
+        );
+      }
 
       var tagFilters = (
         <div>
-          <span>Filter by Tag: {this.state.tags[this.state.selected]}</span>
-          <div>{tagComponents}</div>
+          <div className="tag-header">
+            <span>Filter by Tag: </span>
+            {this.state.selected ? selectedTag : null}
+          </div>
+          <div className="index-item-tag-collection">{tagComponents}</div>
         </div>
       );
       return (
         <div className="search-sidebar">
-          <div>
-            <span>All</span>
+          <div className={allHighlight} onClick={this._showAll}>
             <i className="glyphicon glyphicon-search"></i>
+            <span>All</span>
           </div>
-          <div onClick={this._showUsersToggle}>
-            <span>Users: {this.props.showUsers ? "ON" : "OFF"}</span>
+          <div className={usersHighlight} onClick={this.props.usersToggle}>
             <i className="glyphicon glyphicon-user"></i>
+            <span>Users</span>
           </div>
-          <div onClick={this._showSongsToggle}>
-            <span>Songs {this.props.showSongs ? "ON" : "OFF"}</span>
+          <div className={songsHighlight} onClick={this.props.songsToggle}>
             <i className="glyphicon glyphicon-music"></i>
+            <span>Songs</span>
           </div>
           {this.props.showSongs ? tagFilters : null}
         </div>

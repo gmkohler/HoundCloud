@@ -37,7 +37,7 @@
           </div>
           <div className="sidebar-follow-item-detail">
             <div className="sidebar-follow-item-info">
-              <Link to{}>{user.username}</span>
+              <Link to={userUrl}>{user.username}</Link>
             </div>
             <div className="sidebar-follow-item-stats">
               <div>

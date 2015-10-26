@@ -41,7 +41,7 @@
                 onClick={this._followToggle}>
                 {this.state.followText}</button>
               <div className="user-search-item-info">
-                <Link>{user.username}</Link>
+                <Link to={userUrl}>{user.username}</Link>
               </div>
               <div className="user-search-item-stats">
                 <div>

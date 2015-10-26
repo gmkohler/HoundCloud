@@ -8,6 +8,16 @@
                showSongs: true});
      },
 
+     _showUsersToggle: function (e) {
+       e.preventDefault();
+       SearchActions.receiveFilters({showUsers: true, showSongs: false});
+     },
+
+     _showSongsToggle: function (e) {
+       e.preventDefault();
+       SearchActions.receiveFilters({showUsers: false, showSongs: true});
+     },
+
     componentDidMount: function () {
       SearchStore.addFiltersChangeListener(this._onFiltersChange);
     },
@@ -35,7 +45,9 @@
           <SearchIndexHeader query={query}/>
           <div>
             <SearchIndexSideBar showUsers={this.state.showUsers}
-                                showSongs={this.state.showSongs} />
+                                usersToggle={this._showUsersToggle}
+                                showSongs={this.state.showSongs}
+                                songsToggle={this._showSongsToggle}/>
             <div className="search-results-container">
               <div className="clearfix search-index-header">
                 <div className="clearfix search-index-bar search-results">
@@ -43,7 +55,8 @@
                     <span>Users</span>
                   </div>
                   <div className="clearfix right">
-                    <i className={"glyphicon " + this._headerIcon(showUsers)}/>
+                    <i className={"glyphicon " + this._headerIcon(showUsers)}
+                       onClick={this._showUsersToggle}/>
                   </div>
                 </div>
               </div>
@@ -54,7 +67,8 @@
                       <span>Songs</span>
                     </div>
                     <div className="clearfix right">
-                      <i className={"glyphicon " + this._headerIcon(showSongs)}/>
+                      <i className={"glyphicon " + this._headerIcon(showSongs)}
+                         onClick={this._showSongsToggle}/>
                     </div>
                   </div>
                 </div>

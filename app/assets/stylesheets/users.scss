@@ -45,9 +45,13 @@ div.sidebar-follow-item-detail {
   float:left;
   display:inline-block;
 }
-div.sidebar-follow-item-info span {
+div.sidebar-follow-item-info a {
   font-size:13px;
-  color:#333333
+  color:#333333;
+  &:hover{
+    text-decoration:none;
+    color:#FF5500;
+  }
 }
 div.sidebar-follow-item-stats span {
   color:#999999;

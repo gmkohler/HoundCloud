@@ -48,6 +48,7 @@
               <i className="glyphicon glyphicon-search form-control-feedback"/>
             </div>
           </form>
+          
           <SuggestionIndex clearQuery={this._clearQuery}
                            searchQuery={this.state.searchQuery}/>
         </div>

@@ -33,7 +33,7 @@
       border-top:none;
     }
     &.queue-index-item {
-        width:100%;
+      width:100%;
       li {
         width:100%;
       }
@@ -121,45 +121,45 @@
 }
 
 div.search-index-header {
-    border-bottom: 1px solid #F2F2F2;
-    width:100%;
-    position:relative;
+  border-bottom: 1px solid #F2F2F2;
+  width:100%;
+  position:relative;
 
-    div.search-index-bar {
-      padding: 30px 0 0 0;
-      margin: 0;
-      line-height:1.6;
-      display:block;
-      &.search-results {
-        padding: 10px 0 0 0;
-      }
-      div {
-        bottom: -1px;
-        margin-bottom:0;
+  div.search-index-bar {
+    padding: 30px 0 0 0;
+    margin: 0;
+    line-height:1.6;
+    display:block;
+    &.search-results {
+      padding: 10px 0 0 0;
+    }
+    div {
+      bottom: -1px;
+      margin-bottom:0;
+      float:left;
+      list-style: none;
+
+      &.left{
         float:left;
-        list-style: none;
-
-        &.left{
-          float:left;
-        }
-        &.right{
-          float:right;
-          position:relative;
-          top:10px;
-          right:10px;
-        }
-        span {
-          text-size:14px;
-          display:block;
-          font-size: 24px;
-          font-weight:500;
-          cursor: default;
-          text-decoration: none;
-          // border-bottom: 1px solid #000000;
-          color: #333333;
-        }
+      }
+      &.right{
+        float:right;
+        position:relative;
+        top:10px;
+        right:10px;
+      }
+      span {
+        text-size:14px;
+        display:block;
+        font-size: 24px;
+        font-weight:500;
+        cursor: default;
+        text-decoration: none;
+        // border-bottom: 1px solid #000000;
+        color: #333333;
       }
     }
+  }
 }
 
 div.user-search-index {
@@ -228,25 +228,120 @@ div.user-search-index {
 
 }
 
-
-
-
-
-
-
-
-
 .search-sidebar{
   width: 28%;
   margin-right:0;
+
+
   float:left;
+  >div {
+    padding-left:15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+
+    &:hover{
+      cursor:pointer;
+    }
+    &:last-child {
+      border:none;
+    }
+    &:first-child {
+      margin-top:20px;
+    }
+    margin:4px 0;
+    width:100%;
+    color:#333333;
+    background-color:#FFFFFF;
+    &.active {
+      color:#FFFFFF;
+      background-color:#FF5500;
+    }
+    span{
+
+    }
+    i{
+      &:before{
+        position:relative;
+        bottom:-2px;
+      }
+      margin-right:10px;
+      float:left;
+    }
+  }
+
+  div.index-item-tag-collection {
+    list-style: none;
+    margin: 2px 0 5px 0;
+  }
+
+  div.tag-header {
+    float:left;
+    list-style:inherit;
+    margin: 0 6px 6px 0;
+    width:100%;
+    span {
+      float:left;
+    }
+    div {
+      position:relative;
+      bottom:0;
+      float:left;
+      margin-bottom:0;
+    }
+  }
+
+// PUT A SMALL MARGIN ON THE HEADERLLLLLL
+
+
+  div.index-item-tag {
+    float:left;
+    list-style:inherit;
+    background-color: #999999;
+    padding:1px 4px;
+    border: 1px solid #999999;
+    border-radius: 20px;
+    margin-left: 2px;
+    margin-bottom:4px;
+
+    &.active {
+      background-color: #555555;
+      border-color: #555555;
+      &:hover {
+        background-color: #999999;
+        border-color: #999999;
+      }
+    }
+
+    &:hover {
+      background-color: #555555;
+      border-color: #555555;
+      cursor: pointer;
+    }
+
+    span.index-item-tag-text {
+      color: #FFFFFF;
+      font-size:12px;
+      line-height:16px;
+    }
+  }
 }
+
 .search-results-container{
   width: 72%;
-  float:right
+  float:right;
+  padding-left:15px;
+  border-left: 1px solid #EEEEEE;
 }
 .search-results-container div#feed-index{
   width: 100%;
+  div#feed-index-container {
+    border-right:none !important;
+
+    padding-top:15px;
+    >div.index-item {
+      border-bottom: 1px solid #eeeeee
+    }
+  }
 }
 
 // will want to override the feedindex in this case.
