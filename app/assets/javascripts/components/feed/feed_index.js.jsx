@@ -29,16 +29,16 @@
     },
 
     _onSongChange: function () {
-
-        this._setStateByContext(this.props.context, this.props.data);
-
+      this._setStateByContext(this.props.context, this.props.data);
     },
 
     componentDidMount: function () {
       if (this.props.context === "search") {
         SearchStore.addResultsChangeListener(this._onSongChange);
         SearchStore.addFiltersChangeListener(this._onSongChange);
-        SongApiUtil.fetchSongsByContext(this.props.context, this.props.data);
+        if (this.props.data.id) {
+          SongApiUtil.fetchSongsByContext(this.props.context, this.props.data);
+        }
       } else {
         SongStore.addChangeListener(this._onSongChange);
       }
@@ -51,6 +51,7 @@
         SongApiUtil.fetchSongsByContext(newProps.context, newProps.data);
       }
       if (["showTracks", "showReposts"].indexOf(newProps.context) !== -1) {
+
         this._setStateByContext(newProps.context, newProps.data);
       }
     },

@@ -88,6 +88,9 @@
       float:left;
     }
     &.right {
+      position:relative;
+
+      bottom:3px;
       float:right;
     }
   }

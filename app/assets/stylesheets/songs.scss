@@ -87,7 +87,7 @@ span.index-title {
 
 div.song-index-sound {
   height: 60px;
-  background-color:none;
+  background:none;
   width:100%;
   display:inline-block;
   float: left;
@@ -174,4 +174,42 @@ span.index-item-tag-text {
   color: #FFFFFF;
   font-size:12px;
   line-height:16px;
+}
+
+div.song-comment-form {
+  width:85%;
+  padding: 5px 0;
+  input {
+    width:100%;
+  }
+}
+
+div.comments-overlay {
+  width:85%;
+  position:absolute;
+  div.song-comment {
+      &:hover{
+        .comment-text{display:block;}
+      }
+    div.comment-text {
+      padding:1px 4px;
+      color:#333333;
+      background-color: #e2e2e2;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      display:none;
+      .comment-username{
+        color:#777777;
+        font-weight:700;
+        padding-right:4px;
+        border-right:1px solid rgba(0, 0, 0, 0.15);
+        &:hover{
+          color:#333333;
+          text-decoration:none;
+        }
+      }
+      .comment-body{
+        padding-left:4px;
+      }
+    }
+  }
 }

@@ -138,6 +138,10 @@
        height:"5px",
        width: "" + percentRemaining + "%"
      }
+
+     var comments = song.comments.map(function(comment){
+       return <SongComment key={comment.id} comment={comment}/>
+     });
       return (
         <div className="index-item clearfix">
           <div className="col-md-3" style={thumbStyle}>
@@ -176,19 +180,21 @@
               </div>
             </div>
 
-            <div className="clearfix song-index-sound">  
+            <div className="clearfix song-index-sound">
               <div className="time left">
                 {this.state.isPlaying ? <span>{this.state.currentTime.toString().toHHMMSS}</span> : null}
               </div>
               <div className="progress-bar clearfix">
                 <div style={timeElapsedStyle}></div>
                 <div style={timeRemainingStyle}></div>
+                <div className="comments-overlay clearfix">
+                  {comments}
+                </div>
               </div>
               <div className="time right">
                 {this.state.isPlaying ? <span>{this.state.duration.toString().toHHMMSS}</span> : null}
               </div>
             </div>
-
             <CommentForm addComment={this._addComment}/>
 
 

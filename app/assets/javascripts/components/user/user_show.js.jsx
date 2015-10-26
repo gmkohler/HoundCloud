@@ -20,9 +20,11 @@
     _showAll: function () {
       this.setState({context: "show"});
     },
+
     _showTracks: function () {
       this.setState({context: "showTracks"});
     },
+
     _showReposts: function () {
       this.setState({context: "showReposts"});
     },

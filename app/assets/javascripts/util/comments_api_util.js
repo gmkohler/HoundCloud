@@ -3,7 +3,6 @@
   'use strict';
   root.CommentsApiUtil = {
     addSongComment: function (songID, body, commentTime) {
-      debugger;
       var ajaxOptions = {
         url: '/api/songs/' + songID + '/comments',
         type: 'POST',
@@ -13,8 +12,12 @@
                  body: body,
                  comment_time: commentTime
                }},
-        success: SongApiUtil.receiveSingleSong
+        success: SongApiActions.receiveSingleSong,
+        error: function (data) {
+          debugger;
+        }
       };
+      $.ajax(ajaxOptions);
     }
   };
 

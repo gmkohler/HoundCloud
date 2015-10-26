@@ -18,7 +18,7 @@
 
     render: function () {
       return (
-        <div>
+        <div className="song-comment-form">
           <input type="text"
                  placeholder="Add comment"
                  onKeyUp={this.keyUpHandler}

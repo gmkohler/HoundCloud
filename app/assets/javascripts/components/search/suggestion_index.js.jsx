@@ -10,7 +10,9 @@
 
     componentDidMount: function () {
       SearchStore.addResultsChangeListener(this._getSuggestionsFromStore);
-      this._updateSuggestions(this.props.searchQuery);
+      if (this.props.searchQuery) {
+        this._updateSuggestions(this.props.searchQuery);
+      }
     },
 
     componentWillUnmount: function () {
@@ -26,8 +28,10 @@
     },
 
     _updateSuggestions: function (searchQuery) {
-      UserApiUtil.fetchQueriedUsers(searchQuery);
-      SongApiUtil.fetchSongsByContext("search", searchQuery);
+      if (searchQuery) {
+        UserApiUtil.fetchQueriedUsers(searchQuery);
+        SongApiUtil.fetchSongsByContext("search", searchQuery);
+      }
     },
 
     _getSuggestionsFromStore: function () {
