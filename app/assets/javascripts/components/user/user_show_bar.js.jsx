@@ -40,13 +40,19 @@
             <div className="user-bar">
               <div className="user-bar-section-left">
                 <div>
-                  <span className="active" href="javascript:void(0)">All</span>
+                  <span className={this.props.context === "show" ? "active" : ""}
+                        onClick={this.props.showAll}
+                        href="javascript:void(0)">All</span>
                 </div>
                 <div>
-                  <span className="" href="javascript:void(0)">Tracks</span>
+                  <span className={this.props.context === "showTracks" ? "active" : ""}
+                        onClick={this.props.showTracks}
+                        href="javascript:void(0)">Tracks</span>
                 </div>
                 <div>
-                  <span className="" href="javascript:void(0)">Reposts</span>
+                  <span className={this.props.context === "showReposts" ? "active" : ""}
+                        onClick={this.props.showReposts}
+                        href="javascript:void(0)">Reposts</span>
                 </div>
               </div>
               <div className="user-bar-section-right">

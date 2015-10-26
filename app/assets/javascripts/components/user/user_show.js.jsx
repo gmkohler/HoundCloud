@@ -1,8 +1,11 @@
 (function(root) {
   'use strict';
   root.UserShow = React.createClass({
+    // a hacky self-controlled state....
+
     getInitialState: function () {
-      return {user: (this._getUserFromStore() || {username: "", id: ""})};
+      return {user: (this._getUserFromStore() || {username: "", id: ""}),
+              context: "show"};
     },
 
     _getUserFromStore: function () {
@@ -12,6 +15,16 @@
 
     _onUserChange: function () {
       this.setState({user: this._getUserFromStore()});
+    },
+
+    _showAll: function () {
+      this.setState({context: "show"});
+    },
+    _showTracks: function () {
+      this.setState({context: "showTracks"});
+    },
+    _showReposts: function () {
+      this.setState({context: "showReposts"});
     },
 
     componentDidMount: function () {
@@ -32,9 +45,13 @@
       return (
         <div>
           <UserInfo user={user}/>
-          <UserShowBar user={user}/>
+          <UserShowBar user={user}
+                       showAll={this._showAll}
+                       showReposts={this._showReposts}
+                       showTracks={this._showTracks}
+                       context={this.state.context}/>
           <div className="user-show-container">
-            <FeedIndex context={"show"} data={user}/>
+            <FeedIndex context={this.state.context} data={user}/>
             <UserShowSideBar user={user}/>
           </div>
         </div>
