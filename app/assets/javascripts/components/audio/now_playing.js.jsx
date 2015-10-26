@@ -7,6 +7,7 @@
 
     componentDidMount: function () {
       this.audio = new Audio();
+      this.audio.id = "audio"
       this.audio.addEventListener("ended", this._onEnded, false);
       this.audio.addEventListener("timeupdate", this._onTimeUpdate, false);
       this.audio.addEventListener("loadedmetadata", this._onLoadedMetadata, false);
@@ -50,7 +51,6 @@
             newState.currentTime !== this.audio.currentTime) {
         this.audio.currentTime = 0;
       }
-
     },
 
     _onEnded: function () {

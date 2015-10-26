@@ -4,7 +4,7 @@
 }
 #audio-player-controls {
   float: left;
-  width: 20%;
+  width: 15%;
   display:inline-block;
 }
 #audio-player-song-holder {
@@ -78,7 +78,33 @@
 #now-playing-state {
   display:inline-block;
   float: left;
-  width: 40%;
+  padding: 15px 0;
+  width: 45%;
+  div.time {
+    font-size:12px;
+    display:inline-block;
+    width:auto;
+    &.left {
+      float:left;
+    }
+    &.right {
+      float:right;
+    }
+  }
+
+  div.progress-bar {
+    position:relative;
+    top: 7px;
+    width:85%;
+    margin: 0px 6px;
+    background-color:none;
+    div.time-elapsed {
+
+    }
+    div.time-remaining {
+
+    }
+  }
 }
 #now-playing-badge {
   width:auto;

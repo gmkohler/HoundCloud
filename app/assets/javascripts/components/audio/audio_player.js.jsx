@@ -57,6 +57,14 @@
       AudioActions.resetSong();
     },
 
+    _percentElapsed: function () {
+      if (this.state.duration === 0) {
+        return 0;
+      } else {
+        return (this.state.currentTime/this.state.duration) * 100;
+      }
+    },
+
     _onNext: function (e) {
       e.preventDefault();
       SongApiActions.shiftQueueForward();
@@ -98,6 +106,24 @@
            </a>]
        );
 
+       var percentElapsed = this._percentElapsed(),
+           percentRemaining = 100 - percentElapsed;
+
+      var timeElapsedStyle = {
+        display: "inline-block",
+        float: "left",
+        backgroundColor: "#FF5500",
+        height:"3px",
+        width: "" + percentElapsed + "%"
+      }
+      var timeRemainingStyle = {
+        display:"inline-block",
+        float:"left",
+        backgroundColor: "#777777",
+        height:"3px",
+        width: "" + percentRemaining + "%"
+      }
+
       // Need to add in Queue again...
       return (
         <nav id="audio-player" className="nav navbar-default navbar-fixed-bottom">
@@ -110,8 +136,15 @@
             </div>
             <div id="now-playing-state">
               <NowPlaying />
-              <div>
-                <span>forthcoming</span>
+              <div className="time left">
+                {this.state.currentTime.toString().toHHMMSS()}
+              </div>
+              <div className="progress-bar clearfix">
+                <div style={timeElapsedStyle}></div>
+                <div style={timeRemainingStyle}></div>
+              </div>
+              <div className="time right">
+                {this.state.duration.toString().toHHMMSS()}
               </div>
             </div>
 

@@ -16,6 +16,7 @@ div.index-item-details {
 div.song-index-buttons {
   height: 30px;
   width: auto;
+
 }
 
 .index-item-tag>i.glyphicon {
@@ -85,7 +86,38 @@ span.index-title {
 }
 
 div.song-index-sound {
-  height: 60px
+  height: 60px;
+  background-color:none;
+  width:100%;
+  display:inline-block;
+  float: left;
+  padding: 15px 0;
+  div.time {
+    width:7%;
+    font-size:12px;
+    display:inline-block;
+    width:auto;
+    &.left {
+      float:left;
+    }
+    &.right {
+      float:right;
+    }
+  }
+
+  div.progress-bar {
+    position:relative;
+    top: 7px;
+    width:86%;
+    padding: 0px 6px;
+    background:none;
+    div.time-elapsed {
+
+    }
+    div.time-remaining {
+
+    }
+  }
 }
 .btn-song-index {
   padding: 2px 9px 2px 8px;
@@ -94,6 +126,10 @@ div.song-index-sound {
   color: #000000;
   background-color: #FFFFFF;
   border-color: #EEEEEE;
+  &.active{
+    color:#FF5500;
+    border-color:#FF5500;
+  }
 }
 
 .btn-song-index:hover {

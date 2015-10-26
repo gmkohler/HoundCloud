@@ -91,7 +91,9 @@
     render: function () {
       var song = this.props.song;
       var likeText = this.props.song.isLiked ? "Unlike" : "Like";
+      var likeClass = this.props.song.isLiked ? " active" : "";
       var repostText = this.props.song.isReposted ? "Reposted" : "Repost";
+      var repostClass = this.props.song.isReposted ? " active" : "";
       var playButtonClass = this.state.paused ? "glyphicon-play" : "glyphicon-pause";
       var timeSince = AppUtil.timeSince(new Date(song.created_at));
 
@@ -118,6 +120,24 @@
           Edit Song
         </button>
       );
+
+     var percentElapsed = this._percentElapsed(),
+         percentRemaining = 100 - percentElapsed;
+
+     var timeElapsedStyle = {
+       display: "inline-block",
+       float: "left",
+       backgroundColor: "#FF5500",
+       height:"5px",
+       width: "" + percentElapsed + "%"
+     }
+     var timeRemainingStyle = {
+       display:"inline-block",
+       float:"left",
+       backgroundColor: "#777777",
+       height:"5px",
+       width: "" + percentRemaining + "%"
+     }
       return (
         <div className="index-item clearfix">
           <div className="col-md-3" style={thumbStyle}>
@@ -156,9 +176,17 @@
               </div>
             </div>
 
-            <div className="song-index-sound">
-              {this.state.isPlaying ? <span>{this.state.currentTime}</span> : null}
-              {this.state.isPlaying ? <span>{this.state.duration}</span> : null}
+            <div className="clearfix song-index-sound">  
+              <div className="time left">
+                {this.state.isPlaying ? <span>{this.state.currentTime.toString().toHHMMSS}</span> : null}
+              </div>
+              <div className="progress-bar clearfix">
+                <div style={timeElapsedStyle}></div>
+                <div style={timeRemainingStyle}></div>
+              </div>
+              <div className="time right">
+                {this.state.isPlaying ? <span>{this.state.duration.toString().toHHMMSS}</span> : null}
+              </div>
             </div>
 
             <CommentForm addComment={this._addComment}/>
@@ -181,14 +209,14 @@
                 </button>
 
                 <button type="button"
-                        className="btn btn-xs btn-song-index"
+                        className={"btn btn-xs btn-song-index" + likeClass}
                         onClick={this._likeToggle}>
                   <i className="glyphicon glyphicon-heart"></i>
                   {likeText}
                 </button>
 
                 <button type="button"
-                        className="btn btn-xs btn-song-index"
+                        className={"btn btn-xs btn-song-index" + repostClass}
                         onClick={this._repostToggle}>
                   <i className="glyphicon glyphicon-retweet"></i>
                   {repostText}
