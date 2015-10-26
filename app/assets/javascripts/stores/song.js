@@ -96,8 +96,8 @@
 
       getTracksAndReposts: function (userID) {
         return _songs.filter(function(song){
-                 return song.artist_id === userID || !!song.reposters[userID];
-               });
+            return song.artist_id === userID || !!song.reposters[userID];
+        });
       },
 
 // _SONGS METHODS

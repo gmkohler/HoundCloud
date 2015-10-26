@@ -19,7 +19,7 @@ HoundCloud is a web application inspired by SoundCloud built using Ruby on Rails
 - [x] Search for users and songs
 - [x] Filter songs search results by tag
 - [x] Subscribe to other users, have a home page showing a feed of those users' activity.
-- [ ] Comment on songs at a specified time within the song.
+- [x] Comment on songs at a specified time within the song.
 
 
 ## Design Docs

@@ -95,6 +95,7 @@
       var repostText = this.props.song.isReposted ? "Reposted" : "Repost";
       var repostClass = this.props.song.isReposted ? " active" : "";
       var playButtonClass = this.state.paused ? "glyphicon-play" : "glyphicon-pause";
+
       var timeSince = AppUtil.timeSince(new Date(song.created_at));
 
       var tags = song.tags.map(function(tag){
@@ -139,6 +140,8 @@
        width: "" + percentRemaining + "%"
      }
 
+    //  can later improve by moving the organization to the SQL Query
+    // Also, can have them display
      var commentsByTime = {};
      song.comments.forEach(function(comment){
        if (commentsByTime[comment.commentTime]) {
@@ -149,8 +152,11 @@
      });
 
      var commentComponents = Object.keys(commentsByTime).map(function(commentTime){
-       return <SongComment key={commentTime} comments={commentsByTime[commentTime]}/>
-     })
+       return <SongComment key={commentTime}
+                           currentPercentElapsed={this._percentElapsed()}
+                           commentTime={commentTime}
+                           comments={commentsByTime[commentTime]}/>
+     }.bind(this))
 
       return (
         <div className="index-item clearfix">
