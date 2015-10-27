@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def demo
-    user = User.find(7)
+    user = User.find(5)
     login_user!(user)
     render json: current_user
   end

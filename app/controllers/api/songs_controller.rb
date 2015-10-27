@@ -1,12 +1,11 @@
 class Api::SongsController < ApplicationController
-  DEFAULT_SONG_IMAGE_URL = "http://res.cloudinary.com/gmkohler/image/upload/v1444792689/pwas_tqyolh.png"
+  DEFAULT_SONG_IMAGE_URL = "http://res.cloudinary.com/gmkohler/image/upload/v1445970980/digital_only_hrsxyo.jpg"
 
   def create
-    current_user
     @song = Song.new(song_params)
     @song.assign_tags(params[:song][:tag_names])
-    @song.artist_id = current_user.id
-    @song.image_url ||= current_user.image_url
+    @song.artist_id ||= current_user.id
+    @song.image_url ||= DEFAULT_SONG_IMAGE_URL
 
     if @song.save
       render :show

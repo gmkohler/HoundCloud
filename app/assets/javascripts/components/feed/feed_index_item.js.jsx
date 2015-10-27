@@ -109,6 +109,7 @@
       var thumbStyle = {
         backgroundImage: "url(" + song.image_url + ")",
         backgroundPosition: "center",
+        backgroundSize: "contain",
         height: "120px",
         width: "120px"
       };
