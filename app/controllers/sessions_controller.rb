@@ -4,6 +4,12 @@ class SessionsController < ApplicationController
     render :new
   end
 
+  def demo
+    user = User.find(7)
+    login_user!(user)
+    render json: current_user
+  end
+
   def create
     user = User.find_by_credentials(
       params[:user][:email],

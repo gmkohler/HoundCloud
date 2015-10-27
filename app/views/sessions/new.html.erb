@@ -26,10 +26,28 @@
                      id="user_password">
             </div>
             <button type="submit" class="btn btn-form-login">Sign In</button>
+            <button id="demo-login" class="btn btn-demo-login">Demo User</button>
           </form>
 
-          <div>New User? <%= link_to "sign up", new_user_url %></div>
+          <div>New User? <%= link_to "Sign up", new_user_url %> here.</div>
       </div>
     </div>
   </body>
+  <script type="text/javascript">
+    function demoLogin () {
+      var ajaxOptions = {
+        url: '/session/demo',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+          // debugger;
+          window.location.href = '/';
+        }
+      };
+
+      $.ajax(ajaxOptions);
+    }
+
+    $("#demo-login").on('click', demoLogin)
+  </script>
 </html>

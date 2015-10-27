@@ -246,7 +246,7 @@
                   {likeText}
                 </button>
 
-                {song.artist_id === CURRENT_USER_ID ? repostButton : null}
+                {song.artist_id !== CURRENT_USER_ID ? repostButton : null}
                 {song.artist_id === CURRENT_USER_ID ? editButton : null}
               </div>
 
