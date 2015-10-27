@@ -4,30 +4,32 @@
     <meta charset="utf-8">
     <title>Sign In</title>
   </head>
-  <body>
-    <Navbar/>
-    <div class="container col-lg-4">
-    <div class="page-header"><h2>please sign in</h2></div>
+  <body class="entry-page">
+    <div class="login-container clearfix">
+      <div class="col-md-8  sign-in-page">
+        <div class="page-header"><h2>Welcome to HoundCloud</h2></div>
+          <form class="log-in" action="/session" method="post">
+            <%= auth_token %>
 
-      <form action="/session" method="post">
-        <%= auth_token %>
+            <div class="form-group">
+              <label for="user_email">email:</label>
+              <input type="text"
+                     class="form-control"
+                     name="user[email]"
+                     id="user_email">
+            </div>
+            <div class="form-group">
+              <label for="user_password">password:</label>
+              <input type="password"
+                     class="form-control"
+                     name="user[password]"
+                     id="user_password">
+            </div>
+            <button type="submit" class="btn btn-form-login">Sign In</button>
+          </form>
 
-        <div class="form-group">
-          <label for="user_email">email:</label>
-          <input type="text"
-                 class="form-control"
-                 name="user[email]"
-                 id="user_email">
-        </div>
-        <div class="form-group">
-          <label for="user_password">password:</label>
-          <input type="password"
-                 class="form-control"
-                 name="user[password]"
-                 id="user_password">
-        </div>
-        <button type="submit" className="btn btn-default">sign in</button>
-      </form>
+          <div>New User? <%= link_to "sign up", new_user_url %></div>
+      </div>
     </div>
   </body>
 </html>

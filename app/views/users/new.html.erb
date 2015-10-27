@@ -4,38 +4,43 @@
     <meta charset="utf-8">
     <title>Sign In</title>
   </head>
-  <body>
-    <div class="container col-lg-2">
-      <div class="page-header"><h1>sign up</h1></div>
-      <form action="/users" method="post">
-        <%= auth_token %>
-        <div class="form-group">
-          <label for="user_username">username:</label>
-          <input type="text"
-                 class="form-control"
-                 name="user[username]"
-                 value="<%= @user.username %>">
-        </div>
-        <div class="form-group">
-          <label for="user_email">email:</label>
-          <input type="text"
-                 class="form-control"
-                 name="user[email]"
-                 value="<%= @user.email %>"
-                 id="user_email">
-        </div>
+  <body class="entry-page">
+    <div class="login-container clearfix">
+      <div class="col-md-8  sign-in-page">
+        <div class="page-header"><h2>Create an Account</h2></div>
+        <form  class="log-in" action="/users" method="post">
+          <%= auth_token %>
+          <div class="form-group">
+            <label for="user_username">username:</label>
+            <input type="text"
+                   class="form-control"
+                   name="user[username]"
+                   value="<%= @user.username %>">
+          </div>
+          <div class="form-group">
+            <label for="user_email">email:</label>
+            <input type="text"
+                   class="form-control"
+                   name="user[email]"
+                   value="<%= @user.email %>"
+                   id="user_email">
+          </div>
 
-        <div class="form-group">
-          <label for="user_password">password:</label>
-          <input type="password"
-                 class="form-control"
-                 name="user[password]"
-                 id="user_password">
-           <p className="help-block">(min. 6 char.)</p>
-        </div>
+          <div class="form-group">
+            <label for="user_password">password:</label>
+            <input type="password"
+                   class="form-control"
+                   name="user[password]"
+                   id="user_password">
+             <p class="help-block">(min. 6 char.)</p>
+          </div>
 
-        <input type="submit" class="btn btn-default" value="create account">
-      </form>
+          <input type="submit" class="btn btn-form-login" value="create account">
+        </form>
+        <div>
+          Already have an account? Please  <%= link_to "log in", new_session_url%> here.
+        </div>
+      </div>
     </div>
 
   </body>

@@ -29,8 +29,8 @@
          max-width: 970px;
      }
  }
-html{}
-body{}
+html{height:100%;}
+body{height:100%;}
 #app {
   height:100%;
   background-color: #F2F2F2;
@@ -183,4 +183,46 @@ nav.navbar.navbar-default.navbar-fixed-top{
 body {
     font: 12px/1.4 "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Garuda,Verdana,Tahoma,sans-serif;
     color: #333;
+}
+
+
+.login-container{
+  width:100%;
+  height:100%;
+  background-image:url(http://res.cloudinary.com/gmkohler/image/upload/v1445896281/HomeBanner_dog_colours_pr41ob.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-color:#FFFFFF;
+  div.sign-in-page {
+    margin: 10% 33.3%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color:#FFFFFF;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius:30px;
+    width:auto;
+    form.log-in {
+      margin:auto;
+      .btn-form-login {
+        text-align: center;
+        width: auto;
+        margin: 15px auto;
+        background-color: #FF5500;
+        border-color: #FF5500;
+        color: #FFFFFF;
+        font-size: 16px;
+        line-height: 20px;
+        &:hover {
+          background-color: inherit;
+          border-color: inherit;
+          color: inherit;
+        }
+      }
+
+      label{
+        font-size:14px;
+      }
+    }
+  }
 }

@@ -15,10 +15,6 @@
 </head>
 <body>
 
-<% if !current_user %>
-  Please <%= link_to "log in", new_session_url%> or <%= link_to "sign up", new_user_url %>
-<% end %>
-
 <% if flash %>
   <% flash.each do |key, msg|%>
     <%= msg %>
