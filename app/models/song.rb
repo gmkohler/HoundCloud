@@ -48,7 +48,7 @@ class Song < ActiveRecord::Base
       query = filter_params[:context_data]
       Song.includes(:artist)
           .joins("INNER JOIN users ON songs.artist_id = users.id")
-          .where("songs.title LIKE ? OR users.username LIKE ?", "%#{query}%", "%#{query}%")
+          .where("LOWER(songs.title) LIKE ? OR LOWER(users.username) LIKE ?", "%#{query}%", "%#{query}%")
     end
   end
 

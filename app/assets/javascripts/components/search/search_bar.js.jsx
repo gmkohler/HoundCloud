@@ -24,7 +24,7 @@
     _submit: function (e) {
       e.preventDefault();
       this._clearQuery();
-      this.props.onSearch(this.state.searchQuery);
+      this.props.onSearch(this.state.searchQuery.toLowerCase());
     },
 
     render: function () {
@@ -48,7 +48,7 @@
               <i className="glyphicon glyphicon-search form-control-feedback"/>
             </div>
           </form>
-          
+
           <SuggestionIndex clearQuery={this._clearQuery}
                            searchQuery={this.state.searchQuery}/>
         </div>

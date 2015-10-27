@@ -47,10 +47,10 @@
       var retVals = [];
       if (_filters.showUsers) {
         retVals = _results.users.filter(function(user) {
-          return user.username.match(query);
+          return user.username.toLowerCase().match(query);
         });
       }
-      
+
       return retVals;
     },
 
@@ -65,7 +65,8 @@
           });
         } else {
           return _results.songs.filter(function(song) {
-            return !!(song.title.match(query) || song.artist_username.match(query));
+            debugger;
+            return !!(song.title.toLowerCase().match(query) || song.artist_username.toLowerCase().match(query));
           });
         }
       } else {
@@ -86,11 +87,11 @@
 
     getMatchingResults: function(term, numResults){
       var users = _results.users.filter(function(user){
-        return !!user.username.match(term);
+        return !!user.username.toLowerCase().match(term);
       });
 
       var songs = _results.songs.filter(function(song){
-        return (!!song.title.match(term) || !!song.artist_username.match(term));
+        return (!!song.title.toLowerCase().match(term) || !!song.artist_username.toLowerCase().match(term));
       });
 
       var numUsers = numResults || users.length,
