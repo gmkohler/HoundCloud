@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 DEFAULT_USER_IMAGE_URL = "http://res.cloudinary.com/gmkohler/image/upload/v1444792510/Poodle_kqgsbm.png"
-DEFAULT_USER_COVER_IMAGE_URL = "http://res.cloudinary.com/gmkohler/image/upload/v1444792510/Poodle_kqgsbm.png"
+DEFAULT_USER_COVER_IMAGE_URL = "http://res.cloudinary.com/gmkohler/image/upload/v1445896281/HomeBanner_dog_colours_pr41ob.jpg"
 
 User.create([{email: "snoopy@example.com", # id: 1
                 username:"snoopy",
@@ -172,9 +172,9 @@ songs = [{title: "Peanuts Theme", # id: 1
                 artist_id: 4,
                 tags: tags.sample(2)
              },
-             {title: "Bowwwwruuuff!", # id: 17
-                content_url: 'http://res.cloudinary.com/gmkohler/video/upload/v1445910855/205774_odtlqe.mp3',
-                image_url: DEFAULT_SONG_IMAGE_URL,
+             {title: "Imperial March (The Bark Side)", # id: 17
+                content_url: 'http://res.cloudinary.com/gmkohler/video/upload/v1445976703/STAR_WARS_gdxww8.mp3',
+                image_url: "http://res.cloudinary.com/gmkohler/image/upload/v1445367455/images/vzh8jgk4qrlh5kiiewgg.jpg",
                 artist_id: 4,
                 tags: tags.sample(2)
              },
@@ -289,7 +289,7 @@ Following.create([
   {followee_id: 7, follower_id: 4},
   {followee_id: 1, follower_id: 5},
   {followee_id: 2, follower_id: 5},
-  {followee_id: 3, follower_id: 5},
+  {followee_id: 4, follower_id: 5},
   {followee_id: 5, follower_id: 6},
   {followee_id: 7, follower_id: 6},
   {followee_id: 1, follower_id: 6},
