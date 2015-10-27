@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   DEFAULT_USER_IMAGE_URL = "http://res.cloudinary.com/gmkohler/image/upload/v1444792510/Poodle_kqgsbm.png"
+  DEFAULT_USER_COVER_IMAGE_URL = "http://res.cloudinary.com/gmkohler/image/upload/v1444792510/Poodle_kqgsbm.png"
   def new
     @user = User.new
     render :new
