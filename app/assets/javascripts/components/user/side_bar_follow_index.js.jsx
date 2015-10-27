@@ -2,7 +2,16 @@
   'use strict';
   root.SideBarFollowIndex = React.createClass({
     getInitialState: function () {
-      return {users: UserStore.getAll()};
+      return {users: []};
+    },
+
+    componentDidMount: function () {
+      UserApiUtil.fetchQueriedUsers("", UserApiActions.receiveSuggestedUsers);
+      UserStore.addChangeListener(this._onChange);
+    },
+
+    _onChange: function () {
+      this.setState({users: UserStore.getFollowSuggestions(3)});
     },
     // Could set state to something like UserStore.getMostFollowed(3)
     // Need to ensure the users aren't being followed already.

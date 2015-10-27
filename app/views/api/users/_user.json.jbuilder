@@ -1,4 +1,4 @@
-json.extract! user, :id, :username, :image_url
+json.extract! user, :id, :username, :location, :image_url, :cover_image_url, :bio
 json.set! :numTracks, user.songs.size
 json.set! :numFollowers, user.followers.size
 json.set! :numFollowing, user.followees.size

@@ -24,7 +24,7 @@
   }
 
   root.UserStore = $.extend({}, EventEmitter.prototype, {
-      getAll: function () {
+      getAll: function (numUsers) {
         return this._values();
       },
 
@@ -34,6 +34,15 @@
 
       getCurrentUser: function () {
         return _users[window.CURRENT_USER_ID];
+      },
+
+      getFollowSuggestions: function (numUsers) {
+        var numUsers = numUsers || 0;
+        var candidates = this._values().filter(function(user){
+          return !(user.isFollowed || user.id === CURRENT_USER_ID);
+        });
+
+        return candidates.slice(0, numUsers);
       },
 
       _values: function () {
@@ -80,7 +89,10 @@
             addUserToStore(action.user);
             UserStore.hasChanged();
             break;
-
+          case UserConstants.SUGGESTED_USERS_RECEIVED:
+            addUsersToStore(action.users);
+            UserStore.hasChanged();
+            break;
         }
       })
   });

@@ -122,6 +122,15 @@
         </button>
       );
 
+      var repostButton = (
+        <button type="button"
+                className={"btn btn-xs btn-song-index" + repostClass}
+                onClick={this._repostToggle}>
+          <i className="glyphicon glyphicon-retweet"></i>
+          {repostText}
+        </button>
+      );
+
      var percentElapsed = this._percentElapsed() * 100,
          percentRemaining = 100 - percentElapsed;
 
@@ -237,13 +246,7 @@
                   {likeText}
                 </button>
 
-                <button type="button"
-                        className={"btn btn-xs btn-song-index" + repostClass}
-                        onClick={this._repostToggle}>
-                  <i className="glyphicon glyphicon-retweet"></i>
-                  {repostText}
-                </button>
-
+                {song.artist_id === CURRENT_USER_ID ? repostButton : null}
                 {song.artist_id === CURRENT_USER_ID ? editButton : null}
               </div>
 

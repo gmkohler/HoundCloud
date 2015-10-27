@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.image_url ||= DEFAULT_USER_IMAGE_URL
+    @user.cover_image_url ||= DEFAULT_USER_IMAGE_URL
 
     if @user.save
       login_user!(@user)

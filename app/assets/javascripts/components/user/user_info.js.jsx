@@ -12,13 +12,19 @@
         backgroundPosition: "center",
         border: "1px solid #000000"
       };
+
+      var userInfoStyle = {
+        backgroundImage: 'url(' + user.cover_image_url + ')',
+
+      };
+
       return (
-        <div className="user-info">
+        <div className="user-info" style={userInfoStyle}>
             <div className="user-show-image" style={profPicStyle}/>
             <div classname="user-show-info">
               <h3 className="user-info-name">{this.props.user.username}</h3>
                 <br/>
-              <h4 className="user-info-location">Long Beach, Calif.</h4>
+              <h4 className="user-info-location">{this.props.user.location}</h4>
             </div>
 
         </div>

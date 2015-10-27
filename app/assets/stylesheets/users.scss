@@ -82,7 +82,6 @@ div.sidebar-follow-item-stats>div {
 }
 
 .user-info {
-  background-image: url(http://www.amigoapps.com.au/images/HomeBanner_dog_colours.jpg);
   background-size: cover;
   background-position: center;
   height: 260px;
@@ -297,6 +296,10 @@ div.user-show-container {
           }
         }
       }
+    }
+    p {
+      padding:5px 5px;
+      color:#333333
     }
   }
 }

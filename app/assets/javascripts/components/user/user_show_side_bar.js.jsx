@@ -27,10 +27,10 @@
               <div className="clearfix"><span className="sidebar-stat-num">{user.numTracks}</span></div>
             </div>
           </div>
-
-          <div id="sidebar-suggested-users">
-
+          <div>
+            <p>{user.bio}</p>
           </div>
+          <SideBarFollowIndex/>
         </div>
       );
     }

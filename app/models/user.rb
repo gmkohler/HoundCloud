@@ -10,6 +10,9 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  image_url       :string           not null
+#  location        :string           not null
+#  bio             :text             not null
+#  cover_image_url :string           not null
 #
 
 class User < ActiveRecord::Base
