@@ -167,7 +167,7 @@ songs = [{title: "Peanuts Theme", # id: 1
                 tags: tags.sample(2)
              },
              {title: "Awooooo!", # id: 16
-                content_url: '',
+                content_url: 'http://res.cloudinary.com/gmkohler/video/upload/v1445911678/71881_ehnk2o.mp3',
                 image_url: DEFAULT_SONG_IMAGE_URL,
                 artist_id: 4,
                 tags: tags.sample(2)
@@ -179,7 +179,7 @@ songs = [{title: "Peanuts Theme", # id: 1
                 tags: tags.sample(2)
              },
              {title: "Awwwoooo!!", # id: 18
-                content_url: '',
+                content_url: 'http://res.cloudinary.com/gmkohler/video/upload/v1445911678/71881_ehnk2o.mp3',
                 image_url: DEFAULT_SONG_IMAGE_URL,
                 artist_id: 5,
                 tags: tags.sample(2)
@@ -209,7 +209,7 @@ songs = [{title: "Peanuts Theme", # id: 1
                 tags: tags.sample(2)
              },
              {title: "WALK???", # id: 23
-                content_url: '',
+                content_url: 'http://res.cloudinary.com/gmkohler/video/upload/v1445911678/71881_ehnk2o.mp3',
                 image_url: DEFAULT_SONG_IMAGE_URL,
                 artist_id: 6,
                 tags: tags.sample(2)
