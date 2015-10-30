@@ -5,9 +5,9 @@ class SessionsController < ApplicationController
   end
 
   def demo
-    user = User.find(5)
+    user = User.find_by_credentials("bo@whitehouse.gov", "boobama")
     login_user!(user)
-    render json: current_user
+    render json: user
   end
 
   def create
