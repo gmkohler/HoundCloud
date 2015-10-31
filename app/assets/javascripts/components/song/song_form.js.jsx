@@ -72,6 +72,7 @@
     createSong: function (e) {
       var songParams = this._songParams();
       var onSuccess = function (data) {
+        debugger;
         SongApiActions.receiveSingleSong(data);
         ModalActions.deactivateSongFormModal();
       };
