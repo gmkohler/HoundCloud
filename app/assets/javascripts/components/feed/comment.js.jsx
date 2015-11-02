@@ -21,7 +21,7 @@
 
       var commentBodies = comments.map(function(comment){
         return (
-          <li>
+          <li key={comment.id}>
             <div className="comment-text">
               <span>
                 <Link to={"users/" + comment.author.id} className="comment-username">
@@ -34,7 +34,7 @@
         );
       });
 
-      
+
       var isActive = (Math.abs(this.props.currentPercentElapsed - parseFloat(this.props.commentTime)) < 0.05 &&
                        this.props.currentPercentElapsed !== 0) ? " active" : "";
 

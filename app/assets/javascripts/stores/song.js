@@ -30,6 +30,8 @@
 
   function queueSingleSong (songID) {
     var song = findSong(songID);
+    var qSong = $.extend({queueID: queueID}, song);
+    queueID++;
     _queue.push(song);
   }
 
@@ -50,12 +52,15 @@
     _queue[idx + dir] = temp;
   }
 
-  function transferSongsToQueue (startSongID) {
-    var startSong   = findSong(startSongID),
-        startIdx    = _songs.indexOf(startSong),
-        queuedSongs = _songs.slice(startIdx, _songs.length);
-    _queue = _queue.concat(queuedSongs);
-  }
+  // Once implemented, need to refactor to include queueID.
+  // Note that it deals with songs whereas queueSingleSong uses songID.
+  // 
+  // function transferSongsToQueue (startSongID) {
+  //   var startSong   = findSong(startSongID),
+  //       startIdx    = _songs.indexOf(startSong),
+  //       queuedSongs = _songs.slice(startIdx, _songs.length);
+  //   _queue = _queue.concat(queuedSongs);
+  // }
 
   function shiftQueue () {
     _queue.shift();
@@ -190,4 +195,5 @@
         }
     })
   });
+  root.SongStore.setMaxListeners(0);
 }(this));
