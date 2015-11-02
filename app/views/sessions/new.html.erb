@@ -34,7 +34,8 @@
     </div>
   </body>
   <script type="text/javascript">
-    $(function demoLogin () {
+    function demoLogin (e) {
+      e.preventDefault();
       var ajaxOptions = {
         url: '/session/demo',
         type: 'POST',
@@ -43,10 +44,9 @@
           window.location.replace('/');
         }
       };
-
       $.ajax(ajaxOptions);
     }
 
-    $("#demo-login").on('click', demoLogin))
+    $("#demo-login").on('click', demoLogin)
   </script>
 </html>
