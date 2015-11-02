@@ -68,7 +68,7 @@
       },
 
       getUser: function (userID) {
-        return (_users[userID]);
+        return (_users[userID.toString()]);
       },
 
       addChangeListener: function (callback) {

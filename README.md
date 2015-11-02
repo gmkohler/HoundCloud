@@ -1,8 +1,8 @@
 # HoundCloud
 
-[Heroku link][heroku] **NB:** This should be a link to your production site
+[Live Link][live-link]
 
-[heroku]: http://www.herokuapp.com
+[live-link]: http://www.houndclou.de
 
 ## Minimum Viable Product
 
@@ -99,13 +99,13 @@ Work on CSS again for the entire product
 
 
 ### Bonus Features (TBD)
-- [ ] Re-order songs within the play queue.
-- [ ] Re-post and like songs from other users
+- [x] Re-order songs and delete songs in the play queue.
+- [x] Re-post and like songs from other users
 - [ ] Create playlists, establish polymorphism for "likeables", "taggables" with respect to both playlists and songs.
 - [ ] Establish a home page for not-logged-in users, and routing the new user/session pages through this.
-- [ ] Implement suggested Users/Songs navbar on the side of show pages
+- [x] Implement suggested Users/Songs navbar on the side of show pages
 - [ ] Download songs
-- [ ] User can manage playback queue (e.g., splicing after the current song and dragging songs around within the queue)
+- [x] User can manage playback queue (e.g., splicing after the current song and dragging songs around within the queue)
 - [ ] Playback audio manipulation (e.g., equalizer)
 - [ ] Multi-staged feed retrieval to achieve quicker initial page load
 
