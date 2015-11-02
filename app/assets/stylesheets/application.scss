@@ -29,8 +29,14 @@
          max-width: 970px;
      }
  }
-html{height:100%;}
-body{height:100%;}
+html{
+  height: auto;
+  min-height:100%;
+}
+body {
+  height: auto;
+  min-height:100%;
+}
 #app {
   height:100%;
   background-color: #F2F2F2;
@@ -186,7 +192,9 @@ body {
 }
 
 
+
 .login-container{
+  position:fixed;
   width:100%;
   height:100%;
   background-image:url(http://res.cloudinary.com/gmkohler/image/upload/v1445896281/HomeBanner_dog_colours_pr41ob.jpg);

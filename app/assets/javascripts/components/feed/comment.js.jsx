@@ -35,7 +35,7 @@
       });
 
 
-      var isActive = (Math.abs(this.props.currentPercentElapsed - parseFloat(this.props.commentTime)) < 0.05 &&
+      var isActive = (Math.abs(this.props.currentPercentElapsed - parseFloat(this.props.commentTime)) <= 0.01 &&
                        this.props.currentPercentElapsed !== 0) ? " active" : "";
 
       return (
