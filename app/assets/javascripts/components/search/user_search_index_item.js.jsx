@@ -7,6 +7,7 @@
     },
 
     _followToggle: function (e) {
+      e.preventDefault();
       this.props.user.isFollowed ? this._unfollowUser() : this._followUser();
     },
 

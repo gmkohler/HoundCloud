@@ -6,7 +6,7 @@
 
 ## Minimum Viable Product
 
-HoundCloud is a web application inspired by SoundCloud built using Ruby on Rails and React.js. HoundCloud allows users to:
+HoundCloud is a web application inspired by SoundCloud built using Ruby on Rails and React.js. More specifically, HoundCloud allows users to:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
