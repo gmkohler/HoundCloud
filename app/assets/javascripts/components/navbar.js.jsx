@@ -21,6 +21,10 @@
       ModalActions.activateSongFormModal();
     },
 
+    collectionClickHandler: function (e) {
+      e.preventDefault();
+    },
+
     render: function () {
       return (
         <nav className="navbar navbar-default navbar-fixed-top">
@@ -31,7 +35,7 @@
             <div className="collapse navbar-collapse">
               <ul className="nav navbar-nav">
                 <li className="selected"><Link to="#">Home</Link></li>
-                <li><Link to="#">Collection</Link> </li>
+                <li id="collections"> <Link to="#">Collection</Link></li>
               </ul>
               <div className="col-md-5">
                 <SearchBar onSearch={this.props.onSearch} />

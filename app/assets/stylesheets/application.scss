@@ -168,6 +168,14 @@ ul.nav.navbar-nav>li>a:hover {
 ul.nav.navbar-nav>li.selected {
   background-color: #111;
 }
+ul.nav.navbar-nav>li#collections {
+  &.selected {
+    background-color: #333;
+  }
+
+  background-color: #333;
+}
+
 ul.nav.navbar-nav>li:last-child{
   border-right: 1px solid #111
 }
@@ -177,10 +185,29 @@ ul.nav.navbar-nav>li.dropdown{
 ul.nav.navbar-nav>li.selected>a {
   color: #FFF;
 }
-ul.nav.navbar-nav>li>a:focus {
-  color: #FFF;
-  background-color: #111;
+
+ul.nav.navbar-nav>li {
+
+  a:focus {
+
+    color: #FFF;
+    background-color: #111;
+  }
+
+  &#collections {
+
+    a {
+      &:hover {
+        color:#FFF;
+      }
+      &:focus {
+        color: #EEE;
+        background-color: #333;
+      }
+    }
+  }
 }
+
 nav.navbar.navbar-default.navbar-fixed-top{
   background-color: #333;
   border: none;

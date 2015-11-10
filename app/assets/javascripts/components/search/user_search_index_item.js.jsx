@@ -10,7 +10,8 @@
       e.preventDefault();
       this.props.user.isFollowed ? this._unfollowUser() : this._followUser();
     },
-
+    // not very flux-y with the setState-ing. should only be done when the user
+    // in the searchStore is updated...
     _followUser: function () {
       FollowingApiUtil.addFollowing(this.props.user.id);
       this.setState({followText: "Unfollow"});

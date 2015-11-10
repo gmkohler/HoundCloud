@@ -165,9 +165,9 @@ div.index-item-tag {
   margin-left: 2px
 }
 div.index-item-tag:hover {
-  background-color: #555555;
-  border-color: #555555;
-  cursor: pointer;
+  // background-color: #555555;
+  // border-color: #555555;
+  cursor: default;
 }
 
 span.index-item-tag-text {
@@ -203,7 +203,7 @@ div.comments-overlay {
       white-space:nowrap;
       border: 1px solid rgba(0, 0, 0, 0.15);
       &.active{display:block;}
-      
+
       li {
         list-style:none;
 
