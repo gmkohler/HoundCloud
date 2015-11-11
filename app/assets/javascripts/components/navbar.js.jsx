@@ -26,6 +26,8 @@
     },
 
     render: function () {
+      var HOME_URL_HASH_LENGTH = 12;
+      var homeClass = window.location.hash.length === HOME_URL_HASH_LENGTH ? "selected" : "";
       return (
         <nav className="navbar navbar-default navbar-fixed-top">
           <div className="container">
@@ -34,10 +36,9 @@
             </div>
             <div className="collapse navbar-collapse">
               <ul className="nav navbar-nav">
-                <li className="selected"><Link to="#">Home</Link></li>
-                <li id="collections"> <Link to="#">Collection</Link></li>
+                <li className={homeClass}><Link to="#">Home</Link></li>
               </ul>
-              <div className="col-md-5">
+              <div className="col-md-6">
                 <SearchBar onSearch={this.props.onSearch} />
               </div>
 

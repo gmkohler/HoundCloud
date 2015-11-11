@@ -119,7 +119,7 @@
       var timeRemainingStyle = {
         display:"inline-block",
         float:"left",
-        backgroundColor: "#777777",
+        backgroundColor: "#AAAAAA",
         height:"3px",
         width: "" + percentRemaining + "%"
       }
