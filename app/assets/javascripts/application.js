@@ -19,6 +19,5 @@
 //= require flux
 //= require eventemitter
 //= require ReactRouter.min
-//= require wavesurfer.min
 //= require components
 //= require_tree .
