@@ -5,21 +5,24 @@
   'use strict';
   root.UserApiActions = {
     receiveSingleUser: function (data) {
-      var action = {
+      AppDispatcher.dispatch({
         actionType: UserConstants.SINGLE_USER_RECEIVED,
         user: data
-      };
-
-      AppDispatcher.dispatch(action);
+      });
     },
 
     receiveSuggestedUsers: function (data) {
-      var action = {
+      AppDispatcher.dispatch({
         actionType: UserConstants.SUGGESTED_USERS_RECEIVED,
         users: data
-      };
+      });
+    },
 
-      AppDispatcher.dispatch(action);
+    receiveFollowSuggestions: function (data) {
+      AppDispatcher.dispatch({
+        actionType: UserConstants.FOLLOW_SUGGESTIONS_RECEIVED,
+        users: data
+      });
     }
   };
 }(this));

@@ -6,7 +6,7 @@
     },
 
     componentDidMount: function () {
-      UserApiUtil.fetchQueriedUsers("", UserApiActions.receiveSuggestedUsers);
+      UserApiUtil.fetchFollowSuggestions();
       UserStore.addChangeListener(this._onChange);
     },
 

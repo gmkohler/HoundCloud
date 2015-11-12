@@ -93,6 +93,10 @@
             addUsersToStore(action.users);
             UserStore.hasChanged();
             break;
+          case UserConstants.FOLLOW_SUGGESTIONS_RECEIVED:
+            addUsersToStore(action.users);
+            UserStore.hasChanged();
+            break;
         }
       })
   });

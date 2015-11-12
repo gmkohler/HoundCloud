@@ -15,4 +15,8 @@ class Api::UsersController < ApplicationController
     render :show
   end
 
+  def follow_suggestions
+    @users = User.find_follow_suggestions(current_user.id)
+    render :index
+  end
 end

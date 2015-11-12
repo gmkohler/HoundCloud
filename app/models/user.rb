@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   has_many :reposted_items, through: :reposts, source: :repostable
 
   has_many :songs, foreign_key: :artist_id, dependent: :destroy
-  
+
   has_many :comments
   def self.find_by_credentials(email, password)
     user = User.find_by_email(email)
@@ -45,6 +45,25 @@ class User < ActiveRecord::Base
     else
       return nil
     end
+  end
+
+  def self.find_follow_suggestions(current_user_id)
+    User.find_by_sql("
+      SELECT
+        users.*
+      FROM
+        users
+      LEFT OUTER JOIN (
+        SELECT
+          *
+        FROM
+          followings
+        WHERE
+          followings.follower_id = '#{current_user_id}'
+      ) AS follows ON follows.followee_id = users.id
+      WHERE
+        follows.followee_id IS NULL AND users.id != '#{current_user_id}'
+    ")
   end
 
   def self.find_by_search_query(query)

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/session/demo', to: "sessions#demo"
 
   namespace :api do
+    get '/users/follow_suggestions', to: 'users#follow_suggestions'
     resources :users, only: [:index, :show], defaults: {format: :json} do
       resource :following, only: [:create, :destroy], defaults: {format: :json}
     end

@@ -27,13 +27,13 @@ class Song < ActiveRecord::Base
   def self.filter(filter_params)
     if filter_params[:context] == "home"
       user_id = filter_params[:context_data][:id]
-      Song.includes(:artist)
+      Song.includes(:tags, :likers, artist: [:followers], reposters: [:followers], comments: [:user])
           .joins("INNER JOIN followings ON songs.artist_id = followings.followee_id")
           .where("followings.follower_id = ?", user_id)
           .order(created_at: :desc)
     elsif filter_params[:context] == "show"
       artist_id = filter_params[:context_data][:id]
-      Song.includes(:artist, comments: [:user])
+      Song.includes(:tags, :likers, artist: [:followers], comments: [:user])
           .joins("LEFT OUTER JOIN (
                     SELECT
                       reposts.repostable_id AS song_id, reposts.reposter_id AS reposter_id

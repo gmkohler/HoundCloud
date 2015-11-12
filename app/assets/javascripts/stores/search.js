@@ -17,6 +17,10 @@
     tagID: null
   };
 
+  function updateSingleUser (user) {
+    _users.indexOf(user.id)
+  }
+
   function updateSongsAndTags (songs) {
     _results.songs = songs;
     _results.tags = {};
@@ -136,6 +140,10 @@
     dispatcherID: AppDispatcher.register(function(payload){
       switch (payload.actionType) {
         case SearchConstants.QUERIED_USERS_RECEIVED:
+          _results.users = payload.users;
+          SearchStore._resultsHaveChanged();
+          break;
+        case SearchConstants.SINGLE_USER_RECEIVED:
           _results.users = payload.users;
           SearchStore._resultsHaveChanged();
           break;

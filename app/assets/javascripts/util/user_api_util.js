@@ -14,19 +14,28 @@
       $.ajax(ajaxOptions);
     },
 
-    fetchQueriedUsers: function (searchQuery, successCallback) {
-      successCallback = successCallback || SearchActions.receiveQueriedUsers;
-
+    fetchQueriedUsers: function (searchQuery) {
       var ajaxOptions = {
-        url: '/api/users/',
+        url: '/api/users',
         type: 'GET',
         data: {search_query: searchQuery},
         dataType: 'json',
-        success: successCallback
+        success: SearchActions.receiveQueriedUsers
       };
 
       $.ajax(ajaxOptions);
     },
+
+    fetchFollowSuggestions: function () {
+      var ajaxOptions = {
+        url: '/api/users/follow_suggestions',
+        type: 'GET',
+        dataType: 'json',
+        success: UserApiActions.receiveFollowSuggestions
+      };
+
+      $.ajax(ajaxOptions);
+    }
 
   };
 }(this));
