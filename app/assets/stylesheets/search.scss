@@ -2,7 +2,7 @@
   position:relative;
 }
 #search-bar {
-
+  position:absolute;
   #search-submit {
     position:absolute;
     left:-100%;
@@ -16,9 +16,7 @@
 #suggestion-index{
   width:100%;
   padding: 0 15px;
-  // margin-left:-15px;
-  position: absolute;
-  top:41px;
+  margin-left:-15px;
 
   ul {
     background-color:white;
@@ -204,7 +202,7 @@ div.user-search-index {
         &:hover, &:active {
           text-decoration:none;
         }
-        
+
         &:hover {
           color:#FF5500;
         }

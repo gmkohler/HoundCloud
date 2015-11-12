@@ -49,6 +49,7 @@
       var userIndexItems = suggs.users.map(function(user) {
         return (<li><SideBarFollowIndexItem key={user.id} user={user}/></li>);
       });
+
       var userSuggestions = (
         <ul className="auto-search">
           <li className="search-suggestion-header"><span>Users</span></li>
@@ -61,16 +62,15 @@
       });
 
       var songSuggestions = (
-        <ul className="queue-index-item"
-            onClick={this.stayExpanded}>
+        <ul className="queue-index-item">
           <li className="search-suggestion-header"><span>Songs</span></li>
           {songIndexItems}
         </ul>
       );
 
+
       return (
         <div className="col-lg-6"
-             onClick={this.stayExpanded}
              id="suggestion-index">
          {this.props.searchQuery ? userSuggestions : null}
          {this.props.searchQuery ? songSuggestions : null}

@@ -65,7 +65,6 @@
           });
         } else {
           return _results.songs.filter(function(song) {
-            debugger;
             return !!(song.title.toLowerCase().match(query) || song.artist_username.toLowerCase().match(query));
           });
         }

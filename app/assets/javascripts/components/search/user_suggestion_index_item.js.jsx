@@ -1,6 +1,10 @@
 (function(root) {
   'use strict';
   root.UserSuggestionIndexItem = React.createClass({
+    _followToggle: function (e) {
+      e.preventDefault();
+    },
+
     render: function () {
       var user = this.props.user
       return (

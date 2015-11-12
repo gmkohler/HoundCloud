@@ -7,7 +7,7 @@
 
       var profPicStyle = {
         backgroundImage: 'url(' + user.image_url + ')',
-        backgroundSize: "contain",
+        backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         border: "1px solid #000000"
