@@ -23,9 +23,8 @@
     },
 
     _clearQuery: function (e) {
-      if (this.state.isHovering) {
-        var that = e.target;
-        setTimeout(function () {that.focus();}, 0);
+      if (this.state.isHovering && e) {
+        e.preventDefault();
       } else {
         this.setState({searchQuery: ""});
       }
@@ -40,14 +39,17 @@
 
     _submit: function (e) {
       e.preventDefault();
-      this._clearQuery();
+      e.target.blur();
       this.props.onSearch(this.state.searchQuery.toLowerCase());
+      this._clearQuery();
     },
 
     render: function () {
       // Put a class on div so that suggestionindex can be positioned
       // relative to it.
       // <SuggestionIndex searchQuery={this.state.searchQuery}/>
+
+
       return (
         <div id="search-bar-container"
              className="clearfix">

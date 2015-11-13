@@ -10,6 +10,7 @@
   function updateCurrentTime (time) {
     _params.currentTime = time;
   }
+
   function togglePlay () {
     _params.paused = !_params.paused;
   }
@@ -61,7 +62,6 @@
           AudioStore._hasChanged();
           break;
         case AudioConstants.NEW_TRACK_RECEIVED:
-          // debugger;
           loadNewTrack(payload.songParams);
           AudioStore._trackHasChanged();
           break;

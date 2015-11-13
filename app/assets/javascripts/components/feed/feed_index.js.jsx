@@ -37,7 +37,6 @@
         SearchStore.addResultsChangeListener(this._onSongChange);
         SearchStore.addFiltersChangeListener(this._onSongChange);
         if (this.props.data.id) {
-
           SongApiUtil.fetchSongsByContext(this.props.context, this.props.data);
         }
       } else {

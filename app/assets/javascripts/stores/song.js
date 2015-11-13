@@ -54,7 +54,7 @@
 
   // Once implemented, need to refactor to include queueID.
   // Note that it deals with songs whereas queueSingleSong uses songID.
-  // 
+  //
   // function transferSongsToQueue (startSongID) {
   //   var startSong   = findSong(startSongID),
   //       startIdx    = _songs.indexOf(startSong),

@@ -1,11 +1,11 @@
 to do:
 Fix search bar behavior (part of it is fixed I think!)
-    -  when I do an onBlur I don't necessarily want the query string to disappear, just the
-       visibility of the suggestions
+    -  When you click on a link in the navbar it freaks out.
 
     - I don't think the search index is properly decoupled (store-wise) from the
       search index? Like. You should be able to have a static search results while
       looking for a new query and I Think the problem is that u r replacing *everything* as the users.
 
-Your follow suggestions are really janky....!!!!
-fix seed data so english words
+When you comment on a song on a show page every other song disappears.
+
+fix seed data so english words aren't common between artists.
