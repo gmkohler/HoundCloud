@@ -48,8 +48,7 @@
     componentWillReceiveProps: function (newProps) {
       // User can only access "showTracks" and "showReposts" after the feed
       // has received the "show" context.
-      if (["home", "show"].indexOf(newProps.context) !== -1 && newProps.data) {
-
+      if (["home", "show"].indexOf(newProps.context) !== -1) {
         SongApiUtil.fetchSongsByContext(newProps.context, newProps.data);
       }
       if (["showTracks", "showReposts"].indexOf(newProps.context) !== -1) {
