@@ -22,7 +22,8 @@
     },
 
     _handleLinkClick: function (e) {
-      debugger;
+      e.currentTarget.blur();
+      this.props.clearQuery();
     },
 
     render: function () {
@@ -44,7 +45,7 @@
           <div className="sidebar-follow-item-detail">
             <div className="sidebar-follow-item-info">
               <Link to={userUrl}
-                    className="suggestion-link">{user.username}</Link>
+                    onClick={this._handleLinkClick}>{user.username}</Link>
             </div>
             <div className="sidebar-follow-item-stats">
               <div>

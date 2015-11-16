@@ -24,8 +24,13 @@
 
     _handleBlur: function (e) {
       if (this.state.isHovering && e) {
-        debugger;
         e.preventDefault();
+        var target = e.target;
+
+        setTimeout(function () {
+            target.focus()
+        }, 0);
+
       } else {
         this._clearQuery()
       }

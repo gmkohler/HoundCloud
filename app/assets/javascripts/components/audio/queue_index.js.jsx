@@ -14,9 +14,8 @@
       if (queueLength > 0) {
         queueIndexItems = this.props.queue.map(function(song, idx){
           return (
-            <li className="clearfix" id={idx + 1}>
-              <QueueIndexItem key={song.queueID}
-                              song={song}
+            <li className="clearfix" id={idx + 1} key={song.queueID}>
+              <QueueIndexItem song={song}
                               idx={idx + 1}
                               last={(idx === queueLength - 1)}
                               first={(idx === 0)}/>

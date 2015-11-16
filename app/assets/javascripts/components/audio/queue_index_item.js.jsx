@@ -85,7 +85,8 @@
           <div className="queue-index-item-info">
             <div className="first-row">
               <span className="queue-index-item-artist">
-                <Link to={"users/" + song.artist_id}>
+                <Link to={"users/" + song.artist_id}
+                      onClick={this.props.context === "search" ? this.props.clearQuery : function () {}}>
                       {song.artist_username}
                 </Link>
               </span>

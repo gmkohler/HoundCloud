@@ -46,8 +46,13 @@
 
     render: function () {
       var suggs = this.state.suggestions;
+      var clearQuery = this.props.clearQuery;
       var userIndexItems = suggs.users.map(function(user) {
-        return (<li><SideBarFollowIndexItem key={user.id} user={user}/></li>);
+        return (<li>
+                  <SideBarFollowIndexItem key={user.id}
+                                          user={user}
+                                          clearQuery={clearQuery}/>
+               </li>);
       });
 
       var userSuggestions = (
@@ -58,7 +63,10 @@
       );
 
       var songIndexItems = suggs.songs.map(function(song) {
-        return (<li><QueueIndexItem key={song.id} context="search" song={song}/></li>);
+        return (<li><QueueIndexItem key={song.id}
+                                    clearQuery={clearQuery}
+                                    context="search"
+                                    song={song}/></li>);
       });
 
       var songSuggestions = (
