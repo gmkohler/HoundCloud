@@ -27,7 +27,7 @@ class Song < ActiveRecord::Base
   def self.filter(filter_params)
     if filter_params[:context] == "home"
       user_id = filter_params[:context_data][:id]
-      Song.includes(:tags, :likers, artist: [:followers], reposters: [:followers], comments: [:user])
+      songs = Song.includes(:tags, :likers, artist: [:followers], reposters: [:followers], comments: [:user])
           .joins("INNER JOIN followings ON songs.artist_id = followings.followee_id")
           .where("followings.follower_id = ?", user_id)
           .order(created_at: :desc)
