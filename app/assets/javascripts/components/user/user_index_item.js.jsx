@@ -21,6 +21,10 @@
       this.setState({followText: "Follow"});
     },
 
+    _handleLinkClick: function (e) {
+      debugger;
+    },
+
     render: function () {
       var user = this.props.user;
       var userUrl = "users/" + user.id;
@@ -39,7 +43,8 @@
           </div>
           <div className="sidebar-follow-item-detail">
             <div className="sidebar-follow-item-info">
-              <Link to={userUrl}>{user.username}</Link>
+              <Link to={userUrl}
+                    className="suggestion-link">{user.username}</Link>
             </div>
             <div className="sidebar-follow-item-stats">
               <div>

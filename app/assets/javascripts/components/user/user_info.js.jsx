@@ -3,10 +3,24 @@
   root.UserInfo = React.createClass({
 
     render: function () {
-      var user = this.props.user;
+      var user = this.props.user ||
+        {image_url: "",
+         cover_image_url: "",
+         username: "",
+         location: ""};
+
+      var profPicBackground,
+          userInfoBackground;
+      if (user.image_url && user.cover_image_url) {
+        profPicBackground = 'url(' + user.image_url + ')',
+        userInfoBackground = 'url(' + user.cover_image_url + ')';
+      } else {
+        profPicBackground = "",
+        userInfoBackground = "";
+      }
 
       var profPicStyle = {
-        backgroundImage: 'url(' + user.image_url + ')',
+        backgroundImage: profPicBackground,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -14,17 +28,16 @@
       };
 
       var userInfoStyle = {
-        backgroundImage: 'url(' + user.cover_image_url + ')',
-
+        backgroundImage: userInfoBackground
       };
 
       return (
         <div className="user-info" style={userInfoStyle}>
             <div className="user-show-image" style={profPicStyle}/>
             <div classname="user-show-info">
-              <h3 className="user-info-name">{this.props.user.username}</h3>
+              <h3 className="user-info-name">{user.username}</h3>
                 <br/>
-              <h4 className="user-info-location">{this.props.user.location}</h4>
+              <h4 className="user-info-location">{user.location}</h4>
             </div>
 
         </div>

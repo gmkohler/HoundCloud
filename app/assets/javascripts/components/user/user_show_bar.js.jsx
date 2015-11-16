@@ -16,7 +16,7 @@
     },
 
     _followButton: function () {
-      var user = this.props.user;
+      var user = this.props.user || {id: ""};
 
       if (user.id === CURRENT_USER_ID || typeof user.isFollowed === "undefined") {
         return;

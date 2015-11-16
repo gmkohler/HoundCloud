@@ -22,12 +22,17 @@
       this.setState({isHovering: false});
     },
 
-    _clearQuery: function (e) {
+    _handleBlur: function (e) {
       if (this.state.isHovering && e) {
+        debugger;
         e.preventDefault();
       } else {
-        this.setState({searchQuery: ""});
+        this._clearQuery()
       }
+    },
+
+    _clearQuery: function () {
+      this.setState({searchQuery: ""});
     },
 
     _keyUpHandler: function (e) {
@@ -58,7 +63,7 @@
                 role="search"
                 onMouseOver={this._preventBlur}
                 onMouseLeave={this._enableBlur}
-                onBlur={this._clearQuery}
+                onBlur={this._handleBlur}
                 onKeyUp={this._keyUpHandler}
                 onSubmit={this._submit}>
 

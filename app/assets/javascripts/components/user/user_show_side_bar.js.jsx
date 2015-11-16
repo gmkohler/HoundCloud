@@ -2,7 +2,7 @@
   'use strict';
   root.UserShowSideBar = React.createClass({
     render: function () {
-      var user = this.props.user;
+      var user = this.props.user || {numFollowers: 0, numFollowing: 0, numTracks: 0, bio: ""};
       return (
         <div id="profile-sidebar">
           <div className="clearfix" id="sidebar-stat-container">

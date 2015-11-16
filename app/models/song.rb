@@ -46,7 +46,7 @@ class Song < ActiveRecord::Base
           .order(created_at: :desc)
     elsif filter_params[:context] == "search"
       query = filter_params[:context_data]
-      Song.includes(:artist)
+      Song.includes(:tags, :likers, reposters: [:followers], artist: [:followers], comments: [:user])
           .joins("INNER JOIN users ON songs.artist_id = users.id")
           .where("LOWER(songs.title) LIKE ? OR LOWER(users.username) LIKE ?", "%#{query}%", "%#{query}%")
     end
