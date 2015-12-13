@@ -139,7 +139,7 @@
        display: "inline-block",
        float: "left",
        backgroundColor: "#FF5500",
-       height:"5px",
+       height:"3px",
        width: "" + percentElapsed + "%"
      }
      var timeRemainingStyle = {

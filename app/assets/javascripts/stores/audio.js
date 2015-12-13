@@ -24,7 +24,7 @@
     var isNowEmpty = !songParams.content_url;
     _params.src = songParams.content_url;
     _params.currentTime = 0;
-    if (wasEmpty) { _params.paused = false; }
+    if (wasEmpty || _params.paused) { _params.paused = false; }
     if (isNowEmpty) { _params.paused = true;  }
   }
 
