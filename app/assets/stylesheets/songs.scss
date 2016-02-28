@@ -16,7 +16,28 @@ div.index-item-details {
 div.song-index-buttons {
   height: 30px;
   width: auto;
+  .btn-song-index {
+    padding: 2px 9px 2px 8px;
+    margin-right: 4px;
+    font-size: 11px;
+    color: #FF5500;
+    background-color: #FFFFFF;
+    border-color: #CCCCCC;
+    &:active, &:hover, &:target{
+      outline:none;
+      color:#FF5500;
+      border-color:#FF5500;
+    }
+    &.selected {
+      color: #FF5500;
+      border-color: #FF5500;
+    }
+  }
 
+
+  .btn-song-index>i.glyphicon:before {
+    margin-right: 5px;
+  }
 }
 
 .index-item-tag>i.glyphicon {
@@ -168,28 +189,6 @@ div.song-index-sound {
 
     }
   }
-}
-.btn-song-index {
-  padding: 2px 9px 2px 8px;
-  margin-right: 4px;
-  font-size: 11px;
-  color: #FF5500;
-  background-color: #FFFFFF;
-  border-color: #CCCCCC;
-  &.active, &:hover{
-    color:#FF5500;
-    border-color:#FF5500;
-  }
-
-}
-
-.btn-song-index.active {
-  color: #FF5500;
-  border-color: #FF5500;
-}
-
-.btn-song-index>i.glyphicon:before {
-  margin-right: 5px;
 }
 
 div.index-item-tag-collection {

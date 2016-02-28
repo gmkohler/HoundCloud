@@ -33,7 +33,10 @@
    &:active {
      outline:none;
    }
-   &:focus, &:target {
+   &:focus {
+     outline:none;
+   }
+   &:active {
      outline:none;
    }
  }

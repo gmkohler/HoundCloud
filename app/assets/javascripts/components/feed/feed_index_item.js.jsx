@@ -91,9 +91,9 @@
     render: function () {
       var song = this.props.song;
       var likeText = this.props.song.isLiked ? "Unlike" : "Like";
-      var likeClass = this.props.song.isLiked ? " active" : "";
+      var likeClass = this.props.song.isLiked ? " selected" : "";
       var repostText = this.props.song.isReposted ? "Reposted" : "Repost";
-      var repostClass = this.props.song.isReposted ? " active" : "";
+      var repostClass = this.props.song.isReposted ? " selected" : "";
       var playButtonClass = this.state.paused ? "play" : "pause";
 
       var timeSince = AppUtil.timeSince(new Date(song.created_at));
@@ -197,7 +197,9 @@
 
                       </button>
                     </div>
-                    <div className="index-item-left-detail"><span className="index-title">{song.title}</span></div>
+                    <div className="index-item-left-detail">
+                      <span className="index-title">{song.title}</span>
+                    </div>
                     <div className="index-item-right-detail">
                       <div className="index-item-tag-collection clearfix">
                         {tags}
