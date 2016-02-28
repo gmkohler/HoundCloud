@@ -9,25 +9,41 @@ div.explore-tabs {
 }
 
 div.follow-suggestion-header {
+  color: #999;
   border-bottom: 1px solid #F2F2F2;
-  span {
-    font-size:18px;
+  .follow-suggestion-label {
+    font-size:14px;
     display:inline-block;
   }
 
-  i:before {
-    position:relative;
-    bottom:0;
-    margin-right:4px;
-    display:inline-block;
-    float:left;
+  .glyphicon-user {
+    &:before {
+      color:#666;
+      position:relative;
+      bottom:0;
+      margin-right:4px;
+      display:inline-block;
+      float:left;
+      z-index:2;
+    }
+
+    &:after {
+      position: relative;
+      bottom: -2px;
+      left: -10px;
+      font-size: 12px;
+      display: inline-block;
+      float: left;
+      content: "\e008";
+      color: #999;
+    }
   }
 }
 
 div.sidebar-follow-item {
   padding: 8px 0;
   border-bottom: solid 1px #F2F2F2;
-  margin-bottom: 20px;
+  // margin-bottom: 10px;
   position: relative;
 }
 div.sidebar-follow-item .btn-sidebar-follow {

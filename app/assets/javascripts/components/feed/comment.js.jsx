@@ -21,16 +21,16 @@
 
       var commentBodies = comments.map(function(comment){
         return (
-          <li key={comment.id}>
-            <div className="comment-text">
+          <div className="song-comment-wrapper">
+            <div className="song-comment" key={comment.id}>
               <span>
                 <Link to={"users/" + comment.author.id} className="comment-username">
                   {comment.author.username}
                 </Link>
               </span>
-              <span className="comment-body">{comment.body}</span>
+              <span className="comment-content">{comment.body}</span>
             </div>
-          </li>
+          </div>
         );
       });
 
@@ -39,14 +39,14 @@
                        this.props.currentPercentElapsed !== 0) ? " active" : "";
 
       return (
-        <div className="song-comment"
+        <div className="song-comment-aggregate"
              style={commentStyle}>
           <div className="comment-thumbnail"
                style={thumbnailStyle}>
           </div>
-          <ul className={"comment-bodies clearfix" + isActive}>
+          <div className={"comment-bodies clearfix" + isActive}>
             {commentBodies}
-          </ul>
+          </div>
         </div>
       );
     }

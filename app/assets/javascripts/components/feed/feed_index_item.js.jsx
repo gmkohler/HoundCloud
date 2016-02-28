@@ -229,6 +229,15 @@
 
               <div className="song-index-buttons">
                 <button type="button"
+                        className={"btn btn-xs btn-song-index" + likeClass}
+                        onClick={this._likeToggle}>
+                  <i className="glyphicon glyphicon-heart"></i>
+                  {likeText}
+                </button>
+
+                {song.artist_id !== CURRENT_USER_ID ? repostButton : null}
+
+                <button type="button"
                         className="btn btn-xs btn-song-index"
                         onClick={this._queueSong}>
                   <i className="glyphicon glyphicon-plus"></i>
@@ -243,14 +252,7 @@
                   Play Next
                 </button>
 
-                <button type="button"
-                        className={"btn btn-xs btn-song-index" + likeClass}
-                        onClick={this._likeToggle}>
-                  <i className="glyphicon glyphicon-heart"></i>
-                  {likeText}
-                </button>
 
-                {song.artist_id !== CURRENT_USER_ID ? repostButton : null}
                 {song.artist_id === CURRENT_USER_ID ? editButton : null}
               </div>
 

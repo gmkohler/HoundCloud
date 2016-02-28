@@ -27,7 +27,7 @@
         <div>
           <div className="follow-suggestion-header">
             <i className="glyphicon glyphicon-user"/>
-            <span>Who To Follow</span>
+            <span className="follow-suggestion-label">Who to follow</span>
           </div>
           {userIndices}
         </div>
