@@ -240,7 +240,7 @@ div.comments-overlay {
       overflow:visible;
       .comment-bodies{
         opacity:1;
-        transform: translateY(25px);
+        transform: translateY(23px);
       }
     }
     .comment-thumbnail {}
@@ -271,7 +271,7 @@ div.comments-overlay {
 
       &.active{
         opacity:1;
-        transform: translateY(25px);
+        transform: translateY(23px);
 
         -webkit-transition: opacity 0.2s linear, transform 0.1s ease-in-out;
         transition: opacity 0.2s linear, transform 0.1s ease-in-out;
