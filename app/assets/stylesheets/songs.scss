@@ -28,18 +28,68 @@ button.btn-play {
   color: #FFFFFF;
   border-color: #FF5500;
   background-color: #FF5500;
+  height:32px;
+  width:32px;
+  border-radius:16px;
   &:target, &:active, &:focus, &:hover{
     color: #FFFFFF;
     border-color: #FF5500;
-    background-color: #FF5500;
+    background-color: #FF4800;
+  }
+
+  &.play {
+    &:after {
+      content: '';
+      display: inline-block;
+      position: relative;
+      bottom: -2px;
+      left: 2px;
+      border-style: solid;
+      border-width: 9px 0px 9px 12px;
+      border-color: transparent transparent transparent white;
+    }
+  }
+
+  &.pause {
+    &:before {
+      content: "";
+      display:inline-block;
+      position: relative;
+      width: 5px;
+      height: 18px;
+      background: white;
+      bottom: -1.5px;
+      left: -1px;
+    }
+    &:after {
+      content: "";
+      display:inline-block;
+      position: relative;
+      width: 5px;
+      height: 18px;
+      background: white;
+      bottom: -1.5px;
+      left: 1px;
+    }
   }
 }
 div.index-item-btn-play{
-
+  .btn.btn-circle.btn-play {
+    outline:none;
+  }
+  &:target {
+    outline:none;
+  }
+  &:active {
+    outline:none;
+  }
+  &:focus {
+    outline:none;
+  }
   float: left;
   width: auto;
   position:relative;
-  bottom:12px;
+  bottom:14px;
   margin-right: 4px;
 }
 div.index-item-detail-text{
@@ -52,7 +102,7 @@ div.index-item-detail-row {
 }
 
 div.index-item-detail-text>div:first-child{
-  padding-left: 32px;
+  padding-left: 36px;
 }
 
 div.index-item-left-detail {

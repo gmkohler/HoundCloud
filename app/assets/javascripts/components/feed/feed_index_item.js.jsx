@@ -94,7 +94,7 @@
       var likeClass = this.props.song.isLiked ? " active" : "";
       var repostText = this.props.song.isReposted ? "Reposted" : "Repost";
       var repostClass = this.props.song.isReposted ? " active" : "";
-      var playButtonClass = this.state.paused ? "glyphicon-play" : "glyphicon-pause";
+      var playButtonClass = this.state.paused ? "play" : "pause";
 
       var timeSince = AppUtil.timeSince(new Date(song.created_at));
 
@@ -167,6 +167,7 @@
                            commentTime={commentTime}
                            comments={commentsByTime[commentTime]}/>
      }.bind(this))
+    //  <i className={"btn-text glyphicon " + playButtonClass}></i>
 
       return (
         <div className="index-item clearfix">
@@ -191,9 +192,9 @@
                 <div className="index-item-detail-row clearfix">
                     <div className="index-item-btn-play">
                       <button type="button"
-                              className="btn btn-circle btn-play btn-xl"
+                              className={"btn btn-circle btn-play btn-xl " + playButtonClass}
                               onClick={this._playToggle}>
-                        <i className={"btn-text glyphicon " + playButtonClass}></i>
+
                       </button>
                     </div>
                     <div className="index-item-left-detail"><span className="index-title">{song.title}</span></div>

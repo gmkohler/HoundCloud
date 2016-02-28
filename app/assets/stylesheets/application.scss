@@ -29,6 +29,14 @@
          max-width: 970px;
      }
  }
+ .btn {
+   &:active {
+     outline:none;
+   }
+   &:focus, &:target {
+     outline:none;
+   }
+ }
 html{
   height: 100%;
   min-height: fit-content;
