@@ -90,7 +90,7 @@
 
     render: function () {
       var song = this.props.song;
-      var likeText = this.props.song.isLiked ? "Unlike" : "Like";
+      var likeText = this.props.song.isLiked ? "Liked" : "Like";
       var likeClass = this.props.song.isLiked ? " selected" : "";
       var repostText = this.props.song.isReposted ? "Reposted" : "Repost";
       var repostClass = this.props.song.isReposted ? " selected" : "";
