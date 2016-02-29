@@ -177,18 +177,22 @@ div.song-index-sound {
     }
   }
 
-  div.progress-bar {
+  .progress-bar {
     position:relative;
     top: 7px;
     width:100%;
-    padding: 0px 6px;
     background:none;
-    div.time-elapsed {
-
+    &:hover {
+      .time-elapsed {
+        background-color: #FF4800;
+      }
+      .time-remaining {
+        background-color: #999999;
+      }
     }
-    div.time-remaining {
-
-    }
+    // .time-elapsed, .time-remaining {
+    //   transition: background-color 0.2s linear;
+    // }
   }
 }
 

@@ -136,6 +136,7 @@
          percentRemaining = 100 - percentElapsed;
 
      var timeElapsedStyle = {
+       transition: "background-color 0.2s linear",
        display: "inline-block",
        float: "left",
        backgroundColor: "#FF5500",
@@ -143,6 +144,7 @@
        width: "" + percentElapsed + "%"
      }
      var timeRemainingStyle = {
+       transition: "background-color 0.2s linear",
        display:"inline-block",
        float:"left",
        backgroundColor: "#AAAAAA",
@@ -214,8 +216,8 @@
                 {this.state.isPlaying ? <span>{this.state.currentTime.toString().toHHMMSS}</span> : null}
               </div>
               <div className="progress-bar clearfix">
-                <div style={timeElapsedStyle}></div>
-                <div style={timeRemainingStyle}></div>
+                <div className="time-elapsed" style={timeElapsedStyle}></div>
+                <div className="time-remaining" style={timeRemainingStyle}></div>
                 <div className="comments-overlay clearfix">
                   {commentComponents}
                 </div>
