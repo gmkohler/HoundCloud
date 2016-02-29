@@ -20,7 +20,7 @@
 
   ul {
     background-color:white;
-    border: 1px solid rgba(0, 0, 0, 0.15);
+    border: 1px solid #333;
     margin-bottom:0;
     padding:0;
 
@@ -39,29 +39,162 @@
 
     li {
       list-style:none;
+      border-bottom:1px solid #111;
 
       &.search-suggestion-header {
-        padding-left:15px;
+        padding: 2px 0 2px 15px;
         width:100%;
         font-size: 10px;
         font-weight:700;
-        background-color: #E7E7E7;
-        color: #333333;
+        background-color: #333333;
+        color: #CCCCCC;
+      }
+      div.queue-index-item {
+        width: 100%;
+        background-color:#111;
+        &:hover {
+          background-color:#333;
+        }
+        div {
+          float:left;
+          display:inline-block;
+        }
+
+        div.queue-index-item-thumbnail-container {
+          position:relative;
+          padding:6px 5px;
+          display:inline-block;
+          float:left;
+          width: 15%;
+          div.queue-index-item-thumbnail {
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            border: 1px solid rgba(0, 0, 0, .15);
+            width:auto;
+          }
+        }
+
+
+        div.queue-index-item-info {
+          padding: 3px 0px;
+          float:left;
+          width: 65%;
+
+          div {
+            line-height:1.5;
+            height:auto;
+            width:100%;
+            position:relative;
+
+            span {
+              white-space:nowrap;
+              overflow:hidden;
+              display:block;
+              text-overflow: ellipsis;
+
+              &.queue-index-item-artist {
+                a {
+                  float:left;
+                  display:inline-block;
+                  font-size: 10px;
+                  font-weight: 100;
+                  color: #999999;
+                  text-decoration:none;
+                }
+
+                a:hover {
+                  color: #CCC;
+                }
+
+                div {
+                  width:auto;
+                  display:inline-block;
+                  float:right;
+                }
+              }
+
+              &.queue-index-item-title {
+                color: #CCC;
+                font-size: 12px;
+                font-weight:100;
+              }
+            }
+          }
+        }
+
+        div.queue-index-item-button-container{
+          width:20%;
+          float:right;
+          display:inline;
+          padding: 5px 8px;
+          color: #AAAAAA;
+
+          #updown {
+            width:auto;
+
+            div {
+              &:hover {
+                cursor: pointer;
+                color: #CCCCCC;
+              }
+              font-size:12px;
+              clear:both;
+              display:inline-block;
+              float:left;
+            }
+          }
+          #queue-index-item-remove {
+            margin: 0px 5px;
+            i {
+              padding: 10px 0px;
+              &:hover {
+                cursor: pointer;
+                color: #CCCCCC;
+              }
+            }
+          }
+          #queue-index-item-play-now, #queue-index-item-play-next,
+          #queue-index-item-queue-song {
+            float:right;
+            margin: 0px 2px;
+            i {
+              font-size:12px;
+              padding: 10px 0px;
+              &:hover {
+                cursor: pointer;
+                color: #CCCCCC;
+              }
+            }
+          }
+        }
       }
 
       div.sidebar-follow-item {
+        background-color:#111111;
         padding: 4px 8px 6px 8px;
-        border-bottom: solid 1px #F2F2F2;
+        border-bottom:none;
         position: relative;
         margin-bottom:0;
         &:hover {
-          background-color:#F2F2F2;
+          background-color:#333333;
         }
 
-        .btn-sidebar-follow {
+        .btn-follow {
+          border-color:#333;
+          color:#EEE;
+          background-color:#666;
           position: absolute;
           right:5px;
           bottom:8px;
+          &:hover {
+            border-color:#EEE;
+          }
+          &.selected {
+            background-color:#EEE;
+            color:#666;
+          }
         }
 
         .sidebar-follow-item-thumbnail-container {
@@ -74,24 +207,30 @@
             top:5px;
             height:30px;
             width:30px;
-            background-color: #cccccc;
+            background-color: #CCCCCC;
             background-size: cover;
             background-position: center;
           }
         }
 
         .sidebar-follow-item-detail {
+          color:#CCCCCC;
           width: 85%;
           float:left;
           display:inline-block;
 
           .sidebar-follow-item-info {
+            a {
+              color:#CCC;
+              &:hover{
+                color:#EEE;
+              }
+            }
             span {
               display:block;
               overflow:hidden;
               text-overflow:ellipsis;
               font-size:13px;
-              color:#333333;
             }
           }
           .sidebar-follow-item-stats {
