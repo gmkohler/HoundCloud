@@ -340,6 +340,29 @@ Repost.create([
   {repostable_type: "Song", repostable_id: SONG_IDS.sample, reposter_id: 7}
 ])
 
+Like.create([
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 1},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 1},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 1},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 2},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 2},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 2},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 2},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 3},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 3},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 3},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 4},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 4},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 5},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 5},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 5},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 5},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 6},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 7},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 7},
+  {likeable_type: "Song", likeable_id: SONG_IDS.sample, liker_id: 7},
+])
+
 Comment.create([
   {commentable_type: "Song", body:"arrrf arf arf", comment_time: rand(),  commentable_id: SONG_IDS.sample, user_id: USER_IDS.sample},
   {commentable_type: "Song", body:"bark bark bark", comment_time: rand(),  commentable_id: SONG_IDS.sample, user_id: USER_IDS.sample},
