@@ -24,7 +24,7 @@
         return <SideBarFollowIndexItem key={user.id} user={user}/>
       });
       return (
-        <div>
+        <div className="sidebar-follow-item-container">
           <div className="follow-suggestion-header">
             <i className="glyphicon glyphicon-user"/>
             <span className="follow-suggestion-label">Who to follow</span>

@@ -9,8 +9,8 @@
     },
 
     _getUserFromStore: function () {
-      var userID = parseInt(this.props.params["id"]);
-      return UserStore.getUser(userID);
+      var userId = parseInt(this.props.params["id"]);
+      return UserStore.getUser(userId);
     },
 
     _onUserChange: function () {

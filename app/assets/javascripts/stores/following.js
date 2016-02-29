@@ -23,17 +23,17 @@
       this.emit(FollowingConstants.FOLLOWING_CHANGE_EVENT);
     },
 
-    getFolloweeCount: function (userID) {
+    getFolloweeCount: function (userId) {
       var count = 0;
       _keys.forEach(function (key) {
-        if (_followings.key.follower_id === userID) {count += 1;}
+        if (_followings.key.follower_id === userId) {count += 1;}
       });
       return count;
     },
-    getFollowerCount: function (userID) {
+    getFollowerCount: function (userId) {
       var count = 0;
       _keys.forEach(function (key) {
-        if (_followings.key.followee_id === userID) {count += 1;}
+        if (_followings.key.followee_id === userId) {count += 1;}
       });
       return count;
     },

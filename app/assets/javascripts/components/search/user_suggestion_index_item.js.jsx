@@ -13,7 +13,7 @@
             <Link to={'users/' + user.id}>{user.username}</Link>
               <button className="btn btn-sm"
                       onClick={this._followToggle}>
-                {user.isFollowed ? "Unfollow" : "Follow"}
+                {user.isFollowed ? "Following" : "Follow"}
               </button>
           </div>
         </li>

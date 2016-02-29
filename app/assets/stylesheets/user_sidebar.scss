@@ -1,28 +1,128 @@
 div.sidebar-follow-item-container{
+  margin-bottom: 10px;
+  .sidebar-follow-item {
 
+  }
 }
 
-div.sidebar-follow-item{
-  // want it to fit whole container
-  // two sections
-}
-div.sidebar-follow-item-thumbnail{
-  // want it to be a set proportion and float left
-  //background image set inline
-}
-div.sidebar-follow-item-detail{
-  // want it to fit remainder based on thumbnail
-  // two rows
-}
-div.sidebar-follow-item-detail>div{
-  // want it to fit remainder based on thumbnail
-  // two rows
-}
-div.sidebar-follow-item-detail>div>span{
-  // only going to be the top bit because
-  //   of reference to immediate child
-}
-div.sidebar-follow-item-detail>div:last-child{
-  // want it to fit remainder based on thumbnail
-  // two rows
-}
+  div.queue-index-item {
+    width: 100%;
+    padding: 4px 0;
+    border-bottom: 1px solid #F2F2F2;
+    &:first-child {
+      border:none;
+    }
+    div {
+      float:left;
+      display:inline-block;
+    }
+
+    div.queue-index-item-thumbnail-container {
+      position:relative;
+      padding:6px 5px;
+      display:inline-block;
+      float:left;
+      width: 20%;
+      div.queue-index-item-thumbnail {
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+
+        border: 1px solid rgba(0, 0, 0, .15);
+        width:auto;
+      }
+    }
+
+
+    div.queue-index-item-info {
+      padding: 5px 0px;
+      float:left;
+      width: 50%;
+
+      div {
+        line-height:1.35;
+        height:auto;
+        width:100%;
+        position:relative;
+
+        span {
+          white-space:nowrap;
+          overflow:hidden;
+          display:block;
+          text-overflow: ellipsis;
+
+          &.queue-index-item-artist {
+            a {
+              float:left;
+              display:inline-block;
+              font-size: 10px;
+              font-weight: 100;
+              color: #999999;
+              text-decoration:none;
+            }
+
+            a:hover {
+              color: #333333;
+            }
+
+            div {
+              width:auto;
+              display:inline-block;
+              float:right;
+            }
+          }
+
+          &.queue-index-item-title {
+            color: #333333;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    div.queue-index-item-button-container{
+      width:30%;
+      float:right;
+      display:inline;
+      padding: 5px 8px;
+      color: #CCCCCC;
+
+      #updown {
+        width:auto;
+
+        div {
+          &:hover {
+            cursor: pointer;
+            color: #AAAAAA;
+          }
+          font-size:12px;
+          clear:both;
+          display:inline-block;
+          float:left;
+        }
+      }
+      #queue-index-item-remove {
+        margin: 0px 5px;
+        i {
+          padding: 10px 0px;
+          &:hover {
+            cursor: pointer;
+            color: #AAAAAA;
+          }
+        }
+      }
+      #queue-index-item-play-now, #queue-index-item-play-next,
+      #queue-index-item-queue-song {
+        float:right;
+        margin: 0px 2px;
+        i {
+          font-size:12px;
+          padding: 10px 0px;
+          &:hover {
+            cursor: pointer;
+            color: #AAAAAA;
+          }
+        }
+      }
+    }
+  }

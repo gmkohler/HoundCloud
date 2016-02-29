@@ -5,26 +5,44 @@
 /* global SongStore */
 (function(root) {
   'use strict';
-  var _songs = [];
+  var _feed = [];
   var _queue = [];
+  var _likes = [];
+
   var queueID = 0;
 
   function resetSongs (newSongs) {
-    _songs = newSongs;
+    _feed = newSongs;
+  }
+
+  function resetLikedSongs (newSongs) {
+    // songs jbuilder includes `isLiked` but it's w/ reference to current user.
+    // need to implement a better add to queue method, but for now,
+    // findSong wil search _likes for the song if it's not found in _feed
+    //
+    // Realistically, the queue should move to its own store and
+    // be able to receive play requests from a number of origins (e.g., feed, search, likes)
+    _likes = newSongs;
   }
 
   function findSong (songID) {
-    return _songs.find(function (song) {
-      return song.id === songID;
-    });
+    // need to fix to allow for adding likes.
+    // more reasonably, we should just fix
+    var findBySongId = function (song) {return song.id === songID;},
+        foundSong = _feed.find(findBySongId);
+
+    if (!foundSong) {
+      foundSong = _likes.find(findBySongId);
+    }
+    return foundSong;
   }
 
   function addSingleSong(song) {
-    var idx = _songs.indexOf(findSong(song.id));
+    var idx = _feed.indexOf(findSong(song.id));
     if (idx === -1) {
-      _songs.push(song);
+      _feed.push(song);
     } else {
-      _songs[idx] = song;
+      _feed[idx] = song;
     }
   }
 
@@ -57,8 +75,8 @@
   //
   // function transferSongsToQueue (startSongID) {
   //   var startSong   = findSong(startSongID),
-  //       startIdx    = _songs.indexOf(startSong),
-  //       queuedSongs = _songs.slice(startIdx, _songs.length);
+  //       startIdx    = _feed.indexOf(startSong),
+  //       queuedSongs = _feed.slice(startIdx, _feed.length);
   //   _queue = _queue.concat(queuedSongs);
   // }
 
@@ -71,41 +89,53 @@
 // FILTER FUNCTIONS
 // ------------------------------------------------------
       getAll: function () {
-        return _songs.slice(0);
+        return _feed.slice(0);
       },
 
       getStream: function () {
-        return _songs.filter(function(song){
+        return _feed.filter(function(song){
           return song.isSubscribed;
         });
       },
 
       getByTitle: function (fragment) {
-        return _songs.filter(function(song) {
+        return _feed.filter(function(song) {
           return (!!song.title.toLowerCase().match(fragment) ||
                     !!song.artist_username.toLowerCase().match(fragment));
         });
       },
 
-      getTracks: function (userID) {
-        return _songs.filter(function(song){
-                 return song.artist_id === userID;
+      getTracks: function (userId) {
+        return _feed.filter(function(song){
+                 return song.artist_id === userId;
                });
       },
 
-      getReposts: function (userID) {
-        return _songs.filter(function(song){
-                 return !!song.reposters[userID];
+      getReposts: function (userId) {
+        return _feed.filter(function(song){
+                 return !!song.reposters[userId];
                });
       },
 
-      getTracksAndReposts: function (userID) {
-        return _songs.filter(function(song){
-            return song.artist_id === userID || !!song.reposters[userID];
+      getLikes: function (numSongs) {
+        // need to refactor how "songs"  are treated before putting
+        // liked songs in the same collections.  Once done, use:
+        // var likedSongs = _feed.filter(function(song) {
+        //         return song.isLiked;
+        //     });
+        if (!!numSongs || numSongs > _likes.length) {
+          numSongs = likedSongs.length;
+        }
+        return _likes.slice(0, numSongs);
+      },
+
+      getTracksAndReposts: function (userId) {
+        return _feed.filter(function(song){
+            return song.artist_id === userId || !!song.reposters[userId];
         });
       },
 
-// _SONGS METHODS
+// _FEED METHODS
 // ----------------------------------------------
       addChangeListener: function (callback) {
         this.on(SongConstants.SONGS_CHANGE_EVENT, callback);
@@ -117,6 +147,20 @@
 
       hasChanged: function () {
         this.emit(SongConstants.SONGS_CHANGE_EVENT);
+      },
+      
+// _LIKES METHODS
+// ----------------------------------------------
+      addLikesChangeListener: function (callback) {
+        this.on(SongConstants.LIKES_CHANGE_EVENT, callback);
+      },
+
+      removeLikesChangeListener: function (callback) {
+        this.removeListener(SongConstants.LIKES_CHANGE_EVENT, callback);
+      },
+
+      likesHasChanged: function () {
+        this.emit(SongConstants.LIKES_CHANGE_EVENT);
       },
 
 //   _QUEUE METHODS
@@ -156,6 +200,10 @@
           case SongConstants.SONGS_RECEIVED:
             resetSongs(payload.songs);
             SongStore.hasChanged();
+            break;
+          case SongConstants.LIKED_SONGS_RECEIVED:
+            resetLikedSongs(payload.songs);
+            SongStore.likesHasChanged();
             break;
           case SearchConstants.QUERIED_SONGS_RECEIVED:
             resetSongs(payload.songs);

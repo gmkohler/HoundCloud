@@ -15,7 +15,12 @@ div.follow-suggestion-header {
     font-size:14px;
     display:inline-block;
   }
-
+  .glyphicon-heart {
+    &:before {
+      color:#666;
+    }
+    margin-right:9px;
+  }
   .glyphicon-user {
     &:before {
       color:#666;

@@ -9,7 +9,6 @@
 
     _moveForward: function (e) {
       e.preventDefault();
-      debugger;
       if (!this.props.first) {
         SongApiActions.moveQueuedSongForward(this.props.idx);
       }
@@ -37,7 +36,7 @@
     render: function () {
       var buttons,
           song = this.props.song;
-      if (this.props.context && this.props.context === "search") {
+      if (this.props.context && (this.props.context === "search" || this.props.context === "sideBar")) {
         buttons = [
           <div id="queue-index-item-play-now">
             <i className="glyphicon glyphicon-play"
@@ -77,7 +76,7 @@
       };
 
       return (
-        <div className="clearfix queue-index-item">
+        <div className="clearfix queue-index-item sidebar">
           <div className="queue-index-item-thumbnail-container">
             <div className="queue-index-item-thumbnail"
                   style={thumbnailStyle}/>

@@ -3,9 +3,9 @@
 (function(root) {
   'use strict';
   root.UserApiUtil = {
-    fetchSingleUser: function (userID) {
+    fetchSingleUser: function (userId) {
       var ajaxOptions = {
-        url: '/api/users/' + userID,
+        url: '/api/users/' + userId,
         type: 'GET',
         dataType: 'json',
         success: UserApiActions.receiveSingleUser

@@ -2,7 +2,7 @@
   'use strict';
   root.UserShowSideBar = React.createClass({
     render: function () {
-      var user = this.props.user || {numFollowers: 0, numFollowing: 0, numTracks: 0, bio: ""};
+      var user = this.props.user || {id: null, numFollowers: 0, numFollowing: 0, numTracks: 0, bio: ""};
       return (
         <div id="profile-sidebar">
           <div className="clearfix" id="sidebar-stat-container">
@@ -30,7 +30,8 @@
           <div>
             <p>{user.bio}</p>
           </div>
-          <SideBarFollowIndex/>
+          <SideBarFollowIndex />
+          <SideBarLikesIndex userId={user.id}/>
         </div>
       );
     }

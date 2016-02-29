@@ -6,48 +6,45 @@
 
   root.SongApiActions = {
     receiveAllSongs: function (data) {
-      var action = {
+      AppDispatcher.dispatch({
         actionType: SongConstants.ALL_SONGS_RECEIVED,
         songs: data
-      };
-
-      AppDispatcher.dispatch(action);
+      });
     },
 
     receiveSongs: function (data) {
-      var action = {
+      AppDispatcher.dispatch({
         actionType: SongConstants.SONGS_RECEIVED,
         songs: data
-      };
+      });
+    },
 
-      AppDispatcher.dispatch(action);
+    receiveLikedSongs: function (data) {
+      AppDispatcher.dispatch({
+        actionType: SongConstants.LIKED_SONGS_RECEIVED,
+        songs: data
+      });
     },
 
     receiveSingleSong: function (data) {
-      var action = {
+      AppDispatcher.dispatch({
         actionType: SongConstants.SINGLE_SONG_RECEIVED,
         song: data
-      };
-
-      AppDispatcher.dispatch(action);
+      });
     },
 
     receivePlayNow: function (id) {
-      var action = {
+      AppDispatcher.dispatch({
         actionType: SongConstants.PLAY_NOW_RECEIVED,
         songID: id
-      };
-
-      AppDispatcher.dispatch(action);
+      });
     },
 
     receivePlayNext: function (id) {
-      var action = {
+      AppDispatcher.dispatch({
         actionType: SongConstants.PLAY_NEXT_RECEIVED,
         songID: id
-      };
-
-      AppDispatcher.dispatch(action);
+      });
     },
 
     removeSongFromQueue: function (idx) {
@@ -72,30 +69,24 @@
     },
 
     receiveQueuedSong: function (id) {
-      var action = {
+      AppDispatcher.dispatch({
         actionType: SongConstants.QUEUED_SONG_RECEIVED,
         songID: id
-      };
-
-      AppDispatcher.dispatch(action);
+      });
     },
 
     receiveSingleQueuedSong: function (id) {
-      var action = {
+      AppDispatcher.dispatch({
         actionType: SongConstants.SINGLE_QUEUED_SONG_RECEIVED,
         songID: id
-      };
-
-      AppDispatcher.dispatch(action);
+      });
     },
 
     shiftQueueForward: function () {
-      var action = {
+      AppDispatcher.dispatch({
         actionType: SongConstants.SHIFT_QUEUE,
         data: null
-      };
-
-      AppDispatcher.dispatch(action);
+      });
     }
   };
 }(this));

@@ -28,8 +28,8 @@
         return this._values();
       },
 
-      getUser: function (userID) {
-        return _users[userID]
+      getUser: function (userId) {
+        return _users[userId]
       },
 
       getCurrentUser: function () {
@@ -67,8 +67,8 @@
         return results;
       },
 
-      getUser: function (userID) {
-        return (_users[userID.toString()]);
+      getUser: function (userId) {
+        return (_users[userId.toString()]);
       },
 
       addChangeListener: function (callback) {

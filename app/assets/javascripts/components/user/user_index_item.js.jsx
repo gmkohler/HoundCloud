@@ -7,13 +7,12 @@
 
     _followToggle: function (e) {
       e.preventDefault();
-      debugger;
       this.props.user.isFollowed ? this._unfollowUser() : this._followUser();
     },
 
     _followUser: function () {
       FollowingApiUtil.addFollowing(this.props.user.id);
-      this.setState({followText: "Unfollow"});
+      this.setState({followText: "Following"});
     },
 
     _unfollowUser: function () {

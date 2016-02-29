@@ -14,7 +14,6 @@
                }},
         success: SongApiActions.receiveSingleSong,
         error: function (data) {
-          debugger;
         }
       };
       $.ajax(ajaxOptions);

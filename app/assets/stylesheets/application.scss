@@ -258,15 +258,21 @@ body {
     min-width:33.3%;
     form.log-in {
       margin:auto;
-      .btn-form-login {
+
+      .btn-form-login, .btn-demo-login {
         text-align: center;
         width: auto;
         margin: 15px auto;
-        background-color: #FFFFFF;
-        border-color: #333333;
-        color: #FF5500;
         font-size: 16px;
         line-height: 20px;
+        background-color: #FFFFFF;
+        &:hover, &:active, &:focus {
+          outline:none;
+        }
+      }
+      .btn-form-login {
+        border-color: #333333;
+        color: #FF5500;
         &:hover {
           background-color: #FFFFFF;
           border-color: #FF5500;
@@ -274,14 +280,8 @@ body {
         }
       }
       .btn-demo-login {
-        text-align: center;
-        width: auto;
-        margin: 15px auto;
-        background-color: #FFFFFF;
         border-color: #333333;
         color: #6495ED;
-        font-size: 16px;
-        line-height: 20px;
         &:hover {
           background-color: #FFFFFF;
           border-color: #6495ED;

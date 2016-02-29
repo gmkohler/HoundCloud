@@ -72,7 +72,6 @@
     createSong: function (e) {
       var songParams = this._songParams();
       var onSuccess = function (data) {
-        debugger;
         SongApiActions.receiveSingleSong(data);
         ModalActions.deactivateSongFormModal();
       };
@@ -164,6 +163,7 @@
 
       return (
         <div className={active} id="modal-overlay"
+             onClick={this.deactivate}
              onKeyUp={this.keyUpHandler}>
           <div className={active} id="modal-form-container">
             <div className={active}

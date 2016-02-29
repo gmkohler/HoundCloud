@@ -24,7 +24,7 @@
         return (
           <button className="btn btn-sm btn-follow"
                   onClick={this._followToggle}>
-            {user.isFollowed ? "Unfollow" : "Follow"}
+            {user.isFollowed ? "Following" : "Follow"}
           </button>
         );
       }

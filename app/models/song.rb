@@ -49,6 +49,11 @@ class Song < ActiveRecord::Base
       Song.includes(:tags, :likers, reposters: [:followers], artist: [:followers], comments: [:user])
           .joins("INNER JOIN users ON songs.artist_id = users.id")
           .where("LOWER(songs.title) LIKE ? OR LOWER(users.username) LIKE ?", "%#{query}%", "%#{query}%")
+    elsif filter_params[:context] == "likes"
+      Song.includes(:artist)
+          .joins("INNER JOIN
+                    likes ON likes.likeable_id = songs.id AND likes.likeable_type = 'Song'")
+          .where("likes.liker_id = ?", "#{filter_params[:context_data]}")
     end
   end
 

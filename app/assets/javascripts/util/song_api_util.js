@@ -31,8 +31,18 @@
         data: {context: context, context_data: contextData},
         success: onSuccess
       };
-      
+
       $.ajax(ajaxOptions);
+    },
+
+    fetchLikedSongs: function (userId) {
+        var ajaxOptions = {
+          url: '/api/songs',
+          type: 'GET',
+          data: {context: "likes", context_data: userId},
+          success: SongApiActions.receiveLikedSongs,
+        };
+        $.ajax(ajaxOptions);
     },
 
     postSong: function (songParams, successCallback) {

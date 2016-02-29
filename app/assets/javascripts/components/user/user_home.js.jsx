@@ -3,7 +3,10 @@
   'use strict';
   root.UserHome = React.createClass({
     getInitialState: function () {
-      return {user: (this._getCurrentUser() || {username: "", id: ""})};
+      return {user: (this._getCurrentUser() ||
+                       {username: CURRENT_USER_USERNAME,
+                        id: CURRENT_USER_ID}
+              )};
     },
 
     _getCurrentUser: function () {
@@ -30,7 +33,7 @@
             <UserHomeSideBar user={this.state.user}/>
           </div>
         </div>
-      )
+      );
     }
   });
 }(this));
