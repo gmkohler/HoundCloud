@@ -113,14 +113,14 @@
         display: "inline-block",
         float: "left",
         backgroundColor: "#FF5500",
-        height:"3px",
+        height:"1px",
         width: "" + percentElapsed + "%"
       }
       var timeRemainingStyle = {
         display:"inline-block",
         float:"left",
         backgroundColor: "#AAAAAA",
-        height:"3px",
+        height:"1px",
         width: "" + percentRemaining + "%"
       }
 

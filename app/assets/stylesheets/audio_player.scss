@@ -84,13 +84,14 @@
     font-size:12px;
     display:inline-block;
     width:auto;
+    position:relative;
     &.left {
       float:left;
     }
     &.right {
-      position:relative;
+      bottom:1px;
 
-      bottom:3px;
+
       float:right;
     }
   }
