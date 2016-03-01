@@ -2,9 +2,4 @@ json.extract! user, :id, :username, :location, :image_url, :cover_image_url, :bi
 json.set! :numTracks, user.songs.size
 json.set! :numFollowers, user.followers.size
 json.set! :numFollowing, user.followees.size
-
-if user.followers.include?(current_user)
-  json.isFollowed true
-else
-  json.isFollowed false
-end
+json.set! :isFollowed, user.followers.include?(current_user)

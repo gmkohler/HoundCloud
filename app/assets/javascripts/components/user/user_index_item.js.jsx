@@ -1,9 +1,6 @@
 (function(root) {
   'use strict';
   root.SideBarFollowIndexItem = React.createClass({
-    getInitialState: function () {
-      return {followText: "Follow"};
-    },
 
     _followToggle: function (e) {
       e.preventDefault();
@@ -12,12 +9,10 @@
 
     _followUser: function () {
       FollowingApiUtil.addFollowing(this.props.user.id);
-      this.setState({followText: "Following"});
     },
 
     _unfollowUser: function () {
       FollowingApiUtil.removeFollowing(this.props.user.id);
-      this.setState({followText: "Follow"});
     },
 
     _handleLinkClick: function (e) {
@@ -31,12 +26,14 @@
       var thumbnailStyle = {
         backgroundImage: "url(" + user.image_url + ")"
       };
+      var followText = this.props.user.isFollowed ? "Following" : "Follow";
+      var buttonClass = this.props.user.isFollowed ? " selected" : "";
 
       return(
         <div className="clearfix sidebar-follow-item">
-          <button className="btn btn-xs btn-follow"
+          <button className={"btn btn-xs btn-follow" + buttonClass}
                   onClick={this._followToggle}>
-            {this.state.followText}</button>
+            {followText}</button>
           <div className="sidebar-follow-item-thumbnail-container">
             <div className="sidebar-follow-item-thumbnail"
                  style={thumbnailStyle}/>
