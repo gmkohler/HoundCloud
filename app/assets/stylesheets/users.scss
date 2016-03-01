@@ -49,11 +49,11 @@ div.sidebar-follow-item {
   padding: 8px 0;
   border-bottom: solid 1px #F2F2F2;
   position: relative;
-}
-div.sidebar-follow-item .btn-sidebar-follow {
-  position: absolute;
-  right:5px;
-  bottom:8px;
+  .btn-sidebar-follow {
+    position: absolute;
+    right:5px;
+    bottom:8px;
+  }
 }
 div.sidebar-follow-item-thumbnail-container {
   width: 15%;
@@ -73,20 +73,24 @@ div.sidebar-follow-item-info a {
     color:#FF5500;
   }
 }
-div.sidebar-follow-item-stats span {
-  color:#999999;
+div.sidebar-follow-item-stats {
+  span {
+    color:#999999;
+  }
+  div {
+    font-size: 10px;
+    margin-right: 4px;
+  }
+  i {
+    font-size: 10px;
+    margin-right: 2px;
+    color:#999999;
+    float:left;
+  }
+  >div {
+    float:left;
+  }
 }
-div.sidebar-follow-item-stats div {
-  font-size: 10px;
-  margin-right: 4px;
-}
-div.sidebar-follow-item-stats i {
-  font-size: 10px;
-  margin-right: 2px;
-  color:#999999;
-  float:left;
-}
-
 div.sidebar-follow-item-thumbnail {
   position:relative;
   top:5px;
@@ -95,10 +99,6 @@ div.sidebar-follow-item-thumbnail {
   background-color: #cccccc;
   background-size: cover;
   background-position: center;
-}
-
-div.sidebar-follow-item-stats>div {
-  float:left;
 }
 
 .user-info {

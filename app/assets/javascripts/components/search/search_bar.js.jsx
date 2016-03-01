@@ -59,24 +59,17 @@
       // relative to it.
       // <SuggestionIndex searchQuery={this.state.searchQuery}/>
 
-      // <form id="search-bar"
-      //       className="navbar-form navbar-left col-lg-6"
-      //       role="search"
-      //       onMouseOver={this._preventBlur}
-      //       onMouseLeave={this._enableBlur}
-      //       onBlur={this._handleBlur}
-      //       onKeyUp={this._keyUpHandler}
-      //       onSubmit={this._submit}>
       return (
         <div id="search-bar-container"
              className="clearfix">
-          <form id="search-bar"
-                className="navbar-form navbar-left col-lg-6"
-                role="search"
-                onMouseOver={this._preventBlur}
-                onBlur={this._handleBlur}
-                onKeyUp={this._keyUpHandler}
-                onSubmit={this._submit}>
+         <form id="search-bar"
+               className="navbar-form navbar-left col-lg-6"
+               role="search"
+               onMouseOver={this._preventBlur}
+               onMouseLeave={this._enableBlur}
+               onBlur={this._handleBlur}
+               onKeyUp={this._keyUpHandler}
+               onSubmit={this._submit}>
 
             <input type="submit" id="search-submit"/>
             <div className="form-group has-feedback">
