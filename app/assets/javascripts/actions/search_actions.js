@@ -19,7 +19,7 @@
 
     receiveFilters: function (data) {
       AppDispatcher.dispatch({
-        actiontype: SearchConstants.FILTERS_RECEIVED,
+        actionType: SearchConstants.FILTERS_RECEIVED,
         filters: data
       });
     }

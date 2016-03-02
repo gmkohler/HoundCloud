@@ -8,12 +8,16 @@
     componentDidMount: function () {
       SearchStore.addResultsChangeListener(this._setTags);
       SearchStore.addFiltersChangeListener(this._setSelected);
-      this._setTags;
+      this._setTags();
     },
 
     componentWillUnmount: function () {
       SearchStore.removeResultsChangeListener(this._setTags);
       SearchStore.removeResultsChangeListener(this._setSelected);
+    },
+
+    componentWillReceiveProps: function (newProps) {
+
     },
 
     _setTags: function () {
@@ -36,16 +40,6 @@
       SearchActions.receiveFilters({showUsers: true, showSongs: true});
     },
 
-    _showUsersToggle: function (e) {
-      e.preventDefault();
-      SearchActions.receiveFilters({showUsers: true, showSongs: false});
-    },
-
-    _showSongsToggle: function (e) {
-      e.preventDefault();
-      SearchActions.receiveFilters({showUsers: false, showSongs:true});
-    },
-
     render: function () {
       var tags = this.state.tags,
           that = this;
@@ -66,7 +60,7 @@
           );
         }.bind(this))
       );
-      var selectedTag
+
       if (this.state.selected) {
         selectedTag = (
           <div className={"index-item-tag active"}>

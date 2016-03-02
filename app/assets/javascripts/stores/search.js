@@ -17,9 +17,9 @@
     tagID: null
   };
 
-  function updateSingleUser (user) {
-    _users.indexOf(user.id)
-  }
+  // function updateSingleUser (user) {
+  //   _users.indexOf(user.id);
+  // }
 
   function updateSongsAndTags (songs) {
     _results.songs = songs;
@@ -58,7 +58,6 @@
       return retVals;
     },
 
-
     getSongs: function (query) {
       if (_filters.showSongs) {
         if (_filters.tagID) {
@@ -69,7 +68,8 @@
           });
         } else {
           return _results.songs.filter(function(song) {
-            return !!(song.title.toLowerCase().match(query) || song.artist_username.toLowerCase().match(query));
+            return !!(song.title.toLowerCase().match(query) ||
+                          song.artist_username.toLowerCase().match(query));
           });
         }
       } else {
@@ -89,6 +89,7 @@
     // },
 
     getMatchingResults: function(term, numResults){
+      debugger;
       var users = _results.users.filter(function(user){
         return !!user.username.toLowerCase().match(term);
       });

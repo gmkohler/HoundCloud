@@ -4,7 +4,11 @@
 
     _followToggle: function (e) {
       e.preventDefault();
-      this.props.user.isFollowed ? this._unfollowUser() : this._followUser();
+      if (this.props.user.isFollowed) {
+        this._unfollowUser();
+      } else {
+        this._followUser();
+      }
     },
 
     _followUser: function () {
