@@ -10,12 +10,12 @@
 
      _showUsersToggle: function (e) {
        e.preventDefault();
-       SearchActions.receiveFilters({showUsers: true, showSongs: false});
+       SearchActions.receiveFilters({showUsers: !this.state.showUsers});
      },
 
      _showSongsToggle: function (e) {
        e.preventDefault();
-       SearchActions.receiveFilters({showUsers: false, showSongs: true});
+       SearchActions.receiveFilters({showSongs: !this.state.showSongs});
      },
 
     componentDidMount: function () {

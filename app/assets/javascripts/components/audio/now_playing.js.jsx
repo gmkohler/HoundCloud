@@ -7,18 +7,18 @@
 
     componentDidMount: function () {
       this.audio = new Audio();
-      this.audio.id = "audio"
-      this.audio.addEventListener("ended", this._onEnded, false);
-      this.audio.addEventListener("timeupdate", this._onTimeUpdate, false);
-      this.audio.addEventListener("loadedmetadata", this._onLoadedMetadata, false);
+      this.audio.id = 'audio';
+      this.audio.addEventListener('ended', this._onEnded, false);
+      this.audio.addEventListener('timeupdate', this._onTimeUpdate, false);
+      this.audio.addEventListener('loadedmetadata', this._onLoadedMetadata, false);
       AudioStore.addChangeListener(this._onAudioChange);
       AudioStore.addTrackChangeListener(this._onAudioChange);
     },
 
     componentWillUnmount: function () {
-      this.audio.removeEventListener("ended", this._onEnded);
-      this.audio.removeEventListener("timeupdate", this._onTimeUpdate);
-      this.audio.removeEventListener("loadedmetadata", this._onLoadedMetadata, false);
+      this.audio.removeEventListener('ended', this._onEnded);
+      this.audio.removeEventListener('timeupdate', this._onTimeUpdate);
+      this.audio.removeEventListener('loadedmetadata', this._onLoadedMetadata, false);
       AudioStore.removeChangeListener(this._onAudioChange);
       AudioStore.removeTrackChangeListener(this._onAudioChange);
     },
@@ -66,7 +66,7 @@
        currentTime = 0,
           duration = 0;
       if (!!newTrack.src) {
-        currentTime = newTrack.currentTime,
+        currentTime = newTrack.currentTime;
            duration = newTrack.duration;
       }
       AudioActions.receiveMetadata({duration: duration});
@@ -74,7 +74,11 @@
 
     _togglePlay: function () {
       var audio = this.audio;
-      audio.paused ? audio.play() : audio.pause();
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
     },
 
     render: function () {

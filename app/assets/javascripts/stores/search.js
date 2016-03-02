@@ -17,10 +17,6 @@
     tagID: null
   };
 
-  // function updateSingleUser (user) {
-  //   _users.indexOf(user.id);
-  // }
-
   function updateSongsAndTags (songs) {
     _results.songs = songs;
     _results.tags = {};
